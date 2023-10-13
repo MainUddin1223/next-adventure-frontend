@@ -1,6 +1,8 @@
+import Providers from '@/lib/Providers'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { ConfigProvider } from 'antd'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,8 +17,27 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <Providers>
+      <ConfigProvider
+      theme={{
+    components: {
+      Input: {
+        activeBg: 'white',
+        hoverBg:'rgb(229, 235, 240)'
+          },
+          Button: {
+        fontWeight:500
+      }
+          },
+          token: {
+          colorPrimary:'#088345'
+        }
+  }}
+      >
+      <html lang="en">
       <body className={inter.className}>{children}</body>
-    </html>
+        </html>
+        </ConfigProvider>
+    </Providers>
   )
 }
