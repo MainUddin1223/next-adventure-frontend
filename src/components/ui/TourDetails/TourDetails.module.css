@@ -1,0 +1,20 @@
+.details_header_section {
+  margin: 10px 0;
+}
+.details_card_container {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: block;
+}
+@media only screen and (max-width: 1200px) {
+  .details_card_container {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .details_card_container {
+    width: 95%;
+    margin-top: 120px;
+  }
+}

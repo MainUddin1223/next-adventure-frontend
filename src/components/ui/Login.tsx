@@ -33,7 +33,7 @@ const Login = () => {
     return (
       <PublicLayout>
           <Row justify='center'
-      align='middle' style={{width:"80%", margin:"0 auto"}}>
+               align='middle' style={{width:"80%", margin:"0 auto"}}>
                 <Col xs={24} sm={10} md={8} span={12}>  
                         <h1
           style={{ margin: "15px 0" }}

@@ -1,6 +1,7 @@
 'use client'
 import { Col, Row, Carousel } from "antd"
 import styles from './featuredToure.module.css'
+import { useRouter } from "next/navigation";
 const contentStyle: React.CSSProperties = {
   margin: 0,
   height: '160px',
@@ -10,7 +11,8 @@ const contentStyle: React.CSSProperties = {
   background: '#364d79',
 };
 
-const FeaturedTour = ({tours}:any) => {
+const FeaturedTour = ({ tours }: any) => {
+    const router = useRouter()
     const onChange = (currentSlide: number) => {
     console.log(currentSlide);
     };
@@ -24,7 +26,7 @@ const FeaturedTour = ({tours}:any) => {
                       plans?.length ?
                           plans.map((plan:any) => (
                                         <Col xs={24} sm={24} md={8} lg={6} key={plan.id}>
-                                            <div className={styles.plan_card_container}>
+                                            <div className={styles.plan_card_container} onClick={()=>router.push(`/plan-details/${plan?.id}`)}>
                                                 <Carousel afterChange={onChange}>
                                                         <div>
                                                             <h3 style={contentStyle}>1</h3>
