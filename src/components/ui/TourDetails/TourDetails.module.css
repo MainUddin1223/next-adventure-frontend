@@ -7,6 +7,11 @@
   margin-top: 50px;
   display: block;
 }
+.book_button {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
 @media only screen and (max-width: 1200px) {
   .details_card_container {
     width: 80%;

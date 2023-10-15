@@ -15,13 +15,15 @@ const footerStyle: React.CSSProperties = {
 
 const PublicLayout = ({children}:{children:React.ReactNode}) => {
     return (
-          <Layout>
+      <>
+       <Layout>
             <NavBar />
             <div style={{minHeight:"100vh"}}>
                 {children}
             </div>
       <Footer style={footerStyle}>Footer</Footer>
     </Layout>
+      </>
   )
 }
 

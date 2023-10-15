@@ -10,6 +10,16 @@ const publicApi = baseApi.injectEndpoints({
             }),
             providesTags: ['user']
         }),
+
+        getAgencies: build.query({
+            query: (arg: any) => ({
+                url: `/user/agencies`,
+                method: "GET",
+                params: arg
+            }),
+            providesTags: ['user']
+        }),
+
         getPlanDetails: build.query({
             query: (id: number) => ({
                 url: `/agency/plan/${id}`,
@@ -20,4 +30,4 @@ const publicApi = baseApi.injectEndpoints({
     }),
 })
 
-export const { useGetAgenciesAndPlansQuery, useGetPlanDetailsQuery } = publicApi
+export const { useGetAgenciesAndPlansQuery, useGetPlanDetailsQuery, useGetAgenciesQuery } = publicApi

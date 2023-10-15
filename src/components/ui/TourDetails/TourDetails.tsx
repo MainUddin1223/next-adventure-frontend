@@ -6,8 +6,13 @@ import styles from './TourDetails.module.css'
 import Image from 'next/image'
 import profile_img from '@/assets/popular-agency.jpg'
 import { CarOutlined } from '@ant-design/icons';
+import { useRouter } from 'next/navigation'
+import { useAppDispatch } from '@/redux/hooks'
+import { addToCart } from '@/redux/slice/orderSlice'
 
 const TourDetails = ({ id }: { id: number }) => {
+    const router = useRouter();
+    const dispatch = useAppDispatch()
     const { data, isLoading } = useGetPlanDetailsQuery(Number(id))
     const info: any = data;
     const title = <div className={styles.details_header_section}>
@@ -24,7 +29,6 @@ const TourDetails = ({ id }: { id: number }) => {
         </div>
         <Rate disabled defaultValue={5} />
     </div>
-  console.log(isLoading,info)
   return (
         <PublicLayout>
        <Card title={title} className={styles.details_card_container} style={{ margin:"0 auto",marginTop:"50px",padding:'0'  }}>
@@ -56,7 +60,12 @@ const TourDetails = ({ id }: { id: number }) => {
                       <p>Reporting time: {info?.starting_time}</p>
                   </Col>
               </Row>
-              <Button type='primary' style={{ margin: "20px auto", }}>Book plan</Button>
+              <div className={styles.book_button}>
+                  <Button type='primary' onClick={() => {
+                      dispatch(addToCart(info))
+                      router.push('/plan-summary')
+                  }} >Book plan</Button>
+              </div>
        </Card>
    </PublicLayout>
   )

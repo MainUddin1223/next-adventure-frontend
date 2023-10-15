@@ -21,7 +21,7 @@ const NavBar = () => {
   };
   const isUser = isLoggedIn()
   return (
-    <Header
+      <Header
           style={{
           position: 'sticky',
           top: 0,
@@ -36,13 +36,13 @@ const NavBar = () => {
           </Link>
       </div>
         <div className={styles.navigation_item_container}>
-          <Link href='/' className={styles.navigation_item}> <p>Packages</p></Link>
-          <Link href='/' className={styles.navigation_item}> <p>Packages</p></Link>
-          <Link href='/' className={styles.navigation_item}> <p>Packages</p></Link>
+       <Link href='/agencies' className={styles.navigation_item}> <p>Agencies</p></Link>
+          <Link href='/plans' className={styles.navigation_item}> <p>Tour plans</p></Link>
+          <Link href='/' className={styles.navigation_item}> <p>My plans</p></Link>
           {/* <Button type="primary">Login</Button> */}
           {
             isUser ?
-             <UserOutlined style={{fontSize:"20px",padding:"5px"}}/> :
+             <UserOutlined style={{fontSize:"20px",padding:"5px",color:"white",cursor:"pointer"}}/> :
               <>
               <Link href='/login' className={styles.navigation_item}>Login</Link>
               <Link href='/login' className={styles.navigation_item}>Sign In</Link>
@@ -56,9 +56,9 @@ const NavBar = () => {
           </Button> */}
           <UnorderedListOutlined onClick={showDrawer} style={{fontSize:"35px",display:"flex",alignItems:"center",marginTop:"10px"}}/>
       <Drawer title="Basic Drawer" placement="left" onClose={onClose} open={open}>
-         <Link href='/' className={styles.navigation_item}> <p>Packages</p></Link>
-          <Link href='/' className={styles.navigation_item}> <p>Packages</p></Link>
-          <Link href='/' className={styles.navigation_item}> <p>Packages</p></Link>
+         <Link href='/' className={styles.navigation_item}> <p>Agencies</p></Link>
+          <Link href='/' className={styles.navigation_item}> <p>Tour plans</p></Link>
+          <Link href='/' className={styles.navigation_item}> <p>My plans</p></Link>
           {/* <Button type="primary">Login</Button> */}
           {
             isUser ?
@@ -74,6 +74,7 @@ const NavBar = () => {
       </div>
 
     </Header>
+ 
   )
 }
 
