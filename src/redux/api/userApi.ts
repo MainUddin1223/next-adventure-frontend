@@ -17,8 +17,15 @@ const userApi = baseApi.injectEndpoints({
                 method: "GET",
             }),
             providesTags: ['user']
+        }),
+        getUserProfile: build.query({
+            query: () => ({
+                url: `/auth/profile`,
+                method: "GET",
+            }),
+            providesTags: ['user']
         })
     }),
 })
 
-export const { useBookPlanMutation, useGetAgencyByIdQuery } = userApi
+export const { useBookPlanMutation, useGetAgencyByIdQuery, useGetUserProfileQuery } = userApi

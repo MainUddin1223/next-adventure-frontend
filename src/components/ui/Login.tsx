@@ -20,13 +20,13 @@ const Login = () => {
       try {
           const res = await userLogin({ ...data }).unwrap();
           
-      if (res?.accessToken) {
-        router.push('/profile');
-        message.success('User logged in successfully')
-          }
-      const accessToken = res?.accessToken
-      storeUserInfo(accessToken)
-      getUserInfo()
+        if (res?.accessToken) {
+          message.success('User logged in successfully')
+          const accessToken = res?.accessToken
+          await storeUserInfo(accessToken)
+          const authInfo:any = getUserInfo();
+          router.push(`${authInfo?.role}/profile`);
+        }
     } catch (error) {
     }
   }

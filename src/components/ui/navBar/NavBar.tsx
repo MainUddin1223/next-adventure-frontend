@@ -38,7 +38,7 @@ const NavBar = () => {
         <div className={styles.navigation_item_container}>
        <Link href='/agencies' className={styles.navigation_item}> <p>Agencies</p></Link>
           <Link href='/plans' className={styles.navigation_item}> <p>Tour plans</p></Link>
-          <Link href='/' className={styles.navigation_item}> <p>My plans</p></Link>
+          <Link href='/profile' className={styles.navigation_item}> <p>My plans</p></Link>
           {/* <Button type="primary">Login</Button> */}
           {
             isUser ?
