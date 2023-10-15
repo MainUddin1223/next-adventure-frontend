@@ -20,7 +20,7 @@ const router = useRouter()
                    <h1>Choose you tour Planner</h1>
                     <h2 style={{fontSize:"1.8em"}}>Make your tour worthy</h2>
                     {/* <PrimaryButton handler={()=>router.push('/login')} value='Explore Agencies'/> */}
-                    <Link href='/login' style={{ fontSize: "1.3em", color: "var(--button-color)" }}><h3>
+                    <Link href='/agencies' style={{ fontSize: "1.3em", color: "var(--button-color)" }}><h3>
                     Expolore Agencies <ArrowRightOutlined />
                     </h3> </Link>
               </Col>

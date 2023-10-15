@@ -1,12 +1,11 @@
 'use client'
 
-import { useGetAgenciesQuery } from "@/redux/api/publicApi"
+import { useGetAgenciesQuery, useGetTourPlansQuery } from "@/redux/api/publicApi"
 import SkeletonLoader from "../Skeleton/Skeleton";
-import AgencyCard from "../agencyCard/AgencyCard";
 import { Col, Input, Row } from "antd";
 import PaginationCompo from "../pagination/Pagination";
 import { useState } from "react";
-import { useDebounced } from "@/redux/hooks";
+import { useAppSelector, useDebounced } from "@/redux/hooks";
 import styles from './TourPlanContainer.module.css'
 import PlanCard from "../planCard/PlanCard";
 
@@ -15,7 +14,9 @@ const TourPlanContainer = () => {
   const query: Record<string, any> = {}
   const [size, setSize] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const { searchTermValue } = useAppSelector(state => state.planState);
+  const [searchTerm, setSearchTerm] = useState<string>(searchTermValue);
+
 
     query['limit'] = size
     query['page'] = page
@@ -30,7 +31,7 @@ const TourPlanContainer = () => {
   }
 
 
-    const { data, isLoading } = useGetAgenciesQuery({ ...query });
+    const { data, isLoading } = useGetTourPlansQuery({ ...query });
     
   if (isLoading) {
     return (<>
@@ -39,7 +40,7 @@ const TourPlanContainer = () => {
     </>)
   }
   //@ts-ignore
-  const agencies: [] = data?.result;
+  const tourPlans: [] = data?.result;
   //@ts-ignore
   const meta = data?.meta
   return (
@@ -55,11 +56,9 @@ const TourPlanContainer = () => {
         />
         <Row gutter={24}>
           {
-                   agencies?.length ?
-                  agencies.map((agency: any) => (
-                    <Col xs={24} sm={24} md={12} lg={12} xl={8} key={agency.id}>
-                          <PlanCard plan={ agency} />
-              </Col>
+                   tourPlans?.length ?
+                  tourPlans.map((plan: any) => (
+                          <PlanCard plan={ plan} key={plan.id}/>
              ))
                   : <span>Coming soon</span>
               }

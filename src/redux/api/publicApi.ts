@@ -20,6 +20,15 @@ const publicApi = baseApi.injectEndpoints({
             providesTags: ['user']
         }),
 
+        getTourPlans: build.query({
+            query: (arg: any) => ({
+                url: `/user/tour-plans`,
+                method: "GET",
+                params: arg
+            }),
+            providesTags: ['user']
+        }),
+
         getPlanDetails: build.query({
             query: (id: number) => ({
                 url: `/agency/plan/${id}`,
@@ -30,4 +39,4 @@ const publicApi = baseApi.injectEndpoints({
     }),
 })
 
-export const { useGetAgenciesAndPlansQuery, useGetPlanDetailsQuery, useGetAgenciesQuery } = publicApi
+export const { useGetAgenciesAndPlansQuery, useGetPlanDetailsQuery, useGetAgenciesQuery, useGetTourPlansQuery } = publicApi

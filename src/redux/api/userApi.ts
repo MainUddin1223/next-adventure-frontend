@@ -10,8 +10,15 @@ const userApi = baseApi.injectEndpoints({
                 data
             }),
             invalidatesTags: ['user']
+        }),
+        getAgencyById: build.query({
+            query: (id) => ({
+                url: `/user/agency/${id}`,
+                method: "GET",
+            }),
+            providesTags: ['user']
         })
     }),
 })
 
-export const { useBookPlanMutation } = userApi
+export const { useBookPlanMutation, useGetAgencyByIdQuery } = userApi

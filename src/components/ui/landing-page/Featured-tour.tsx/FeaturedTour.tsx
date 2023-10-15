@@ -3,14 +3,6 @@ import { Col, Row, Carousel, Button } from "antd"
 import styles from './featuredToure.module.css'
 import { useRouter } from "next/navigation";
 import PlanCard from "../../planCard/PlanCard";
-const contentStyle: React.CSSProperties = {
-  margin: 0,
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
-};
 
 const FeaturedTour = ({ tours }: any) => {
     const router = useRouter()

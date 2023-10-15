@@ -9,6 +9,7 @@ import { CarOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation'
 import { useAppDispatch } from '@/redux/hooks'
 import { addToCart } from '@/redux/slice/orderSlice'
+import { formateDateAndTime } from '@/services/timeFormater'
 
 const TourDetails = ({ id }: { id: number }) => {
     const router = useRouter();
@@ -29,6 +30,8 @@ const TourDetails = ({ id }: { id: number }) => {
         </div>
         <Rate disabled defaultValue={5} />
     </div>
+    const bookingDeadline = formateDateAndTime(info?.booking_deadline);
+    const reportingTime = formateDateAndTime(info?.starting_time);
   return (
         <PublicLayout>
        <Card title={title} className={styles.details_card_container} style={{ margin:"0 auto",marginTop:"50px",padding:'0'  }}>
@@ -54,10 +57,10 @@ const TourDetails = ({ id }: { id: number }) => {
                      </div>
                   </Col>
                   <Col md={12}>
-                      <p>Booking deadline: {info?.booking_deadline }</p>
+                      <p>Deadline: {bookingDeadline.time} {bookingDeadline.date }</p>
                       <p>Tour duration: {info?.tour_duration}</p>
                       <p>Total meals: {info?.total_meals}</p>
-                      <p>Reporting time: {info?.starting_time}</p>
+                      <p>Reporting time: {reportingTime.time} {reportingTime.date }</p>
                   </Col>
               </Row>
               <div className={styles.book_button}>

@@ -12,7 +12,7 @@ type IPaginationProps = {
 const PaginationCompo = ({totalPage,setSize,setPage}:IPaginationProps) => {
     const onShowSizeChange: PaginationProps['onShowSizeChange'] = (current, pageSize) => {
         setSize(pageSize);
-        setPage(current)
+      setPage(current)
     };
     
   return (
