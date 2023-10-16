@@ -1,10 +1,10 @@
-import RegisterAgency from "@/components/ui/RegisterAgency/RegisterAgency"
+import SignUp from "@/components/ui/signup/SignUp"
 
 
 const page = () => {
   return (
       <div>
-          <RegisterAgency/>
+          <SignUp/>
     </div>
   )
 }

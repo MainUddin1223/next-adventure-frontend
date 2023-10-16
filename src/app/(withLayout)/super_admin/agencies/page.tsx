@@ -103,7 +103,8 @@ const AgenciesManagement = () => {
           type='text'
           size='large'
           placeholder='Search ... '
-          style={{ width: "20%" }}
+        style={{ width: "20%" }}
+           value={searchTerm}
           onChange={(e)=>setSearchTerm(e.target.value)}
         />
            <div>

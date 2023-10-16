@@ -1,5 +1,5 @@
 'use client'
-import { Layout, Button, Drawer,Flex } from "antd";
+import { Layout, Drawer,Flex } from "antd";
 const { Header, Content, Footer } = Layout;
 import {UserOutlined,UnorderedListOutlined } from '@ant-design/icons';
 import styles from './NavBar.module.css'
@@ -24,7 +24,8 @@ const NavBar = () => {
   };
   const isUser = isLoggedIn()
   return (
-      <Header
+    <>
+         <Header
           style={{
           position: 'sticky',
           top: 0,
@@ -32,7 +33,7 @@ const NavBar = () => {
           width: '100%',
           backgroundColor:"var(--primary-color)"
       }}>
-      <div className={styles.header_container}>
+      <span className={styles.header_container}>
         <div>
           <Link href='/'>
             <Image src={logo} height={45} alt="logo" style={{display:'flex'}}/>
@@ -58,14 +59,14 @@ const NavBar = () => {
              {/* <Button type="primary" onClick={showDrawer}>Open
           </Button> */}
           <UnorderedListOutlined onClick={showDrawer} style={{fontSize:"35px",display:"flex",alignItems:"center",marginTop:"10px"}}/>
-      <Drawer title="Basic Drawer" placement="left" onClose={onClose} open={open}>
+          <Drawer title="Basic Drawer" placement="left" onClose={onClose} open={open}>
          <Link href='/' className={styles.navigation_item}> <p>Agencies</p></Link>
           <Link href='/' className={styles.navigation_item}> <p>Tour plans</p></Link>
           <Link href='/' className={styles.navigation_item}> <p>My plans</p></Link>
           {/* <Button type="primary">Login</Button> */}
           {
             isUser ?
-             <UserOutlined style={{fontSize:"20px",padding:"5px"}}/> :
+             <span><UserOutlined style={{fontSize:"20px",padding:"5px"}}/></span> :
               <>
               <Link href='/login' className={styles.navigation_item}>Login</Link>
               <Link href='/login' className={styles.navigation_item}>Sign In</Link>
@@ -74,9 +75,10 @@ const NavBar = () => {
       </Drawer>
         </div>
 
-      </div>
+      </span>
 
     </Header>
+    </>
  
   )
 }

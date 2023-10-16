@@ -27,17 +27,27 @@ instance.interceptors.request.use(function (config) {
 // Add a response interceptor
 //@ts-ignore
 instance.interceptors.response.use(function (response) {
+    if (response.data.success === false) {
+        const responseObject: ResponseSuccessType = {
+            data: { message: response.data.message, success: false },
+            meta: response?.data?.meta
+        }
+        return responseObject
+    }
     const responseObject: ResponseSuccessType = {
-        data: response?.data?.data,
+        data: { ...response?.data?.data, success: true },
         meta: response?.data?.meta
     }
     return responseObject;
 
 }, function (error: { response: { data: { statusCode: number; message: any; }; }; }) {
     const responseObject: ResponseErrorType = {
-        statusCode: error?.response?.data?.statusCode | 500,
-        message: error?.response?.data?.message || 'Something went wrong',
-        errorMessages: error?.response?.data?.message
+        data: {
+            success: false,
+            statusCode: error?.response?.data?.statusCode | 500,
+            message: error?.response?.data?.message || 'Something went wrong',
+            errorMessages: error?.response?.data?.message
+        }
     }
     return responseObject;
 });

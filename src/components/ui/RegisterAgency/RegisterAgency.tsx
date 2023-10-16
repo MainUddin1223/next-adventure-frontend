@@ -1,13 +1,13 @@
 
-import PublicLayout from '../PublicLayout'
-import RegisterForm from '../RegisterForm/RegisterForm'
+// import PublicLayout from '../PublicLayout'
+// import RegisterForm from '../RegisterForm/RegisterForm'
 
-const RegisterAgency = () => {
-  return (
-      <PublicLayout>
-          <RegisterForm title='Register Agency' role='agency'/>
-    </PublicLayout>
-  )
-}
+// const RegisterAgency = () => {
+//   return (
+//       <PublicLayout>
+//           <RegisterForm title='Register Agency' role='agency'/>
+//     </PublicLayout>
+//   )
+// }
 
-export default RegisterAgency
+// export default RegisterAgency
