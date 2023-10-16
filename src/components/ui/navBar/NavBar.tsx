@@ -6,11 +6,14 @@ import styles from './NavBar.module.css'
 import Link from "next/link";
 import Image from "next/image";
 import logo from '@/assets/travel-logo.png'
-import { isLoggedIn } from "@/services/auth.service";
+import { getUserInfo, isLoggedIn } from "@/services/auth.service";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const { role } = getUserInfo() as any;
+  const router = useRouter()
 
   const showDrawer = () => {
     setOpen(true);
@@ -42,7 +45,7 @@ const NavBar = () => {
           {/* <Button type="primary">Login</Button> */}
           {
             isUser ?
-             <UserOutlined style={{fontSize:"20px",padding:"5px",color:"white",cursor:"pointer"}}/> :
+             <UserOutlined style={{fontSize:"20px",padding:"5px",color:"white",cursor:"pointer"}} onClick={()=>router.push(`${role}/profile`)}/> :
               <>
               <Link href='/login' className={styles.navigation_item}>Login</Link>
               <Link href='/login' className={styles.navigation_item}>Sign In</Link>

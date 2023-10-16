@@ -13,6 +13,13 @@ const authApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ['user']
         }),
+        userLogout: build.mutation({
+            query: () => ({
+                url: `${authUrl}/signout`,
+                method: "POST"
+            }),
+            invalidatesTags: ['user']
+        }),
         registration: build.mutation({
             query: (data) => ({
                 url: `${authUrl}/signup`,
@@ -24,4 +31,4 @@ const authApi = baseApi.injectEndpoints({
     }),
 })
 
-export const { useUserLoginMutation, useRegistrationMutation } = authApi
+export const { useUserLoginMutation, useRegistrationMutation, useUserLogoutMutation } = authApi

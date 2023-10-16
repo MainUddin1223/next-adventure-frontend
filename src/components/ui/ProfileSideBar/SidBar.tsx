@@ -23,7 +23,8 @@ const SideBar = () => {
               position: "sticky",
               left: 0,
               top: 0,
-              bottom:0
+              bottom: 0,
+              backgroundColor:'var(--primary-color)'
           }}
       >
           <div
@@ -39,7 +40,7 @@ const SideBar = () => {
                   collapsed? "NA" : "NEXT ADVENTURE"
               }
         </div>
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={sidebarItems(role)} />
+        <Menu style={{backgroundColor:"var(--primary-color)",color:'white'}} defaultSelectedKeys={['1']} mode="inline" items={sidebarItems(role)} />
       </Sider>
   )
 }

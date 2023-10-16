@@ -14,7 +14,7 @@ export const sidebarItems = (role: string) => {
     const defaultSidebarItems: MenuProps["items"] = [
           {
         label: <Link href={`/${role}/profile`}>Profile</Link>,
-        icon:<TableOutlined/>,
+        icon:<UserOutlined/>,
         key: `/${role}/profile`
         },
     ];
@@ -33,7 +33,7 @@ export const sidebarItems = (role: string) => {
         {
         label: <Link href={`/${role}/bookings`}>Manage Booking</Link>,
         icon:<TableOutlined/>,
-        key: `/${role}/tour-plans`
+        key: `/${role}/bookings`
         },
         {
         label: <Link href={`/${role}/users`}>Manage Users</Link>,
@@ -53,7 +53,7 @@ export const sidebarItems = (role: string) => {
         },
         {
         label: <Link href={`/${role}/payouts`}>Payouts</Link>,
-        icon:<TableOutlined/>,
+        icon:<CreditCardOutlined/>,
         key: `/${role}/payouts`
         }
     ];
@@ -94,8 +94,8 @@ export const sidebarItems = (role: string) => {
         key: `/${role}/plan-history`
         },
         {
-        label: <Link href={`/${role}/payouts`}>Booking History</Link>,
-        icon:<ThunderboltOutlined/>,
+        label: <Link href={`/${role}/payouts`}>Payouts</Link>,
+        icon:<CreditCardOutlined/>,
         key: `/${role}/payouts`
         },
     ];
