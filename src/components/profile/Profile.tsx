@@ -6,9 +6,13 @@ import styles from './profile.module.css'
 import dummy_img from '@/assets/146.jpg'
 import Image from "next/image";
 import LoadingSpinner from "@/components/ui/loader/Loader";
+import { useRouter } from "next/navigation";
+import { getUserInfo } from "@/services/auth.service";
+import Link from "next/link";
 
 const CommonProfile = () => {
   const { data, isLoading } = useGetUserProfileQuery(undefined);
+  const authInfo: any = getUserInfo();
   if (isLoading) {
     return <LoadingSpinner/>
   }
@@ -22,7 +26,9 @@ const CommonProfile = () => {
         <h3>{data?.email}</h3>
         <h3>{data?.contact_no}</h3>
         <h3>{data?.about_user}</h3>
+        <Link href={`profile/edit`}>
         <Button type='primary'>Edit Profile</Button>
+        </Link>
     </Card>
     </div>
   )

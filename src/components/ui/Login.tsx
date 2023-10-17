@@ -33,7 +33,6 @@ const Login = () => {
           await storeUserInfo(accessToken)
           const authInfo: any = getUserInfo();
           setIsLoading(false)
-          console.log('--------------efrref----------------')
           router.push(`${authInfo?.role}/profile`);
         }
       if (!res.success) {

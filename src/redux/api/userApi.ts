@@ -24,8 +24,16 @@ const userApi = baseApi.injectEndpoints({
                 method: "GET",
             }),
             providesTags: ['user']
+        }),
+        updateUserProfile: build.mutation({
+            query: (data) => ({
+                url: `/auth/profile/update`,
+                method: "PATCH",
+                data
+            }),
+            invalidatesTags: ['user']
         })
     }),
 })
 
-export const { useBookPlanMutation, useGetAgencyByIdQuery, useGetUserProfileQuery } = userApi
+export const { useBookPlanMutation, useGetAgencyByIdQuery, useGetUserProfileQuery, useUpdateUserProfileMutation } = userApi
