@@ -1,10 +1,10 @@
-import SignUp from "@/components/ui/signup/SignUp"
+import RegisterForm from "@/components/ui/RegisterForm/RegisterForm"
 
 
 const page = () => {
   return (
       <div>
-          <SignUp/>
+          <RegisterForm/>
     </div>
   )
 }

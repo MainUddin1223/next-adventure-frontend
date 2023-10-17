@@ -26,15 +26,15 @@ const beforeUpload = (file: RcFile) => {
 
  type ImageUploadProps = {
   name: string;
-  defaultUrl:string
 };
 
-const ProfileImageUploader = ({ name,defaultUrl }: ImageUploadProps) => {
+const RegisterImageUploader = ({ name }: ImageUploadProps) => {
   
   const { setValue } = useFormContext();
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState<any>();
-
+    const [imageUrl, setImageUrl] = useState<string>();
+    
   const handleChange: UploadProps["onChange"] = (
     info: UploadChangeParam<UploadFile>
   ) => {
@@ -46,14 +46,14 @@ const ProfileImageUploader = ({ name,defaultUrl }: ImageUploadProps) => {
       // Get this url from response in real world.
       setImage(info.file.originFileObj);
       getBase64(info.file.originFileObj as RcFile, (url) => {
-        uploadToCloudinary()
+          uploadToCloudinary(url,info.file.originFileObj)
       });
     }
   };
 
-  const uploadToCloudinary = () => {
+  const uploadToCloudinary = (url:any,infoFile:any) => {
     const data = new FormData();
-    data.append('file',image)
+    data.append('file',infoFile)
     data.append('upload_preset','nextAdventure')
     data.append('cloud_name', 'dld6ete1x');
     fetch('https://api.cloudinary.com/v1_1/dld6ete1x/image/upload',
@@ -65,7 +65,8 @@ const ProfileImageUploader = ({ name,defaultUrl }: ImageUploadProps) => {
       .then(res => res.json())
       .then(data => {
         setLoading(false);
-        setValue(name,data.url)      
+        setValue(name, data.url)
+                setImageUrl(url);
       })
       .catch(error => console.log(error))
   }
@@ -89,21 +90,17 @@ const ProfileImageUploader = ({ name,defaultUrl }: ImageUploadProps) => {
         beforeUpload={beforeUpload}
         onChange={handleChange}
       >
-        {defaultUrl ? (
-          <Image
-            src={defaultUrl}
+        {imageUrl ?  <Image
+            src={imageUrl}
             alt="avatar"
             style={{ width: "100%",borderRadius:"50%" }}
             width={100}
               height={100}
-          />
-        ) : (
-          uploadButton
-        )}
+          /> : uploadButton}
       </Upload>
       </div>
     </>
   );
 };
 
-export default ProfileImageUploader;
+export default RegisterImageUploader;

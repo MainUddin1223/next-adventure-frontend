@@ -1,118 +1,141 @@
-// 'use client'
+'use client'
 
-// import Form from "@/components/form/Form"
-// import FormInput from "@/components/form/FormInput"
-// import { Button, Col, Row, message } from "antd"
-// import { SubmitHandler } from "react-hook-form"
-// import styles from './RegisterForm.module.css'
-// import { useRouter } from "next/navigation"
-// import { getUserInfo, storeUserInfo } from "@/services/auth.service"
+import Form from "@/components/form/Form"
+import FormInput from "@/components/form/FormInput"
+import { Button, Card, Col, Modal, Row, message } from "antd"
+import { SubmitHandler } from "react-hook-form"
+import styles from './RegisterForm.module.css'
+import { useRouter } from "next/navigation"
+import { getUserInfo, storeUserInfo } from "@/services/auth.service"
+import { useRegisterAgencyMutation } from "@/redux/api/authApi"
+import { yupResolver } from "@hookform/resolvers/yup";
+import FormTextArea from "@/components/form/FormTextArea"
+import PublicLayout from "../PublicLayout"
+import PerLoader from '../loader/PreLoader';
+import { useState } from "react"
+import RegisterImageUploader from "../ImageUploader/RegisterImageUploader"
+import { registerSchema } from "@/schemas/auth"
 
-// type IRegisterFormProps = {
-//     title: string;
-//     role:'user' | 'agency'
-// }
-// type IRegisterFormValues = {
-//     first_name: string;
-//     last_name: string;
-//     role: 'user' | 'agency';
-//     email: string;
-//     password: string;
-//     contact_no: string;
-//     about_user: string;
-//     profile_img:string
-// }
-// const RegisterForm = ({ title, role }: IRegisterFormProps) => {
+
+type IRegisterFormValues = {
+    first_name: string;
+    last_name: string;
+    role: 'user' | 'agency';
+    email: string;
+    password: string;
+    contact_no: string;
+    about_user: string;
+    profile_img:string
+}
+const RegisterForm = () => {
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter();
     
-//         const router = useRouter();
-//     // const [registration] = useRegistrationMutation();
+    const [ registerAgency ] = useRegisterAgencyMutation();
     
-//     const handleRegister:SubmitHandler<IRegisterFormValues> = async (data:any)=> {
-//         try {
-//             const defaultImg = "https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
-//             const res = await registration({ ...data,role,profile_img:defaultImg }).unwrap();
-//             console.log(res)
-          
-//       if (res?.accessToken) {
-//         router.push('/profile');
-//         message.success('User logged in successfully')
-//           }
-//       const accessToken = res?.accessToken
-//       storeUserInfo(accessToken)
-//       getUserInfo()
-//     } catch (error) {
-//     }
-//     }
+    const onsubmit:SubmitHandler<IRegisterFormValues> = async (data:any)=> {
+        try {
+            const res = await registerAgency(data).unwrap();
+           if (res?.accessToken) {
+          const accessToken = res?.accessToken
+          await storeUserInfo(accessToken)
+          const authInfo: any = getUserInfo();
+          setIsLoading(false)
+             router.push(`${authInfo?.role}/profile`);
+               message.success('Registation successfull')
+        }
+      if (!res.success) {
+          setIsLoading(false)
+           Modal.error({
+                  content: 'Registration Failed',
+                });
+        }
+    } catch (error) {
+      }
+    }
 
-//   return (
-//       <div className={styles.form_container}>
-//           <h2 style={{padding:"15px 0"}}>{title}</h2>
-//           <div>
-//               <Form  submitHandler={handleRegister}>
-//                   <Row gutter={20}>
-//                 <Col sm={24} md={12} style={{margin:"5px 0"}}>
-//                  <FormInput
-//                 name='first_name'
-//                 type='text'
-//                 size='large'
-//                 label='First name'
-//               />
-//                   </Col>
-//                   <Col sm={24} md={12} style={{margin:"5px 0"}}>
-//                  <FormInput
-//                 name='last_name'
-//                 type='text'
-//                 size='large'
-//                 label='Last name'
-//               />
-//                   </Col>
-//                   <Col sm={24} md={12} style={{margin:"5px 0"}}>
-//                  <FormInput
-//                 name='email'
-//                 type='email'
-//                 size='large'
-//                 label='Email'
-//               />
-//                   </Col>
-//                   <Col sm={24} md={12} style={{margin:"5px 0"}}>
-//                  <FormInput
-//                 name='password'
-//                 type='password'
-//                 size='large'
-//                 label='Password'
-//               />
-//                   </Col>
-//                   <Col sm={24} md={12} style={{margin:"5px 0"}}>
-//                  <FormInput
-//                 name='contact_no'
-//                 type='text'
-//                 size='large'
-//                 label='Contact no'
-//               />
-//                   </Col>
-//                   <Col sm={24} md={12} style={{margin:"5px 0"}}>
-//                  <FormInput
-//                 name='about_user'
-//                 type='text'
-//                 size='large'
-//                 label='Details'
-//               />
-//                   </Col>
-//                   <Col sm={24} md={12} style={{margin:"5px 0"}}>
-//                  <FormInput
-//                 name='profile_img'
-//                 type='text'
-//                 size='large'
-//                 label='Profile Img'
-//                 value='testing'
-//               />
-//                   </Col>
-//                   </Row>
-//                   <Button type="primary" htmlType="submit" style={{margin:"10px 0"}}>Sign up</Button>
-//               </Form>
-//           </div>
-//     </div>
-//   )
-// }
+  return (
+    <PublicLayout>
+         <Card style={{ width: "80%", margin: "0 auto", marginTop: "30px" }}>
+                {
+            isLoading && <PerLoader/>
+          }
+      <div className={styles.form_container}>
+            <h1 style={{ margin: "15px 0" }}>Register Agency</h1>
+          <div>
+              <Form  submitHandler={onsubmit} resolver={yupResolver(registerSchema)}>
+          <Row gutter={20}>
+              <Col sm={24} md={24}>
+                  <div style={{ margin: "15px 0" }}>
+                    <RegisterImageUploader name={'profile_img'} />
+                  </div>
+             </Col>
+                <Col sm={24} md={12} style={{margin:"5px 0"}}>
+                 <FormInput
+                name='first_name'
+                type='text'
+                size='large'
+                label='First name'
+              />
+                  </Col>
+                  <Col sm={24} md={12} style={{margin:"5px 0"}}>
+                 <FormInput
+                name='last_name'
+                type='text'
+                size='large'
+                label='Last name'
+              />
+                  </Col>
+                  <Col sm={24} md={12} style={{margin:"5px 0"}}>
+                 <FormInput
+                name='email'
+                type='email'
+                size='large'
+                label='Email'
+              />
+                  </Col>
+                  <Col sm={24} md={12} style={{margin:"5px 0"}}>
+                 <FormInput
+                name='password'
+                type='password'
+                size='large'
+                label='Password'
+              />
+                  </Col>
+                  <Col sm={24} md={12} style={{margin:"5px 0"}}>
+                 <FormInput
+                name='confirmPassword'
+                type='password'
+                size='large'
+                label='Password'
+              />
+                  </Col>
+                  <Col sm={24} md={12} style={{margin:"5px 0"}}>
+                 <FormInput
+                name='contact_no'
+                type='text'
+                size='large'
+                label='Contact no'
+              />
+                  </Col>
+                          <Col sm={24} md={24}>
+                <div style={{ margin: "15px 0" }}>
+                  <FormTextArea
+                    name='about_user'
+                    rows = {6}
+                    placeholder="About..."
+                    label='About'
+                  />
+            </div>
+             </Col> 
+                  </Row>
+                  <Button type="primary" htmlType="submit" style={{margin:"10px 0"}}>Sign up</Button>
+              </Form>
+          </div>
+        </div>
+        </Card>
+      </PublicLayout>
+  )
+}
 
-// export default RegisterForm
+export default RegisterForm

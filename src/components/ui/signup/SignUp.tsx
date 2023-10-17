@@ -5,11 +5,11 @@ import { Col, Row,Button,message, Card, Modal, Spin } from 'antd';
 import login_img from '@/assets/login.png'
 import { useRouter } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
-import { useSignupMutation } from "@/redux/api/authApi";
+import { useUserSignupMutation } from "@/redux/api/authApi";
 import { getUserInfo, storeUserInfo } from "@/services/auth.service";
 import Link from "next/link";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema, signupSchema } from "@/schemas/auth";
+import { signupSchema } from "@/schemas/auth";
 import { FormValues } from '@/components/types';
 import PublicLayout from '../PublicLayout';
 import FormInput from '@/components/form/FormInput';
@@ -20,12 +20,12 @@ const SignUp = () => {
   const [isLoading,setIsLoading] = useState(false)
 
     const router = useRouter();
-      const [signup] = useSignupMutation();
+      const [userSignup] = useUserSignupMutation();
 
   const onsubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
         setIsLoading(true)
-          const res = await signup({ ...data }).unwrap();
+          const res = await userSignup({ ...data }).unwrap();
         if (res?.accessToken) {
           message.success('Congratulations!! Signup successfull')
           const accessToken = res?.accessToken
@@ -55,7 +55,7 @@ const SignUp = () => {
                align='middle' >
           <Col xs={24} sm={10} md={8} span={12}> 
             
-          <h1 style={{ margin: "15px 0" }}>Login your account</h1>
+          <h1 style={{ margin: "15px 0" }}>Sign up</h1>
         <div>
           <Form submitHandler={onsubmit} resolver={yupResolver(signupSchema)}>
             <div
@@ -90,7 +90,8 @@ const SignUp = () => {
               Sign Up
             </Button>
                 </Form>
-                <p style={{marginTop:"20px",textAlign:"right"}}>New to Next Adventure?<Link href='/signup'>Sign up</Link></p>
+                <p style={{marginTop:"20px",textAlign:"right"}}>Already have account?<Link href='/login'>Log in</Link></p>
+                <p style={{marginTop:"20px",textAlign:"right"}}><Link href='/register'>Register as travel planner</Link></p>
         </div> 
       
               </Col>

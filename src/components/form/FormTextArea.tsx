@@ -2,6 +2,7 @@
 
 import { useFormContext, Controller } from "react-hook-form"
 import {Input} from 'antd'
+import { getErrorMessageByPropartyName } from "@/utils/schemaValidator";
 
 interface ITextArea{
     name: string;
@@ -13,7 +14,9 @@ interface ITextArea{
 
 
 const FormTextArea = ({ name, value,rows, placeholder,label }: ITextArea) => {
-    const {control} = useFormContext()
+        const { control, formState: { errors } } = useFormContext();
+        const errorMessage = getErrorMessageByPropartyName(errors, name)
+    
   return (
       <div className={`flex flex-col w-full`}>
                     { label ? label : null}
@@ -28,7 +31,10 @@ const FormTextArea = ({ name, value,rows, placeholder,label }: ITextArea) => {
                   value={ value ? value : field.value}
                       />
           )}
-      />
+          />
+          <small style={{ color:'red' }}>
+              {errorMessage}
+          </small>
     </div>
   )
 }
