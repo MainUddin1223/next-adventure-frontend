@@ -32,8 +32,29 @@ const userApi = baseApi.injectEndpoints({
                 data
             }),
             invalidatesTags: ['user']
+        }),
+        getUpcomingSchedules: build.query({
+            query: () => ({
+                url: `/user/upcoming-schedules`,
+                method: "GET",
+            }),
+            providesTags: ['user']
+        }),
+        manageBookings: build.mutation({
+            query: (id) => ({
+                url: `/user/manage-booking/${id}`,
+                method: "PATCH",
+            }),
+            invalidatesTags: ['user']
         })
     }),
 })
 
-export const { useBookPlanMutation, useGetAgencyByIdQuery, useGetUserProfileQuery, useUpdateUserProfileMutation } = userApi
+export const {
+    useBookPlanMutation,
+    useGetAgencyByIdQuery,
+    useGetUserProfileQuery,
+    useUpdateUserProfileMutation,
+    useGetUpcomingSchedulesQuery,
+    useManageBookingsMutation
+} = userApi

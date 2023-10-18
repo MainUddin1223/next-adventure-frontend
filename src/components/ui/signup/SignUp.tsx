@@ -91,7 +91,7 @@ const SignUp = () => {
             </Button>
                 </Form>
                 <p style={{marginTop:"20px",textAlign:"right"}}>Already have account?<Link href='/login'>Log in</Link></p>
-                <p style={{marginTop:"20px",textAlign:"right"}}><Link href='/register'>Register as travel planner</Link></p>
+                <p style={{marginTop:"20px",textAlign:"right"}}><Link href='/register'>Register as Travel Planner</Link></p>
         </div> 
       
               </Col>

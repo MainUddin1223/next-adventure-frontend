@@ -15,6 +15,7 @@ const MyPlans = ({ id }: { id: number }) => {
         const result = await manageBookings({ id, status });
         //@ts-ignore
         const data = result?.data;
+        console.log(data)
         if (data.success) {
             if (status == 'cenceled') {
                 message.warning('Booking have cenceld successfully')
@@ -50,7 +51,6 @@ const MyPlans = ({ id }: { id: number }) => {
    {
     title: 'Action',
        render: function (data: any) {
-        console.log( data.status)
       return (
         <>
               {

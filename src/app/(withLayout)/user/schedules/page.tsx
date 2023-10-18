@@ -1,8 +1,11 @@
+import ManageSchedules from '@/components/ui/users/Schedules/Schedules'
 import React from 'react'
 
 const Schedules = () => {
   return (
-    <div>Schedules</div>
+    <div>
+      <ManageSchedules/>
+    </div>
   )
 }
 

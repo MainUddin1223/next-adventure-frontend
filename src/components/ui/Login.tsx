@@ -83,7 +83,8 @@ const Login = () => {
             </Button>
                 </Form>
                 <p style={{marginTop:"20px",textAlign:"right"}}>New to Next Adventure?<Link href='/signup'>Sign up</Link></p>
-        </div> 
+        <p style={{marginTop:"20px",textAlign:"right"}}><Link href='/register'>Register as Tour Planner</Link></p>
+              </div> 
       
               </Col>
                 <Col xs={24} sm={10} md={8} span={12}>
