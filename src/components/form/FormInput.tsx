@@ -45,7 +45,19 @@ const FormInput = ({
                   placeholder={placeholder}
                   {...field}
                   value={ value ? value : field.value}
-                      /> :
+                      /> : 
+                      type === 'number' ?
+                            <Input
+                  type={type}
+                  size={size}
+                placeholder={placeholder}
+                  {...field}
+                 value={value ? value : field.value}
+                    onChange={(e) => {
+                    const numericValue = parseFloat(e.target.value);
+                    field.onChange(numericValue);
+        }}
+              />:
                        <Input
                   type={type}
                   size={size}

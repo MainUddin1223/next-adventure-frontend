@@ -23,8 +23,6 @@ export const isLoggedIn = () => {
     const authToken = getFromLocalStorage(AuthKey);
     return !!authToken
 }
-
-
 export const removeUserToken = (key: string) => {
     return localStorage.removeItem(key)
 }

@@ -1,8 +1,13 @@
+import { Card } from 'antd'
 import React from 'react'
 
 const PlanHistory = () => {
   return (
-    <div>PlanHistory</div>
+    <div>
+      <Card>
+        <h1 style={{textAlign:'center'}}>Plan history Coming Soon...</h1>
+      </Card>
+    </div>
   )
 }
 

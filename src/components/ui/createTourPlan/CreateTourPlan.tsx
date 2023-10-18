@@ -19,31 +19,33 @@ import { formateDateAndTime } from "@/services/timeFormater"
 import dayjs from "dayjs"
 import FormDatePicker from "@/components/form/FormDatePicker"
 import TagMaker from "@/components/form/TagMaker"
+import TourImagesUploader from "./TourImages"
+import { useCreateTourPlanMutation } from "@/redux/api/agencyApi"
 
 
 const CreateTourPlan = () => {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter();
     
-    const [ registerAgency ] = useRegisterAgencyMutation();
+    const [ createTourPlan ] = useCreateTourPlanMutation();
     
-    const onsubmit: SubmitHandler<any> = async (data: any) => {
+  const onsubmit: SubmitHandler<any> = async (data: any) => {
         try {
-    //         const res = await registerAgency(data).unwrap();
-    //        if (res?.accessToken) {
-    //       const accessToken = res?.accessToken
-    //       await storeUserInfo(accessToken)
-    //       const authInfo: any = getUserInfo();
-    //       setIsLoading(false)
-    //          router.push(`${authInfo?.role}/profile`);
-    //            message.success('Registation successfull')
-    //     }
-    //   if (!res.success) {
-    //       setIsLoading(false)
-    //        Modal.error({
-    //               content: 'Registration Failed',
-    //             });
-    //     }
+            const res = await createTourPlan(data).unwrap();
+           if (res?.accessToken) {
+          const accessToken = res?.accessToken
+          await storeUserInfo(accessToken)
+          const authInfo: any = getUserInfo();
+          setIsLoading(false)
+             router.push(`${authInfo?.role}/profile`);
+               message.success('Tour plan listed successfully')
+        }
+      if (!res.success) {
+          setIsLoading(false)
+           Modal.error({
+                  content: 'Failed',
+                });
+        }
     } catch (error) {
       }
     }
@@ -61,7 +63,7 @@ const CreateTourPlan = () => {
           <Row gutter={20}>
               <Col sm={24} md={24}>
                   <div style={{ margin: "15px 0" }}>
-                    <RegisterImageUploader name={'profile_img'} />
+                    <TourImagesUploader name={'images'} />
                   </div>
              </Col>
                 <Col sm={24} md={12} style={{margin:"5px 0"}}>
@@ -74,7 +76,7 @@ const CreateTourPlan = () => {
                   </Col>
                   <Col sm={24} md={12} style={{margin:"5px 0"}}>
                  <FormInput
-                name='starting_position'
+                name='starting_location'
                 type='text'
                 size='large'
                 label='Start from'
@@ -100,7 +102,7 @@ const CreateTourPlan = () => {
                        <FormDatePicker name="booking_deadline" size="large" label="Booking Deadline"/>
                   </Col>
                   <Col sm={24} md={12} style={{margin:"5px 0"}}>
-                       <FormDatePicker name="starting_date" size="large" label="Start time"/>
+                       <FormDatePicker name="starting_time" size="large" label="Start time"/>
                      </Col>
                     <Col sm={24} md={12} style={{margin:"5px 0"}}>
                  <FormInput
@@ -123,7 +125,15 @@ const CreateTourPlan = () => {
                 name='cover_location'
                 type='number'
                 size='large'
-                label='Tour duration'
+                label='Cover locations'
+              />
+                              </Col>
+                  <Col sm={24} md={24} style={{margin:"5px 0"}}>
+                 <TagMaker
+                name='events'
+                type='number'
+                size='large'
+                label='Total events'
               />
                               </Col>
                               

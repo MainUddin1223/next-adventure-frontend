@@ -32,6 +32,7 @@ const TourDetails = ({ id }: { id: number }) => {
     </div>
     const bookingDeadline = formateDateAndTime(info?.booking_deadline);
     const reportingTime = formateDateAndTime(info?.starting_time);
+    console.log(data)
   return (
         <PublicLayout>
        <Card title={title} className={styles.details_card_container} style={{ margin:"0 auto",marginTop:"50px",padding:'0'  }}>
@@ -42,7 +43,7 @@ const TourDetails = ({ id }: { id: number }) => {
                       <div>
                           <p>Cover locations</p>
                           {
-                              info?.cover_location.map((location:string,index:number) => (
+                              info?.cover_location?.map((location:string,index:number) => (
                                   <Tag color="green" key={index}>{ location}</Tag>
                               ))
                           }

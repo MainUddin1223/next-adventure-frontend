@@ -1,18 +1,15 @@
 'use client'
 
-import { DeleteOutlined,EditOutlined,EyeOutlined,ReloadOutlined } from '@ant-design/icons';
-import { Button, Card, Input, message } from "antd"
-import Link from "next/link"
-import { useState } from "react"
-import dayjs from "dayjs"
+import { useGetMyTourPlansQuery } from "@/redux/api/agencyApi"
 import { useDebounced } from "@/redux/hooks";
-import DesktopTable from '@/components/ui/Tables/TableForDesktop/DesktopTable';
-import { useGetAllAgenciesQuery } from '@/redux/api/adminApi';
+import { DeleteOutlined, EditOutlined, ReloadOutlined } from "@ant-design/icons";
+import { Button, Card, Input } from "antd";
+import dayjs from "dayjs";
+import { useState } from "react";
+import DesktopTable from "../Tables/TableForDesktop/DesktopTable";
 
-
-
-const AgenciesManagement = () => {
-    const query: Record<string, any> = {}
+const MyBookingHistory = () => {
+       const query: Record<string, any> = {}
     const [size, setSize] = useState<number>(10);
     const [page, setPage] = useState<number>(1);
     const [sortBy, setSortBy] = useState<string>('');
@@ -37,9 +34,9 @@ const AgenciesManagement = () => {
     query['search'] = searchTerm
   }
   
-  const { data, isLoading } = useGetAllAgenciesQuery({ ...query });
-  
-  const departments = data?.result;
+    const {data, isLoading} = useGetMyTourPlansQuery(undefined);
+   
+  const myPlans = data?.result;
   const meta = data?.meta;
   
   const onTableChange = ( pagination:any, filter:any, sorter:any ) => {
@@ -56,22 +53,26 @@ const AgenciesManagement = () => {
   
   const columns = [
   {
-    title: 'Name',
-    render: function (data:any) {
-      return (
-        <>
-          <div style={{ display: "flex", gap: "5px" }}>
-            <h3>{data?.first_name}</h3>
-            <h3>{data?.last_name}</h3>
-          </div>
-        
-        </>
-      )
-   }
+     title: 'Plan name',
+    dataIndex: 'plan_name',
+    key: 'plan_name',
   },
   {
-    title: 'CreatedAt',
-    dataIndex: 'createdAt',
+     title: 'Destination',
+    dataIndex: 'destination',
+    key: 'destination',
+  },
+  {
+    title: 'Start from',
+    dataIndex: 'starting_time',
+          render: function (data: any) {
+          return data && dayjs(data).format("MMM D, YYYY hh:mm A");
+        },
+        sorter: true,
+  },
+  {
+    title: 'Deadline',
+    dataIndex: 'booking_deadline',
           render: function (data: any) {
           return data && dayjs(data).format("MMM D, YYYY hh:mm A");
         },
@@ -96,8 +97,7 @@ const AgenciesManagement = () => {
   ];
   
   return (
-    <div style={{margin:"10px"}}>
-      <Card>
+    <>
         <Input
           type='text'
           size='large'
@@ -119,7 +119,7 @@ const AgenciesManagement = () => {
         </div>
       <DesktopTable
         columns={columns}
-        dataSource = {departments}
+        dataSource = {myPlans}
         loading={isLoading}
         pageSize= {size}
         totalPages = {meta?.total}
@@ -128,10 +128,8 @@ const AgenciesManagement = () => {
         onTableChange={onTableChange}
         showPagination = {true}
       />
-   
-    </Card>
-    </div>
+    </>
   )
 }
 
-export default AgenciesManagement
+export default MyBookingHistory

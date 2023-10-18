@@ -3,18 +3,18 @@ import { useGetAgencyByIdQuery } from '@/redux/api/userApi'
 import LoadingSpinner from '../loader/Loader';
 import Image from 'next/image';
 import dummyImg from '@/assets/popular-agency.jpg'
-import { Row } from 'antd';
+import { Card, Row } from 'antd';
 import PlanCard from '../planCard/PlanCard';
 
 const AgencyDetailsCompo = ({ id }: { id: number }) => {
   const { data, isLoading } = useGetAgencyByIdQuery(Number(id));
-  console.log(data?.plans, isLoading)
  if (isLoading) {
     return <LoadingSpinner/>
   }
   return (
     <div>
-      <div style={{maxWidth:"350px"}}>
+      <Card>
+         <div style={{maxWidth:"350px"}}>
          <Image src={dummyImg } alt='img' width={450} height={450} layout='responsive'/>
       </div>
       <div>
@@ -23,18 +23,21 @@ const AgencyDetailsCompo = ({ id }: { id: number }) => {
         <h4>Rating</h4>
         <h4>{ data?.about_user }</h4>
       </div>
-      <div>
+     </Card>
+      <Card>
+        <div>
         <h2>Ongoing Tour Plans</h2>
         <div>
           <Row gutter={[25, 25]}>
           {
-            data?.plans.map((plan: any) => (
+            data?.plans?.map((plan: any) => (
             <PlanCard plan={plan} key={plan.id}/>
             ))
         }
         </Row>
        </div>
       </div>
+      </Card>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import { Button, Carousel, Col } from 'antd'
 import { useRouter } from 'next/navigation';
 import styles from './PlanCard.module.css'
 import { formateDateAndTime } from '@/services/timeFormater';
+import Image from 'next/image';
 
 const contentStyle: React.CSSProperties = {
   margin: 0,
@@ -19,21 +20,27 @@ const PlanCard = ({ plan }: { plan: any }) => {
   return (
       <>
          <Col xs={24} sm={24} md={8} lg={6}>
-            <div className={styles.plan_card_container}>
-                <Carousel>
-                    <div>
-                        <h3 style={contentStyle}>1</h3>
-                     </div>
-                         <div>
-                            <h3 style={contentStyle}>2</h3>
-                        </div>
-                            <div>
-                                <h3 style={contentStyle}>3</h3>
+              <div className={styles.plan_card_container}>
+                  {
+                      plan?.images.length ?
+                          <Carousel>
+                              {
+                                  plan?.images.map((img: string, i: number) => (
+                                      <div key={i}>
+                                          <h3 style={contentStyle}>
+                                              
+                                          <Image  src={img} width={100} height={100} layout='responsive' alt='img'/>
+                                          </h3>
                             </div>
-                            <div>
-                                <h3 style={contentStyle}>4</h3>
+                                  )) 
+                              }
+                          </Carousel> :
+                          <Carousel>
+                               <div>
+                                <h3 style={contentStyle}>No image</h3>
                             </div>
-                </Carousel>
+                          </Carousel>
+                  }
                     <div className={styles.tour_details}>
                         <h4>{ plan.plan_name}</h4>
                         <p>$ {plan.price }</p>

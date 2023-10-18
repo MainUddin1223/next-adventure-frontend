@@ -38,12 +38,13 @@ const NavBar = () => {
           <Link href='/'>
             <Image src={logo} height={45} alt="logo" style={{display:'flex'}}/>
           </Link>
-      </div>
-        <div className={styles.navigation_item_container}>
+          </div>
+          {
+            !isUser || role == 'user' ? <div>
+                      <div className={styles.navigation_item_container}>
        <Link href='/agencies' className={styles.navigation_item}> <p>Agencies</p></Link>
           <Link href='/plans' className={styles.navigation_item}> <p>Tour plans</p></Link>
           <Link href='/profile' className={styles.navigation_item}> <p>My plans</p></Link>
-          {/* <Button type="primary">Login</Button> */}
           {
             isUser ?
              <UserOutlined style={{fontSize:"20px",padding:"5px",color:"white",cursor:"pointer"}} onClick={()=>router.push(`${role}/profile`)}/> :
@@ -52,18 +53,25 @@ const NavBar = () => {
               <Link href='/login' className={styles.navigation_item}>Sign In</Link>
               </>
           }
-          
-          
         </div>
+            </div> :
+              <div>
+ <div className={styles.navigation_item_container}>
+       <Link href={`${role}/profile`} className={styles.navigation_item}> <p>Dashboard</p></Link>
+             <UserOutlined style={{fontSize:"20px",padding:"5px",color:"white",cursor:"pointer"}} onClick={()=>router.push(`${role}/profile`)}/> 
+        </div>
+              </div>
+          }
+          
+          {/* mobile navbar */}
         <div className={styles.drawer_container}>
-             {/* <Button type="primary" onClick={showDrawer}>Open
-          </Button> */}
           <UnorderedListOutlined onClick={showDrawer} style={{fontSize:"35px",display:"flex",alignItems:"center",marginTop:"10px"}}/>
-          <Drawer title="Basic Drawer" placement="left" onClose={onClose} open={open}>
-         <Link href='/' className={styles.navigation_item}> <p>Agencies</p></Link>
+            <Drawer title="Basic Drawer" placement="left" onClose={onClose} open={open}>
+              {
+                !isUser || role == 'user' ? <>
+                           <Link href='/' className={styles.navigation_item}> <p>Agencies</p></Link>
           <Link href='/' className={styles.navigation_item}> <p>Tour plans</p></Link>
           <Link href='/' className={styles.navigation_item}> <p>My plans</p></Link>
-          {/* <Button type="primary">Login</Button> */}
           {
             isUser ?
              <span><UserOutlined style={{fontSize:"20px",padding:"5px"}}/></span> :
@@ -72,6 +80,12 @@ const NavBar = () => {
               <Link href='/login' className={styles.navigation_item}>Sign In</Link>
               </>
           }
+                </> : <>
+                     <Link href={`${role}/profile`} className={styles.navigation_item}> <p>Dashboard</p></Link>
+             <UserOutlined style={{fontSize:"20px",padding:"5px",color:"white",cursor:"pointer"}} onClick={()=>router.push(`${role}/profile`)}/> 
+                </>
+              }
+
       </Drawer>
         </div>
 

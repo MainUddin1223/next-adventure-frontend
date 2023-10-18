@@ -1,8 +1,11 @@
+import { Card } from 'antd'
 import React from 'react'
 
 const Payouts = () => {
   return (
-    <div>Payouts</div>
+    <div><Card>
+        <h1 style={{textAlign:'center'}}>Payouts Coming Soon...</h1>
+      </Card></div>
   )
 }
 

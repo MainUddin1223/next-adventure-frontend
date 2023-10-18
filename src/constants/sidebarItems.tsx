@@ -79,9 +79,9 @@ export const sidebarItems = (role: string) => {
     const agencySidebarItems: MenuProps["items"] = [
         ...defaultSidebarItems,
         {
-        label: <Link href={`/${role}/schedules`}>Schedules</Link>,
+        label: <Link href={`/${role}/my-plans`}>My Plans</Link>,
         icon:<TableOutlined/>,
-        key: `/${role}/schedules`
+        key: `/${role}/my-plans`
         },
         {
         label: <Link href={`/${role}/create-plan`}>Create Tour Plan</Link>,
