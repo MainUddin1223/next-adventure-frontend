@@ -65,7 +65,7 @@ export const sidebarItems = (role: string) => {
     const userSidebarItems: MenuProps["items"] = [
         ...defaultSidebarItems,
         {
-        label: <Link href={`/${role}/schedules`}>Schedules</Link>,
+        label: <Link href={`/${role}/schedules`}>Manage Bookings</Link>,
         icon:<TableOutlined/>,
         key: `/${role}/schedules`
         },
