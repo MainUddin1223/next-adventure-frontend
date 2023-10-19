@@ -44,10 +44,15 @@ const NavBar = () => {
                       <div className={styles.navigation_item_container}>
        <Link href='/agencies' className={styles.navigation_item}> <p>Agencies</p></Link>
           <Link href='/plans' className={styles.navigation_item}> <p>Tour plans</p></Link>
-          <Link href='/profile' className={styles.navigation_item}> <p>My plans</p></Link>
           {
-            isUser ?
-             <UserOutlined style={{fontSize:"20px",padding:"5px",color:"white",cursor:"pointer"}} onClick={()=>router.push(`${role}/profile`)}/> :
+                  isUser ?
+                    <>
+                     <Link href={`/${role}/schedules`} className={styles.navigation_item}> <p>My plans</p></Link>
+                      <Link href={`/${role}/profile`} className={styles.navigation_item}>
+                         <UserOutlined style={{fontSize:"20px",padding:"5px",color:"white",cursor:"pointer"}}/>
+                     </Link>
+                    
+                    </> :
               <>
               <Link href='/login' className={styles.navigation_item}>Login</Link>
               <Link href='/login' className={styles.navigation_item}>Sign In</Link>
@@ -71,7 +76,7 @@ const NavBar = () => {
                 !isUser || role == 'user' ? <>
                            <Link href='/' className={styles.navigation_item}> <p>Agencies</p></Link>
           <Link href='/' className={styles.navigation_item}> <p>Tour plans</p></Link>
-          <Link href='/' className={styles.navigation_item}> <p>My plans</p></Link>
+          <Link href={`${role}/schedules`} className={styles.navigation_item}> <p>My plans</p></Link>
           {
             isUser ?
              <span><UserOutlined style={{fontSize:"20px",padding:"5px"}}/></span> :

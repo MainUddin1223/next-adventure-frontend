@@ -40,7 +40,6 @@ const TourManagement = () => {
   }
   
   const { data, isLoading } = useGetAllPlansQuery({ ...query });
-  
   const plans = data?.result;
   const meta = data?.meta;
   console.log(plans)
@@ -68,8 +67,8 @@ const TourManagement = () => {
       return (
         <>
           <div style={{ display: "flex", gap: "5px" }}>
-            <h3>{data?.users.first_name}</h3>
-            <h3>{data?.users.last_name}</h3>
+            <h3>{data?.users?.first_name}</h3>
+            <h3>{data?.users?.last_name}</h3>
           </div>
         
         </>

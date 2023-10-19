@@ -11,7 +11,6 @@ interface DataType {
 }
 
 const ExpandableTable = ({ data }: any) => {
-    console.log(data)
         const columns: ColumnsType<DataType> = [
         {
             title: 'Plan Id',

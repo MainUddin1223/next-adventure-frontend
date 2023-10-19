@@ -19,16 +19,21 @@ const CommonProfile = () => {
   return (
     <div className={styles.profile_container}>
       <Card style={{ width: '100%' }}>
+        <h1 style={{margin:"20px 0"}}>Welcome <span style={{textTransform:"uppercase"}}>{data?.first_name} { data?.last_name}</span></h1>
         <div className={styles.profile_image_container}>
           <Image src={dummy_img} style={{borderRadius:"20px"}} width={100} height={100} layout="responsive" alt="dummy"/>
         </div>
-        <h3>{data?.first_name} { data?.last_name}</h3>
-        <h3>{data?.email}</h3>
-        <h3>{data?.contact_no}</h3>
-        <h3>{data?.about_user}</h3>
-        <Link href={`profile/edit`}>
+        <hr style={{margin:"20px 0"}}/>
+        <h3>Email address:</h3> <span>{data?.email}</span>
+        <div><h3>Contact no</h3> <span>{data?.contact_no}</span></div>
+        <div>
+          <h3>About</h3> <span>{data?.about_user}</span>
+        </div>
+        <div style={{marginTop:"10px"}}>
+          <Link href={`profile/edit`}>
         <Button type='primary'>Edit Profile</Button>
         </Link>
+        </div>
     </Card>
     </div>
   )

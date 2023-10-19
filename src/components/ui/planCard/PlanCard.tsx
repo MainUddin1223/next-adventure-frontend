@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import styles from './PlanCard.module.css'
 import { formateDateAndTime } from '@/services/timeFormater';
 import Image from 'next/image';
+import { EnvironmentOutlined } from '@ant-design/icons';
 
 const contentStyle: React.CSSProperties = {
   margin: 0,
@@ -16,7 +17,6 @@ const contentStyle: React.CSSProperties = {
 const PlanCard = ({ plan }: { plan: any }) => {
     const router = useRouter()
     const startingTime = formateDateAndTime(plan.starting_time)
-    console.log(plan)
   return (
       <>
          <Col xs={24} sm={24} md={8} lg={6}>
@@ -44,7 +44,7 @@ const PlanCard = ({ plan }: { plan: any }) => {
                     <div className={styles.tour_details}>
                         <h4>{ plan.plan_name}</h4>
                         <p>$ {plan.price }</p>
-                        <p>{ plan?.starting_location}</p>
+                        <p style={{display:"flex",gap:"10px",fontWeight:"bold"}}><EnvironmentOutlined /><span style={{textTransform:"uppercase"}}>{ plan?.destination}</span></p>
                       <p>Starts : {startingTime.time} {startingTime.date}</p>
                     </div>
                     <div>

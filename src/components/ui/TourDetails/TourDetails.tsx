@@ -31,8 +31,7 @@ const TourDetails = ({ id }: { id: number }) => {
         <Rate disabled defaultValue={5} />
     </div>
     const bookingDeadline = formateDateAndTime(info?.booking_deadline);
-    const reportingTime = formateDateAndTime(info?.starting_time);
-    console.log(data)
+    const reportingTime = formateDateAndTime(info?.starting_time)
   return (
         <PublicLayout>
        <Card title={title} className={styles.details_card_container} style={{ margin:"0 auto",marginTop:"50px",padding:'0'  }}>

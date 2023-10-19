@@ -6,8 +6,12 @@ import PopularAgencies from "./popular-agencies/PopularAgencies"
 import Guidline from "./guidline/Guidline"
 import FeaturedTour from "./Featured-tour.tsx/FeaturedTour"
 import SkeletonLoader from "../Skeleton/Skeleton"
+import Reviews from "./Review/Reviews"
+import { isLoggedIn } from "@/services/auth.service"
+import LeaveReview from "./Review/LeaveReview"
 
 const LandingPageProvider = () => {
+  const isLoggedInUser = isLoggedIn()
   const { data, isLoading } = useGetAgenciesAndPlansQuery(undefined);
   if (isLoading) {
     return (
@@ -21,7 +25,11 @@ const LandingPageProvider = () => {
             <OfferingAgency />
             <PopularAgencies agencies={data } />
             <Guidline/>
-            <FeaturedTour tours={data } />
+      <FeaturedTour tours={data} />
+      <Reviews reviews={data} />
+      {
+        isLoggedInUser && <LeaveReview/>
+      }
     </>
   )
 }

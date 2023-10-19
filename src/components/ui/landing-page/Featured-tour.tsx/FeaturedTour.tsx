@@ -11,7 +11,7 @@ const FeaturedTour = ({ tours }: any) => {
       <div className={styles.featured_container}>
           <h2 className={styles.featured_header}>Featured tour plan</h2>
           <div>
-              <Row gutter={24}>
+              <Row gutter={[24,24]}>
                   {
                       plans?.length ?
                           plans.map((plan:any) => (

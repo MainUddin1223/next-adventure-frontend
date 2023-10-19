@@ -19,3 +19,7 @@ export const registerSchema = yup.object().shape({
     profile_img: yup.string().required('Image is required'),
     about_user: yup.string().required('About is required'),
 })
+export const reviewSchema = yup.object().shape({
+    rating: yup.number().min(1).required('Rating is required'),
+    review_description: yup.string().required('Description is required'),
+})

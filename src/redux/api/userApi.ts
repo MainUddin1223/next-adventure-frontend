@@ -40,10 +40,26 @@ const userApi = baseApi.injectEndpoints({
             }),
             providesTags: ['user']
         }),
+        bookingHistory: build.query({
+            query: (arg: any) => ({
+                url: `/user/booking-history`,
+                method: "GET",
+                params: arg
+            }),
+            providesTags: ['user']
+        }),
         manageBookings: build.mutation({
             query: (id) => ({
                 url: `/user/manage-booking/${id}`,
                 method: "PATCH",
+            }),
+            invalidatesTags: ['user']
+        }),
+        leaveReview: build.mutation({
+            query: (data) => ({
+                url: `/user/review`,
+                method: "POST",
+                data
             }),
             invalidatesTags: ['user']
         })
@@ -56,5 +72,7 @@ export const {
     useGetUserProfileQuery,
     useUpdateUserProfileMutation,
     useGetUpcomingSchedulesQuery,
-    useManageBookingsMutation
+    useManageBookingsMutation,
+    useBookingHistoryQuery,
+    useLeaveReviewMutation
 } = userApi

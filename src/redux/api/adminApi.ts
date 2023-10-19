@@ -11,6 +11,22 @@ const adminApi = baseApi.injectEndpoints({
             }),
             providesTags: ['admin', 'super_admin']
         }),
+        getAllUsers: build.query({
+            query: (arg: any) => ({
+                url: `/admin/users`,
+                method: "GET",
+                params: arg
+            }),
+            providesTags: ['admin', 'super_admin']
+        }),
+        getAllAdmins: build.query({
+            query: (arg: any) => ({
+                url: `/admin/admins`,
+                method: "GET",
+                params: arg
+            }),
+            providesTags: ['super_admin']
+        }),
         getAllPlans: build.query({
             query: (arg: any) => ({
                 url: `/admin/tour-plans`,
@@ -42,7 +58,24 @@ const adminApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ['super_admin']
         }),
+        handleAdmin: build.mutation({
+            query: (payload) => ({
+                url: `/admin/create-admin/${payload.id}`,
+                method: "PATCH",
+                data: payload
+            }),
+            invalidatesTags: ['super_admin']
+        }),
     })
 })
 
-export const { useGetAllAgenciesQuery, useGetAllPlansQuery, useGetBookingHistoryQuery, useGetPayoutsQuery, usePayoutRelaseMutation } = adminApi
+export const {
+    useGetAllAgenciesQuery,
+    useGetAllPlansQuery,
+    useGetBookingHistoryQuery,
+    useGetPayoutsQuery,
+    usePayoutRelaseMutation,
+    useGetAllAdminsQuery,
+    useGetAllUsersQuery,
+    useHandleAdminMutation
+} = adminApi

@@ -33,7 +33,21 @@ const ManageSchedules = () => {
           render: (data:any) => <h3>{ data?.plan?.plan_name}</h3>
   }, {
       title: 'Booking Status',
-          render: (data: any) => <strong> { data?.status}</strong>
+          render: (data: any) => {
+              return (
+                  <div>
+                      {
+                          data?.status == 'pending' ?
+                              <strong style={{color:'yellowgreen'}}> {data?.status}</strong> :
+                              data?.status == 'booked' ?
+                                  <strong style={{color:'var(--button-color)'}}> {data?.status}</strong> :
+                                   data?.status == 'cenceled' ?
+                                  <strong style={{color:'red'}}> {data?.status}</strong> :
+                                  <strong style={{color:'red'}}> {data?.status}</strong>
+                      }
+                  </div>
+              )
+          }
   },
   {
       title: 'Reporting time',

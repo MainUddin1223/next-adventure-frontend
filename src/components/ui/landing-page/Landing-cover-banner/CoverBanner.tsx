@@ -66,12 +66,12 @@ const CoverBanner = () => {
           </div>
         </Tooltip>
         <Tooltip title="Sant-martin"  color='var(--primary-color)' key='white'>
-        <div className={styles.cover_location} onClick={()=>handleLocation('sajek')}>
+        <div className={styles.cover_location} onClick={()=>handleLocation('sant martin')}>
           <Image src={cover_location_icon_4} width={70} height={70} alt='cover-location' className={styles.cover_location_image} />
           </div>
           </Tooltip>
         <Tooltip title="Sant-martin"  color='var(--primary-color)' key='white'>
-        <div className={styles.cover_location} onClick={()=>handleLocation('sajek')}>
+        <div className={styles.cover_location} onClick={()=>handleLocation('sant martin')}>
           <Image src={cover_location_icon_4} width={70} height={70} alt='cover-location' className={styles.cover_location_image} />
           </div>
         </Tooltip>
