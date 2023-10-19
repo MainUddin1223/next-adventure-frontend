@@ -55,7 +55,7 @@ const NavBar = () => {
                     </> :
               <>
               <Link href='/login' className={styles.navigation_item}>Login</Link>
-              <Link href='/login' className={styles.navigation_item}>Sign In</Link>
+              <Link href='/signup' className={styles.navigation_item}>Sign up</Link>
               </>
           }
         </div>
@@ -82,7 +82,7 @@ const NavBar = () => {
              <span><UserOutlined style={{fontSize:"20px",padding:"5px"}}/></span> :
               <>
               <Link href='/login' className={styles.navigation_item}>Login</Link>
-              <Link href='/login' className={styles.navigation_item}>Sign In</Link>
+              <Link href='/signup' className={styles.navigation_item}>Sign up</Link>
               </>
           }
                 </> : <>

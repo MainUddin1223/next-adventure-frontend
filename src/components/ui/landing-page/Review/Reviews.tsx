@@ -9,7 +9,7 @@ const Reviews = ({reviews}:any) => {
           <h1>Our happy clients</h1>
           <Carousel autoplay>
                   {
-                  reviews?.reviews.length ? reviews?.reviews.map((review: any) => (
+                  reviews?.reviews?.length ? reviews?.reviews.map((review: any) => (
                           <div key={review?.id}>
                           <Card  style={{ width: '50%', display: "block", margin: "0 auto" }}>
                             <Image src={review?.user?.profile_img} alt="review-img" width={80} height={80} style={{borderRadius:"50%"}}/>

@@ -21,7 +21,10 @@ const CommonProfile = () => {
       <Card style={{ width: '100%' }}>
         <h1 style={{margin:"20px 0"}}>Welcome <span style={{textTransform:"uppercase"}}>{data?.first_name} { data?.last_name}</span></h1>
         <div className={styles.profile_image_container}>
-          <Image src={dummy_img} style={{borderRadius:"20px"}} width={100} height={100} layout="responsive" alt="dummy"/>
+          {
+            data?.profile_img ? <Image src={data?.profile_img} style={{ borderRadius: "20px" }} width={100} height={100} layout="responsive" alt="dummy" /> :
+               <Image src={dummy_img} style={{borderRadius:"20px"}} width={100} height={100} layout="responsive" alt="dummy"/>
+        }
         </div>
         <hr style={{margin:"20px 0"}}/>
         <h3>Email address:</h3> <span>{data?.email}</span>

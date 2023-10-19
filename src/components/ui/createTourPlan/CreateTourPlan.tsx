@@ -21,6 +21,7 @@ import FormDatePicker from "@/components/form/FormDatePicker"
 import TagMaker from "@/components/form/TagMaker"
 import TourImagesUploader from "./TourImages"
 import { useCreateTourPlanMutation } from "@/redux/api/agencyApi"
+import Link from "next/link"
 
 
 const CreateTourPlan = () => {
@@ -32,12 +33,10 @@ const CreateTourPlan = () => {
   const onsubmit: SubmitHandler<any> = async (data: any) => {
         try {
             const res = await createTourPlan(data).unwrap();
-           if (res?.accessToken) {
-          const accessToken = res?.accessToken
-          await storeUserInfo(accessToken)
+           if (res?.success) {
           const authInfo: any = getUserInfo();
           setIsLoading(false)
-             router.push(`${authInfo?.role}/profile`);
+             router.push(`profile`);
                message.success('Tour plan listed successfully')
         }
       if (!res.success) {
@@ -51,7 +50,7 @@ const CreateTourPlan = () => {
     }
 
   return (
-      <div>
+    <div>
           <Card style={{ width: "80%", margin: "0 auto", marginTop: "30px" }}>
                 {
             isLoading && <PerLoader/>

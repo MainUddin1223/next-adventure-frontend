@@ -49,7 +49,6 @@ const EditProfileForm = () => {
               <div style={{ margin: "15px 0" }}>
                 <FormInput
                     name='first_name'
-                    value={profileData?.first_name}
                 type='text'
                 size='large'
                 label='First name'

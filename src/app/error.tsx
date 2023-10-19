@@ -1,6 +1,6 @@
 'use client'
 const ErrorPage = () => {
-  return (
+    return (
     <div>Some thing went wrong</div>
   )
 }

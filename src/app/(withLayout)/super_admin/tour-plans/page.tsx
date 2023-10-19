@@ -42,7 +42,6 @@ const TourManagement = () => {
   const { data, isLoading } = useGetAllPlansQuery({ ...query });
   const plans = data?.result;
   const meta = data?.meta;
-  console.log(plans)
   const onTableChange = ( pagination:any, filter:any, sorter:any ) => {
     const { field, order } = sorter;
     setSortBy(field as string);
