@@ -15,7 +15,7 @@ const AgencyDetailsCompo = ({ id }: { id: number }) => {
     <div>
       <Card>
          <div style={{maxWidth:"350px"}}>
-         <Image src={dummyImg } alt='img' width={450} height={450} layout='responsive'/>
+         <Image src={data?.profile_img } alt='img' width={450} height={450} layout='responsive'/>
       </div>
       <div>
         <h2>{data?.first_name} {data?.last_name}</h2>

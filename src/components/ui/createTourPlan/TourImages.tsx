@@ -1,3 +1,4 @@
+import { getErrorMessageByPropartyName } from "@/utils/schemaValidator";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { message, Upload } from "antd";
 import type { UploadChangeParam } from "antd/es/upload";
@@ -29,9 +30,15 @@ const beforeUpload = (file: RcFile) => {
 };
 
 const TourImagesUploader = ({ name }: ImageUploadProps) => {
+
   const [imageUrls,setImageUrls] = useState<string[]>([])
   const { setValue } = useFormContext();
   const [loading, setLoading] = useState(false);
+
+  const { formState: { errors } } = useFormContext();
+
+  const errorMessage = getErrorMessageByPropartyName(errors,name)
+
     
   const handleChange: UploadProps["onChange"] = (
     info: UploadChangeParam<UploadFile>
@@ -88,7 +95,10 @@ const TourImagesUploader = ({ name }: ImageUploadProps) => {
         onChange={handleChange}
       >
         { uploadButton}
-              </Upload>
+        </Upload>
+                 <small style={{ color:'red' }}>
+              {errorMessage}
+          </small>
               <div>
                   {
                       imageUrls.length > 0 ?

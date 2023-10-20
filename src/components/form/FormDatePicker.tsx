@@ -3,6 +3,7 @@
 import { useFormContext, Controller } from "react-hook-form"
 import { DatePicker, DatePickerProps } from 'antd'
 import dayjs,{Dayjs} from 'dayjs';
+import { getErrorMessageByPropartyName } from "@/utils/schemaValidator";
 
 interface IFormDatePickerProps{
     onChange?:(valOne:any,valTwo:any)=>void
@@ -13,8 +14,13 @@ interface IFormDatePickerProps{
 }
 
 
-const FormDatePicker = ({ name,label,onChange,size }: IFormDatePickerProps) => {
-    const { control,setValue } = useFormContext();
+const FormDatePicker = ({ name, label, onChange, size }: IFormDatePickerProps) => {
+    
+        const { control,setValue, formState: { errors } } = useFormContext();
+
+    const errorMessage = getErrorMessageByPropartyName(errors,name)
+
+
     const handleOnChange: DatePickerProps['onChange'] = (date, dateString) => {
         onChange ? onChange(date, dateString) : null
         const formatedDate = dayjs(dateString).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
@@ -39,7 +45,10 @@ const FormDatePicker = ({ name,label,onChange,size }: IFormDatePickerProps) => {
                       style={{ width: "100%" }}
                   />
           )}
-      />
+          />
+            <small style={{ color:'red' }}>
+              {errorMessage}
+          </small>
     </div>
   )
 }

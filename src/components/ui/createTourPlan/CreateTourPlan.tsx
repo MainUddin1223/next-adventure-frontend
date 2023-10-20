@@ -22,6 +22,7 @@ import TagMaker from "@/components/form/TagMaker"
 import TourImagesUploader from "./TourImages"
 import { useCreateTourPlanMutation } from "@/redux/api/agencyApi"
 import Link from "next/link"
+import { planFormSchema } from "@/schemas/planForm"
 
 
 const CreateTourPlan = () => {
@@ -56,9 +57,9 @@ const CreateTourPlan = () => {
             isLoading && <PerLoader/>
           }
       <div className={styles.form_container}>
-            <h1 style={{ margin: "15px 0" }}>Register Agency</h1>
+            <h1 style={{ margin: "15px 0" }}>Create tour plan</h1>
           <div>
-              <Form  submitHandler={onsubmit}>
+              <Form  submitHandler={onsubmit} resolver={yupResolver(planFormSchema)}>
           <Row gutter={20}>
               <Col sm={24} md={24}>
                   <div style={{ margin: "15px 0" }}>
