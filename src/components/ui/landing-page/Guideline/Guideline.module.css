@@ -1,0 +1,25 @@
+.guideline_container {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+}
+.guideline_details {
+  position: absolute;
+  bottom: 25px;
+  color: white;
+  left: 25px;
+  line-height: 40px;
+}
+.guideline_details h2 {
+  font-size: 2rem;
+}
+.guideline_details h3 {
+  font-size: 1.5rem;
+}
+
+/* iPads, Tablets and mobile */
+@media only screen and (max-width: 768px) {
+  .guideline_container {
+    width: 100%;
+  }
+}

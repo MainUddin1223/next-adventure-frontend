@@ -1,14 +1,14 @@
 'use client'
-import { Layout, Drawer,Flex } from "antd";
-const { Header, Content, Footer } = Layout;
-import {UserOutlined,UnorderedListOutlined } from '@ant-design/icons';
-import styles from './NavBar.module.css'
-import Link from "next/link";
-import Image from "next/image";
-import logo from '@/assets/travel-logo.png'
+import logo from '@/assets/travel-logo.png';
 import { getUserInfo, isLoggedIn } from "@/services/auth.service";
-import { useState } from "react";
+import { UnorderedListOutlined, UserOutlined } from '@ant-design/icons';
+import { Drawer, Layout } from "antd";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import styles from './NavBar.module.css';
+const { Header, Content, Footer } = Layout;
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -25,18 +25,19 @@ const NavBar = () => {
   const isUser = isLoggedIn()
   return (
     <>
-         <Header
+         <Header 
           style={{
           position: 'sticky',
           top: 0,
           zIndex: 1,
           width: '100%',
-          backgroundColor:"var(--primary-color)"
+          backgroundColor: "var(--primary-color)",
+          padding:'0 10px'
       }}>
       <span className={styles.header_container}>
         <div>
           <Link href='/'>
-            <Image src={logo} height={45} alt="logo" style={{display:'flex'}}/>
+            <Image src={logo} height={40} alt="logo" style={{display:'flex'}}/>
           </Link>
           </div>
           {
@@ -55,13 +56,12 @@ const NavBar = () => {
                     </> :
               <>
               <Link href='/login' className={styles.navigation_item}>Login</Link>
-              <Link href='/signup' className={styles.navigation_item}>Sign up</Link>
               </>
           }
         </div>
             </div> :
               <div>
- <div className={styles.navigation_item_container}>
+        <div className={styles.navigation_item_container}>
        <Link href={`${role}/profile`} className={styles.navigation_item}> <p>Dashboard</p></Link>
              <UserOutlined style={{fontSize:"20px",padding:"5px",color:"white",cursor:"pointer"}} onClick={()=>router.push(`${role}/profile`)}/> 
         </div>
@@ -71,12 +71,12 @@ const NavBar = () => {
           {/* mobile navbar */}
         <div className={styles.drawer_container}>
           <UnorderedListOutlined onClick={showDrawer} style={{fontSize:"35px",display:"flex",alignItems:"center",marginTop:"10px"}}/>
-            <Drawer title="Basic Drawer" placement="left" onClose={onClose} open={open}>
+            <Drawer title="Next Adventure" placement="left" onClose={onClose} open={open}>
               {
                 !isUser || role == 'user' ? <>
                            <Link href='/' className={styles.navigation_item}> <p>Agencies</p></Link>
-          <Link href='/' className={styles.navigation_item}> <p>Tour plans</p></Link>
-          <Link href={`${role}/schedules`} className={styles.navigation_item}> <p>My plans</p></Link>
+                            <Link href='/' className={styles.navigation_item}> <p>Tour plans</p></Link>
+                            <Link href={`${role}/schedules`} className={styles.navigation_item}> <p>My plans</p></Link>
           {
             isUser ?
              <span><UserOutlined style={{fontSize:"20px",padding:"5px"}}/></span> :
@@ -91,7 +91,7 @@ const NavBar = () => {
                 </>
               }
 
-      </Drawer>
+            </Drawer>
         </div>
 
       </span>

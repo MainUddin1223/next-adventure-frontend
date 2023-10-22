@@ -1,9 +1,9 @@
-import { Button, Carousel, Col } from 'antd'
-import { useRouter } from 'next/navigation';
-import styles from './PlanCard.module.css'
 import { formateDateAndTime } from '@/services/timeFormater';
-import Image from 'next/image';
 import { EnvironmentOutlined } from '@ant-design/icons';
+import { Button, Carousel, Col } from 'antd';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import styles from './PlanCard.module.css';
 
 const contentStyle: React.CSSProperties = {
   margin: 0,
@@ -15,11 +15,12 @@ const contentStyle: React.CSSProperties = {
 };
 
 const PlanCard = ({ plan }: { plan: any }) => {
+  console.log(plan)
     const router = useRouter()
     const startingTime = formateDateAndTime(plan.starting_time)
   return (
       <>
-         <Col xs={24} sm={24} md={8} lg={6}>
+         <Col xs={24} sm={24} md={8} lg={8}>
               <div className={styles.plan_card_container}>
                   {
                       plan?.images.length ?

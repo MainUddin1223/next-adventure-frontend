@@ -1,13 +1,13 @@
 'use client'
 
-import { useGetAgenciesQuery, useGetTourPlansQuery } from "@/redux/api/publicApi"
-import SkeletonLoader from "../Skeleton/Skeleton";
-import { Col, Input, Row } from "antd";
-import PaginationCompo from "../pagination/Pagination";
-import { useState } from "react";
+import { useGetTourPlansQuery } from "@/redux/api/publicApi";
 import { useAppSelector, useDebounced } from "@/redux/hooks";
-import styles from './TourPlanContainer.module.css'
+import { Input, Row } from "antd";
+import { useState } from "react";
+import SkeletonLoader from "../Skeleton/Skeleton";
+import PaginationCompo from "../pagination/Pagination";
 import PlanCard from "../planCard/PlanCard";
+import styles from './TourPlanContainer.module.css';
 
 const TourPlanContainer = () => {
 
@@ -57,8 +57,8 @@ const TourPlanContainer = () => {
         <Row gutter={24}>
           {
                    tourPlans?.length ?
-                  tourPlans.map((plan: any) => (
-                          <PlanCard plan={ plan} key={plan.id}/>
+                  tourPlans.map((plan: any,i:number) => (
+                          <PlanCard plan={ plan} key={i}/>
              ))
                   : <span>Coming soon</span>
               }

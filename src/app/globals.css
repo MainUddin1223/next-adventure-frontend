@@ -13,13 +13,20 @@ Link {
 }
 h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(47, 46, 46);
 }
 
-:root {
-  --primary-color: #0cb7e1;
-  --secondary-color: #8ed8f8;
-  --background-color: #1fd246;
+/* :root {
+  --primary-color: #6ab331;
+  --secondary-color: #327012;
+  --background-color: #327012;
   --button-color: #088345;
+} */
+:root {
+  --primary-color: #23b26b;
+  --secondary-color: #327012;
+  --background-color: #1ca27c;
+  --button-color: #327012;
 }
 /*
 /* Mobile devices (320px to 480px) */

@@ -1,14 +1,15 @@
 'use client'
 
 import { useGetAgenciesAndPlansQuery } from "@/redux/api/publicApi"
-import OfferingAgency from "./Offering-agency/OfferingAgency"
-import PopularAgencies from "./popular-agencies/PopularAgencies"
-import Guidline from "./guidline/Guidline"
-import FeaturedTour from "./Featured-tour.tsx/FeaturedTour"
-import SkeletonLoader from "../Skeleton/Skeleton"
-import Reviews from "./Review/Reviews"
 import { isLoggedIn } from "@/services/auth.service"
+import SkeletonLoader from "../Skeleton/Skeleton"
+import AgencyBanner from "./Banners/Agency-banner/AgencyBanner"
+import Motto from "./Banners/Motto-banner/Motto"
+import FeaturedTour from "./Featured-tour.tsx/FeaturedTour"
+import Guideline from "./Guideline/Guideline"
 import LeaveReview from "./Review/LeaveReview"
+import Reviews from "./Review/Reviews"
+import PopularAgencies from "./popular-agencies/PopularAgencies"
 
 const LandingPageProvider = () => {
   const isLoggedInUser = isLoggedIn()
@@ -22,11 +23,12 @@ const LandingPageProvider = () => {
   }
   return (
     <>
-            <OfferingAgency />
+            <Motto/>
+            <FeaturedTour tours={data} />
+            <AgencyBanner />
             <PopularAgencies agencies={data } />
-            <Guidline/>
-      <FeaturedTour tours={data} />
-      <Reviews reviews={data} />
+            <Guideline/>
+            <Reviews reviews={data} />
       {
         isLoggedInUser && <LeaveReview/>
       }

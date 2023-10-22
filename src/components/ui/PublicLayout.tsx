@@ -21,7 +21,7 @@ const PublicLayout = ({children}:{children:React.ReactNode}) => {
             <div style={{minHeight:"100vh"}}>
                 {children}
             </div>
-      <Footer style={footerStyle}>Footer</Footer>
+      <Footer style={{backgroundColor:'var(--primary-color)',color:'white',textAlign:'center'}}>Footer</Footer>
     </Layout>
       </div>
   )

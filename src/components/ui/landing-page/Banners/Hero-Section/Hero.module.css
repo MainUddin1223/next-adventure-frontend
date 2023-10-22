@@ -1,5 +1,17 @@
+.parallox {
+  background-image: url("../../../../../assets/146.jpg");
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .cover_banner {
-  background-image: url("../../../../assets//cover-banner.png");
+  background-image: url("../../../../../assets//cover-banner.png");
   width: 75%;
   background-position: center;
   background-repeat: no-repeat;
@@ -47,35 +59,45 @@
 .cover_location_image:hover {
   padding: 0;
 }
-
+.bannner_info {
+  text-align: center;
+}
+.bannner_info h1 {
+  font-size: 3rem;
+  padding: 10px;
+}
+.bannner_info h2 {
+  font-size: 2rem;
+  padding: 10px;
+}
+.mobile_cover_banner {
+  display: none;
+}
 /* Mobile devices (320px to 480px) */
-@media only screen and (min-width: 320px) and (max-width: 480px) {
-  .cover_banner {
-    width: 90%;
+@media only screen and (min-width: 300px) and (max-width: 480px) {
+  .parallox {
+    max-height: 60vh;
   }
-  .cover_banner h1 {
-    font-size: 1.5rem;
+  .mobile_cover_banner {
+    margin-top: 50px;
   }
-  .cover_location_container {
-    flex-wrap: wrap;
-    padding: 25px;
+  .bannner_info h1 {
+    font-size: 2rem;
+    padding: 10px;
   }
-  .search_field {
-    width: 80%;
+  .bannner_info h2 {
+    font-size: 1.4rem;
+    padding: 10px;
   }
 }
 
 /* iPads and Tablets (481px to 768px) */
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-  .cover_banner h1 {
-    font-size: 2rem;
+@media only screen and (max-width: 768px) {
+  .cover_banner {
+    display: none;
   }
-  .cover_location_container {
-    flex-wrap: wrap;
-    padding: 25px;
-  }
-  .search_field {
-    width: 80%;
+  .mobile_cover_banner {
+    display: block;
   }
 }
 
