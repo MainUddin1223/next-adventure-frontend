@@ -2,8 +2,9 @@
 
 import { useGetTourPlansQuery } from "@/redux/api/publicApi";
 import { useAppSelector, useDebounced } from "@/redux/hooks";
-import { Input, Row } from "antd";
+import { Col, Input, Row } from "antd";
 import { useState } from "react";
+import DataNotFound from "../DataNotFound/DataNotFound";
 import SkeletonLoader from "../Skeleton/Skeleton";
 import PaginationCompo from "../pagination/Pagination";
 import PlanCard from "../planCard/PlanCard";
@@ -35,7 +36,6 @@ const TourPlanContainer = () => {
     
   if (isLoading) {
     return (<>
-     <h1>Pic your tour plan</h1>
     <SkeletonLoader items={8} sm={24} md={6}/>
     </>)
   }
@@ -45,7 +45,6 @@ const TourPlanContainer = () => {
   const meta = data?.meta
   return (
       <div style={{margin:"15px"}}>
-          <h1>Pic your tour plan</h1>
       <div >
           <Input
           type='text'
@@ -54,18 +53,28 @@ const TourPlanContainer = () => {
           className={styles.search_field}
           onChange={(e)=>setSearchTerm(e.target.value)}
         />
-        <Row gutter={24}>
-          {
-                   tourPlans?.length ?
-                  tourPlans.map((plan: any,i:number) => (
-                          <PlanCard plan={ plan} key={i}/>
-             ))
-                  : <span>Coming soon</span>
-              }
+            {
+              tourPlans?.length ?
+                <div>
+                    <div>
+                      <Row gutter={[24,24]}>
+                        {
+                                tourPlans.map((plan: any) => (
+                                  <Col xs={24} sm={24} md={12} lg={12} xl={8} key={plan.id}>
+                                        <PlanCard plan={ plan} />
+                            </Col>
+                          ))
+                            }
 
-          </Row>
+                        </Row>
+                    </div>
+                <PaginationCompo totalPage={meta?.totalPage} setSize={ setSize} setPage={setPage} />
+              </div> : 
+              <div style={{margin:'0 auto',display:'block'}}>
+                <DataNotFound title={`No Agency matched with`} searchValue={searchTerm} />
+              </div>
+              }
       </div>
-      <PaginationCompo totalPage={meta?.totalPage} setSize={ setSize} setPage={setPage} />
     </div>
   )
 }

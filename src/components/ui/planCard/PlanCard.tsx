@@ -1,6 +1,6 @@
 import { formateDateAndTime } from '@/services/timeFormater';
 import { EnvironmentOutlined } from '@ant-design/icons';
-import { Button, Carousel, Col } from 'antd';
+import { Button, Carousel } from 'antd';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import styles from './PlanCard.module.css';
@@ -20,8 +20,7 @@ const PlanCard = ({ plan }: { plan: any }) => {
     const startingTime = formateDateAndTime(plan.starting_time)
   return (
       <>
-         <Col xs={24} sm={24} md={8} lg={8}>
-              <div className={styles.plan_card_container}>
+            <div className={styles.plan_card_container}>
                   {
                       plan?.images.length ?
                           <Carousel>
@@ -52,7 +51,6 @@ const PlanCard = ({ plan }: { plan: any }) => {
                         <Button type="primary" style={{margin:"10px"}} onClick={()=>router.push(`/plan-details/${plan?.id}`)}>Details</Button>
                     </div>
             </div>
-        </Col>
       </>
   )
 }

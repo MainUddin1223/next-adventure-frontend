@@ -2,12 +2,11 @@
 
 import { useGetAgenciesQuery } from "@/redux/api/publicApi";
 import { useDebounced } from "@/redux/hooks";
-import { Card, Col, FloatButton, Input, Row } from "antd";
+import { Col, Input, Row } from "antd";
 import { useState } from "react";
 import DataNotFound from "../DataNotFound/DataNotFound";
 import SkeletonLoader from "../Skeleton/Skeleton";
 import AgencyCard from "../agencyCard/AgencyCard";
-import BackButton from "../buttons/BackButton";
 import PaginationCompo from "../pagination/Pagination";
 import styles from './agencyContainer.module.css';
 
@@ -34,24 +33,17 @@ const AgenciesContainer = () => {
  const { data, isLoading } = useGetAgenciesQuery({...query});
   if (isLoading) {
     return (<>
-     <h1>Find your tour planner</h1>
     <SkeletonLoader items={8} sm={24} md={6}/>
     </>)
   }
   //@ts-ignore
   const agencies: [] = data?.result;
   //@ts-ignore
-  const meta = data?.meta
+  const meta = data?.meta;
+  
   return (
     <div className={styles.agency_section}>
-      <div>
-        <BackButton/>
-      </div>
-      <Card>
         <div style={{margin:"15px"}}>
-          <h1 style={{fontSize:'2rem'}}>AGENCIES</h1>
-          <h3>Discover your tour planner and transform your journey into an unforgettable adventure.</h3>
-          <hr />
              <div className={styles.search_field}>
               <Input
               type='text'
@@ -83,11 +75,6 @@ const AgenciesContainer = () => {
               </div>
               }
          </div>
-
-      </Card>
-      <div style={{margin:"20px 0"}}>
-      <FloatButton.BackTop type="primary"  tooltip={<div>Go to top</div>}/>
-      </div>
     </div>
   )
 }
