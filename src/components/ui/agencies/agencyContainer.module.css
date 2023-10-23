@@ -1,4 +1,40 @@
+.agency_section {
+  width: 80%;
+  margin: 50px auto;
+}
 .search_field {
   width: 25%;
   margin: 20px 0;
+}
+
+/* Mobile devices (320px to 480px) */
+@media only screen and (min-width: 280px) and (max-width: 480px) {
+  .agency_section {
+    width: 95%;
+  }
+  .search_field {
+    width: 75%;
+  }
+}
+
+/* iPads and Tablets (481px to 768px) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .agency_section {
+    width: 90%;
+  }
+  .search_field {
+    width: 75%;
+  }
+}
+
+/* Small screens and laptops (769px to 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .search_field {
+    width: 50%;
+  }
+}
+
+/* Desktops and large screens (1025px to 1200px) */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  /* Your CSS styles for desktops and large screens go here */
 }

@@ -15,6 +15,10 @@ h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: rgb(47, 46, 46);
 }
+hr {
+  background-color: gray;
+  margin: 20px 0;
+}
 
 /* :root {
   --primary-color: #6ab331;

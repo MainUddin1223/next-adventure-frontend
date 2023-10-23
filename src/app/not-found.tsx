@@ -1,8 +1,10 @@
-import React from 'react'
+import PageNotFound from '@/components/ui/PageNotFound/PageNotFound'
 
 const NotFoundPage = () => {
   return (
-    <div>NotFoundPage</div>
+    <div>
+      <PageNotFound/>
+    </div>
   )
 }
 
