@@ -2,7 +2,7 @@
 import {
     ArrowRightOutlined
 } from '@ant-design/icons';
-import { Button, Row } from "antd";
+import { Button, Col, Row } from "antd";
 import { useRouter } from "next/navigation";
 import PlanCard from "../../planCard/PlanCard";
 import styles from './featuredTour.module.css';
@@ -21,7 +21,9 @@ const FeaturedTour = ({ tours }: any) => {
                       plans?.length ?
                           <>
                           { plans.map((plan:any) => (
+                              <Col key={plan?.id}  xs={24} sm={24} md={8}>
                               <PlanCard plan={ plan} key={plan.id}/>
+                              </Col>
                           ))}
                           </>
              : <span>Coming soon</span>
