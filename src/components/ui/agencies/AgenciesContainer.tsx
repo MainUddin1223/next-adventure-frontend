@@ -43,7 +43,7 @@ const AgenciesContainer = () => {
   
   return (
     <div className={styles.agency_section}>
-        <div style={{margin:"15px"}}>
+        <div>
              <div className={styles.search_field}>
               <Input
               type='text'

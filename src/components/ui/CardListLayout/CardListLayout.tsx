@@ -16,7 +16,7 @@ const CardListLayout = ({children,title,description}:ICardListProps) => {
                 <BackButton/>
             </div>
           <Card>
-                <div style={{margin:"15px"}}>
+                <div>
                   <h1 style={{ fontSize: '2rem' }}>{ title}</h1>
                   <h3>{ description }</h3>
                   <hr />
@@ -27,7 +27,7 @@ const CardListLayout = ({children,title,description}:ICardListProps) => {
                   }
               </div>
           </Card>
-              <div style={{margin:"20px 0"}}>
+              <div >
              <FloatButton.BackTop type="primary"  tooltip={<div>Go to top</div>}/>
       </div>
     </div>

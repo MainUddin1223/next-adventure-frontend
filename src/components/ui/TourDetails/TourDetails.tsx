@@ -1,15 +1,15 @@
 'use client'
+import profile_img from '@/assets/popular-agency.jpg'
 import PublicLayout from '@/components/ui/PublicLayout'
 import { useGetPlanDetailsQuery } from '@/redux/api/publicApi'
-import { Button, Card, Col, Rate, Row, Tag } from 'antd'
-import styles from './TourDetails.module.css'
-import Image from 'next/image'
-import profile_img from '@/assets/popular-agency.jpg'
-import { CarOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation'
 import { useAppDispatch } from '@/redux/hooks'
 import { addToCart } from '@/redux/slice/orderSlice'
 import { formateDateAndTime } from '@/services/timeFormater'
+import { CarOutlined } from '@ant-design/icons'
+import { Button, Card, Col, Rate, Row, Tag } from 'antd'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import styles from './TourDetails.module.css'
 
 const TourDetails = ({ id }: { id: number }) => {
     const router = useRouter();

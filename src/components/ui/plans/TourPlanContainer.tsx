@@ -15,11 +15,11 @@ const TourPlanContainer = () => {
   const query: Record<string, any> = {}
   const [size, setSize] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
-  const { searchTermValue } = useAppSelector(state => state.planState);
+  const { searchTermValue } = useAppSelector((state) => state.planState);
   const [searchTerm, setSearchTerm] = useState<string>(searchTermValue);
 
 
-    query['limit'] = size
+      query['limit'] = size
     query['page'] = page
 
     const debouncedTerm = useDebounced({
@@ -39,20 +39,26 @@ const TourPlanContainer = () => {
     <SkeletonLoader items={8} sm={24} md={6}/>
     </>)
   }
+  
   //@ts-ignore
   const tourPlans: [] = data?.result;
   //@ts-ignore
-  const meta = data?.meta
+  const meta = data?.meta;
+
+
+
+
   return (
-      <div style={{margin:"15px"}}>
-      <div >
-          <Input
-          type='text'
-          size='large'
-          placeholder='Search ... '
-          className={styles.search_field}
-          onChange={(e)=>setSearchTerm(e.target.value)}
-        />
+      <div>
+            <div >
+                  <div className={styles.search_field}>
+                    <Input
+                    type='text'
+                    size='large'
+                    placeholder='Search ... '
+                    onChange={(e)=>setSearchTerm(e.target.value)}
+                  />
+            </div>
             {
               tourPlans?.length ?
                 <div>
@@ -71,7 +77,7 @@ const TourPlanContainer = () => {
                 <PaginationCompo totalPage={meta?.totalPage} setSize={ setSize} setPage={setPage} />
               </div> : 
               <div style={{margin:'0 auto',display:'block'}}>
-                <DataNotFound title={`No Agency matched with`} searchValue={searchTerm} />
+                <DataNotFound title={`No Plan matched with`} searchValue={searchTerm} />
               </div>
               }
       </div>
