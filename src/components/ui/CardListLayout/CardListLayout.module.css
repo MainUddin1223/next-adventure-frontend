@@ -7,7 +7,7 @@
   margin: 20px 0;
 }
 
-/* Mobile devices (320px to 480px) */
+/* Mobile devices (280px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
   .layout_container {
     width: 95%;

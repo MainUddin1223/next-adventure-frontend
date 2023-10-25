@@ -1,5 +1,5 @@
 import ProtectedWithAuth from "@/components/protectedRoute/ProtectedRoute"
-import TourDetails from "@/components/ui/TourDetails/TourDetails"
+import PlanDetail from "@/components/ui/PlanDetails/PlanDetails"
 
 type IDProps = {
     params:any
@@ -9,7 +9,7 @@ const PlanDetails = ({ params }: IDProps) => {
 
   return (
     <ProtectedWithAuth>
-      <TourDetails id={params.id} />
+      <PlanDetail id={params.id} />
       </ProtectedWithAuth>
   )
 }

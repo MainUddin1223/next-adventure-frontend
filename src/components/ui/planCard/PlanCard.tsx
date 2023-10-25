@@ -16,9 +16,8 @@ const contentStyle: React.CSSProperties = {
 
 const PlanCard = ({ plan }: { plan: any }) => {
   const router = useRouter();
-  console.log(plan)
   const isValidDate = checkValidity(plan?.booking_deadline);
-
+console.log(plan)
       return (
           <>
                 <div className={styles.plan_card_container}>
