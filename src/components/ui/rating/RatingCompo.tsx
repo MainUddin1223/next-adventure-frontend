@@ -1,12 +1,10 @@
 'use client'
-import { Rate } from 'antd'
-import {  useState } from 'react';
+import { Rate } from 'antd';
+import { useState } from 'react';
 import { useFormContext } from "react-hook-form";
+import { IRatingProps } from '../types';
 
-type IRatingProps = {
-  name: string;
-  desc:string[]
-};
+
 
 const RatingCompo = ({name,desc}:IRatingProps) => {
     const [rating, setRating] = useState(5);

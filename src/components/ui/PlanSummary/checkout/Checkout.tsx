@@ -1,14 +1,12 @@
 'use client'
-import { Button, Card, Col, Row } from 'antd';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import styles from './checkout.module.css'
-import { formateDateAndTime } from '@/services/timeFormater';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addToCart, decreaseQuantity } from '@/redux/slice/orderSlice';
+import { formateDateAndTime } from '@/services/timeFormater';
+import { Button, Card, Col, Row } from 'antd';
 import { useRouter } from 'next/navigation';
+import { ICheckoutProps } from '../../types';
+import styles from './checkout.module.css';
 
-type ICheckoutProps = {
-    setStep:(arg:number)=>void
-}
 
 const Checkout = ({setStep}:ICheckoutProps) => {
   const router = useRouter()

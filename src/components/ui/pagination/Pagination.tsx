@@ -1,13 +1,8 @@
-import { Pagination } from 'antd'
 import type { PaginationProps } from 'antd';
-import React from 'react';
+import { Pagination } from 'antd';
+import { IPaginationProps } from '../types';
 
 
-type IPaginationProps = {
-    setSize: (value: number) => void;
-    setPage: (value: number) => void;
-    totalPage:number
-}
 
 const PaginationCompo = ({totalPage,setSize,setPage}:IPaginationProps) => {
     const onShowSizeChange: PaginationProps['onShowSizeChange'] = (current, pageSize) => {

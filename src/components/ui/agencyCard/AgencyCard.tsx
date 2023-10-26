@@ -1,10 +1,8 @@
-import { Rate, Tooltip } from 'antd'
-import { usePathname, useRouter } from 'next/navigation'
-import styles from './AgencyStyle.module.css'
+import { Rate, Tooltip } from 'antd';
+import { usePathname, useRouter } from 'next/navigation';
+import { IAgencyType } from '../types';
+import styles from './AgencyStyle.module.css';
 
-type IAgencyType = {
-    agency:any
-}
 
 const AgencyCard = ({ agency }: IAgencyType) => {
   const router = useRouter();

@@ -1,13 +1,8 @@
 'use client'
 import { Card, FloatButton } from 'antd';
 import BackButton from '../buttons/BackButton';
+import { ICardListProps } from '../types';
 import styles from './CardListLayout.module.css';
-
-type ICardListProps = {
-    children: React.ReactNode;
-    title: string;
-    description:string
-}
 
 const CardListLayout = ({children,title,description}:ICardListProps) => {
   return (

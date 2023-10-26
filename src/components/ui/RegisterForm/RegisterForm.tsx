@@ -2,31 +2,22 @@
 
 import Form from "@/components/form/Form"
 import FormInput from "@/components/form/FormInput"
-import { Button, Card, Col, Modal, Row, message } from "antd"
-import { SubmitHandler } from "react-hook-form"
-import styles from './RegisterForm.module.css'
-import { useRouter } from "next/navigation"
-import { getUserInfo, storeUserInfo } from "@/services/auth.service"
-import { useRegisterAgencyMutation } from "@/redux/api/authApi"
-import { yupResolver } from "@hookform/resolvers/yup";
 import FormTextArea from "@/components/form/FormTextArea"
-import PublicLayout from "../PublicLayout"
-import PerLoader from '../loader/PreLoader';
-import { useState } from "react"
-import RegisterImageUploader from "../ImageUploader/RegisterImageUploader"
+import { useRegisterAgencyMutation } from "@/redux/api/authApi"
 import { registerSchema } from "@/schemas/auth"
+import { getUserInfo, storeUserInfo } from "@/services/auth.service"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { Button, Card, Col, Modal, Row, message } from "antd"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { SubmitHandler } from "react-hook-form"
+import RegisterImageUploader from "../ImageUploader/RegisterImageUploader"
+import PublicLayout from "../PublicLayout"
+import PerLoader from '../loader/PreLoader'
+import { IRegisterFormValues } from "../types"
+import styles from './RegisterForm.module.css'
 
 
-type IRegisterFormValues = {
-    first_name: string;
-    last_name: string;
-    role: 'user' | 'agency';
-    email: string;
-    password: string;
-    contact_no: string;
-    about_user: string;
-    profile_img:string
-}
 const RegisterForm = () => {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter();

@@ -1,7 +1,8 @@
 import not_found_img from '@/assets/data-not-found.png';
 import Image from 'next/image';
+import { IDataNotFoundProps } from '../types';
 
-const DataNotFound = ({title,searchValue}:{title?:string,searchValue?:string}) => {
+const DataNotFound = ({title,searchValue}:IDataNotFoundProps) => {
   return (
       <div>
           <Image style={{margin:'0 auto',display:'block'}} src={not_found_img} height={100} width={100} alt='data_not_found' />

@@ -1,10 +1,11 @@
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { message, Upload } from "antd";
+import { Upload, message } from "antd";
 import type { UploadChangeParam } from "antd/es/upload";
 import type { RcFile, UploadFile, UploadProps } from "antd/es/upload/interface";
 import Image from "next/image";
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { ImageUploadrProps } from "../types";
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
@@ -24,12 +25,9 @@ const beforeUpload = (file: RcFile) => {
   return isJpgOrPng && isLt2M;
 };
 
- type ImageUploadProps = {
-  name: string;
-  defaultUrl:string
-};
 
-const ProfileImageUploader = ({ name,defaultUrl }: ImageUploadProps) => {
+
+const ProfileImageUploader = ({ name,defaultUrl }: ImageUploadrProps) => {
   
   const { setValue } = useFormContext();
   const [loading, setLoading] = useState(false);

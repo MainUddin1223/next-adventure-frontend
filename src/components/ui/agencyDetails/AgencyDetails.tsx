@@ -7,9 +7,11 @@ import PlanCard from '../planCard/PlanCard';
 
 const AgencyDetailsCompo = ({ id }: { id: number }) => {
   const { data, isLoading } = useGetAgencyByIdQuery(Number(id));
+  
  if (isLoading) {
     return <LoadingSpinner/>
   }
+  
   return (
     <div>
       <Card>

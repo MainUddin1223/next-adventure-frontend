@@ -1,11 +1,12 @@
 import { getErrorMessageByPropartyName } from "@/utils/schemaValidator";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { message, Upload } from "antd";
+import { Upload, message } from "antd";
 import type { UploadChangeParam } from "antd/es/upload";
 import type { RcFile, UploadFile, UploadProps } from "antd/es/upload/interface";
 import Image from "next/image";
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { ImageUploadProps } from "../types";
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
@@ -23,10 +24,6 @@ const beforeUpload = (file: RcFile) => {
     message.error("Image must smaller than 2MB!");
   }
   return isJpgOrPng && isLt2M;
-};
-
- type ImageUploadProps = {
-  name: string;
 };
 
 const TourImagesUploader = ({ name }: ImageUploadProps) => {

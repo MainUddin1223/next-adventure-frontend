@@ -1,16 +1,11 @@
 
-import {Breadcrumb} from 'antd'
+import { HomeOutlined } from '@ant-design/icons';
+import { Breadcrumb } from 'antd';
 import Link from 'next/link';
-import {
-   HomeOutlined
-} from '@ant-design/icons';
+import { IBreadCrumbProps } from '../types';
 
-const BreadCrumb = ({ items }: {
-    items: {
-        label: string;
-        link: string;
-    }[]
-}) => {
+
+const BreadCrumb = ({items}: IBreadCrumbProps) => {
     const breadCrumbItems = [
         {
             title: (

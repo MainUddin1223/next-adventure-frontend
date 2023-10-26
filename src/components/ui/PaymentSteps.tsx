@@ -1,9 +1,6 @@
-import React from 'react';
 import { Steps } from 'antd';
+import { IStepsProps } from './types';
 
-type IStepsProps = {
-    step: number;
-}
 
 const PaymentSteps = ({step}:IStepsProps) => (
   <Steps

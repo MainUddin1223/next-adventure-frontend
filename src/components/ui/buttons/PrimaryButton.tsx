@@ -1,11 +1,5 @@
 import { Button } from 'antd';
-import React from 'react';
-
-type IButtonProps = {
-    handler: () => void;
-    value: string;
-    disabled?:boolean
-}
+import { IButtonProps } from '../types';
 
 const PrimaryButton = ({handler,value,disabled}:IButtonProps) => {
   return (

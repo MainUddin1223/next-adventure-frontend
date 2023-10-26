@@ -1,10 +1,5 @@
 import { Button, Card } from 'antd'
-import React from 'react'
-
-type IConfirmationProps = {
-    setStep: (arg: number) => void;
-    handleConfirmation:()=>void
-}
+import { IConfirmationProps } from '../../types'
 
 const Confirmation = ({setStep,handleConfirmation}:IConfirmationProps) => {
   return (

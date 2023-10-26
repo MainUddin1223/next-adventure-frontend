@@ -1,14 +1,6 @@
-import React from 'react';
-import { Space, Table, Tag } from 'antd';
+import { Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-
-interface DataType {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-  tags: string[];
-}
+import { DataType } from '../../types';
 
 const ExpandableTable = ({ data }: any) => {
         const columns: ColumnsType<DataType> = [

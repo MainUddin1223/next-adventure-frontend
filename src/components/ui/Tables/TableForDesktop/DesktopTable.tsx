@@ -1,19 +1,7 @@
 'use client'
 
-import { Table } from "antd"
-
-type ITableProps = {
-  loading?: boolean;
-  columns: any;
-  dataSource: any
-  pageSize?: number
-  totalPages?: number
-  showSizeChanger?: boolean
-  showPagination?: boolean
-  onPaginationChange:(page:number, pageSize:number) => void
-  onTableChange : ( pagination:any, filter:any, sorter:any ) => void
-
-}
+import { Table } from "antd";
+import { ITableProps } from "../../types";
 
 
 const DesktopTable = ({

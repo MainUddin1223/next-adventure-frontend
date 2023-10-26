@@ -1,19 +1,13 @@
 'use client'
-import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
-import type { RadioChangeEvent } from 'antd';
-import { Form, Radio, Space, Switch, Table } from 'antd';
+import { Space, Table } from 'antd';
 import type { SizeType } from 'antd/es/config-provider/SizeContext';
 import type { ColumnsType, TableProps } from 'antd/es/table';
 import type { ExpandableConfig, TableRowSelection } from 'antd/es/table/interface';
+import React, { useState } from 'react';
+import { MobileDataType } from '../../types';
 
-interface DataType {
-  key: number;
-  name: string;
-  age: number;
-  address: string;
-  description: string;
-}
+
 
 type TablePaginationPosition =
   | 'topLeft'
@@ -23,7 +17,7 @@ type TablePaginationPosition =
   | 'bottomCenter'
   | 'bottomRight';
 
-const columns: ColumnsType<DataType> = [
+const columns: ColumnsType<MobileDataType> = [
   {
     title: 'Name',
     dataIndex: 'name',
@@ -66,7 +60,7 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
-const data: DataType[] = [];
+const data: MobileDataType[] = [];
 for (let i = 1; i <= 10; i++) {
   data.push({
     key: i,
@@ -77,20 +71,20 @@ for (let i = 1; i <= 10; i++) {
   });
 }
 
-const defaultExpandable = { expandedRowRender: (record: DataType) => <p>{record.description}</p> };
+const defaultExpandable = { expandedRowRender: (record: MobileDataType) => <p>{record.description}</p> };
 const defaultTitle = () => 'Agency';
 
 const MobileTable: React.FC = () => {
   const [bordered, setBordered] = useState(false);
   const [loading, setLoading] = useState(false);
   const [size, setSize] = useState<SizeType>('large');
-  const [expandable, setExpandable] = useState<ExpandableConfig<DataType> | undefined>(
+  const [expandable, setExpandable] = useState<ExpandableConfig<MobileDataType> | undefined>(
     defaultExpandable,
   );
   const [showTitle, setShowTitle] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [showfooter, setShowFooter] = useState(true);
-  const [rowSelection, setRowSelection] = useState<TableRowSelection<DataType> | undefined>({});
+  const [rowSelection, setRowSelection] = useState<TableRowSelection<MobileDataType> | undefined>({});
   const [hasData, setHasData] = useState(true);
   const [tableLayout, setTableLayout] = useState();
   const [top, setTop] = useState<TablePaginationPosition | 'none'>('none');
@@ -113,7 +107,7 @@ const MobileTable: React.FC = () => {
     tableColumns[tableColumns.length - 1].fixed = 'right';
   }
 
-  const tableProps: TableProps<DataType> = {
+  const tableProps: TableProps<MobileDataType> = {
     bordered,
     loading,
     size,

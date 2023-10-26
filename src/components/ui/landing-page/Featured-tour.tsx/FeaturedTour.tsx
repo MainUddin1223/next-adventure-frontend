@@ -1,7 +1,5 @@
 'use client'
-import {
-    ArrowRightOutlined
-} from '@ant-design/icons';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import { Button, Col, Row } from "antd";
 import { useRouter } from "next/navigation";
 import PlanCard from "../../planCard/PlanCard";
