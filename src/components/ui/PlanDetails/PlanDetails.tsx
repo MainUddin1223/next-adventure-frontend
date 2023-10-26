@@ -16,7 +16,6 @@ const PlanDetails = ({ id }: { id: number }) => {
     const router = useRouter();
     const dispatch = useAppDispatch()
     const { data, isLoading } = useGetPlanDetailsQuery(Number(id));
-    console.log(data)
     if (isLoading) {
         return <LoadingSpinner/>
     }
@@ -103,7 +102,7 @@ const contentStyle: React.CSSProperties = {
                               </div>
                               <hr />
                               <div>
-                                  <Row gutter={[10,10]}>
+                                  <Row gutter={[20,10]}>
                                       <Col sm={24} md={12}>
                                            <p style={{fontSize:'16px',fontWeight:'bold',margin:'5px 0'}}>
                                               <span>We will start our journery at </span>

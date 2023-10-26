@@ -1,13 +1,13 @@
 'use client'
-import { Layout, Menu } from 'antd';
+import { useUserLogoutMutation } from '@/redux/api/authApi';
+import {
+  HomeFilled,
+  LogoutOutlined
+} from '@ant-design/icons';
+import { Layout } from 'antd';
+import { Header } from 'antd/es/layout/layout';
 import { usePathname, useRouter } from 'next/navigation';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
-import { Header } from 'antd/es/layout/layout';
-import {
-  LogoutOutlined,
-  HomeFilled 
-} from '@ant-design/icons';
-import { useUserLogoutMutation } from '@/redux/api/authApi';
 
 const { Content } = Layout;
 
@@ -37,7 +37,8 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
   const [userLogout] = useUserLogoutMutation()
   const res = getCrumbs(currentPath)
   const router = useRouter()
-  const handleLogout = async() => {
+
+ const handleLogout = async() => {
     await userLogout(undefined);
     localStorage.clear();
     router.push('/')

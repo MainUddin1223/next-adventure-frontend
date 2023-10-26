@@ -1,8 +1,9 @@
 'use client'
 import logo from '@/assets/travel-logo.png';
+import { useUserLogoutMutation } from '@/redux/api/authApi';
 import { getUserInfo, isLoggedIn } from "@/services/auth.service";
 import { UnorderedListOutlined, UserOutlined } from '@ant-design/icons';
-import { Drawer, Layout } from "antd";
+import { Button, Drawer, Layout } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -12,6 +13,7 @@ const { Header, Content, Footer } = Layout;
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+   const [userLogout] = useUserLogoutMutation()
   const { role } = getUserInfo() as any;
   const router = useRouter()
 
@@ -23,6 +25,14 @@ const NavBar = () => {
     setOpen(false);
   };
   const isUser = isLoggedIn()
+
+   const handleLogout = async() => {
+    await userLogout(undefined);
+    localStorage.clear();
+    router.push('/')
+
+  }
+
   return (
     <>
          <Header 
@@ -79,7 +89,13 @@ const NavBar = () => {
                             <Link href={`${role}/schedules`} className={styles.navigation_item}> <p>My plans</p></Link>
           {
             isUser ?
-             <span><UserOutlined style={{fontSize:"20px",padding:"5px"}}/></span> :
+                      <span>
+                        <Button onClick={() => {
+                          setOpen(false)
+                          handleLogout
+                        }}>Logout</Button>
+                        <UserOutlined style={{ fontSize: "20px", padding: "5px" }} />
+                      </span> :
               <>
               <Link href='/login' className={styles.navigation_item}>Login</Link>
               <Link href='/signup' className={styles.navigation_item}>Sign up</Link>

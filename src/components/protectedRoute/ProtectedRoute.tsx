@@ -1,8 +1,7 @@
 'use client'
-import {useState,useEffect, ReactElement, ReactNode} from 'react'
-import LoadingSpinner from '../ui/loader/Loader'
 import { isLoggedIn } from '@/services/auth.service'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { ReactElement, ReactNode, useState } from 'react'
 type IProtecedRoute = {
     children: ReactElement | ReactNode
 }
@@ -10,8 +9,9 @@ const ProtectedWithAuth = ({ children }: IProtecedRoute) => {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(true);
     const isLoggedInUser = isLoggedIn()
-
-    
+    const currentRoute = usePathname();
+    console.log(currentRoute)
+    localStorage.setItem('redirectTo',currentRoute)
     // useEffect(() => {
     //     setTimeout(() => {
     //         setIsLoading(false)

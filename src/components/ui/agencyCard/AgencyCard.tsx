@@ -1,5 +1,5 @@
 import { Rate, Tooltip } from 'antd'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import styles from './AgencyStyle.module.css'
 
 type IAgencyType = {
@@ -8,6 +8,8 @@ type IAgencyType = {
 
 const AgencyCard = ({ agency }: IAgencyType) => {
   const router = useRouter();
+  const pathname = usePathname()
+    localStorage.setItem('prevRoute',pathname)
   const agencyFullName =  `${agency?.first_name} ${agency?.last_name}`
   return (
                   <div style={{ position: "relative" }} onClick={()=>router.push(`/agencies/${agency.id}`)}>

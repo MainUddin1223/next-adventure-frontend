@@ -1,9 +1,8 @@
 'use client'
-import { useGetAgencyByIdQuery } from '@/redux/api/userApi'
-import LoadingSpinner from '../loader/Loader';
-import Image from 'next/image';
-import dummyImg from '@/assets/popular-agency.jpg'
+import { useGetAgencyByIdQuery } from '@/redux/api/userApi';
 import { Card, Row } from 'antd';
+import Image from 'next/image';
+import LoadingSpinner from '../loader/Loader';
 import PlanCard from '../planCard/PlanCard';
 
 const AgencyDetailsCompo = ({ id }: { id: number }) => {

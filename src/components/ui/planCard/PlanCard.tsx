@@ -2,7 +2,7 @@ import { checkValidity } from '@/services/timeFormater';
 import { DollarOutlined, EnvironmentOutlined, ExclamationCircleOutlined, SyncOutlined } from '@ant-design/icons';
 import { Button, Carousel, Tag, Tooltip } from 'antd';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from './PlanCard.module.css';
 
 const contentStyle: React.CSSProperties = {
@@ -16,8 +16,10 @@ const contentStyle: React.CSSProperties = {
 
 const PlanCard = ({ plan }: { plan: any }) => {
   const router = useRouter();
+  const pathname = usePathname();
   const isValidDate = checkValidity(plan?.booking_deadline);
-console.log(plan)
+  localStorage.setItem('prevRoute',pathname)
+
       return (
           <>
                 <div className={styles.plan_card_container}>

@@ -1,39 +1,44 @@
 'use client'
-import {useState} from 'react'
+import login_img from '@/assets/login.png';
+import { useUserLoginMutation } from "@/redux/api/authApi";
+import { loginSchema } from "@/schemas/auth";
+import { getUserInfo, storeUserInfo } from "@/services/auth.service";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Button, Card, Col, Modal, Row, message } from 'antd';
 import Image from "next/image";
-import PublicLayout from "./PublicLayout"
-import { Col, Row,Button,message, Card, Modal, Spin } from 'antd';
-import login_img from '@/assets/login.png'
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormValues } from "../types";
+import { useState } from 'react';
 import { SubmitHandler } from "react-hook-form";
 import Form from "../form/Form";
 import FormInput from "../form/FormInput";
-import { useUserLoginMutation } from "@/redux/api/authApi";
-import { getUserInfo, storeUserInfo } from "@/services/auth.service";
-import Link from "next/link";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "@/schemas/auth";
+import { FormValues } from "../types";
+import PublicLayout from "./PublicLayout";
+import BackButton from './buttons/BackButton';
 import PerLoader from './loader/PreLoader';
 
 const Login = () => {
-  const [isLoading,setIsLoading] = useState(false)
-
-    const router = useRouter();
-      const [userLogin] = useUserLoginMutation();
-
+  const [isLoading, setIsLoading] = useState(false)
+  const prevUrl = localStorage.getItem('prevRoute')
+  const redirectUrl = localStorage.getItem('redirectTo')
+  const router = useRouter();
+  const [userLogin] = useUserLoginMutation();
+  
   const onsubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
         setIsLoading(true)
           const res = await userLogin({ ...data }).unwrap();
-          
         if (res?.accessToken) {
           message.success('User logged in successfully')
           const accessToken = res?.accessToken
           await storeUserInfo(accessToken)
           const authInfo: any = getUserInfo();
           setIsLoading(false)
-          router.push(`${authInfo?.role}/profile`);
+          if (redirectUrl) {
+            router.push(redirectUrl);
+          } else {
+            router.push(`${authInfo?.role}/profile`);
+          }
         }
       if (!res.success) {
           setIsLoading(false)
@@ -45,13 +50,15 @@ const Login = () => {
         console.log(error)
     }
   }
-
+  
     return (
       <PublicLayout>
-          <Card style={{ width: "80%", margin: "0 auto", marginTop: "30px" }}>
-                {/* {
+        <div style={{ width: "80%", margin: "0 auto", marginTop: "30px" }}>
+          <BackButton url={prevUrl} />
+          <Card>
+                {
             isLoading && <PerLoader/>
-          } */}
+          }
           <Row justify='center'
                align='middle' >
           <Col xs={24} sm={10} md={8} span={12}> 
@@ -92,6 +99,7 @@ const Login = () => {
                </Col>
           </Row>
           </Card>
+        </div>
       </PublicLayout>
   )
 }
