@@ -1,3 +1,4 @@
+import { isLoggedIn } from '@/services/auth.service';
 import { Rate, Tooltip } from 'antd';
 import { usePathname, useRouter } from 'next/navigation';
 import { IAgencyType } from '../types';
@@ -6,8 +7,9 @@ import styles from './AgencyStyle.module.css';
 
 const AgencyCard = ({ agency }: IAgencyType) => {
   const router = useRouter();
-  const pathname = usePathname()
-    localStorage.setItem('prevRoute',pathname)
+  const pathname = usePathname();
+  const isLoggedInUser = isLoggedIn()
+    !isLoggedInUser && localStorage.setItem('prevRoute',pathname)
   const agencyFullName =  `${agency?.first_name} ${agency?.last_name}`
   return (
                   <div style={{ position: "relative" }} onClick={()=>router.push(`/agencies/${agency.id}`)}>

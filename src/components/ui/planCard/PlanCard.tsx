@@ -1,3 +1,4 @@
+import { isLoggedIn } from '@/services/auth.service';
 import { checkValidity } from '@/services/timeFormater';
 import { DollarOutlined, EnvironmentOutlined, ExclamationCircleOutlined, SyncOutlined } from '@ant-design/icons';
 import { Button, Carousel, Tag, Tooltip } from 'antd';
@@ -18,7 +19,8 @@ const PlanCard = ({ plan }: { plan: any }) => {
   const router = useRouter();
   const pathname = usePathname();
   const isValidDate = checkValidity(plan?.booking_deadline);
-  localStorage.setItem('prevRoute',pathname)
+   const isLoggedInUser = isLoggedIn()
+    !isLoggedInUser && localStorage.setItem('prevRoute',pathname)
 
       return (
           <>

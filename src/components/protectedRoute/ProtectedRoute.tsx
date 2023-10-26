@@ -10,8 +10,6 @@ const ProtectedWithAuth = ({ children }: IProtecedRoute) => {
     const [isLoading, setIsLoading] = useState(true);
     const isLoggedInUser = isLoggedIn()
     const currentRoute = usePathname();
-    console.log(currentRoute)
-    localStorage.setItem('redirectTo',currentRoute)
     // useEffect(() => {
     //     setTimeout(() => {
     //         setIsLoading(false)
@@ -23,6 +21,7 @@ const ProtectedWithAuth = ({ children }: IProtecedRoute) => {
     //     )
     // }
     if (!isLoggedInUser) {
+        localStorage.setItem('redirectTo',currentRoute)
         router.push('/login')
         return
     }

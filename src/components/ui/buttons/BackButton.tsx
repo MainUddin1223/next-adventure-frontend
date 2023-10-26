@@ -10,6 +10,7 @@ const BackButton = () => {
                 <LeftCircleFilled onClick={() => {
                     const prevUrl = window && localStorage.getItem('prevRoute')
                     window && localStorage.removeItem('redirectTo')
+                    console.log(prevUrl)
                     if (prevUrl) {
                         router.push(prevUrl)
                     } else {
