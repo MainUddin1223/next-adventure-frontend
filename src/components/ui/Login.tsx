@@ -19,8 +19,6 @@ import PerLoader from './loader/PreLoader';
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const prevUrl = localStorage.getItem('prevRoute')
-  const redirectUrl = localStorage.getItem('redirectTo')
   const router = useRouter();
   const [userLogin] = useUserLoginMutation();
   
@@ -34,6 +32,7 @@ const Login = () => {
           await storeUserInfo(accessToken)
           const authInfo: any = getUserInfo();
           setIsLoading(false)
+          const redirectUrl = window && localStorage.getItem('redirectTo')
           if (redirectUrl) {
             router.push(redirectUrl);
           } else {
@@ -54,7 +53,7 @@ const Login = () => {
     return (
       <PublicLayout>
         <div style={{ width: "80%", margin: "0 auto", marginTop: "30px" }}>
-          <BackButton url={prevUrl} />
+          <BackButton />
           <Card>
                 {
             isLoading && <PerLoader/>

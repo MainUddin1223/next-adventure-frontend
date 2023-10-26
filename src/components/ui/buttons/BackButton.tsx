@@ -2,15 +2,16 @@
 import { LeftCircleFilled } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 
-const BackButton = ({url}:{url?:string | undefined| null}) => {
+const BackButton = () => {
     const router = useRouter();
     
         return (
             <div style={ {margin:'20px 0'}}>
                 <LeftCircleFilled onClick={() => {
-                    localStorage.removeItem('redirectTo')
-                    if (url) {
-                        router.push(url)
+                    const prevUrl = window && localStorage.getItem('prevRoute')
+                    window && localStorage.removeItem('redirectTo')
+                    if (prevUrl) {
+                        router.push(prevUrl)
                     } else {
                         router.back()
                     }
