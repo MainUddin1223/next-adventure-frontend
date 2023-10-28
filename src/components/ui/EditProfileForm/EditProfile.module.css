@@ -1,12 +1,8 @@
-.profile_container {
+.edit_profile_container {
   width: 80%;
   margin: 0 auto;
-  margin-top: 35px;
+  margin-top: 30px;
 }
-.profile_image_container {
-  width: 220px;
-}
-
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .profile_container {
@@ -27,9 +23,7 @@
 
 /* Small screens and laptops (769px to 1024px) */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .profile_container {
+  .edit_profile_container {
     width: 90%;
-    margin: 0 auto;
-    margin-top: 35px;
   }
 }

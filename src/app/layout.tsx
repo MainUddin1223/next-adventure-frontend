@@ -30,7 +30,12 @@ export default function RootLayout({
           },
            Drawer: {
           colorBgElevated:'#23b26b'
-      },
+          },
+           Breadcrumb: {
+             itemColor: '#327012',
+             linkHoverColor: '#327012',
+             fontSize: 25,
+           },
           },
           token: {
           colorPrimary:'#088345'

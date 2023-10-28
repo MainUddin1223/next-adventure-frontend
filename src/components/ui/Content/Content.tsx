@@ -2,14 +2,19 @@
 import { useUserLogoutMutation } from '@/redux/api/authApi';
 import {
   HomeFilled,
-  LogoutOutlined
+  LogoutOutlined,
+  MenuOutlined
 } from '@ant-design/icons';
 import { Layout } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
+import SmallDeviceSideBar from '../ProfileSideBar/SmallDeviceSideBar';
+import styles from './Content.module.css';
 
 const { Content } = Layout;
+
 
 const getCrumbs = (currentPath: string) => {
   let items: any = [];
@@ -33,6 +38,7 @@ const getCrumbs = (currentPath: string) => {
 }
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
+  const [open, setOpen] = useState(false);
   const currentPath = usePathname();
   const [userLogout] = useUserLogoutMutation()
   const res = getCrumbs(currentPath)
@@ -48,23 +54,24 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Content style={{ minHeight: "100vh", color: 'black' }}>
-            <Header
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1,
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent:"end",
-          backgroundColor:'var(--primary-color)'
-        }}
-      >
-        <div style={{display:"flex",gap:"20px",fontSize:"30px",color:"white"}}>
+      <Header className={styles.header_container}>
+        
+        {/* desktop nav bar */}
+
+        <div className={styles.nav_container}>
           <HomeFilled style={{cursor:"pointer"}} onClick={()=>router.push('/')}/>
           <LogoutOutlined style={{cursor:"pointer"}} onClick={handleLogout}/>
         </div>
+
+        {/* mobile nav bar */}
+        
+        <div className={styles.nav_container_mobile} >
+          <MenuOutlined  style={{cursor:"pointer"}} onClick={()=>setOpen(true)}/>
+        </div>
       </Header>
+      <div>
+        <SmallDeviceSideBar open={open } setOpen={setOpen} />
+      </div>
       <div style={{padding:"15px"}}>
          <BreadCrumb
       items={

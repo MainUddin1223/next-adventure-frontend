@@ -37,7 +37,7 @@ const Checkout = ({ setStep }: ICheckoutProps) => {
                       <p>Reporting time : { startingTime.time}</p>
                       <p>Reporting Date : { startingTime.date}</p>
                       <p>Amount :  { plan.price} * {quantity} </p>
-                      <p>Total : {(quantity*plan.price).toFixed(2)} </p>
+                      <p>Total : $ {(quantity*plan.price).toFixed(2)} </p>
                   </div>
                     </> :
                   <>

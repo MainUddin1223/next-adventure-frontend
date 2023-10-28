@@ -103,16 +103,16 @@ const NavBar = () => {
                            <Link  href='/agencies' className={styles.navigation_item}> <p>Agencies</p></Link>
                             <Link  href='/plans' className={styles.navigation_item}> <p>Tour plans</p></Link>
                             <Link href={`${role}/schedules`} className={styles.navigation_item}> <p>My plans</p></Link>
-          {
-            isUser ?
+                  {
+                    isUser ?
                       <span>
-                        <Button onClick={handleLogout} style={{width:'100%',fontSize:'20px',padding:'2px'}} type='primary' size='large'>Logoutgg</Button>
+                        <Button onClick={handleLogout} style={{width:'100%',fontSize:'20px',padding:'2px'}} type='primary' size='large'>Logout</Button>
                       </span> :
-              <>
-              <Link href='/login' className={styles.navigation_item}>Login</Link>
-              <Link href='/signup' className={styles.navigation_item}>Sign up</Link>
-              </>
-          }
+                              <>
+                              <Link href='/login' className={styles.navigation_item}>Login</Link>
+                              <Link href='/signup' className={styles.navigation_item}>Sign up</Link>
+                              </>
+                          }
                 </> : <>
                      <Link href={`${role}/profile`} className={styles.navigation_item}> <p>Dashboard</p></Link>
              <UserOutlined style={{fontSize:"20px",padding:"5px",color:"white",cursor:"pointer"}} onClick={()=>router.push(`${role}/profile`)}/> 

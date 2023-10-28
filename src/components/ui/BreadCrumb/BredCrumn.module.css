@@ -1,0 +1,14 @@
+.bread_crumb_container {
+  margin: 15px 0;
+}
+.home_icon {
+  font-size: 35px;
+}
+.bread_crumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  background-color: none;
+  color: red;
+}

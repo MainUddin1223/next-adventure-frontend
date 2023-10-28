@@ -20,8 +20,8 @@ const PlanCard = ({ plan }: { plan: any }) => {
   const pathname = usePathname();
   const isValidDate = checkValidity(plan?.booking_deadline);
    const isLoggedInUser = isLoggedIn()
-    !isLoggedInUser && localStorage.setItem('prevRoute',pathname)
-console.log(isLoggedInUser)
+  !isLoggedInUser && localStorage.setItem('prevRoute', pathname)
+  
       return (
           <>
                 <div className={styles.plan_card_container}>
@@ -51,7 +51,7 @@ console.log(isLoggedInUser)
                             <h4>{ plan?.plan_name.substring(0,25)}...</h4>
                           </Tooltip> :  <h4>{ plan?.plan_name}</h4>
                           }
-                            <strong style={{fontSize:'16px'}}><DollarOutlined style={{color:'var(--button-color)'}}/> {plan.price } $</strong>
+                            <strong style={{fontSize:'16px'}}><DollarOutlined style={{color:'var(--button-color)'}}/> {plan.price }</strong>
                             <p style={{display:"flex",gap:"10px",fontWeight:"bold"}}><EnvironmentOutlined style={{color:'var(--button-color)'}}/> <span style={{textTransform:"capitalize"}}>{ plan?.destination}</span></p>
                           {
                                 isValidDate ? <Tag icon={<SyncOutlined spin />} color="green">

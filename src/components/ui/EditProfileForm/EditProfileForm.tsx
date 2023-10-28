@@ -2,12 +2,13 @@
 
 import Form from '@/components/form/Form'
 import FormInput from '@/components/form/FormInput'
-import { Button, Card, Col, Row } from 'antd'
-import ProfileImageUploader from '../ImageUploader/ImageUploader'
-import { useGetUserProfileQuery, useUpdateUserProfileMutation } from '@/redux/api/userApi'
-import { SubmitHandler } from "react-hook-form";
 import FormTextArea from '@/components/form/FormTextArea'
+import { useGetUserProfileQuery, useUpdateUserProfileMutation } from '@/redux/api/userApi'
+import { Button, Card, Col, Row } from 'antd'
 import { useRouter } from 'next/navigation'
+import { SubmitHandler } from "react-hook-form"
+import ProfileImageUploader from '../ImageUploader/ImageUploader'
+import styles from './EditProfile.module.css'
 
 const EditProfileForm = () => {
 
@@ -33,8 +34,8 @@ const EditProfileForm = () => {
   }
 
   return (
-    <div>
-        <Card style={{ width: "80%", margin: "0 auto", marginTop: "30px" }}>
+    <div className={styles.edit_profile_container}>
+        <Card>
           <h1 style={{ margin: "15px 0" }}>Update your profile</h1>
         <div>
           <Form submitHandler={onsubmit} defaultValues={userInfo}>

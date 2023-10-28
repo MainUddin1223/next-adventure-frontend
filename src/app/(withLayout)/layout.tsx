@@ -5,9 +5,11 @@ import LoadingSpinner from "@/components/ui/loader/Loader";
 import { isLoggedIn } from "@/services/auth.service";
 import { Layout } from "antd";
 import { useRouter } from "next/navigation";
-import {useEffect,useState} from 'react'
+import { useEffect, useState } from 'react';
+import styles from './layout.module.css';
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+     const [open, setOpen] = useState(false);
     const userLoggedIn = isLoggedIn();
     const router = useRouter();
     const [isLoading,setIsLoading] = useState<boolean>(false)
@@ -24,7 +26,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     }
   return (
       <Layout hasSider>
-          <SideBar/>
+          <div  className={ styles.desktop_sideBar} >
+              <SideBar/>
+          </div>
           <Contents>
               {children}
           </Contents>

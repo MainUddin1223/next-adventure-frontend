@@ -3,6 +3,7 @@ import { HomeOutlined } from '@ant-design/icons';
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
 import { IBreadCrumbProps } from '../types';
+import styles from './BredCrumn.module.css';
 
 
 const BreadCrumb = ({items}: IBreadCrumbProps) => {
@@ -10,7 +11,7 @@ const BreadCrumb = ({items}: IBreadCrumbProps) => {
         {
             title: (
                 <Link href="/">
-                    <HomeOutlined />
+                    <HomeOutlined style={{fontSize:'25px',color:'var(--secondary-color)'}}/>
                 </Link>
             )
         },
@@ -28,7 +29,11 @@ const BreadCrumb = ({items}: IBreadCrumbProps) => {
                 }
             })
     ]
- return <Breadcrumb items={breadCrumbItems} />;
+    return (
+        <div className={styles.bread_crumb_container}>
+            <Breadcrumb  items={breadCrumbItems}/>
+     </div>
+ );
 }
 
 export default BreadCrumb
