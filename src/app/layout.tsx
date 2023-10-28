@@ -1,8 +1,8 @@
 import Providers from '@/lib/Providers'
-import './globals.css'
+import { ConfigProvider } from 'antd'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ConfigProvider } from 'antd'
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,7 +27,10 @@ export default function RootLayout({
           },
           Button: {
         fontWeight:500
-      }
+          },
+           Drawer: {
+          colorBgElevated:'#23b26b'
+      },
           },
           token: {
           colorPrimary:'#088345'

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Card } from 'antd'
+import { Card } from 'antd'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
@@ -13,7 +13,7 @@ const Thankyou = () => {
 },[])
 
   return (
-      <div style={{display:"block",width:"50%",margin:"0 auto"}}>
+      <div style={{display:"block",margin:"0 auto"}}>
         <Card >
               <h1>Congratulatons !!!</h1>
               <h3>You have successfully booked the plan</h3>

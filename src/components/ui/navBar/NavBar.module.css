@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  width: "100%";
+  width: '100%';
   background-color: var(--button-color);
   padding: 0px;
 }
@@ -49,9 +49,13 @@
     display: block;
   }
   .navigation_item {
-    color: black;
+    color: white;
+    text-align: center;
     display: block;
     margin: 15px 0;
+    padding: 10px;
+    font-size: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 }
 

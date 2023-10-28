@@ -10,10 +10,11 @@ const BackButton = () => {
                 <LeftCircleFilled onClick={() => {
                     const prevUrl = window && localStorage.getItem('prevRoute')
                     window && localStorage.removeItem('redirectTo')
-                    console.log(prevUrl)
                     if (prevUrl) {
+                        console.log(prevUrl)
                         router.push(prevUrl)
                     } else {
+                        console.log('hello')
                         router.back()
                     }
                 }} style={{fontSize:'35px',color:'var(--button-color)',zIndex:'99',cursor:'pointer' }}/>
