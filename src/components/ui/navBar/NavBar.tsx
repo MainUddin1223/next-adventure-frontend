@@ -16,7 +16,7 @@ const NavBar = () => {
   const [userLogout] = useUserLogoutMutation()
   const { role } = getUserInfo() as any;
   const router = useRouter();
-  const profile_img = window && localStorage.getItem('profile_img')
+  const profile_img = typeof window !== 'undefined' && localStorage.getItem('profile_img')
 
   const showDrawer = () => {
     setOpen(true);
@@ -27,9 +27,10 @@ const NavBar = () => {
   };
   const isUser = isLoggedIn()
 
-   const handleLogout = async() => {
+  const handleLogout = async () => {
     await userLogout(undefined);
     localStorage.clear();
+    setOpen(false)
     router.push('/')
 
   }
@@ -48,7 +49,7 @@ const NavBar = () => {
       <span className={styles.header_container}>
         <div>
           <Link href='/'>
-            <Image src={logo} height={40} alt="logo" style={{display:'flex'}}/>
+            <Image src={logo} height={40} alt="logo"/>
           </Link>
           </div>
           {
@@ -60,10 +61,12 @@ const NavBar = () => {
                   isUser ?
                     <>
                      <Link href={`/${role}/schedules`} className={styles.navigation_item}> <p>My plans</p></Link>
-                  {
-                    profile_img ? <Image src={profile_img} alt='profile_img' width={80} height={80} layout='responsive' style={{ fontSize: "20px", padding: "5px", color: "white", cursor: "pointer" }} onClick={() => router.push(`${role}/profile`)} /> :
+                  <div style={{ width: '60px',margin:'0 auto',display:'block' }}>
+                    {
+                    profile_img ? <Image src={profile_img} alt='profile_img' width={80} height={80} style={{ fontSize: "20px", padding: "5px", color: "white", cursor: "pointer",height:'60px',width:'60px',borderRadius:'50%' }} onClick={() => router.push(`${role}/profile`)} /> :
                     <UserOutlined style={{ fontSize: "20px", padding: "5px", color: "white", cursor: "pointer" }} onClick={() => router.push(`${role}/profile`)} /> 
                   }
+                  </div>
                     
                     </> :
               <>
@@ -75,10 +78,12 @@ const NavBar = () => {
               <div>
         <div className={styles.navigation_item_container}>
                   <Link href={`${role}/profile`} className={styles.navigation_item}> <p>Dashboard</p></Link>
-                  {
-                    profile_img ? <Image src={profile_img} alt='profile_img' width={80} height={80} layout='responsive' style={{ fontSize: "20px", padding: "5px", color: "white", cursor: "pointer" }} onClick={() => router.push(`${role}/profile`)} /> :
+                  <div style={{ width: '80px',margin:'0 auto',display:'block' }}>
+                    {
+                    profile_img ? <Image src={profile_img} alt='profile_img' width={80} height={80} style={{ fontSize: "20px", padding: "5px", color: "white", cursor: "pointer",height:'80px',width:'80px',borderRadius:'50%' }} onClick={() => router.push(`${role}/profile`)} /> :
                     <UserOutlined style={{ fontSize: "20px", padding: "5px", color: "white", cursor: "pointer" }} onClick={() => router.push(`${role}/profile`)} /> 
                   }
+                  </div>
         </div>
               </div>
           }
@@ -101,10 +106,7 @@ const NavBar = () => {
           {
             isUser ?
                       <span>
-                        <Button onClick={() => {
-                          setOpen(false)
-                          handleLogout
-                        }} style={{width:'100%',fontSize:'20px',padding:'2px'}} type='primary' size='large'>Logout</Button>
+                        <Button onClick={handleLogout} style={{width:'100%',fontSize:'20px',padding:'2px'}} type='primary' size='large'>Logoutgg</Button>
                       </span> :
               <>
               <Link href='/login' className={styles.navigation_item}>Login</Link>

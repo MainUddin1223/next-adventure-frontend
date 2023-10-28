@@ -26,16 +26,15 @@ const Login = () => {
     try {
         setIsLoading(true)
       const res = await userLogin({ ...data }).unwrap();
-      console.log(res)
         if (res?.accessToken) {
           message.success('User logged in successfully')
           const accessToken = res?.accessToken
           await storeUserInfo(accessToken)
           const authInfo: any = getUserInfo();
           setIsLoading(false)
-          window && localStorage.removeItem('prevRoute')
-          window && localStorage.setItem('profile_img',res?.result?.profile_img)
-          const redirectUrl = window && localStorage.getItem('redirectTo')
+          typeof window !== 'undefined' && localStorage.removeItem('prevRoute')
+          typeof window !== 'undefined' && localStorage.setItem('profile_img',res?.result?.profile_img)
+          const redirectUrl = typeof window !== 'undefined' && localStorage.getItem('redirectTo')
           if (redirectUrl) {
             router.push(redirectUrl);
           } else {
