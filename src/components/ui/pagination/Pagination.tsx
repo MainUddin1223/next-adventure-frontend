@@ -12,12 +12,13 @@ const PaginationCompo = ({totalPage,setSize,setPage}:IPaginationProps) => {
     
   return (
       <div style={{margin:"20px 10px",display:"flex",justifyContent:"end"}}>
-            <Pagination
+      <Pagination
+              pageSizeOptions={[5,10,15,20]}
               showSizeChanger
               onShowSizeChange={onShowSizeChange}
               defaultCurrent={1}
               total={totalPage}
-              onChange={(value) => setPage(value)}
+              onChange={(value) => {value?setPage(value):setPage(1)}}
     />
    </div>
   )

@@ -1,0 +1,10 @@
+.searchField {
+  width: 30%;
+}
+
+/* iPads and Tablets (481px to 768px) */
+@media only screen and (max-width: 768px) {
+  .searchField {
+    width: 70%;
+  }
+}

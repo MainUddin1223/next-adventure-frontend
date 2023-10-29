@@ -5,7 +5,6 @@ import Image from "next/image"
 import styles from './Review.module.css'
 
 const Reviews = ({ reviews }: any) => {
-  console.log(reviews.reviews)
   return (
       <div className={styles.reviews_container}>
       <h1 style={{ fontSize: '2rem',margin:"20px 0" }}>Happy Clients</h1>

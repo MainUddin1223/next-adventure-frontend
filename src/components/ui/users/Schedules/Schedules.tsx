@@ -166,7 +166,8 @@ const ManageSchedules = () => {
                     />
               </div>
               <div className={styles.schedules_table_mobile_container}>
-                  <MobileTable items={ items} />
+                  <MobileTable
+                      items={items} />
               </div>
           </Card>
     </>

@@ -1,13 +1,14 @@
 'use client'
 
-import { DeleteOutlined,EditOutlined,ReloadOutlined } from '@ant-design/icons';
-import { Button, Card, Input} from "antd"
-import { useState } from "react"
-import dayjs from "dayjs"
-import { useDebounced } from "@/redux/hooks";
-import DesktopTable from '@/components/ui/Tables/TableForDesktop/DesktopTable';
-import {  useGetBookingHistoryQuery } from '@/redux/api/adminApi';
+import MobileTable from '@/components/ui/Tables/TableForMobile/MobileTable';
+import PaginationCompo from '@/components/ui/pagination/Pagination';
 import { useBookingHistoryQuery } from '@/redux/api/userApi';
+import { useDebounced } from "@/redux/hooks";
+import { formateDateAndTime } from '@/services/timeFormater';
+import { ReloadOutlined } from '@ant-design/icons';
+import { Button, Card, Input, Modal, Rate } from "antd";
+import { useState } from "react";
+import styles from './page.module.css';
 
 
 
@@ -18,14 +19,12 @@ const BookingHistory = () => {
     const [sortBy, setSortBy] = useState<string>('');
     const [sortOrder, setSortOrder] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [modal, setModal] = useState(false);
+  const [rating, setRating] = useState(5);
+   const desc = ['Terrible', 'Bad', 'Normal', 'Good', 'Wonderful'];
   
     query['limit'] = size
     query['page'] = page
-  
-    const onPaginationChange = (page: number, pageSize: number) => {
-      setSize(pageSize)
-      setPage(page)
-  }
 
   
   const debouncedTerm = useDebounced({
@@ -40,125 +39,56 @@ const BookingHistory = () => {
   
   const bookings = data?.result;
   const meta = data?.meta;
-  console.log(bookings)
-  const onTableChange = ( pagination:any, filter:any, sorter:any ) => {
-    const { field, order } = sorter;
-    setSortBy(field as string);
-    setSortOrder(order === "asc" ? "asc" : "desc");
-  }
   
   const resetFilters = () => {
     setSortBy("");
     setSortOrder("");
     setSearchTerm("");
   };
-  
-  const columns = [
-    {
-      title: 'Plan Name',
-    render: function (data:any) {
-      return (
-        <>
-          <div style={{ display: "flex", gap: "5px" }}>
-            <h3>{data?.plan?.plan_name}</h3>
-          </div>
-        
-        </>
-      )
-   }
-  },
-    {
-      title: 'Planner',
-    render: function (data:any) {
-      return (
-        <>
-          <div style={{ display: "flex", gap: "5px" }}>
-            <h3>{data?.user.first_name}</h3>
-            <h3>{data?.user.last_name}</h3>
-          </div>
-        
-        </>
-      )
-   }
-  },
-  {
-    title: 'Total Amount ',
-        render: function (data:any) {
-      return (
-        <>
-            <h3 style={{textAlign:"center"}}>$ {data?.total_amount}</h3>
-        </>
-      )
-   }
-  },
-  {
-    title: 'Quantity',
-        render: function (data:any) {
-      return (
-        <>
-            <h3 style={{textAlign:"center"}}>{data?.quantity}</h3>
-        </>
-      )
-   }
-  },
-    {
-      title: 'Status',
-      dataIndex: 'status',
-      key:'status'
-    },
-      {
-        title: 'Deadline',
-        render: function (data: any) {
-          const today = new Date();
-          const bookingDeadline = new Date(data?.plan.booking_deadline);
-          console.log(data?.plan.booking_deadline ,new Date())
-        if (bookingDeadline >= today) {
-          const deadline = dayjs(data?.plan.booking_deadline).format("MMM D, YYYY hh:mm A")
-          return (
-            <h3>{deadline}</h3>
-          )
-        }
-        else {
-          return (
-            <>
-            <h3>Expired</h3>
-            </>
-          )
-        }
-      },
-    },
-//   {
-//     title: 'Action',
-//     render: function (data:any) {
-//       return (
-//         <>
-//              <div style={{ display: "flex", gap: "5px" }}>
-//          <Button type="primary">
-//         <EditOutlined /></Button>
-//             <Button type="primary">
-//         <DeleteOutlined /></Button>
-//           </div>
-        
-//         </>
-//       )
-//    }
-//   },
-  ];
-  
+  const items = bookings?.map((booking: any) => {
+    console.log(booking)
+           const {date:bookingDate} = formateDateAndTime(booking?.createdAt)
+            return {
+                key: booking?.id,
+                label:
+                    <div>
+                        <p style={{fontSize:'18px',fontWeight:'bold'}}>{booking?.plan?.plan_name}</p>
+                        <div style={{ fontSize: '18px' }}> 
+                              {
+                                booking.status == 'pending' ?
+                                    <strong style={{color:'yellowgreen'}}> {booking.status}</strong> :
+                                    booking.status == 'booked' ?
+                                    <strong style={{color:'var(--button-color)'}}> {booking.status}</strong> :
+                                    booking.status == 'cenceled' &&
+                                    <strong style={{color:'red'}}> {booking.status}</strong> 
+                                }
+                            </div>
+                    </div>,
+                children:
+                    <div>
+                        <h3>Planner : {booking?.user?.first_name} {booking?.user?.last_name}</h3>
+                       <p style={{fontWeight:"bold"}}>Booking date : { bookingDate}</p>
+                       <p style={{fontWeight:"bold"}}>Booked for: {booking?.quantity} Person</p>
+                       <p style={{fontWeight:"bold"}}>Total Amount : $ {booking?.total_amount}</p>
+                        <Button type='primary' onClick={()=>setModal(true)}>Leave feedback</Button> <br />
+                    </div>,
+            }
+      })
   return (
     <>
           <Card>
-              
               <h2 style={{marginBottom:"10px"}}>Booking history</h2>
-              <div style={{display:'flex',gap:"10px", margin:"10px 0"}}>
-                  <Input
-          type='text'
-          size='large'
-          placeholder='Search ... '
-        style={{ width: "20%" }}
-        value={searchTerm}
-          onChange={(e)=>setSearchTerm(e.target.value)}
-        />
+              <div style={{display:'flex',gap:"10px", margin:"10px 0",alignItems:'center'}}>
+            <div className={styles.searchField}>
+              <Input
+              type='text'
+              size='large'
+              placeholder='Search ... '
+            style={{ width: "100%" }}
+            value={searchTerm}
+              onChange={(e)=>setSearchTerm(e.target.value)}
+            />
+                </div>
            <div>
           {(!!sortBy || !!sortOrder || !!searchTerm) && (
             <Button
@@ -171,18 +101,22 @@ const BookingHistory = () => {
           )}
         </div>
           </div>
-      <DesktopTable
-        columns={columns}
-        dataSource = {bookings}
-        loading={isLoading}
-        pageSize= {size}
-        totalPages = {meta?.total}
-        showSizeChanger = {true}
-        onPaginationChange={onPaginationChange}
-        onTableChange={onTableChange}
-        showPagination = {true}
-      />
-</Card>
+        <MobileTable items={items} />
+        <PaginationCompo totalPage={meta?.total} setPage={setPage} setSize={ setSize} />
+      </Card>
+      
+        <Modal
+        title="Leave your experience"
+        centered
+        open={modal}
+        onOk={() => setModal(false)}
+        onCancel={() => setModal(false)}
+        width={1000}
+      >
+        <Rate style={{ margin: '15px 0', color: "var(--button-color)" }} tooltips={desc} onChange={(e) => {
+              setRating(e.valueOf())
+       }} value={rating} />
+      </Modal>
     </>
   )
 }
