@@ -5,8 +5,6 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: end;
-  background-color: var(--primary-color);
 }
 
 .nav_container {
@@ -18,7 +16,6 @@
 
 .nav_container_mobile {
   display: flex;
-  gap: 20px;
   font-size: 30px;
   color: white;
 }
@@ -28,10 +25,19 @@
   .nav_container {
     display: none;
   }
+  .nav_container_mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 769px) {
   .nav_container_mobile {
     display: none;
+  }
+  .header_container {
+    justify-content: end;
   }
 }

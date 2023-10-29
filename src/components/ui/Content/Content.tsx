@@ -1,4 +1,5 @@
 'use client'
+import logo from '@/assets/travel-logo.png';
 import { useUserLogoutMutation } from '@/redux/api/authApi';
 import {
   HomeFilled,
@@ -7,6 +8,7 @@ import {
 } from '@ant-design/icons';
 import { Layout } from 'antd';
 import { Header } from 'antd/es/layout/layout';
+import Image from "next/image";
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
@@ -54,7 +56,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Content style={{ minHeight: "100vh", color: 'black' }}>
-      <Header className={styles.header_container}>
+      <Header className={styles.header_container} style={{backgroundColor:'var(--primary-color)'}}>
         
         {/* desktop nav bar */}
 
@@ -65,7 +67,10 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 
         {/* mobile nav bar */}
         
-        <div className={styles.nav_container_mobile} >
+        <div className={styles.nav_container_mobile}>
+          <div>
+            <Image src={logo } alt='logo' width={80} height={80} layout='responsive'/>
+          </div>
           <MenuOutlined  style={{cursor:"pointer"}} onClick={()=>setOpen(true)}/>
         </div>
       </Header>
