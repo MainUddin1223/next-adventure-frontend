@@ -18,7 +18,7 @@ const PaginationCompo = ({totalPage,setSize,setPage}:IPaginationProps) => {
               onShowSizeChange={onShowSizeChange}
               defaultCurrent={1}
               total={totalPage}
-              onChange={(value) => {value?setPage(value):setPage(1)}}
+              onChange={(value) =>setPage(value)}
     />
    </div>
   )

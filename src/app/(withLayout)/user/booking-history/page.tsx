@@ -2,11 +2,12 @@
 
 import MobileTable from '@/components/ui/Tables/TableForMobile/MobileTable';
 import PaginationCompo from '@/components/ui/pagination/Pagination';
-import { useBookingHistoryQuery } from '@/redux/api/userApi';
+import { useBookingHistoryQuery, useReviewPlanMutation } from '@/redux/api/userApi';
 import { useDebounced } from "@/redux/hooks";
 import { formateDateAndTime } from '@/services/timeFormater';
 import { ReloadOutlined } from '@ant-design/icons';
-import { Button, Card, Input, Modal, Rate } from "antd";
+import { Button, Card, Input, Modal, Rate, message } from "antd";
+import TextArea from 'antd/es/input/TextArea';
 import { useState } from "react";
 import styles from './page.module.css';
 
@@ -21,6 +22,7 @@ const BookingHistory = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [modal, setModal] = useState(false);
   const [rating, setRating] = useState(5);
+  const [feedback,setFeedback] = useState('')
    const desc = ['Terrible', 'Bad', 'Normal', 'Good', 'Wonderful'];
   
     query['limit'] = size
@@ -34,6 +36,20 @@ const BookingHistory = () => {
   if (!!debouncedTerm) {
     query['search'] = searchTerm
   }
+  const [reviewPlan] = useReviewPlanMutation()
+
+  const handleReview = async (id: number, plan_id: number,agency_id:number) => {
+    const data = { rating, feedback,plan_id,agency_id };
+    const res = await reviewPlan({ data, id })
+    //@ts-ignore
+    if (res?.data?.success == false) {
+      message.error('Failed to submit review')
+    }
+    else {
+      message.success('Review submitted successfully')
+    }
+     setModal(false)
+  }
   
   const { data, isLoading } = useBookingHistoryQuery({ ...query });
   
@@ -45,8 +61,8 @@ const BookingHistory = () => {
     setSortOrder("");
     setSearchTerm("");
   };
+
   const items = bookings?.map((booking: any) => {
-    console.log(booking)
            const {date:bookingDate} = formateDateAndTime(booking?.createdAt)
             return {
                 key: booking?.id,
@@ -70,8 +86,25 @@ const BookingHistory = () => {
                        <p style={{fontWeight:"bold"}}>Booking date : { bookingDate}</p>
                        <p style={{fontWeight:"bold"}}>Booked for: {booking?.quantity} Person</p>
                        <p style={{fontWeight:"bold"}}>Total Amount : $ {booking?.total_amount}</p>
-                        <Button type='primary' onClick={()=>setModal(true)}>Leave feedback</Button> <br />
-                    </div>,
+                        <Button type='primary' style={{margin:'15px 0'}} onClick={()=>setModal(true)}>Leave feedback</Button> <br />
+                    
+                        <Modal
+        title="Leave your experience"
+        centered
+        open={modal}
+        onOk={()=>handleReview(booking?.id,booking?.plan.id,booking?.user?.id)}
+        okButtonProps={{ disabled: feedback ? false : true }}
+        onCancel={() => setModal(false)}
+        width={500}
+      >
+        <Rate style={{ margin: '15px 0', color: "var(--button-color)" }} tooltips={desc} onChange={(e) => {
+              setRating(e.valueOf())
+        }} value={rating} />
+        <p>Feedback</p>
+        <TextArea   onChange={(e) => setFeedback(e.target.value)}  autoSize={{ minRows: 3, maxRows: 5 }}/>
+        
+      </Modal>
+                </div>,
             }
       })
   return (
@@ -104,19 +137,6 @@ const BookingHistory = () => {
         <MobileTable items={items} />
         <PaginationCompo totalPage={meta?.total} setPage={setPage} setSize={ setSize} />
       </Card>
-      
-        <Modal
-        title="Leave your experience"
-        centered
-        open={modal}
-        onOk={() => setModal(false)}
-        onCancel={() => setModal(false)}
-        width={1000}
-      >
-        <Rate style={{ margin: '15px 0', color: "var(--button-color)" }} tooltips={desc} onChange={(e) => {
-              setRating(e.valueOf())
-       }} value={rating} />
-      </Modal>
     </>
   )
 }
