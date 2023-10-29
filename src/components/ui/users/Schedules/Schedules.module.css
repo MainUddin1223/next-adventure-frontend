@@ -1,0 +1,13 @@
+.schedules_table_mobile_container {
+  display: none;
+}
+
+/* iPads and Tablets (481px to 768px) */
+@media only screen and (max-width: 768px) {
+  .schedules_table_container {
+    display: none;
+  }
+  .schedules_table_mobile_container {
+    display: block;
+  }
+}
