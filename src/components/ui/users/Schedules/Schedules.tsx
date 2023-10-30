@@ -37,11 +37,11 @@ const ManageSchedules = () => {
             <div>
                 {
                     status == 'pending' ?
-                        <strong style={{color:'yellowgreen'}}> {status}</strong> :
+                        <strong style={{color:'yellowgreen',textTransform:'capitalize'}}> {status}</strong> :
                         status == 'booked' ?
-                        <strong style={{color:'var(--button-color)'}}> {status}</strong> :
+                        <strong style={{color:'var(--button-color)',textTransform:'capitalize'}}> {status}</strong> :
                         status == 'cenceled' &&
-                        <strong style={{color:'red'}}> {status}</strong> 
+                        <strong style={{color:'red',textTransform:'capitalize'}}> {status}</strong> 
                 }
             </div>
         )
@@ -130,7 +130,7 @@ const ManageSchedules = () => {
                 label:
                     <div>
                         <p style={{fontSize:'18px',fontWeight:'bold'}}>{schedule?.plan?.plan_name}</p>
-                        <div style={{fontSize:'18px'}}> Status :{booingStatus}
+                        <div style={{fontSize:'18px'}}> <p style={{display:'flex',gap:'5px'}}>Status:{booingStatus}</p>
                         </div>
                     </div>,
                 children:
