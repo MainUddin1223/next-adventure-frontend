@@ -9,95 +9,77 @@
 	align-items: center;
 	justify-content: center;
 }
-
-.cover_banner {
-	background-image: url('../../../../../assets//cover-banner.png');
-	width: 75%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	padding: 25px 0;
-	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-	border-radius: 5px;
-}
-
-.cover_banner h1 {
-	text-align: center;
-	font-size: 3rem;
-	color: white;
-	border-radius: 5px;
-}
-.search_field {
-	margin: 25px auto;
+.search_field_container {
 	width: 50%;
+	display: block;
+	margin: 20px auto;
 }
-.cover_location_container {
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	gap: 20px;
-	padding: 25px;
-}
-.cover_location {
-	background-color: white;
-	display: inline-block;
-	padding: 5px;
-	border-radius: 50%;
-	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-	cursor: pointer;
-	transition: 0.5s;
-}
-.cover_location_image {
-	padding: 5px;
-	transition: 0.5s;
-	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-	border-radius: 50%;
-}
-.cover_location:hover {
-	background-color: var(--primary-color);
-}
-.cover_location_image:hover {
-	padding: 0;
+.hero_container {
+	color: var(--primary-color);
 }
 .bannner_info {
+	background-color: var(--accent-color);
+	padding: 15px;
 	text-align: center;
 }
 .bannner_info h1 {
-	font-size: 3rem;
-	padding: 10px;
+	font-size: 4.5rem;
+	padding: 15px;
+	color: var(--primary-color);
 }
 .bannner_info h2 {
-	font-size: 2rem;
+	font-size: 2.4rem;
 	padding: 10px;
-}
-.mobile_cover_banner {
-	display: none;
+	color: var(--primary-color);
 }
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 300px) and (max-width: 480px) {
 	.parallox {
 		max-height: 60vh;
 	}
-	.mobile_cover_banner {
+	.hero_container {
 		margin-top: 50px;
+	}
+	.search_field_container {
+		width: 75%;
+	}
+	.bannner_info {
+		background-color: transparent;
 	}
 	.bannner_info h1 {
 		font-size: 2rem;
 		padding: 10px;
+		color: var(--primary-color);
 	}
 	.bannner_info h2 {
 		font-size: 1.4rem;
 		padding: 10px;
+		color: var(--primary-color);
 	}
 }
-
 /* iPads and Tablets (481px to 768px) */
-@media only screen and (max-width: 768px) {
-	.cover_banner {
-		display: none;
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+	.parallox {
+		max-height: 60vh;
 	}
-	.mobile_cover_banner {
-		display: block;
+	.hero_container {
+		margin-top: 50px;
+	}
+	.search_field_container {
+		width: 75%;
+	}
+	.bannner_info {
+		background-color: transparent;
+	}
+	.bannner_info h1 {
+		font-size: 2.8rem;
+		padding: 10px;
+		color: var(--primary-color);
+	}
+	.bannner_info h2 {
+		font-size: 1.7rem;
+		padding: 10px;
+		color: var(--primary-color);
 	}
 }
 
@@ -105,6 +87,9 @@
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 	.cover_banner h1 {
 		font-size: 2.5rem;
+	}
+	.bannner_info h2 {
+		font-size: 1.4rem;
 	}
 	.cover_location {
 		width: 75px;

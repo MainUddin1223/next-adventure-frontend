@@ -2,6 +2,13 @@
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+:root {
+	--primary-color: #327012;
+	--accent-color: #e0e3de;
+	--button-color: #327012;
 }
 
 a {
@@ -12,7 +19,7 @@ Link {
 	color: black;
 }
 h1 {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 	color: rgb(47, 46, 46);
 }
 hr {
@@ -22,17 +29,10 @@ hr {
 
 /* :root {
   --primary-color: #6ab331;
-  --secondary-color: #327012;
+  --primary-color: #327012;
   --background-color: #327012;
   --button-color: #088345;
 } */
-:root {
-	--primary-color: #23b26b;
-	--secondary-color: #327012;
-	--background-color: #1ca27c;
-	--button-color: #327012;
-	--header-color: #f2f5f1;
-}
 /*
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 320px) and (max-width: 480px) {

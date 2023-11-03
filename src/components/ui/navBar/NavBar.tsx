@@ -47,7 +47,7 @@ const NavBar = () => {
 					top: 0,
 					zIndex: 1,
 					width: '100%',
-					backgroundColor: 'var(--header-color)',
+					backgroundColor: 'var(--accent-color)',
 					padding: '0 10px',
 				}}
 			>

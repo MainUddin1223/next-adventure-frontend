@@ -68,7 +68,7 @@ const CommonProfile = () => {
 			<div className={styles.profile_container_mobile}>
 				<Card style={{ width: '100%' }}>
 					<Avatar
-						style={{ backgroundColor: 'var(--secondary-color)' }}
+						style={{ backgroundColor: 'var(--primary-color)' }}
 						size={128}
 						icon={
 							data?.profile_img ? (
