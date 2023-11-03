@@ -124,48 +124,39 @@ const NavBar = () => {
 							</div>
 						</div>
 					) : (
-						<div>
-							<div className={styles.navigation_item_container}>
-								<Link
-									href={`${role}/profile`}
-									className={styles.navigation_item}
-								>
-									{' '}
-									<p>Dashboard</p>
-								</Link>
-								<div
-									style={{ width: '50px', margin: '0 auto', display: 'block' }}
-								>
-									{profile_img ? (
-										<Image
-											src={profile_img}
-											alt="profile_img"
-											width={50}
-											height={50}
-											style={{
-												fontSize: '20px',
-												padding: '5px',
-												color: 'white',
-												cursor: 'pointer',
-												height: '80px',
-												width: '80px',
-												borderRadius: '50%',
-											}}
-											onClick={() => router.push(`${role}/profile`)}
-										/>
-									) : (
-										<UserOutlined
-											style={{
-												fontSize: '20px',
-												padding: '5px',
-												color: 'white',
-												cursor: 'pointer',
-											}}
-											onClick={() => router.push(`${role}/profile`)}
-										/>
-									)}
-								</div>
-							</div>
+						<div className={styles.navigation_item_container}>
+							<Link href={`${role}/profile`} className={styles.navigation_item}>
+								{' '}
+								<p>Dashboard</p>
+							</Link>
+							{profile_img ? (
+								<Image
+									src={profile_img}
+									alt="profile_img"
+									width={30}
+									height={30}
+									style={{
+										fontSize: '20px',
+										padding: '5px',
+										color: 'white',
+										cursor: 'pointer',
+										height: '45px',
+										width: '45px',
+										borderRadius: '50%',
+									}}
+									onClick={() => router.push(`${role}/profile`)}
+								/>
+							) : (
+								<UserOutlined
+									style={{
+										fontSize: '20px',
+										padding: '5px',
+										color: 'white',
+										cursor: 'pointer',
+									}}
+									onClick={() => router.push(`${role}/profile`)}
+								/>
+							)}
 						</div>
 					)}
 

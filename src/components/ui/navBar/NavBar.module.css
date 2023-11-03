@@ -17,6 +17,7 @@
 .navigation_item_container {
 	display: flex;
 	gap: 15px;
+	align-items: center;
 }
 .list_container {
 	display: flex;
