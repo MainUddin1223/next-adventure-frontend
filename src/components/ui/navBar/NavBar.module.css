@@ -23,6 +23,7 @@
 	display: flex;
 	gap: 15px;
 }
+
 .navigation_item {
 	font-size: 17px;
 	font-weight: 600;
