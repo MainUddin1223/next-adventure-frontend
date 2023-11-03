@@ -1,6 +1,7 @@
 .featured_container {
 	width: 80%;
 	margin: 50px auto;
+	margin-bottom: 100px;
 }
 .featured_header {
 	font-size: 2rem;

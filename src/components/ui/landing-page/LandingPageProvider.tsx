@@ -5,7 +5,7 @@ import { isLoggedIn } from '@/services/auth.service';
 import SkeletonLoader from '../Skeleton/Skeleton';
 import AgencyBanner from './Banners/Agency-banner/AgencyBanner';
 import Motto from './Banners/Motto-banner/Motto';
-import FeaturedTour from './Featured-tour.tsx/FeaturedTour';
+import FeaturedTour from './Featured-tour/FeaturedTour';
 import Guideline from './Guideline/Guideline';
 import LeaveReview from './Review/LeaveReview';
 import Reviews from './Review/Reviews';
