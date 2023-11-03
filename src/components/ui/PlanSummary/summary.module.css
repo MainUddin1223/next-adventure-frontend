@@ -1,32 +1,32 @@
 .summary_container {
-  width: 80%;
-  margin: 0 auto;
+	width: 80%;
+	margin: 0 auto;
 }
 .plan_summary {
-  background-color: gray;
+	background-color: gray;
 }
 .stepper {
-  width: 50%;
-  margin: 20px auto;
+	width: 50%;
+	margin: 20px auto;
 }
 
 /* Mobile devices (280px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
-  .summary_container {
-    width: 95%;
-  }
-  .stepper {
-    width: 75%;
-  }
+	.summary_container {
+		width: 95%;
+	}
+	.stepper {
+		width: 75%;
+	}
 }
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .summary_container {
-    width: 90%;
-  }
-  .stepper {
-    width: 100%;
-    margin: 20px auto;
-  }
+	.summary_container {
+		width: 90%;
+	}
+	.stepper {
+		width: 100%;
+		margin: 20px auto;
+	}
 }

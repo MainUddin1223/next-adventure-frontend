@@ -1,23 +1,23 @@
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 Link {
-  color: black;
+	color: black;
 }
 h1 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: rgb(47, 46, 46);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: rgb(47, 46, 46);
 }
 hr {
-  background-color: gray;
-  margin: 20px 0;
+	background-color: gray;
+	margin: 20px 0;
 }
 
 /* :root {
@@ -27,33 +27,33 @@ hr {
   --button-color: #088345;
 } */
 :root {
-  --primary-color: #23b26b;
-  --secondary-color: #327012;
-  --background-color: #1ca27c;
-  --button-color: #327012;
+	--primary-color: #23b26b;
+	--secondary-color: #327012;
+	--background-color: #1ca27c;
+	--button-color: #327012;
 }
 /*
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-  /* Your CSS styles for mobile devices go here */
+	/* Your CSS styles for mobile devices go here */
 }
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  /* Your CSS styles for iPads and tablets go here */
+	/* Your CSS styles for iPads and tablets go here */
 }
 
 /* Small screens and laptops (769px to 1024px) */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  /* Your CSS styles for small screens and laptops go here */
+	/* Your CSS styles for small screens and laptops go here */
 }
 
 /* Desktops and large screens (1025px to 1200px) */
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
-  /* Your CSS styles for desktops and large screens go here */
+	/* Your CSS styles for desktops and large screens go here */
 }
 
 /* Extra large screens and TVs (1201px and above) */
 @media only screen and (min-width: 1201px) {
-  /* Your CSS styles for extra large screens and TVs go here */
+	/* Your CSS styles for extra large screens and TVs go here */
 }

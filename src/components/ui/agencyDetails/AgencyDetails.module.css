@@ -1,17 +1,17 @@
 .agency_details_container {
-  width: 80%;
-  margin: 0 auto;
+	width: 80%;
+	margin: 0 auto;
 }
 /* Mobile devices (280px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
-  .agency_details_container {
-    width: 95%;
-  }
+	.agency_details_container {
+		width: 95%;
+	}
 }
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .agency_details_container {
-    width: 90%;
-  }
+	.agency_details_container {
+		width: 90%;
+	}
 }

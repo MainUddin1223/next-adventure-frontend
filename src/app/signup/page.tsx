@@ -1,11 +1,11 @@
-import SignUp from "@/components/ui/signup/SignUp"
+import SignUp from '@/components/ui/signup/SignUp';
 
 const page = () => {
-  return (
-      <>
-      <SignUp/>
-      </>
-  )
-}
+	return (
+		<>
+			<SignUp />
+		</>
+	);
+};
 
-export default page
+export default page;

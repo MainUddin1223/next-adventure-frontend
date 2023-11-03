@@ -1,61 +1,61 @@
 .popular_agencies_container {
-  width: 80%;
-  margin: 50px auto;
+	width: 80%;
+	margin: 50px auto;
 }
 .header {
-  font-size: 2rem;
-  margin: 15px 0;
+	font-size: 2rem;
+	margin: 15px 0;
 }
 .agency_card_container {
-  margin: 20px 0;
+	margin: 20px 0;
 }
 .agency_details {
-  padding: 5px;
-  line-height: 35px;
+	padding: 5px;
+	line-height: 35px;
 }
 .popular_agencies_container h4 {
-  font-size: 1.2rem;
+	font-size: 1.2rem;
 }
 
 .popular_agency_card {
-  background-image: url("../../../../assets//popular-agency.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 25px 0;
-  min-height: 280px;
-  margin-top: 10px;
-  cursor: pointer;
+	background-image: url('../../../../assets//popular-agency.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 25px 0;
+	min-height: 280px;
+	margin-top: 10px;
+	cursor: pointer;
 }
 .shadow_div {
-  position: absolute;
-  height: 70px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(212, 206, 206, 0.404);
-  box-shadow: 0px 0 5px rgba(0, 0, 0, 0.5);
+	position: absolute;
+	height: 70px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(212, 206, 206, 0.404);
+	box-shadow: 0px 0 5px rgba(0, 0, 0, 0.5);
 }
 .agency_details {
-  color: white;
-  padding: 10px;
+	color: white;
+	padding: 10px;
 }
 .agency_details h3 {
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
-  .popular_agencies_container {
-    width: 95%;
-  }
+	.popular_agencies_container {
+		width: 95%;
+	}
 }
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .popular_agencies_container {
-    width: 90%;
-  }
-  .plan_card_container {
-    width: 80%;
-  }
+	.popular_agencies_container {
+		width: 90%;
+	}
+	.plan_card_container {
+		width: 80%;
+	}
 }

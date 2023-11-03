@@ -1,31 +1,31 @@
 .offering_container {
-  width: 80%;
-  margin: 0 auto;
+	width: 80%;
+	margin: 0 auto;
 }
 .offering_row_container {
-  background-color: rgba(216, 215, 215, 0.481);
-  border-radius: 5px;
-  margin: 20px 0;
+	background-color: rgba(216, 215, 215, 0.481);
+	border-radius: 5px;
+	margin: 20px 0;
 }
 .offering_details_container {
-  line-height: 40px;
-  text-align: center;
+	line-height: 40px;
+	text-align: center;
 }
 .offering_details_container h1 {
-  font-size: 2rem;
+	font-size: 2rem;
 }
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (max-width: 768px) {
-  .offering_container {
-    width: 100%;
-  }
-  .offering_details_container {
-    padding: 40px 0;
-    padding: 10px;
-  }
-  .offering_details_container h1 {
-    font-size: 2.5rem;
-    margin: 20px 0;
-  }
+	.offering_container {
+		width: 100%;
+	}
+	.offering_details_container {
+		padding: 40px 0;
+		padding: 10px;
+	}
+	.offering_details_container h1 {
+		font-size: 2.5rem;
+		margin: 20px 0;
+	}
 }

@@ -1,34 +1,34 @@
 .featured_container {
-  width: 80%;
-  margin: 50px auto;
+	width: 80%;
+	margin: 50px auto;
 }
 .featured_header {
-  font-size: 2rem;
-  margin: 15px 0;
+	font-size: 2rem;
+	margin: 15px 0;
 }
 .tour_details {
-  padding: 5px;
-  line-height: 35px;
+	padding: 5px;
+	line-height: 35px;
 }
 .tour_details h4 {
-  font-size: 1.2rem;
+	font-size: 1.2rem;
 }
 .tour_details p {
-  font-size: 18px;
+	font-size: 18px;
 }
 
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
-  .featured_container {
-    width: 95%;
-  }
+	.featured_container {
+		width: 95%;
+	}
 }
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .featured_container {
-    width: 90%;
-  }
-  .agency_card_container {
-    width: 80%;
-  }
+	.featured_container {
+		width: 90%;
+	}
+	.agency_card_container {
+		width: 80%;
+	}
 }

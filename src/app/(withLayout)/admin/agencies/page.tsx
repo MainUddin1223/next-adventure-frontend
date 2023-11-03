@@ -1,7 +1,5 @@
 const Agencies = () => {
-  return (
-    <div>Agencies</div>
-  )
-}
+	return <div>Agencies</div>;
+};
 
-export default Agencies
+export default Agencies;

@@ -1,7 +1,5 @@
 const FeaturedAgency = () => {
-  return (
-    <div>FeaturedAgency</div>
-  )
-}
+	return <div>FeaturedAgency</div>;
+};
 
-export default FeaturedAgency
+export default FeaturedAgency;

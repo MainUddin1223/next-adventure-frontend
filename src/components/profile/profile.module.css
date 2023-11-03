@@ -1,39 +1,39 @@
 .profile_container {
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 35px;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 35px;
 }
 .profile_image_container {
-  width: 220px;
+	width: 220px;
 }
 .profile_container_mobile {
-  display: none;
+	display: none;
 }
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-  .profile_container {
-    display: none;
-  }
-  .profile_container_mobile {
-    display: block;
-  }
+	.profile_container {
+		display: none;
+	}
+	.profile_container_mobile {
+		display: block;
+	}
 }
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .profile_container {
-    display: none;
-  }
-  .profile_container_mobile {
-    display: block;
-  }
+	.profile_container {
+		display: none;
+	}
+	.profile_container_mobile {
+		display: block;
+	}
 }
 
 /* Small screens and laptops (769px to 1024px) */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .profile_container {
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 35px;
-  }
+	.profile_container {
+		width: 90%;
+		margin: 0 auto;
+		margin-top: 35px;
+	}
 }

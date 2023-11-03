@@ -1,13 +1,11 @@
-import CommonProfile from "@/components/profile/Profile"
-
+import CommonProfile from '@/components/profile/Profile';
 
 const Profile = () => {
+	return (
+		<>
+			<CommonProfile />
+		</>
+	);
+};
 
-  return (
-    <>
-      <CommonProfile/>
-    </>
-  )
-}
-
-export default Profile
+export default Profile;

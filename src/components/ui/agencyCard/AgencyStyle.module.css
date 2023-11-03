@@ -1,27 +1,27 @@
 .popular_agency_card {
-  background-image: url("../../../assets/popular-agency.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 25px 0;
-  min-height: 280px;
-  margin-top: 10px;
-  cursor: pointer;
+	background-image: url('../../../assets/popular-agency.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 25px 0;
+	min-height: 280px;
+	margin-top: 10px;
+	cursor: pointer;
 }
 .shadow_div {
-  position: absolute;
-  height: 80px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(20, 19, 19, 0.404);
-  box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.5);
+	position: absolute;
+	height: 80px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(20, 19, 19, 0.404);
+	box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.5);
 }
 .agency_details {
-  color: white;
-  padding: 10px;
+	color: white;
+	padding: 10px;
 }
 .agency_details h3 {
-  font-size: 1.2rem;
-  padding: 5px 0;
+	font-size: 1.2rem;
+	padding: 5px 0;
 }

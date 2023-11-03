@@ -1,6 +1,5 @@
-import LoadingSpinner from "@/components/ui/loader/Loader";
+import LoadingSpinner from '@/components/ui/loader/Loader';
 
-
-const Loading = () => <LoadingSpinner/>;
+const Loading = () => <LoadingSpinner />;
 
 export default Loading;

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Schedules = () => {
-  return (
-    <div>Schedules</div>
-  )
-}
+	return <div>Schedules</div>;
+};
 
-export default Schedules
+export default Schedules;

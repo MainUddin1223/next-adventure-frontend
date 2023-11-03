@@ -1,12 +1,12 @@
-import ManageSchedules from '@/components/ui/users/Schedules/Schedules'
-import React from 'react'
+import ManageSchedules from '@/components/ui/users/Schedules/Schedules';
+import React from 'react';
 
 const Schedules = () => {
-  return (
-    <div>
-      <ManageSchedules/>
-    </div>
-  )
-}
+	return (
+		<div>
+			<ManageSchedules />
+		</div>
+	);
+};
 
-export default Schedules
+export default Schedules;

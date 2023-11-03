@@ -1,29 +1,29 @@
 .reviews_container {
-  width: 80%;
-  margin: 50px auto;
-  height: 400px;
+	width: 80%;
+	margin: 50px auto;
+	height: 400px;
 }
 .reviews {
-  width: 50%;
-  display: block;
-  margin: 0 auto;
+	width: 50%;
+	display: block;
+	margin: 0 auto;
 }
 
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
-  .reviews_container {
-    width: 95%;
-  }
-  .reviews {
-    width: 100%;
-  }
+	.reviews_container {
+		width: 95%;
+	}
+	.reviews {
+		width: 100%;
+	}
 }
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .reviews_container {
-    width: 90%;
-  }
-  .reviews {
-    width: 75%;
-  }
+	.reviews_container {
+		width: 90%;
+	}
+	.reviews {
+		width: 75%;
+	}
 }

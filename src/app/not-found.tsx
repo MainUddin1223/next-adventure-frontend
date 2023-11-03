@@ -1,11 +1,11 @@
-import PageNotFound from '@/components/ui/PageNotFound/PageNotFound'
+import PageNotFound from '@/components/ui/PageNotFound/PageNotFound';
 
 const NotFoundPage = () => {
-  return (
-    <div>
-      <PageNotFound/>
-    </div>
-  )
-}
+	return (
+		<div>
+			<PageNotFound />
+		</div>
+	);
+};
 
-export default NotFoundPage
+export default NotFoundPage;

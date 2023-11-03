@@ -1,12 +1,11 @@
-import UpcomingPlan from "@/components/ui/upcoming-plan/UpcomingPlan"
-
+import UpcomingPlan from '@/components/ui/upcoming-plan/UpcomingPlan';
 
 const UpcomingTourPlan = () => {
-  return (
-      <div>
-          <UpcomingPlan/>
-    </div>
-  )
-}
+	return (
+		<div>
+			<UpcomingPlan />
+		</div>
+	);
+};
 
-export default UpcomingTourPlan
+export default UpcomingTourPlan;

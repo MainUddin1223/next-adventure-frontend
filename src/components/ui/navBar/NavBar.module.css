@@ -1,67 +1,67 @@
 .header_section {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  width: '100%';
-  background-color: var(--button-color);
-  padding: 0px;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	width: '100%';
+	background-color: var(--button-color);
+	padding: 0px;
 }
 
 .header_container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 80%;
+	margin: 0 auto;
 }
 .navigation_item_container {
-  display: flex;
-  gap: 15px;
+	display: flex;
+	gap: 15px;
 }
 .list_container {
-  display: flex;
-  gap: 15px;
+	display: flex;
+	gap: 15px;
 }
 .navigation_item {
-  color: white;
-  font-size: 17px;
-  font-weight: 600;
-  text-transform: capitalize;
-  font-family: Arial, Helvetica, sans-serif;
-  transition: 0.7s ease-in-out;
+	color: white;
+	font-size: 17px;
+	font-weight: 600;
+	text-transform: capitalize;
+	font-family: Arial, Helvetica, sans-serif;
+	transition: 0.7s ease-in-out;
 }
 .navigation_item :hover {
-  color: rgb(207, 200, 200);
+	color: rgb(207, 200, 200);
 }
 .drawer_container {
-  display: none;
+	display: none;
 }
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (max-width: 768px) {
-  .header_container {
-    width: 95%;
-  }
-  .navigation_item_container {
-    display: none;
-  }
-  .drawer_container {
-    display: block;
-  }
-  .navigation_item {
-    color: white;
-    text-align: center;
-    display: block;
-    margin: 15px 0;
-    padding: 10px;
-    font-size: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+	.header_container {
+		width: 95%;
+	}
+	.navigation_item_container {
+		display: none;
+	}
+	.drawer_container {
+		display: block;
+	}
+	.navigation_item {
+		color: white;
+		text-align: center;
+		display: block;
+		margin: 15px 0;
+		padding: 10px;
+		font-size: 20px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
 }
 
 /* Small screens and laptops (769px to 1024px) */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .navigation_item {
-    font-size: 18px;
-  }
+	.navigation_item {
+		font-size: 18px;
+	}
 }

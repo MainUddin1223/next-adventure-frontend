@@ -1,24 +1,24 @@
 .search_field {
-  width: 25%;
-  margin: 20px 0;
+	width: 25%;
+	margin: 20px 0;
 }
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
-  .search_field {
-    width: 75%;
-  }
+	.search_field {
+		width: 75%;
+	}
 }
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .search_field {
-    width: 75%;
-  }
+	.search_field {
+		width: 75%;
+	}
 }
 
 /* Small screens and laptops (769px to 1024px) */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .search_field {
-    width: 50%;
-  }
+	.search_field {
+		width: 50%;
+	}
 }

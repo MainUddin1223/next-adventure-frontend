@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const TourPlans = () => {
-  return (
-    <div>TourPlans</div>
-  )
-}
+	return <div>TourPlans</div>;
+};
 
-export default TourPlans
+export default TourPlans;

@@ -1,4 +1,3 @@
-
 // import PublicLayout from '../PublicLayout'
 // import RegisterForm from '../RegisterForm/RegisterForm'
 

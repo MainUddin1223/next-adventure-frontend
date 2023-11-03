@@ -1,12 +1,12 @@
-import EditProfileForm from '@/components/ui/EditProfileForm/EditProfileForm'
-import React from 'react'
+import EditProfileForm from '@/components/ui/EditProfileForm/EditProfileForm';
+import React from 'react';
 
 const EditProfile = () => {
-  return (
-    <div>
-      <EditProfileForm/>
-    </div>
-  )
-}
+	return (
+		<div>
+			<EditProfileForm />
+		</div>
+	);
+};
 
-export default EditProfile
+export default EditProfile;

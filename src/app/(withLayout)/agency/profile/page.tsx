@@ -1,12 +1,11 @@
-import CommonProfile from "@/components/profile/Profile"
-
+import CommonProfile from '@/components/profile/Profile';
 
 const page = () => {
-  return (
-      <>
-      <CommonProfile/>
-      </>
-  )
-}
+	return (
+		<>
+			<CommonProfile />
+		</>
+	);
+};
 
-export default page
+export default page;
