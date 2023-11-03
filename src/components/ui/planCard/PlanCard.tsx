@@ -54,9 +54,9 @@ const PlanCard = ({ plan }: { plan: any }) => {
 					</Carousel>
 				)}
 				<div className={styles.tour_details}>
-					{plan?.plan_name?.length > 25 ? (
+					{plan?.plan_name?.length > 20 ? (
 						<Tooltip placement="topLeft" title={plan?.plan_name}>
-							<h4>{plan?.plan_name.substring(0, 25)}...</h4>
+							<h4>{plan?.plan_name.substring(0, 20)}...</h4>
 						</Tooltip>
 					) : (
 						<h4>{plan?.plan_name}</h4>
