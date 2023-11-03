@@ -7,7 +7,6 @@ import { Button, Input } from 'antd';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styles from './Hero.module.css';
-const { Search } = Input;
 
 const Hero = () => {
 	const dispatch = useAppDispatch();
@@ -41,7 +40,11 @@ const Hero = () => {
 					<h1>Enjoy your Holidays</h1>
 					<h2>Find the best plan from the uncountable options</h2>
 					<Button
-						style={{ display: 'block', margin: '20px auto' }}
+						style={{
+							display: 'block',
+							margin: '20px auto',
+							fontWeight: 'bold',
+						}}
 						size="large"
 						type="primary"
 						onClick={() => router.push('/agencies')}

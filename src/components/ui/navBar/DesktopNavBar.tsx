@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { INavProps } from '../types';
 import styles from './NavBar.module.css';
 
-
 const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 	const router = useRouter();
 	return (
