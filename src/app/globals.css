@@ -5,7 +5,7 @@
 }
 
 a {
-	color: inherit;
+	color: black;
 	text-decoration: none;
 }
 Link {
@@ -31,6 +31,7 @@ hr {
 	--secondary-color: #327012;
 	--background-color: #1ca27c;
 	--button-color: #327012;
+	--header-color: #f2f5f1;
 }
 /*
 /* Mobile devices (320px to 480px) */

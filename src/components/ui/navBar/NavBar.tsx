@@ -47,16 +47,13 @@ const NavBar = () => {
 					top: 0,
 					zIndex: 1,
 					width: '100%',
-					backgroundColor: 'var(--primary-color)',
+					backgroundColor: 'var(--header-color)',
 					padding: '0 10px',
 				}}
 			>
 				<span className={styles.header_container}>
-					<div>
-						<Link href="/">
-							<Image src={logo} height={40} alt="logo" />
-						</Link>
-					</div>
+
+							<Image style={{cursor:"pointer"}} src={logo} height={40} alt="logo" onClick={() => router.push(`/`)}/>
 					{!isUser || role == 'user' ? (
 						<div>
 							<div className={styles.navigation_item_container}>
@@ -125,10 +122,9 @@ const NavBar = () => {
 						</div>
 					) : (
 						<div className={styles.navigation_item_container}>
-							<Link href={`${role}/profile`} className={styles.navigation_item}>
-								{' '}
-								<p>Dashboard</p>
-							</Link>
+							<a href={`${role}/profile`} className={styles.navigation_item}>
+								Dashboard
+								</a>
 							{profile_img ? (
 								<Image
 									src={profile_img}

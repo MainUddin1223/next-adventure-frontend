@@ -24,15 +24,15 @@
 	gap: 15px;
 }
 .navigation_item {
-	color: white;
 	font-size: 17px;
 	font-weight: 600;
 	text-transform: capitalize;
 	font-family: Arial, Helvetica, sans-serif;
 	transition: 0.7s ease-in-out;
+	color: black;
 }
-.navigation_item :hover {
-	color: rgb(207, 200, 200);
+.navigation_item:hover {
+	color: var(--button-color);
 }
 .drawer_container {
 	display: none;
