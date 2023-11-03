@@ -27,27 +27,27 @@ const Hero = () => {
 	return (
 		<div className={styles.parallox}>
 			<div className={styles.hero_container}>
-								<div className={styles.bannner_info}>
-				<div className={styles.search_field_container}>
-					<Input
-						type="text"
-						size="large"
-						placeholder="Search ... "
-						onChange={(e) => setSearchTerm(e.target.value)}
-						prefix={<SearchOutlined style={{ color: 'gray' }} />}
-					/>
-				</div>
+				<div className={styles.bannner_info}>
+					<div className={styles.search_field_container}>
+						<Input
+							type="text"
+							size="large"
+							placeholder="Search ... "
+							onChange={(e) => setSearchTerm(e.target.value)}
+							prefix={<SearchOutlined style={{ color: 'gray' }} />}
+						/>
+					</div>
 
 					<h1>Enjoy your Holidays</h1>
 					<h2>Find the best plan from the uncountable options</h2>
-				<Button
-					style={{ display: 'block', margin: '20px auto' }}
-					size="large"
-					type="primary"
-					onClick={() => router.push('/agencies')}
-				>
-					Explore Us <ArrowRightOutlined />
-				</Button>
+					<Button
+						style={{ display: 'block', margin: '20px auto' }}
+						size="large"
+						type="primary"
+						onClick={() => router.push('/agencies')}
+					>
+						Explore Us <ArrowRightOutlined />
+					</Button>
 				</div>
 			</div>
 		</div>

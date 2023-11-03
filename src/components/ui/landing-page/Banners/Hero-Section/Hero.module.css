@@ -19,6 +19,7 @@
 }
 .bannner_info {
 	background-color: var(--accent-color);
+	width: 100%;
 	padding: 15px;
 	text-align: center;
 }
@@ -48,13 +49,9 @@
 	}
 	.bannner_info h1 {
 		font-size: 2rem;
-		padding: 10px;
-		color: var(--primary-color);
 	}
 	.bannner_info h2 {
 		font-size: 1.4rem;
-		padding: 10px;
-		color: var(--primary-color);
 	}
 }
 /* iPads and Tablets (481px to 768px) */
@@ -73,13 +70,9 @@
 	}
 	.bannner_info h1 {
 		font-size: 2.8rem;
-		padding: 10px;
-		color: var(--primary-color);
 	}
 	.bannner_info h2 {
 		font-size: 1.7rem;
-		padding: 10px;
-		color: var(--primary-color);
 	}
 }
 
@@ -90,9 +83,5 @@
 	}
 	.bannner_info h2 {
 		font-size: 1.4rem;
-	}
-	.cover_location {
-		width: 75px;
-		height: 75px;
 	}
 }
