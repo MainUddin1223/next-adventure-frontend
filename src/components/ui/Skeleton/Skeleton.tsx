@@ -1,4 +1,5 @@
 import { Col, Row, Skeleton } from 'antd';
+import PlanSkeleton from './PlanSkeleton';
 
 const SkeletonLoader = ({
 	items,
@@ -10,8 +11,9 @@ const SkeletonLoader = ({
 	md?: number;
 }) => {
 	return (
-		<div>
+		<div style={{ width: '80%', margin: '20px auto' }}>
 			<Row gutter={[15, 15]} justify={'center'}>
+				<PlanSkeleton />
 				{Array.from({ length: items }, (_, index) => (
 					<Col sm={sm} md={md} key={index}>
 						<div>
