@@ -12,8 +12,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import DesktopNavBar from './DesktopNavBar';
 import styles from './NavBar.module.css';
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
@@ -21,7 +22,7 @@ const NavBar = () => {
 	const { role } = getUserInfo() as any;
 	const router = useRouter();
 	const profile_img =
-		typeof window !== 'undefined' && localStorage.getItem('profile_img');
+		typeof window !== 'undefined' ? localStorage.getItem('profile_img') : null;
 
 	const showDrawer = () => {
 		setOpen(true);
@@ -33,7 +34,6 @@ const NavBar = () => {
 	const isUser = isLoggedIn();
 
 	const handleLogout = async () => {
-		console.log('clieked');
 		await userLogout(undefined);
 		localStorage.clear();
 		setOpen(false);
@@ -52,7 +52,7 @@ const NavBar = () => {
 					padding: '0 10px',
 				}}
 			>
-				<span className={styles.header_container}>
+				<span className={styles.desktop_header_container}>
 					<Image
 						style={{ cursor: 'pointer' }}
 						src={logo}
@@ -60,107 +60,12 @@ const NavBar = () => {
 						alt="logo"
 						onClick={() => router.push(`/`)}
 					/>
-					{!isUser || role == 'user' ? (
-						<div>
-							<div className={styles.navigation_item_container}>
-								<Link href="/agencies" className={styles.navigation_item}>
-									{' '}
-									<p>Agencies</p>
-								</Link>
-								<Link href="/plans" className={styles.navigation_item}>
-									{' '}
-									<p>Tour plans</p>
-								</Link>
-								{isUser ? (
-									<>
-										<Link
-											href={`/${role}/schedules`}
-											className={styles.navigation_item}
-										>
-											{' '}
-											<p>My plans</p>
-										</Link>
-										<div
-											style={{
-												width: '45px',
-												margin: '0 auto',
-												display: 'block',
-											}}
-										>
-											{profile_img ? (
-												<Image
-													src={profile_img}
-													alt="profile_img"
-													width={80}
-													height={80}
-													style={{
-														fontSize: '20px',
-														padding: '5px',
-														color: 'white',
-														cursor: 'pointer',
-														height: '45px',
-														width: '45px',
-														borderRadius: '50%',
-													}}
-													onClick={() => router.push(`${role}/profile`)}
-												/>
-											) : (
-												<UserOutlined
-													style={{
-														fontSize: '20px',
-														padding: '5px',
-														color: 'white',
-														cursor: 'pointer',
-													}}
-													onClick={() => router.push(`${role}/profile`)}
-												/>
-											)}
-										</div>
-									</>
-								) : (
-									<>
-										<Link href="/login" className={styles.navigation_item}>
-											Login
-										</Link>
-									</>
-								)}
-							</div>
-						</div>
-					) : (
-						<div className={styles.navigation_item_container}>
-							<a href={`${role}/profile`} className={styles.navigation_item}>
-								Dashboard
-							</a>
-							{profile_img ? (
-								<Image
-									src={profile_img}
-									alt="profile_img"
-									width={30}
-									height={30}
-									style={{
-										fontSize: '20px',
-										padding: '5px',
-										color: 'white',
-										cursor: 'pointer',
-										height: '45px',
-										width: '45px',
-										borderRadius: '50%',
-									}}
-									onClick={() => router.push(`${role}/profile`)}
-								/>
-							) : (
-								<UserOutlined
-									style={{
-										fontSize: '20px',
-										padding: '5px',
-										color: 'white',
-										cursor: 'pointer',
-									}}
-									onClick={() => router.push(`${role}/profile`)}
-								/>
-							)}
-						</div>
-					)}
+					<DesktopNavBar
+						role={role}
+						profile_img={profile_img}
+						isUser={isUser}
+						logout={handleLogout}
+					/>
 				</span>
 
 				{/* mobile navbar */}
@@ -234,9 +139,12 @@ const NavBar = () => {
 							)}
 						</div>
 
-						{ !isUser ? (
+						{!isUser ? (
 							<>
-								<Link href="/agencies" className={styles.mobile_navigation_item}>
+								<Link
+									href="/agencies"
+									className={styles.mobile_navigation_item}
+								>
 									{' '}
 									<p>Agencies</p>
 								</Link>
@@ -253,7 +161,10 @@ const NavBar = () => {
 							</>
 						) : role == 'user' ? (
 							<>
-								<Link href="/agencies" className={styles.mobile_navigation_item}>
+								<Link
+									href="/agencies"
+									className={styles.mobile_navigation_item}
+								>
 									{' '}
 									<p>Agencies</p>
 								</Link>

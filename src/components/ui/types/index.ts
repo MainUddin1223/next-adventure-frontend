@@ -98,3 +98,10 @@ export interface MobileDataType {
 export type IStepsProps = {
 	step: number;
 };
+
+export interface INavProps {
+	role: string;
+	isUser: boolean;
+	logout: () => void;
+	profile_img: string | null;
+}
