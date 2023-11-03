@@ -29,7 +29,7 @@ export default function RootLayout({
 							fontWeight: 500,
 						},
 						Drawer: {
-							colorBgElevated: '#23b26b',
+							colorBgElevated: '#e0e3de',
 						},
 						Breadcrumb: {
 							itemColor: '#327012',

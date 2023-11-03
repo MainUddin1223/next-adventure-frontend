@@ -7,7 +7,7 @@ import {
 	MenuOutlined,
 	UserOutlined,
 } from '@ant-design/icons';
-import { Button, Drawer, Layout } from 'antd';
+import { Drawer, Layout } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -33,6 +33,7 @@ const NavBar = () => {
 	const isUser = isLoggedIn();
 
 	const handleLogout = async () => {
+		console.log('clieked');
 		await userLogout(undefined);
 		localStorage.clear();
 		setOpen(false);
@@ -81,7 +82,7 @@ const NavBar = () => {
 										</Link>
 										<div
 											style={{
-												width: '60px',
+												width: '45px',
 												margin: '0 auto',
 												display: 'block',
 											}}
@@ -97,8 +98,8 @@ const NavBar = () => {
 														padding: '5px',
 														color: 'white',
 														cursor: 'pointer',
-														height: '60px',
-														width: '60px',
+														height: '45px',
+														width: '45px',
 														borderRadius: '50%',
 													}}
 													onClick={() => router.push(`${role}/profile`)}
@@ -181,114 +182,116 @@ const NavBar = () => {
 					/>
 				</div>
 
+				{/* Nav drawer */}
+
 				<div className={styles.drawer_container}>
 					<Drawer
 						placement="left"
 						closeIcon={
 							<CloseCircleOutlined
-								style={{ fontSize: '25px', color: 'white' }}
+								style={{ fontSize: '35px', color: 'var(--button-color)' }}
 							/>
 						}
 						onClose={onClose}
 						open={open}
 					>
-						{!isUser || role == 'user' ? (
-							<>
-								<div
+						<div
+							style={{
+								display: 'flex',
+								justifyContent: 'center',
+							}}
+						>
+							{profile_img ? (
+								<Image
+									src={profile_img}
+									alt="profile_img"
+									width={80}
+									height={80}
 									style={{
+										fontSize: '20px',
+										color: 'white',
+										cursor: 'pointer',
+										height: '80px',
 										width: '80px',
-										margin: '0 auto',
-										display: 'block',
+										padding: '10px',
+										backgroundColor: 'var(--button-color)',
+										borderRadius: '50%',
 									}}
-								>
-									{profile_img ? (
-										<Image
-											src={profile_img}
-											alt="profile_img"
-											width={80}
-											height={80}
-											style={{
-												fontSize: '20px',
-												padding: '5px',
-												color: 'white',
-												cursor: 'pointer',
-												height: '80px',
-												width: '80px',
-												borderRadius: '50%',
-											}}
-											onClick={() => router.push(`${role}/profile`)}
-										/>
-									) : (
-										<UserOutlined
-											style={{
-												fontSize: '20px',
-												padding: '5px',
-												color: 'white',
-												cursor: 'pointer',
-											}}
-											onClick={() => router.push(`${role}/profile`)}
-										/>
-									)}
-								</div>
-								<Link href="/agencies" className={styles.navigation_item}>
+									onClick={() => router.push(`${role}/profile`)}
+								/>
+							) : (
+								<UserOutlined
+									style={{
+										fontSize: '45px',
+										padding: '10px',
+										backgroundColor: 'var(--button-color)',
+										borderRadius: '50%',
+										color: 'var(--accent-color)',
+										cursor: 'pointer',
+									}}
+									onClick={() => router.push(`${role}/profile`)}
+								/>
+							)}
+						</div>
+
+						{ !isUser ? (
+							<>
+								<Link href="/agencies" className={styles.mobile_navigation_item}>
 									{' '}
 									<p>Agencies</p>
 								</Link>
-								<Link href="/plans" className={styles.navigation_item}>
+								<Link href="/plans" className={styles.mobile_navigation_item}>
+									{' '}
+									<p>Tour plans</p>
+								</Link>
+								<Link href="/login" className={styles.mobile_navigation_item}>
+									Login
+								</Link>
+								<Link href="/signup" className={styles.mobile_navigation_item}>
+									Sign up
+								</Link>{' '}
+							</>
+						) : role == 'user' ? (
+							<>
+								<Link href="/agencies" className={styles.mobile_navigation_item}>
+									{' '}
+									<p>Agencies</p>
+								</Link>
+								<Link href="/plans" className={styles.mobile_navigation_item}>
 									{' '}
 									<p>Tour plans</p>
 								</Link>
 								<Link
 									href={`${role}/schedules`}
-									className={styles.navigation_item}
+									className={styles.mobile_navigation_item}
 								>
 									{' '}
 									<p>My plans</p>
 								</Link>
-								{isUser ? (
-									<span>
-										<Button
-											onClick={handleLogout}
-											style={{
-												width: '100%',
-												fontSize: '20px',
-												padding: '2px',
-											}}
-											type="primary"
-											size="large"
-										>
-											Logout
-										</Button>
-									</span>
-								) : (
-									<>
-										<Link href="/login" className={styles.navigation_item}>
-											Login
-										</Link>
-										<Link href="/signup" className={styles.navigation_item}>
-											Sign up
-										</Link>
-									</>
-								)}
+								<div
+									onClick={handleLogout}
+									className={styles.mobile_navigation_item}
+								>
+									{' '}
+									<p>Logout</p>
+								</div>
 							</>
 						) : (
 							<>
 								<Link
 									href={`${role}/profile`}
-									className={styles.navigation_item}
+									className={styles.mobile_navigation_item}
 								>
 									{' '}
 									<p>Dashboard</p>
 								</Link>
-								<UserOutlined
-									style={{
-										fontSize: '20px',
-										padding: '5px',
-										color: 'white',
-										cursor: 'pointer',
-									}}
-									onClick={() => router.push(`${role}/profile`)}
-								/>
+								<div
+									onClick={handleLogout}
+									className={styles.mobile_navigation_item}
+								>
+									{' '}
+									<p>Logout</p>
+								</div>
 							</>
 						)}
 					</Drawer>

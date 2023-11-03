@@ -60,6 +60,17 @@
 	.drawer_container {
 		display: block;
 	}
+	.mobile_navigation_item {
+		text-align: center;
+		display: block;
+		margin: 15px 0;
+		padding: 10px;
+		font-size: 23px;
+		border: 1px solid var(--button-color);
+		box-shadow: 0 4px 6px rgba(9, 80, 18, 0.1);
+		color: var(--button-color);
+		font-weight: bold;
+	}
 	.navigation_item {
 		color: white;
 		text-align: center;
