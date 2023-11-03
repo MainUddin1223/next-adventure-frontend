@@ -44,7 +44,6 @@ const AgencyBanner = () => {
 						width={500}
 						layout="responsive"
 						alt="offeringImg"
-						style={{ borderRadius: '0 5px 5px 0' }}
 					/>
 				</Col>
 			</Row>

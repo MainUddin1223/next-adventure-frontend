@@ -28,7 +28,7 @@ const PopulerAgencies = ({ agencies }: any) => {
 		<div className={styles.popular_agencies_container}>
 			<h2 className={styles.header}>Populer planners</h2>
 			<p style={{ fontSize: '19px', marginBottom: '10px', fontWeight: 'bold' }}>
-				Find your best plan from uncountable options
+				Discover your ideal tour planner from an endless array of choices.
 			</p>
 			<hr style={{ color: 'gray' }} />
 			<AliceCarousel

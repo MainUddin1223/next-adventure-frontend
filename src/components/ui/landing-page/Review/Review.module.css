@@ -1,12 +1,12 @@
 .reviews_container {
 	width: 80%;
-	margin: 50px auto;
+	margin: 100px auto;
 	height: 400px;
 }
 .reviews {
-	width: 50%;
 	display: block;
 	margin: 0 auto;
+	min-height: 300px;
 }
 
 /* Mobile devices (320px to 480px) */

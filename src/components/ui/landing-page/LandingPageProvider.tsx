@@ -23,13 +23,13 @@ const LandingPageProvider = () => {
 	}
 	return (
 		<>
-			<Motto />
 			<FeaturedTour tours={data} />
 			<AgencyBanner />
 			<PopularAgencies agencies={data} />
 			<Guideline />
 			<Reviews reviews={data} />
 			{isLoggedInUser && <LeaveReview />}
+			<Motto />
 		</>
 	);
 };

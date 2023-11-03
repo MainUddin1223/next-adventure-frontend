@@ -27,8 +27,17 @@ const FeaturedTour = ({ tours }: any) => {
 	return (
 		<div className={styles.featured_container}>
 			<h2 className={styles.featured_header}>Featured Plans</h2>
-			<p style={{ fontSize: '19px', marginBottom: '10px', fontWeight: 'bold' }}>
-				Find your best plan from uncountable options
+			<p
+				style={{
+					fontSize: '18px',
+					marginBottom: '10px',
+					fontWeight: 'bold',
+					lineHeight: '35px',
+				}}
+			>
+				Experience the extraordinary with our tailor-made tour plan amidst
+				boundless possibilities. From stunning landscapes to vibrant cities, let
+				us craft your dream vacation for an unforgettable adventure.
 			</p>
 			<hr style={{ color: 'gray' }} />
 			<AliceCarousel
