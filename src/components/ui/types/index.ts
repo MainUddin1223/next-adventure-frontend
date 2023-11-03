@@ -84,6 +84,7 @@ export type ITableProps = {
   showPagination?: boolean;
   onPaginationChange: (page: number, pageSize: number) => void;
   onTableChange: (pagination: any, filter: any, sorter: any) => void;
+  expandable?: any;
 };
 
 export interface MobileDataType {

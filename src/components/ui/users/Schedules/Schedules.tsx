@@ -32,7 +32,7 @@ const ManageSchedules = () => {
     )
     }
     
-    const statusHandler = (status: string) => {
+ const statusHandler = (status: string) => {
         return (
             <div>
                 {

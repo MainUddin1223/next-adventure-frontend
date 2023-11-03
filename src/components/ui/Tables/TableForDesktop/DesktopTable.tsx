@@ -13,9 +13,9 @@ const DesktopTable = ({
   showSizeChanger = true,
   onPaginationChange,
   onTableChange,
-  showPagination = true
+  showPagination = true,
+  expandable
 }:ITableProps) => {
-
     const paginationConfig = showPagination
     ? {
         pageSize: pageSize,
@@ -25,12 +25,19 @@ const DesktopTable = ({
         onChange: onPaginationChange,
       }
     : false;
-  
+  const dataSourceWithKey = dataSource?.map((data:any) => {
+    const newData = { ...data, key: data.id };
+    return newData
+})
+
   return (
     <Table
       loading={loading}
       columns={columns}
-      dataSource={dataSource}
+         size="middle"
+    scroll={{ x: 'calc(600px + 50%)' }}
+      dataSource={dataSourceWithKey}
+      expandable={{...expandable,defaultExpandedRowKeys: [0]}}
       pagination={paginationConfig}
       onChange={onTableChange}
     />

@@ -78,9 +78,9 @@ const NavBar = () => {
               <div>
         <div className={styles.navigation_item_container}>
                   <Link href={`${role}/profile`} className={styles.navigation_item}> <p>Dashboard</p></Link>
-                  <div style={{ width: '80px',margin:'0 auto',display:'block' }}>
+                  <div style={{ width: '50px',margin:'0 auto',display:'block' }}>
                     {
-                    profile_img ? <Image src={profile_img} alt='profile_img' width={80} height={80} style={{ fontSize: "20px", padding: "5px", color: "white", cursor: "pointer",height:'80px',width:'80px',borderRadius:'50%' }} onClick={() => router.push(`${role}/profile`)} /> :
+                    profile_img ? <Image src={profile_img} alt='profile_img' width={50} height={50} style={{ fontSize: "20px", padding: "5px", color: "white", cursor: "pointer",height:'80px',width:'80px',borderRadius:'50%' }} onClick={() => router.push(`${role}/profile`)} /> :
                     <UserOutlined style={{ fontSize: "20px", padding: "5px", color: "white", cursor: "pointer" }} onClick={() => router.push(`${role}/profile`)} /> 
                   }
                   </div>

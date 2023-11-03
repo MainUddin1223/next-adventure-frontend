@@ -1,12 +1,10 @@
-import type { MenuProps } from "antd"
 import {
-    UserOutlined,
-    TableOutlined,
-    AppstoreOutlined,
-    FileTextOutlined,
     CreditCardOutlined,
-    ThunderboltOutlined
+    TableOutlined,
+    ThunderboltOutlined,
+    UserOutlined
 } from '@ant-design/icons';
+import type { MenuProps } from "antd";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 export const sidebarItems = (role: string) => {
@@ -79,7 +77,12 @@ export const sidebarItems = (role: string) => {
     const agencySidebarItems: MenuProps["items"] = [
         ...defaultSidebarItems,
         {
-        label: <Link href={`/${role}/my-plans`}>My Plans</Link>,
+        label: <Link href={`/${role}/upcoming-plan`}>Upcoming Plans</Link>,
+        icon:<TableOutlined/>,
+        key: `/${role}/upcoming-plan`
+        },
+        {
+        label: <Link href={`/${role}/my-plans`}>All Plans</Link>,
         icon:<TableOutlined/>,
         key: `/${role}/my-plans`
         },
