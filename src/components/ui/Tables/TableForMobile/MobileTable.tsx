@@ -1,4 +1,4 @@
-import { ArrowsAltOutlined, ShrinkOutlined } from '@ant-design/icons';
+import { DownCircleOutlined, UpCircleOutlined } from '@ant-design/icons';
 import { Collapse } from 'antd';
 
 export type IMobileTableProps = {
@@ -18,13 +18,13 @@ const MobileTable = ({ items }: IMobileTableProps) => {
 			expandIconPosition="end"
 			expandIcon={(accordion) =>
 				accordion?.isActive ? (
-					<ShrinkOutlined
-						style={{ fontSize: '35px', marginTop: '20px', color: 'red' }}
+					<UpCircleOutlined
+						style={{ fontSize: '25px', marginTop: '20px', color: 'red' }}
 					/>
 				) : (
-					<ArrowsAltOutlined
+					<DownCircleOutlined
 						style={{
-							fontSize: '35px',
+							fontSize: '25px',
 							color: 'var(--primary-color)',
 							marginTop: '20px',
 						}}
