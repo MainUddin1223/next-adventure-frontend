@@ -21,14 +21,18 @@ const AgencyCard = ({ agency }: IAgencyType) => {
 			>
 				<div className={styles.shadow_div}>
 					<div className={styles.agency_details}>
-						{agencyFullName.length > 25 ? (
+						{agencyFullName.length > 15 ? (
 							<Tooltip placement="topLeft" title={agencyFullName}>
-								<h4>{agencyFullName.substring(0, 25)}...</h4>
+								<h3>{agencyFullName.substring(0, 15)}...</h3>
 							</Tooltip>
 						) : (
-							<h4>{agencyFullName}</h4>
+							<h3>{agencyFullName}</h3>
 						)}
-						<Rate disabled defaultValue={4} />
+						<Rate
+							disabled
+							style={{ color: 'var(--primary-color)' }}
+							defaultValue={4}
+						/>
 					</div>
 				</div>
 			</div>
