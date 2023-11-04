@@ -1,6 +1,4 @@
 .guideline_container {
-	width: 80%;
-	margin: 0 auto;
 	position: relative;
 }
 .guideline_details {
@@ -19,7 +17,4 @@
 
 /* iPads, Tablets and mobile */
 @media only screen and (max-width: 768px) {
-	.guideline_container {
-		width: 100%;
-	}
 }

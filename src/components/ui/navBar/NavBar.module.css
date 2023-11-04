@@ -4,7 +4,6 @@
 	z-index: 1;
 	width: '100%';
 	background-color: var(--button-color);
-	padding: 0px;
 }
 
 .desktop_header_container {
@@ -76,4 +75,19 @@
 	.navigation_item {
 		font-size: 18px;
 	}
+}
+/* Extra large screens and TVs (1201px and above) */
+@media only screen and (min-width: 1801px) {
+	.landscape_container {
+		width: 1200px;
+		margin: 0 auto;
+	}
+	.desktop_header_container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		margin: 0 auto;
+	}
+	/* Your CSS styles for extra large screens and TVs go here */
 }

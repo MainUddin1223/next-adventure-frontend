@@ -23,13 +23,37 @@ const LandingPageProvider = () => {
 	}
 	return (
 		<>
-			<FeaturedTour tours={data} />
-			<AgencyBanner />
-			<PopularAgencies agencies={data} />
-			<Guideline />
-			<Reviews reviews={data} />
-			{isLoggedInUser && <LeaveReview />}
-			<Motto />
+			<div className="landing_page_container">
+				<div style={{ margin: '100px 0' }}>
+					<FeaturedTour tours={data} />
+				</div>
+				<div style={{ margin: '100px 0' }}>
+					<AgencyBanner />
+				</div>
+				<div style={{ margin: '100px 0' }}>
+					<PopularAgencies agencies={data} />
+				</div>
+			</div>
+			<div className="landing_page_banner_container">
+				<div style={{ margin: '100px 0' }}>
+					<Guideline />
+				</div>
+			</div>
+			<div className="landing_page_container">
+				<div style={{ margin: '100px 0' }}>
+					<Reviews reviews={data} />
+				</div>
+				{isLoggedInUser && (
+					<div style={{ margin: '100px 0' }}>
+						<LeaveReview />
+					</div>
+				)}
+			</div>
+			<div className="landing_page_banner_container">
+				<div style={{ margin: '100px 0' }}>
+					<Motto />
+				</div>
+			</div>
 		</>
 	);
 };

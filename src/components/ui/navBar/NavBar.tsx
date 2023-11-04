@@ -35,25 +35,27 @@ const NavBar = () => {
 					top: 0,
 					zIndex: 1,
 					width: '100%',
+					padding: 0,
 					backgroundColor: 'var(--accent-color)',
-					padding: '0 10px',
 				}}
 			>
-				<span className={styles.desktop_header_container}>
-					<Image
-						style={{ cursor: 'pointer' }}
-						src={logo}
-						height={40}
-						alt="logo"
-						onClick={() => router.push(`/`)}
-					/>
-					<DesktopNavBar
-						role={role}
-						profile_img={profile_img}
-						isUser={isUser}
-						logout={handleLogout}
-					/>
-				</span>
+				<div className={styles.landscape_container}>
+					<span className={styles.desktop_header_container}>
+						<Image
+							style={{ cursor: 'pointer' }}
+							src={logo}
+							height={40}
+							alt="logo"
+							onClick={() => router.push(`/`)}
+						/>
+						<DesktopNavBar
+							role={role}
+							profile_img={profile_img}
+							isUser={isUser}
+							logout={handleLogout}
+						/>
+					</span>
+				</div>
 				<span>
 					<MobileNavBar
 						role={role}

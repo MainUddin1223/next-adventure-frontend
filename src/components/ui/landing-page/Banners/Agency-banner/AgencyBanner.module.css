@@ -1,7 +1,3 @@
-.offering_container {
-	width: 80%;
-	margin: 0 auto;
-}
 .offering_row_container {
 	background-color: rgba(216, 215, 215, 0.481);
 	margin: 20px 0;
@@ -16,9 +12,6 @@
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (max-width: 768px) {
-	.offering_container {
-		width: 100%;
-	}
 	.offering_details_container {
 		padding: 40px 0;
 		padding: 10px;

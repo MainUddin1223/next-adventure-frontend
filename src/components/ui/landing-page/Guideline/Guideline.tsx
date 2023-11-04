@@ -13,6 +13,7 @@ const Guideline = () => {
 				width={100}
 				layout="responsive"
 				alt="guideline"
+				style={{ maxHeight: '80vh' }}
 			/>
 			<div className={styles.guideline_details}>
 				<h2>User Guideline</h2>

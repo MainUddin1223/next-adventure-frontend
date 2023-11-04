@@ -1,11 +1,11 @@
-.featured_container {
+/* .featured_container {
 	width: 80%;
 	margin: 50px auto;
 	margin-bottom: 100px;
-}
+} */
 .featured_header {
 	font-size: 2rem;
-	margin: 15px 0;
+	margin-bottom: 15px;
 }
 .tour_details {
 	padding: 5px;
@@ -20,15 +20,9 @@
 
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
-	.featured_container {
-		width: 95%;
-	}
 }
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-	.featured_container {
-		width: 90%;
-	}
 	.agency_card_container {
 		width: 80%;
 	}

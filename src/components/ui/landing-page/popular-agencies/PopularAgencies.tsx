@@ -72,7 +72,7 @@ const PopulerAgencies = ({ agencies }: any) => {
 			<Button
 				onClick={() => router.push('/agencies')}
 				size="large"
-				style={{ marginTop: '20px' }}
+				style={{ marginLeft: '10px' }}
 				type="primary"
 			>
 				See more <ArrowRightOutlined />

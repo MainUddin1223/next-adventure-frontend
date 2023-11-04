@@ -26,6 +26,10 @@ hr {
 	background-color: gray;
 	margin: 20px 0;
 }
+.landing_page_container {
+	width: 80%;
+	margin: 0 auto;
+}
 
 /* :root {
   --primary-color: #6ab331;
@@ -35,13 +39,21 @@ hr {
 } */
 /*
 /* Mobile devices (320px to 480px) */
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+@media only screen and (min-width: 280px) and (max-width: 480px) {
 	/* Your CSS styles for mobile devices go here */
+	.landing_page_container {
+		width: 95%;
+		margin: 0 auto;
+	}
 }
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
 	/* Your CSS styles for iPads and tablets go here */
+	.landing_page_container {
+		width: 90%;
+		margin: 0 auto;
+	}
 }
 
 /* Small screens and laptops (769px to 1024px) */
@@ -55,6 +67,22 @@ hr {
 }
 
 /* Extra large screens and TVs (1201px and above) */
-@media only screen and (min-width: 1201px) {
+@media only screen and (min-width: 1801px) {
+	.landing_page_container {
+		width: 1200px;
+		margin: 0 auto;
+	}
+	.landing_page_banner_container {
+		width: 1200px;
+		margin: 0 auto;
+	}
+	/* Your CSS styles for extra large screens and TVs go here */
+}
+/* Extra large screens and TVs (1201px and above) */
+@media only screen and (min-width: 1025px) and (max-width: 1801px) {
+	.landing_page_banner_container {
+		width: 80%;
+		margin: 0 auto;
+	}
 	/* Your CSS styles for extra large screens and TVs go here */
 }

@@ -1,5 +1,4 @@
 'use client';
-import { Controller, useForm, useFormContext } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -10,13 +9,12 @@ const schema = yup
 	})
 	.required();
 
-import { Button, Card, Rate, message } from 'antd';
-import { useState } from 'react';
 import Form from '@/components/form/Form';
 import FormTextArea from '@/components/form/FormTextArea';
-import RatingCompo from '../../rating/RatingCompo';
-import { reviewSchema } from '@/schemas/auth';
 import { useLeaveReviewMutation } from '@/redux/api/userApi';
+import { reviewSchema } from '@/schemas/auth';
+import { Button, Card, message } from 'antd';
+import RatingCompo from '../../rating/RatingCompo';
 
 const LeaveReview = () => {
 	const desc = ['Terrible', 'Bad', 'Normal', 'Good', 'Wonderful'];
@@ -35,7 +33,7 @@ const LeaveReview = () => {
 		}
 	};
 	return (
-		<div style={{ marginTop: '20px' }}>
+		<div>
 			<Form submitHandler={onsubmit} resolver={yupResolver(reviewSchema)}>
 				<Card style={{ textAlign: 'center' }}>
 					<div

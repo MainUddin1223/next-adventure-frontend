@@ -71,7 +71,7 @@ const Reviews = ({ reviews }: any) => {
 					disableDotsControls={true}
 					infinite={true}
 					autoPlay={true}
-					autoPlayInterval={800}
+					autoPlayInterval={2500}
 					renderPrevButton={(e) => {
 						return (
 							!e.isDisabled && (
