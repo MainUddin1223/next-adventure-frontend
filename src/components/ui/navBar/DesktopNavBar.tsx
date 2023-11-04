@@ -12,29 +12,61 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 			{isUser ? (
 				role == 'user' ? (
 					<div className={styles.navigation_item_container}>
-						<Link href="/agencies" className={styles.navigation_item}>
-							{' '}
-							<p>Agencies</p>
-						</Link>
-						<Link href="/plans" className={styles.navigation_item}>
-							{' '}
-							<p>Tour plans</p>
-						</Link>
-						<Link
-							href={`/${role}/schedules`}
-							className={styles.navigation_item}
-						>
-							{' '}
-							<p>My plans</p>
-						</Link>
-						<div
-							onClick={logout}
-							className={styles.navigation_item}
-							style={{ cursor: 'pointer' }}
-						>
-							{' '}
-							<p style={{ cursor: 'pointer' }}>Logout</p>
-						</div>
+						<p>
+							<Link
+								href="/plans"
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Book a plan
+							</Link>
+						</p>
+						<p>
+							<Link
+								href="/plans"
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Ongoing Plans
+							</Link>
+						</p>
+						<p>
+							<Link
+								href={`/${role}/schedules`}
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Schedules
+							</Link>
+						</p>
+						<p>
+							<button
+								onClick={logout}
+								style={{
+									cursor: 'pointer',
+									backgroundColor: 'var(--accent-color)',
+									fontSize: '19px',
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Logout
+							</button>
+						</p>
 						{profile_img ? (
 							<Image
 								src={profile_img}
@@ -66,35 +98,91 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 					</div>
 				) : (
 					<div className={styles.navigation_item_container}>
-						<Link
-							href={`${role}/profile`}
-							className={styles.mobile_navigation_item}
-						>
-							{' '}
-							<p>Dashboard</p>
-						</Link>
-						<div onClick={logout} className={styles.mobile_navigation_item}>
-							{' '}
-							<p>Logout</p>
-						</div>
+						<p>
+							<Link
+								href={`${role}/profile`}
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Dashboard
+							</Link>
+						</p>
+						<p>
+							<button
+								onClick={logout}
+								style={{
+									cursor: 'pointer',
+									backgroundColor: 'var(--accent-color)',
+									fontSize: '19px',
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Logout
+							</button>
+						</p>
 					</div>
 				)
 			) : (
 				<div className={styles.navigation_item_container}>
-					<Link href="/agencies" className={styles.navigation_item}>
-						{' '}
-						<p>Agencies</p>
-					</Link>
-					<Link href="/plans" className={styles.navigation_item}>
-						{' '}
-						<p>Tour plans</p>
-					</Link>
-					<Link href="/login" className={styles.navigation_item}>
-						Login
-					</Link>
-					<Link href="/signup" className={styles.navigation_item}>
-						Sign up
-					</Link>{' '}
+					<p>
+						<Link
+							href="/agencies"
+							style={{
+								border: '1px solid var(--primary-color) ',
+								fontWeight: 'bold',
+								color: 'var(--primary-color)',
+								padding: '5px',
+							}}
+						>
+							Tour Planners
+						</Link>
+					</p>
+					<p>
+						<Link
+							href="/plans"
+							style={{
+								border: '1px solid var(--primary-color) ',
+								fontWeight: 'bold',
+								color: 'var(--primary-color)',
+								padding: '5px',
+							}}
+						>
+							Ongoing Plans
+						</Link>
+					</p>
+					<p>
+						<Link
+							href="/login"
+							style={{
+								border: '1px solid var(--primary-color) ',
+								fontWeight: 'bold',
+								color: 'var(--primary-color)',
+								padding: '5px',
+							}}
+						>
+							Login
+						</Link>
+					</p>
+					<p>
+						<Link
+							href="/signup"
+							style={{
+								border: '1px solid var(--primary-color) ',
+								fontWeight: 'bold',
+								color: 'var(--primary-color)',
+								padding: '5px',
+							}}
+						>
+							Sign up
+						</Link>
+					</p>
 				</div>
 			)}
 		</div>

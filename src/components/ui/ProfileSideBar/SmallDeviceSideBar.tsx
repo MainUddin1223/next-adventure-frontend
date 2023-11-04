@@ -1,7 +1,8 @@
 import { sidebarItems } from '@/constants/sidebarItems';
 import { useUserLogoutMutation } from '@/redux/api/authApi';
 import { getUserInfo } from '@/services/auth.service';
-import { Button, Drawer, Menu } from 'antd';
+import { CloseCircleOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Drawer, Menu } from 'antd';
 import { useRouter } from 'next/navigation';
 
 export type ISideBarProps = {
@@ -28,26 +29,45 @@ const SmallDeviceSideBar = ({ open, setOpen }: ISideBarProps) => {
 	return (
 		<>
 			<Drawer
-				title="Next Adventure"
+				title=""
 				placement="left"
 				onClose={onClose}
+				closeIcon={
+					<CloseCircleOutlined
+						style={{ fontSize: '35px', color: 'var(--button-color)' }}
+					/>
+				}
 				open={open}
 			>
 				<Menu
 					onClick={onClose}
-					style={{ backgroundColor: 'var(--primary-color)', color: 'white' }}
+					style={{
+						fontSize: '19px',
+						fontWeight: 'bold',
+						backgroundColor: 'var(--accent-color)',
+						color: 'var(--primary-color)',
+					}}
 					defaultSelectedKeys={['1']}
 					mode="inline"
 					items={sidebarItems(role)}
 				/>
-				<Button
+				<p
 					onClick={handleLogout}
-					type="primary"
-					size="large"
-					style={{ width: '97%', display: 'block', margin: '15px auto' }}
+					style={{
+						cursor: 'pointer',
+						border: '1px solid',
+						padding: '10px 20px ',
+						margin: '0 auto',
+						width: '97%',
+						fontSize: '19px',
+						fontWeight: 'bold',
+						backgroundColor: 'var(--accent-color)',
+						color: 'var(--primary-color)',
+					}}
 				>
+					<LogoutOutlined style={{ fontSize: '21px', marginRight: '10px' }} />
 					Logout
-				</Button>
+				</p>
 			</Drawer>
 		</>
 	);

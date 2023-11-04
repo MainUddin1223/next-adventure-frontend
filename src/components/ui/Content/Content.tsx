@@ -1,6 +1,7 @@
 'use client';
 import logo from '@/assets/travel-logo.png';
 import { useUserLogoutMutation } from '@/redux/api/authApi';
+import { getUserInfo } from '@/services/auth.service';
 import { MenuOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
 import { Header } from 'antd/es/layout/layout';
@@ -36,6 +37,7 @@ const getCrumbs = (currentPath: string) => {
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
 	const [open, setOpen] = useState(false);
+	const { role } = getUserInfo() as any;
 	const currentPath = usePathname();
 	const [userLogout] = useUserLogoutMutation();
 	const res = getCrumbs(currentPath);
@@ -54,66 +56,100 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 				style={{ backgroundColor: 'var(--accent-color)' }}
 			>
 				{/* desktop nav bar */}
-
-				<div className={styles.nav_container}>
-					<p>
-						<Link
-							href="/"
-							style={{
-								border: '1px solid var(--primary-color) ',
-								fontWeight: 'bold',
-								color: 'var(--primary-color)',
-								padding: '5px',
-							}}
-						>
-							Home
-						</Link>
-					</p>
-					<p>
-						<Link
-							href="/"
-							style={{
-								border: '1px solid var(--primary-color) ',
-								fontWeight: 'bold',
-								color: 'var(--primary-color)',
-								padding: '5px',
-							}}
-						>
-							Book a plan
-						</Link>
-					</p>
-					<p>
-						<button
-							onClick={handleLogout}
-							style={{
-								cursor: 'pointer',
-								fontSize: '19px',
-								border: '1px solid var(--primary-color) ',
-								fontWeight: 'bold',
-								color: 'var(--primary-color)',
-								padding: '5px',
-							}}
-						>
-							Logout
-						</button>
-					</p>
-				</div>
+				{role == 'user' ? (
+					<div className={styles.nav_container}>
+						<p>
+							<Link
+								href="/"
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Home
+							</Link>
+						</p>
+						<p>
+							<Link
+								href="/plans"
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Book a plan
+							</Link>
+						</p>
+						<p>
+							<button
+								onClick={handleLogout}
+								style={{
+									cursor: 'pointer',
+									backgroundColor: 'var(--accent-color)',
+									fontSize: '19px',
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Logout
+							</button>
+						</p>
+					</div>
+				) : (
+					<div className={styles.nav_container}>
+						<p>
+							<Link
+								href="/"
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Home
+							</Link>
+						</p>
+						<p>
+							<button
+								onClick={handleLogout}
+								style={{
+									cursor: 'pointer',
+									backgroundColor: 'var(--accent-color)',
+									fontSize: '19px',
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Logout
+							</button>
+						</p>
+					</div>
+				)}
 
 				{/* mobile nav bar */}
-
 				<div className={styles.nav_container_mobile}>
-					<div>
-						<Image
-							src={logo}
-							alt="logo"
-							width={80}
-							height={80}
-							layout="responsive"
-						/>
-					</div>
-					<MenuOutlined
+					<Image
 						style={{ cursor: 'pointer' }}
+						src={logo}
+						height={40}
+						alt="logo"
+						onClick={() => router.push(`/`)}
+					/>
+					<MenuOutlined
 						onClick={() => setOpen(true)}
+						style={{
+							fontSize: '35px',
+							color: 'var(--button-color)',
+						}}
 					/>
 				</div>
 			</Header>

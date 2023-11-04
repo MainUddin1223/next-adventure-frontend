@@ -10,7 +10,7 @@
 .nav_container {
 	display: flex;
 	gap: 20px;
-	font-size: 19px;
+	font-size: 21px;
 	color: white;
 	margin: '10px';
 }
@@ -23,6 +23,9 @@
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (max-width: 768px) {
+	.header_container {
+		padding: 25px;
+	}
 	.nav_container {
 		display: none;
 	}
