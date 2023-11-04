@@ -2,7 +2,7 @@ import { Skeleton } from 'antd';
 
 const PlanSkeleton = () => {
 	return (
-		<div style={{ display: 'flex', width: '80%', margin: '50px auto' }}>
+		<div style={{ display: 'flex',flexWrap:'wrap', width: '80%', margin: '50px auto' }}>
 			<div style={{ margin: '10px', width: '350px' }}>
 				<Skeleton.Image
 					active={true}
