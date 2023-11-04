@@ -10,8 +10,9 @@
 .nav_container {
 	display: flex;
 	gap: 20px;
-	font-size: 30px;
+	font-size: 19px;
 	color: white;
+	margin: '10px';
 }
 
 .nav_container_mobile {

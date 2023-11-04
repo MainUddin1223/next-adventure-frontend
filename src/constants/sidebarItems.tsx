@@ -13,6 +13,7 @@ export const sidebarItems = (role: string) => {
 			label: <Link href={`/${role}/profile`}>Profile</Link>,
 			icon: <UserOutlined />,
 			key: `/${role}/profile`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 	];
 
@@ -21,21 +22,25 @@ export const sidebarItems = (role: string) => {
 			label: <Link href={`/${role}/agencies`}>Manage Agencies</Link>,
 			icon: <TableOutlined />,
 			key: `/${role}/agencies`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/tour-plans`}>Manage Tour Plans</Link>,
 			icon: <TableOutlined />,
 			key: `/${role}/tour-plans`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/bookings`}>Manage Booking</Link>,
 			icon: <TableOutlined />,
 			key: `/${role}/bookings`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/users`}>Manage Users</Link>,
 			icon: <TableOutlined />,
 			key: `/${role}/users`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 	];
 
@@ -46,11 +51,13 @@ export const sidebarItems = (role: string) => {
 			label: <Link href={`/${role}/admin`}>Manage Admin</Link>,
 			icon: <TableOutlined />,
 			key: `/${role}/admin`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/payouts`}>Payouts</Link>,
 			icon: <CreditCardOutlined />,
 			key: `/${role}/payouts`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 	];
 	const adminSidebarItems: MenuProps['items'] = [
@@ -64,11 +71,13 @@ export const sidebarItems = (role: string) => {
 			label: <Link href={`/${role}/schedules`}>Manage Bookings</Link>,
 			icon: <TableOutlined />,
 			key: `/${role}/schedules`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/booking-history`}>Booking History</Link>,
 			icon: <ThunderboltOutlined />,
 			key: `/${role}/booking-history`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 	];
 
@@ -78,26 +87,31 @@ export const sidebarItems = (role: string) => {
 			label: <Link href={`/${role}/upcoming-plan`}>Upcoming Plans</Link>,
 			icon: <TableOutlined />,
 			key: `/${role}/upcoming-plan`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/my-plans`}>All Plans</Link>,
 			icon: <TableOutlined />,
 			key: `/${role}/my-plans`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/create-plan`}>Create Tour Plan</Link>,
 			icon: <TableOutlined />,
 			key: `/${role}/create-plan`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/plan-history`}>Booking History</Link>,
 			icon: <ThunderboltOutlined />,
 			key: `/${role}/plan-history`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/payouts`}>Payouts</Link>,
 			icon: <CreditCardOutlined />,
 			key: `/${role}/payouts`,
+			style: { border: '1px solid var(--primary-color)' },
 		},
 	];
 

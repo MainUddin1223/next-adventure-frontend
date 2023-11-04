@@ -1,8 +1,8 @@
 'use client';
-import { Layout, Menu } from 'antd';
-import { useState } from 'react';
 import { sidebarItems } from '@/constants/sidebarItems';
 import { getUserInfo } from '@/services/auth.service';
+import { Layout, Menu } from 'antd';
+import { useState } from 'react';
 
 const { Sider } = Layout;
 
@@ -24,22 +24,27 @@ const SideBar = () => {
 				left: 0,
 				top: 0,
 				bottom: 0,
-				backgroundColor: 'var(--primary-color)',
+				backgroundColor: 'var(--accent-color)',
 			}}
 		>
 			<div
 				style={{
-					color: 'white',
-					fontSize: '2rem',
+					fontSize: '1.5rem',
 					textAlign: 'center',
 					fontWeight: 'bold',
-					marginBottom: '1rem',
+					margin: '1rem 0',
+					color: 'var(--primary-color)',
 				}}
 			>
 				{collapsed ? 'NA' : 'NEXT ADVENTURE'}
 			</div>
 			<Menu
-				style={{ backgroundColor: 'var(--primary-color)', color: 'white' }}
+				style={{
+					backgroundColor: 'var(--accent-color)',
+					fontWeight: 'bold',
+					fontSize: '19px',
+					color: 'var(--primary-color)',
+				}}
 				defaultSelectedKeys={['1']}
 				mode="inline"
 				items={sidebarItems(role)}

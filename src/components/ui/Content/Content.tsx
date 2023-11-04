@@ -1,10 +1,11 @@
 'use client';
 import logo from '@/assets/travel-logo.png';
 import { useUserLogoutMutation } from '@/redux/api/authApi';
-import { HomeFilled, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
@@ -50,19 +51,52 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 		<Content style={{ minHeight: '100vh', color: 'black' }}>
 			<Header
 				className={styles.header_container}
-				style={{ backgroundColor: 'var(--primary-color)' }}
+				style={{ backgroundColor: 'var(--accent-color)' }}
 			>
 				{/* desktop nav bar */}
 
 				<div className={styles.nav_container}>
-					<HomeFilled
-						style={{ cursor: 'pointer' }}
-						onClick={() => router.push('/')}
-					/>
-					<LogoutOutlined
-						style={{ cursor: 'pointer' }}
-						onClick={handleLogout}
-					/>
+					<p>
+						<Link
+							href="/"
+							style={{
+								border: '1px solid var(--primary-color) ',
+								fontWeight: 'bold',
+								color: 'var(--primary-color)',
+								padding: '5px',
+							}}
+						>
+							Home
+						</Link>
+					</p>
+					<p>
+						<Link
+							href="/"
+							style={{
+								border: '1px solid var(--primary-color) ',
+								fontWeight: 'bold',
+								color: 'var(--primary-color)',
+								padding: '5px',
+							}}
+						>
+							Book a plan
+						</Link>
+					</p>
+					<p>
+						<button
+							onClick={handleLogout}
+							style={{
+								cursor: 'pointer',
+								fontSize: '19px',
+								border: '1px solid var(--primary-color) ',
+								fontWeight: 'bold',
+								color: 'var(--primary-color)',
+								padding: '5px',
+							}}
+						>
+							Logout
+						</button>
+					</p>
 				</div>
 
 				{/* mobile nav bar */}
