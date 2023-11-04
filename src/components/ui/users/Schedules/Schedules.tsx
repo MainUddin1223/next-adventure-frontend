@@ -25,19 +25,19 @@ const ManageSchedules = () => {
 					disabled={isValidDeadline ? false : true}
 					onClick={() => handleBookings(id)}
 				>
-					Cencel Booking
+					Cancel Booking
 				</Button>
 			</div>
 		) : status == 'cenceled' || status == 'rejected' ? (
 			<div>
-				<Button disabled danger>
+				<Button disabled danger style={{ textTransform: 'capitalize' }}>
 					{status}
 				</Button>
 			</div>
 		) : (
 			<div style={{ display: 'flex', gap: '5px' }}>
 				<Button type="primary" onClick={() => handleBookings(id)}>
-					Cencel Booking
+					Cancel Booking
 				</Button>
 			</div>
 		);

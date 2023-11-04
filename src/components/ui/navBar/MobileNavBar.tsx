@@ -23,7 +23,7 @@ const MobileNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 	const onClose = () => {
 		setOpen(false);
 	};
-	
+
 	return (
 		<>
 			<div className={styles.mobile_header_container}>

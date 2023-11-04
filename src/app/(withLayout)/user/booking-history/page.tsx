@@ -76,18 +76,12 @@ const BookingHistory = () => {
 					</p>
 					<div style={{ fontSize: '18px' }}>
 						{booking.status == 'pending' ? (
-							<strong style={{ color: 'yellowgreen' }}>
-								{' '}
-								{booking.status}
-							</strong>
+							<strong style={{ color: 'yellowgreen' }}>Pending</strong>
 						) : booking.status == 'booked' ? (
-							<strong style={{ color: 'var(--button-color)' }}>
-								{' '}
-								{booking.status}
-							</strong>
+							<strong style={{ color: 'var(--button-color)' }}>Booked</strong>
 						) : (
 							booking.status == 'cenceled' && (
-								<strong style={{ color: 'red' }}> {booking.status}</strong>
+								<strong style={{ color: 'red' }}> Canceled</strong>
 							)
 						)}
 					</div>

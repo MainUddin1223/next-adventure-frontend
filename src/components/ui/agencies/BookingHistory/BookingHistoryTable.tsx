@@ -4,16 +4,7 @@ import {
 	useGetMyBookingHistoryQuery,
 	useManageBookingsMutation,
 } from '@/redux/api/agencyApi';
-import { useDebounced } from '@/redux/hooks';
-import {
-	DeleteOutlined,
-	EditOutlined,
-	ReloadOutlined,
-} from '@ant-design/icons';
-import { Button, Card, Input, Table, message } from 'antd';
-import dayjs from 'dayjs';
-import { useState } from 'react';
-import DesktopTable from '../../Tables/TableForDesktop/DesktopTable';
+import { Button, Card, Table, message } from 'antd';
 
 const MyPlans = ({ id }: { id: number }) => {
 	const [manageBookings] = useManageBookingsMutation();
@@ -65,12 +56,12 @@ const MyPlans = ({ id }: { id: number }) => {
 									danger
 									onClick={() => handleBookings(data?.id, 'cenceled')}
 								>
-									Cencel Booking
+									Cancel Booking
 								</Button>
 							</div>
 						) : data.status == 'cenceled' || data.status == 'rejected' ? (
 							<div>
-								<Button disabled danger>
+								<Button disabled danger style={{ textTransform: 'capitalize' }}>
 									{data.status}
 								</Button>
 							</div>
