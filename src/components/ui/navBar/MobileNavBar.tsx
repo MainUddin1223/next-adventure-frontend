@@ -23,6 +23,7 @@ const MobileNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 	const onClose = () => {
 		setOpen(false);
 	};
+	
 	return (
 		<>
 			<div className={styles.mobile_header_container}>
@@ -53,44 +54,48 @@ const MobileNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 					onClose={onClose}
 					open={open}
 				>
-					<div
-						style={{
-							display: 'flex',
-							justifyContent: 'center',
-						}}
-					>
-						{profile_img ? (
-							<Image
-								src={profile_img}
-								alt="profile_img"
-								width={80}
-								height={80}
-								style={{
-									fontSize: '20px',
-									color: 'white',
-									cursor: 'pointer',
-									height: '80px',
-									width: '80px',
-									padding: '10px',
-									backgroundColor: 'var(--button-color)',
-									borderRadius: '50%',
-								}}
-								onClick={() => router.push(`${role}/profile`)}
-							/>
-						) : (
-							<UserOutlined
-								style={{
-									fontSize: '45px',
-									padding: '10px',
-									backgroundColor: 'var(--button-color)',
-									borderRadius: '50%',
-									color: 'var(--accent-color)',
-									cursor: 'pointer',
-								}}
-								onClick={() => router.push(`${role}/profile`)}
-							/>
-						)}
-					</div>
+					{isUser ? (
+						<div
+							style={{
+								display: 'flex',
+								justifyContent: 'center',
+							}}
+						>
+							{profile_img ? (
+								<Image
+									src={profile_img}
+									alt="profile_img"
+									width={80}
+									height={80}
+									style={{
+										fontSize: '20px',
+										color: 'white',
+										cursor: 'pointer',
+										height: '80px',
+										width: '80px',
+										padding: '10px',
+										backgroundColor: 'var(--button-color)',
+										borderRadius: '50%',
+									}}
+									onClick={() => router.push(`${role}/profile`)}
+								/>
+							) : (
+								<UserOutlined
+									style={{
+										fontSize: '45px',
+										padding: '10px',
+										backgroundColor: 'var(--button-color)',
+										borderRadius: '50%',
+										color: 'var(--accent-color)',
+										cursor: 'pointer',
+									}}
+									onClick={() => router.push(`${role}/profile`)}
+								/>
+							)}
+						</div>
+					) : (
+						''
+					)}
 
 					{!isUser ? (
 						<>
