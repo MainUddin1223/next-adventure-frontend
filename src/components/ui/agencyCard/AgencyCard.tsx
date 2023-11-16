@@ -31,8 +31,9 @@ const AgencyCard = ({ agency }: IAgencyProps) => {
 						<Rate
 							disabled
 							style={{ color: 'var(--primary-color)' }}
-							defaultValue={rating}
-						/>
+							defaultValue={rating === 0? 5 : rating}
+							/>
+							<p>Ongoing plan : { agency?.ongoingPlans}</p>
 					</div>
 				</div>
 			</div>

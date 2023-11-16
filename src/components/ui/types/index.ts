@@ -3,6 +3,7 @@ export interface IPublicAgencyData {
 	name: string;
 	profileImg: string;
 	rating: string;
+	ongoingPlans: number;
 }
 
 export type IAgencyProps = {
