@@ -1,5 +1,12 @@
-export type IAgencyType = {
-	agency: any;
+export interface IPublicAgencyData {
+	id: number;
+	name: string;
+	profileImg: string;
+	rating: string;
+}
+
+export type IAgencyProps = {
+	agency: IPublicAgencyData;
 };
 
 export type IItemsInfo = {
@@ -104,4 +111,27 @@ export interface INavProps {
 	isUser: boolean;
 	logout: () => void;
 	profile_img: string | null;
+}
+
+export interface IPublicPlanData {
+	id: number;
+	planName: string;
+	images: string[];
+	price: number;
+	destination: string;
+	departureFrom: string;
+	deadline: Date;
+	agency: {
+		id: number;
+		name: string;
+		rating: number;
+		profileImg: string;
+	};
+}
+
+export interface IFeaturedTourDataProps {
+	tours: IPublicPlanData[];
+}
+export interface IPlanProps {
+	plan: IPublicPlanData;
 }

@@ -1,15 +1,15 @@
 import { isLoggedIn } from '@/services/auth.service';
 import { Rate, Tooltip } from 'antd';
 import { usePathname, useRouter } from 'next/navigation';
-import { IAgencyType } from '../types';
+import { IAgencyProps } from '../types';
 import styles from './AgencyStyle.module.css';
 
-const AgencyCard = ({ agency }: IAgencyType) => {
+const AgencyCard = ({ agency }: IAgencyProps) => {
 	const router = useRouter();
 	const pathname = usePathname();
 	const isLoggedInUser = isLoggedIn();
+	const rating = Number(agency.rating)
 	!isLoggedInUser && localStorage.setItem('prevRoute', pathname);
-	const agencyFullName = `${agency?.first_name} ${agency?.last_name}`;
 	return (
 		<div
 			style={{ position: 'relative' }}
@@ -17,21 +17,21 @@ const AgencyCard = ({ agency }: IAgencyType) => {
 		>
 			<div
 				className={styles.popular_agency_card}
-				style={{ backgroundImage: `url(${agency?.profile_img})` }}
+				style={{ backgroundImage: `url(${agency?.profileImg})` }}
 			>
 				<div className={styles.shadow_div}>
 					<div className={styles.agency_details}>
-						{agencyFullName.length > 15 ? (
-							<Tooltip placement="topLeft" title={agencyFullName}>
-								<h3>{agencyFullName.substring(0, 15)}...</h3>
+						{agency.name.length > 15 ? (
+							<Tooltip placement="topLeft" title={agency.name}>
+								<h3>{agency.name.substring(0, 15)}...</h3>
 							</Tooltip>
 						) : (
-							<h3>{agencyFullName}</h3>
+							<h3>{agency.name}</h3>
 						)}
 						<Rate
 							disabled
 							style={{ color: 'var(--primary-color)' }}
-							defaultValue={4}
+							defaultValue={rating}
 						/>
 					</div>
 				</div>

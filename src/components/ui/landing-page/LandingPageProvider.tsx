@@ -1,6 +1,6 @@
 'use client';
 
-import { useGetAgenciesAndPlansQuery } from '@/redux/api/publicApi';
+import { useGetLandingPageDataQuery } from '@/redux/api/publicApi';
 import { isLoggedIn } from '@/services/auth.service';
 import SkeletonLoader from '../Skeleton/Skeleton';
 import AgencyBanner from './Banners/Agency-banner/AgencyBanner';
@@ -13,7 +13,7 @@ import PopularAgencies from './popular-agencies/PopularAgencies';
 
 const LandingPageProvider = () => {
 	const isLoggedInUser = isLoggedIn();
-	const { data, isLoading } = useGetAgenciesAndPlansQuery(undefined);
+	const { data, isLoading } = useGetLandingPageDataQuery(undefined);
 	if (isLoading) {
 		return (
 			<div style={{ margin: '10px' }}>

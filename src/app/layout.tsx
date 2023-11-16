@@ -26,7 +26,7 @@ export default function RootLayout({
 							hoverBg: 'rgb(229, 235, 240)',
 						},
 						Button: {
-							fontWeight: 500,
+							fontWeight: 600
 						},
 						Drawer: {
 							colorBgElevated: 'var(--accent-color)',

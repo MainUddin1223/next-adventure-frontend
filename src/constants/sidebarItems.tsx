@@ -109,12 +109,6 @@ export const sidebarItems = (role: string) => {
 			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
-			label: <Link href={`/${role}/plan-history`}>Booking History</Link>,
-			icon: <ThunderboltOutlined style={{ fontSize: '21px' }} />,
-			key: `/${role}/plan-history`,
-			style: { border: '1px solid var(--primary-color)' },
-		},
-		{
 			label: <Link href={`/${role}/payouts`}>Payouts</Link>,
 			icon: <CreditCardOutlined style={{ fontSize: '21px' }} />,
 			key: `/${role}/payouts`,

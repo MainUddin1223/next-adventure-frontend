@@ -20,7 +20,7 @@ const Reviews = ({ reviews }: any) => {
 
 	const items = reviews?.reviews.map((review: any) => {
 		return (
-			<div style={{ margin: '10px' }}>
+			<div style={{ margin: '10px', maxWidth:"350px"}}>
 				<Card className={styles.reviews}>
 					{review?.user?.profile_img ? (
 						<Image
@@ -41,14 +41,14 @@ const Reviews = ({ reviews }: any) => {
 							icon={<UserOutlined style={{ fontSize: '55px' }} />}
 						/>
 					)}
-					{review?.user?.first_name ? (
-						<h3 style={{ margin: '5px 0' }}>
-							{review?.user?.first_name} {review?.user?.last_name}
+					{review?.user?.name ? (
+						<h3 style={{ margin: '5px 0',fontSize:'19px' }}>
+							{review?.user?.name}
 						</h3>
 					) : (
-						<h3 style={{ margin: '5px 0' }}>Person</h3>
+						<h3 style={{ margin: '5px 0',fontSize:'19px'  }}>Person</h3>
 					)}
-					<div style={{ margin: '5px 0' }}>
+					<div style={{ margin: '10px 0' }}>
 						{Array.from({ length: review?.rating }, (_, index) => (
 							<StarFilled
 								key={index}
@@ -56,7 +56,7 @@ const Reviews = ({ reviews }: any) => {
 							/>
 						))}
 					</div>
-					<p>{review?.review_description}</p>
+					<p style={{lineHeight:'25px',fontSize:"17px"}}>{review?.feedback}</p>
 				</Card>
 			</div>
 		);
@@ -71,7 +71,7 @@ const Reviews = ({ reviews }: any) => {
 					disableDotsControls={true}
 					infinite={true}
 					autoPlay={true}
-					autoPlayInterval={2500}
+					autoPlayInterval={3500}
 					renderPrevButton={(e) => {
 						return (
 							!e.isDisabled && (
