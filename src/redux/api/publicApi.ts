@@ -21,7 +21,7 @@ const publicApi = baseApi.injectEndpoints({
 
 		getTourPlans: build.query({
 			query: (arg: any) => ({
-				url: `/user/tour-plans`,
+				url: `/user/plans`,
 				method: 'GET',
 				params: arg,
 			}),

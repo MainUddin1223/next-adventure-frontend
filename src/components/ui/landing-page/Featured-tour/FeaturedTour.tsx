@@ -17,7 +17,7 @@ const FeaturedTour = ({ tours }: any) => {
 
 	const items = plans.map((item: any) => {
 		return (
-			<div style={{ margin: '10px' }}>
+			<div className={styles.planCard_container}>
 				<PlanCard plan={item} />
 			</div>
 		);
@@ -27,10 +27,10 @@ const FeaturedTour = ({ tours }: any) => {
 			<h2 className={styles.featured_header}>Featured Plans</h2>
 			<p
 				style={{
-					fontSize: '18px',
+					fontSize: '17px',
 					marginBottom: '10px',
-					fontWeight: 'bold',
-					lineHeight: '35px',
+					fontWeight: '500',
+					lineHeight: '25px',
 				}}
 			>
 				Experience the extraordinary with our tailor-made tour plan amidst

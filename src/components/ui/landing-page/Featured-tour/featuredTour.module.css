@@ -17,9 +17,14 @@
 .tour_details p {
 	font-size: 18px;
 }
-
+.planCard_container {
+	margin: 10px;
+}
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
+	.planCard_container {
+		margin: 5px;
+	}
 }
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
