@@ -90,9 +90,7 @@ const CommonProfile = () => {
 					</div>
 					<h1 style={{ margin: '20px 0' }}>
 						{' '}
-						<span style={{ textTransform: 'uppercase' }}>
-							{data?.name}
-						</span>
+						<span style={{ textTransform: 'uppercase' }}>{data?.name}</span>
 					</h1>
 					<hr style={{ margin: '20px 0' }} />
 					<h3>Email address:</h3> <span>{data?.email}</span>

@@ -1,12 +1,11 @@
-'use client'
+'use client';
 import dummy_img from '@/assets/146.jpg';
 import { Avatar, Button, Card } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './profile.module.css';
 
-const AgencyProfile = ({data}:any) => {
-
+const AgencyProfile = ({ data }: any) => {
 	return (
 		<div>
 			{/* desktop */}

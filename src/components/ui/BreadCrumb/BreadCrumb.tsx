@@ -10,7 +10,7 @@ const BreadCrumb = ({ items }: IBreadCrumbProps) => {
 			title: (
 				<Link href="/">
 					<HomeOutlined
-						style={{ fontSize: '25px', color: 'var(--primary-color)' }}
+						style={{ fontSize: '18px', color: 'var(--primary-color)' }}
 					/>
 				</Link>
 			),

@@ -34,7 +34,7 @@ export default function RootLayout({
 						Breadcrumb: {
 							itemColor: '#327012',
 							linkHoverColor: '#327012',
-							fontSize: 25,
+							fontSize: 18,
 						},
 					},
 					token: {

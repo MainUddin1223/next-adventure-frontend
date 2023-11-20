@@ -4,7 +4,7 @@ import {
 	HomeOutlined,
 	TableOutlined,
 	ThunderboltOutlined,
-	UserOutlined
+	UserOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import Link from 'next/link';
@@ -50,8 +50,8 @@ export const sidebarItems = (role: string) => {
 			key: `/${role}/users`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
-			{
-			label: <LogoutBtn/>,
+		{
+			label: <LogoutBtn />,
 			key: `/${role}/logout`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
@@ -92,14 +92,20 @@ export const sidebarItems = (role: string) => {
 			key: `/${role}/booking-history`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
-			{
-			label: <LogoutBtn/>,
+		{
+			label: <LogoutBtn />,
 			key: `/${role}/logout`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
 	];
 
 	const agencySidebarItems: MenuProps['items'] = [
+		{
+			label: <Link href={`/${role}`}>Dashboard</Link>,
+			icon: <TableOutlined style={{ fontSize: '21px' }} />,
+			key: `/${role}`,
+			style: { border: '1px solid var(--primary-color)' },
+		},
 		...defaultSidebarItems,
 		{
 			label: <Link href={`/${role}/upcoming-plan`}>Upcoming Plans</Link>,
@@ -126,7 +132,8 @@ export const sidebarItems = (role: string) => {
 			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
-			label: <LogoutBtn />,
+			label: <LogoutBtn title={true} />,
+			icon: <LogoutBtn />,
 			key: `/${role}/logout`,
 			style: { border: '1px solid var(--primary-color)' },
 		},

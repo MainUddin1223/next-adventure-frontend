@@ -1,5 +1,9 @@
+'use client';
+
+import Dashboard from '@/components/ui/Agency/Dashboard/Dashboard';
+
 const AgencyDashboard = () => {
-	return <div>AgencyDashboard</div>;
+	return <Dashboard />;
 };
 
 export default AgencyDashboard;

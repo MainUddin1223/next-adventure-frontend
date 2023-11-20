@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
 import AgencyProfile from '@/components/profile/agencyProfile';
 import PerLoader from '@/components/ui/loader/PreLoader';
 import { useGetUserProfileQuery } from '@/redux/api/userApi';
 
 const page = () => {
-		const { data, isLoading } = useGetUserProfileQuery(undefined);
+	const { data, isLoading } = useGetUserProfileQuery(undefined);
 
 	if (isLoading) {
-		return <PerLoader/>;
+		return <PerLoader />;
 	}
 	return (
 		<>
-			<AgencyProfile data={ data} />
+			<AgencyProfile data={data} />
 		</>
 	);
 };
