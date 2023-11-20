@@ -8,7 +8,7 @@ const AgencyCard = ({ agency }: IAgencyProps) => {
 	const router = useRouter();
 	const pathname = usePathname();
 	const isLoggedInUser = isLoggedIn();
-	const rating = Number(agency.rating)
+	const rating = Number(agency.rating);
 	!isLoggedInUser && localStorage.setItem('prevRoute', pathname);
 	return (
 		<div
@@ -31,9 +31,9 @@ const AgencyCard = ({ agency }: IAgencyProps) => {
 						<Rate
 							disabled
 							style={{ color: 'var(--primary-color)' }}
-							defaultValue={rating === 0? 5 : rating}
-							/>
-							<p>Ongoing plan : { agency?.ongoingPlans}</p>
+							defaultValue={rating === 0 ? 5 : rating}
+						/>
+						<p>Ongoing plan : {agency?.ongoingPlans}</p>
 					</div>
 				</div>
 			</div>
