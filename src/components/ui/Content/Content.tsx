@@ -6,7 +6,6 @@ import { MenuOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
@@ -56,7 +55,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 				style={{ backgroundColor: 'var(--accent-color)' }}
 			>
 				{/* desktop nav bar */}
-				{role == 'user' ? (
+				{/* {role == 'user' ? (
 					<div className={styles.nav_container}>
 						<p>
 							<Link
@@ -133,7 +132,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 							</button>
 						</p>
 					</div>
-				)}
+				)} */}
 
 				{/* mobile nav bar */}
 				<div className={styles.nav_container_mobile}>

@@ -1,19 +1,12 @@
-'use client';
-
+'use client'
 import dummy_img from '@/assets/146.jpg';
-import { useGetUserProfileQuery } from '@/redux/api/userApi';
 import { Avatar, Button, Card } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
-import PerLoader from '../ui/loader/PreLoader';
 import styles from './profile.module.css';
 
-const CommonProfile = () => {
-	const { data, isLoading } = useGetUserProfileQuery(undefined);
+const AgencyProfile = ({data}:any) => {
 
-	if (isLoading) {
-		return <PerLoader />;
-	}
 	return (
 		<div>
 			{/* desktop */}
@@ -46,6 +39,25 @@ const CommonProfile = () => {
 					</div>
 					<hr style={{ margin: '20px 0' }} />
 					<h3>Contact no:</h3> <span>{data?.contactNo}</span>
+					<div>
+						<h3>Contact no</h3> <span>{data?.contact_no}</span>
+					</div>
+					<div>
+						<h3>Agency status</h3>{' '}
+						<span>{data?.featured ? 'featured' : 'Not featured'}</span>
+					</div>
+					<div>
+						<h3>Rating</h3>{' '}
+						<span>
+							{Number(data?.rating) ? Number(data?.rating) : 'Not applicable'}
+						</span>
+					</div>
+					<div>
+						<h3>Total Reviews</h3>{' '}
+						<span>
+							{data?.totalReviews ? data?.totalReviews : 'Not applicable'}
+						</span>
+					</div>
 					<div>
 						<h3>About</h3> <span>{data?.about}</span>
 					</div>
@@ -91,20 +103,20 @@ const CommonProfile = () => {
 					<h1 style={{ margin: '20px 0' }}>
 						{' '}
 						<span style={{ textTransform: 'uppercase' }}>
-							{data?.name}
+							{data?.first_name} {data?.last_name}
 						</span>
 					</h1>
 					<hr style={{ margin: '20px 0' }} />
 					<h3>Email address:</h3> <span>{data?.email}</span>
 					<div>
-						<h3>Contact no</h3> <span>{data?.contactNo}</span>
+						<h3>Contact no</h3> <span>{data?.contact_no}</span>
 					</div>
 					<div>
-						<h3>About</h3> <span>{data?.about}</span>
+						<h3>About</h3> <span>{data?.about_user}</span>
 					</div>
 				</Card>
 			</div>
 		</div>
 	);
 };
-export default CommonProfile;
+export default AgencyProfile;

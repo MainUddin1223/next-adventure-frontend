@@ -26,7 +26,6 @@ const NavBar = () => {
 		setOpen(false);
 		router.push('/');
 	};
-
 	return (
 		<>
 			<Header
