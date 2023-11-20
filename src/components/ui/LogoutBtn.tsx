@@ -1,9 +1,11 @@
 'use client'
-import { LogoutOutlined } from '@ant-design/icons'
-import { useRouter } from 'next/navigation'
+import { LogoutOutlined } from '@ant-design/icons';
+import { useRouter } from 'next/navigation';
 
 const LogoutBtn = () => {
-    const router = useRouter()
+    
+    const router = useRouter();
+
   return (
    <p
 				onClick={() => {
