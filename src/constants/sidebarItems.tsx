@@ -100,13 +100,13 @@ export const sidebarItems = (role: string) => {
 	];
 
 	const agencySidebarItems: MenuProps['items'] = [
+		...defaultSidebarItems,
 		{
 			label: <Link href={`/${role}`}>Dashboard</Link>,
 			icon: <TableOutlined style={{ fontSize: '21px' }} />,
 			key: `/${role}`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
-		...defaultSidebarItems,
 		{
 			label: <Link href={`/${role}/upcoming-plan`}>Upcoming Plans</Link>,
 			icon: <TableOutlined style={{ fontSize: '21px' }} />,
