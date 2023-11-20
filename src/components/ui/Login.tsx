@@ -27,14 +27,15 @@ const Login = () => {
 			setIsLoading(true);
 			const res = await userLogin({ ...data }).unwrap();
 			if (res?.accessToken) {
-				message.success('User logged in successfully');
 				const accessToken = res?.accessToken;
-				await storeUserInfo(accessToken);
-				const authInfo: any = getUserInfo();
+				storeUserInfo(accessToken);
+				const authInfo: any = await getUserInfo();
+				message.success('User logged in successfully');
 				setIsLoading(false);
 				typeof window !== 'undefined' && localStorage.removeItem('prevRoute');
 				typeof window !== 'undefined' &&
-					localStorage.setItem('profile_img', res?.result?.profile_img);
+					res?.result?.profileImg &&
+					localStorage.setItem('profile_img', res?.result?.profileImg);
 				const redirectUrl =
 					typeof window !== 'undefined' && localStorage.getItem('redirectTo');
 				if (redirectUrl) {

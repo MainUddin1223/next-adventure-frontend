@@ -5,28 +5,23 @@ import { getUserInfo, isLoggedIn } from '@/services/auth.service';
 import { Layout } from 'antd';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import DesktopNavBar from './DesktopNavBar';
 import MobileNavBar from './MobileNavBar';
 import styles from './NavBar.module.css';
 const { Header } = Layout;
 
 const NavBar = () => {
-	const [open, setOpen] = useState(false);
 	const [userLogout] = useUserLogoutMutation();
 	const { role } = getUserInfo() as any;
 	const router = useRouter();
 	const profile_img =
 		typeof window !== 'undefined' ? localStorage.getItem('profile_img') : null;
 	const isUser = isLoggedIn();
-
 	const handleLogout = async () => {
 		await userLogout(undefined);
 		localStorage.clear();
-		setOpen(false);
 		router.push('/');
 	};
-
 	return (
 		<>
 			<Header
@@ -48,12 +43,14 @@ const NavBar = () => {
 							alt="logo"
 							onClick={() => router.push(`/`)}
 						/>
-						<DesktopNavBar
-							role={role}
-							profile_img={profile_img}
-							isUser={isUser}
-							logout={handleLogout}
-						/>
+						<div style={{ display: 'flex', gap: '30px' }}>
+							<DesktopNavBar
+								role={role}
+								profile_img={profile_img}
+								isUser={isUser}
+								logout={handleLogout}
+							/>
+						</div>
 					</span>
 				</div>
 				<span>

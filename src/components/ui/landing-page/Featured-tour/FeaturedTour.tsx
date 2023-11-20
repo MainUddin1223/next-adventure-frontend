@@ -1,6 +1,4 @@
-'use client';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import PlanCard from '../../planCard/PlanCard';
@@ -10,16 +8,16 @@ const responsive = {
 	0: { items: 1 },
 	568: { items: 2 },
 	1024: { items: 3 },
-	1200: { items: 4 },
+	1200: { items: 3 },
+	1400: { items: 4 },
 };
 
 const FeaturedTour = ({ tours }: any) => {
-	const router = useRouter();
-	const plans = tours?.tourPlans;
+	const plans = tours?.plans;
 
 	const items = plans.map((item: any) => {
 		return (
-			<div style={{ margin: '10px' }}>
+			<div className={styles.planCard_container}>
 				<PlanCard plan={item} />
 			</div>
 		);
@@ -29,10 +27,10 @@ const FeaturedTour = ({ tours }: any) => {
 			<h2 className={styles.featured_header}>Featured Plans</h2>
 			<p
 				style={{
-					fontSize: '18px',
+					fontSize: '17px',
 					marginBottom: '10px',
-					fontWeight: 'bold',
-					lineHeight: '35px',
+					fontWeight: '500',
+					lineHeight: '25px',
 				}}
 			>
 				Experience the extraordinary with our tailor-made tour plan amidst

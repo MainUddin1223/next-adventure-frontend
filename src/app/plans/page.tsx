@@ -15,7 +15,7 @@ const Plans = () => {
 				<div>
 					<CardListLayout
 						title="TOUR PLANS"
-						description="Find the best tour plan from thousends of options"
+						description="Find the best tour plan from thousand of options"
 					>
 						<TourPlanContainer />
 					</CardListLayout>

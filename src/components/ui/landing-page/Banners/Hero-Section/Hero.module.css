@@ -1,5 +1,5 @@
 .parallox {
-	background-image: url('../../../../../assets/146.jpg');
+	background-image: url('../../../../../assets/Ire.gif');
 	height: 100vh;
 	background-attachment: fixed;
 	background-position: center;
@@ -15,10 +15,9 @@
 	margin: 20px auto;
 }
 .hero_container {
-	color: var(--primary-color);
+	color: white;
 }
 .bannner_info {
-	background-color: var(--accent-color);
 	width: 100%;
 	padding: 15px;
 	text-align: center;
@@ -26,12 +25,12 @@
 .bannner_info h1 {
 	font-size: 4.5rem;
 	padding: 15px;
-	color: var(--primary-color);
+	color: white;
 }
 .bannner_info h2 {
 	font-size: 2.4rem;
 	padding: 10px;
-	color: var(--primary-color);
+	color: white;
 }
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 300px) and (max-width: 480px) {
@@ -43,6 +42,7 @@
 	}
 	.search_field_container {
 		width: 75%;
+		display: block;
 	}
 	.bannner_info {
 		background-color: transparent;
@@ -64,6 +64,7 @@
 	}
 	.search_field_container {
 		width: 75%;
+		display: block;
 	}
 	.bannner_info {
 		background-color: transparent;

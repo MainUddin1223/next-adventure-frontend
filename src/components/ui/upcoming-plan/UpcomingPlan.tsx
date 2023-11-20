@@ -56,7 +56,7 @@ const UpcomingPlan = () => {
 
 	const myPlans = data?.result;
 	const meta = data?.meta;
-
+	console.log(myPlans);
 	const onTableChange = (pagination: any, filter: any, sorter: any) => {
 		const { field, order } = sorter;
 		setSortBy(field as string);
