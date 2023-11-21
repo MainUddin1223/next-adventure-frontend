@@ -2,8 +2,8 @@
 
 import { useAppDispatch, useDebounced } from '@/redux/hooks';
 import { serachValueState } from '@/redux/slice/planSlice';
-import { ArrowRightOutlined, SearchOutlined } from '@ant-design/icons';
-import { Button, Input } from 'antd';
+import { ArrowRightOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styles from './Hero.module.css';
@@ -27,7 +27,7 @@ const Hero = () => {
 		<div className={styles.parallox}>
 			<div className={styles.hero_container}>
 				<div className={styles.bannner_info}>
-					<div className={styles.search_field_container}>
+					{/* <div className={styles.search_field_container}>
 						<Input
 							type="text"
 							size="large"
@@ -35,7 +35,7 @@ const Hero = () => {
 							onChange={(e) => setSearchTerm(e.target.value)}
 							prefix={<SearchOutlined style={{ color: 'gray' }} />}
 						/>
-					</div>
+					</div> */}
 
 					<h1>Enjoy your Holidays</h1>
 					<h2>Find the best plan from the uncountable options</h2>

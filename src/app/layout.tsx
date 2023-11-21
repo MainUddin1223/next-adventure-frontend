@@ -38,7 +38,7 @@ export default function RootLayout({
 						},
 					},
 					token: {
-						colorPrimary: '#088345',
+						colorPrimary: '#327012',
 						borderRadius: 0,
 					},
 				}}

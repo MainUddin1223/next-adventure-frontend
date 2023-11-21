@@ -1,16 +1,15 @@
+:root {
+	--primary-color: #327012;
+	--accent-color: #d5e2e2;
+	--button-color: #327012;
+}
+
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-family: 'Josefin Sans', sans-serif;
 }
-
-:root {
-	--primary-color: #327012;
-	--accent-color: #c4d8d8;
-	--button-color: #327012;
-}
-
 a {
 	color: black;
 	text-decoration: none;
@@ -19,7 +18,7 @@ Link {
 	color: black;
 }
 h1 {
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-family: 'Josefin Sans', sans-serif;
 	color: rgb(47, 46, 46);
 }
 hr {
@@ -31,13 +30,6 @@ hr {
 	margin: 0 auto;
 }
 
-/* :root {
-  --primary-color: #6ab331;
-  --primary-color: #327012;
-  --background-color: #327012;
-  --button-color: #088345;
-} */
-/*
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
 	/* Your CSS styles for mobile devices go here */

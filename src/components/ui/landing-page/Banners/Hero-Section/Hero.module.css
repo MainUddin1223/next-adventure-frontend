@@ -1,5 +1,5 @@
 .parallox {
-	background-image: url('../../../../../assets/Ire.gif');
+	background-image: url('../../../../../assets/1jx9.gif');
 	height: 100vh;
 	background-attachment: fixed;
 	background-position: center;
@@ -15,7 +15,7 @@
 	margin: 20px auto;
 }
 .hero_container {
-	color: white;
+	color: rgb(255, 255, 255);
 }
 .bannner_info {
 	width: 100%;

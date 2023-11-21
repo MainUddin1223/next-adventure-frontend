@@ -20,13 +20,22 @@
 
 .navigation_item_container {
 	display: flex;
-	gap: 15px;
-	font-size: 19px;
+	gap: 10px;
+	font-size: 15px;
 	align-items: center;
 }
 .list_container {
 	display: flex;
-	gap: 15px;
+	gap: 10px;
+}
+.nav_item {
+	border: '1px solid var(--primary-color) ';
+	font-weight: 'bold';
+	color: 'var(--primary-color)';
+	padding: '5px';
+}
+.nav_item:hover {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navigation_item {
@@ -36,6 +45,7 @@
 	color: var(--button-color);
 	font-weight: bold;
 }
+
 .navigation_item:hover {
 	color: var(--button-color);
 }

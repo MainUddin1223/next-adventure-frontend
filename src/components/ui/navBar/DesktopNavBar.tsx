@@ -183,6 +183,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 				<div className={styles.navigation_item_container}>
 					<p>
 						<Link
+							className={styles.nav_item}
 							href="/agencies"
 							style={{
 								border: '1px solid var(--primary-color) ',
@@ -196,6 +197,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 					</p>
 					<p>
 						<Link
+							className={styles.nav_item}
 							href="/plans"
 							style={{
 								border: '1px solid var(--primary-color) ',
@@ -210,6 +212,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 					<p>
 						<Link
 							href="/login"
+							className={styles.nav_item}
 							style={{
 								border: '1px solid var(--primary-color) ',
 								fontWeight: 'bold',
@@ -218,19 +221,6 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 							}}
 						>
 							Login
-						</Link>
-					</p>
-					<p>
-						<Link
-							href="/signup"
-							style={{
-								border: '1px solid var(--primary-color) ',
-								fontWeight: 'bold',
-								color: 'var(--primary-color)',
-								padding: '5px',
-							}}
-						>
-							Sign up
 						</Link>
 					</p>
 				</div>
