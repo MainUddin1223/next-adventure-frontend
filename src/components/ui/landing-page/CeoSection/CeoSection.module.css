@@ -1,0 +1,43 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.ceo_img_section {
+	flex: 1;
+}
+.ceo_img {
+	width: 60%;
+	margin: 0 auto;
+}
+.ceo_info {
+	position: relative;
+	text-align: center;
+	flex: 1;
+}
+.ceo_info h2 {
+	font-size: 2rem;
+	margin: 20px 0;
+	line-height: 45px;
+}
+.ceo_info p {
+	font-size: 20px;
+	margin: 20px 0;
+	line-height: 30px;
+}
+.inverted_comma {
+	width: 30px;
+	margin: 0 auto;
+}
+
+/* iPads and Tablets (481px to 768px) */
+@media only screen and (max-width: 768px) {
+	.container {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.ceo_img {
+		width: 100%;
+		margin: 30px auto;
+	}
+}

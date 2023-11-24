@@ -6,6 +6,7 @@ import SkeletonLoader from '../Skeleton/Skeleton';
 import Activities from './Activities/Activities';
 import AgencyBanner from './Banners/Agency-banner/AgencyBanner';
 import Motto from './Banners/Motto-banner/Motto';
+import CeoSection from './CeoSection/CeoSection';
 import FeaturedTour from './Featured-tour/FeaturedTour';
 import Guideline from './Guideline/Guideline';
 import LeaveReview from './Review/LeaveReview';
@@ -34,6 +35,9 @@ const LandingPageProvider = () => {
 				</div>
 				<div style={{ margin: '100px 0' }}>
 					<PopularAgencies agencies={data} />
+				</div>
+			<div style={{ margin: '100px 0' }}>
+					<CeoSection />
 				</div>
 			</div>
 			<div className="landing_page_banner_container">
