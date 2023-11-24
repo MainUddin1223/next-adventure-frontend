@@ -54,6 +54,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 					<div className={styles.navigation_item_container}>
 						<p>
 							<Link
+								className={styles.desktop_navigation_item}
 								href="/plans"
 								style={{
 									border: '1px solid var(--primary-color) ',
@@ -67,6 +68,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 						</p>
 						<p>
 							<Link
+								className={styles.desktop_navigation_item}
 								href="/plans"
 								style={{
 									border: '1px solid var(--primary-color) ',
@@ -80,6 +82,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 						</p>
 						<p>
 							<Link
+								className={styles.desktop_navigation_item}
 								href={`/${role}/schedules`}
 								style={{
 									border: '1px solid var(--primary-color) ',
@@ -94,10 +97,10 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 						<p>
 							<button
 								onClick={logout}
+								className={styles.desktop_navigation_item}
 								style={{
 									cursor: 'pointer',
 									backgroundColor: 'var(--accent-color)',
-									fontSize: '19px',
 									border: '1px solid var(--primary-color) ',
 									fontWeight: 'bold',
 									color: 'var(--primary-color)',
@@ -125,19 +128,37 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 								onClick={() => router.push(`${role}/profile`)}
 							/>
 						) : (
-							<UserOutlined
+								<UserOutlined
+									className={styles.desktop_navigation_item}
 								style={{
 									fontSize: '20px',
-									padding: '5px',
-									color: 'white',
-									cursor: 'pointer',
+									padding: '3px',
+									color: "var(--primary-color)",
+										cursor: 'pointer',
+										backgroundColor: 'var(--accent-color)',
+									borderRadius: "50%",
+									border:'1px solid var(--primary-color)',
 								}}
 								onClick={() => router.push(`${role}/profile`)}
 							/>
 						)}
 					</div>
 				) : (
-					<div className={styles.navigation_item_container}>
+						<div className={styles.navigation_item_container}>
+													<p>
+							<Link
+								className={styles.desktop_navigation_item}
+								href={`/${role}/upcoming-plan`}
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Upcoming plans
+							</Link>
+						</p>
 						<Dropdown menu={{ items }}>
 							<a onClick={(e) => e.preventDefault()}>
 								<Space>
