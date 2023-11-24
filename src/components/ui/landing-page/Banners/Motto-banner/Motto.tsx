@@ -8,7 +8,7 @@ import styles from './Motto.module.css';
 const Motto = () => {
 	const router = useRouter();
 	return (
-		<div>
+		<div style={{color: "rgb(59, 58, 58)"}}>
 			<Card>
 				<div className={styles.plan_banner_container}>
 					<Row

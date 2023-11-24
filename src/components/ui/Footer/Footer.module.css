@@ -2,7 +2,6 @@
 	background-color: var(--accent-color);
 	padding: 15px;
 	text-align: justify;
-	color: rgb(44, 43, 43);
 }
 .footer_info {
 	line-height: 21px;
@@ -24,8 +23,15 @@
 .icons_container {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 .icons {
 	display: flex;
 	gap: 10px;
+}
+.icons a {
+	color: var(--primary-color);
+}
+.icons a:hover {
+	color: var(--button-color);
 }

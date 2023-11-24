@@ -13,16 +13,8 @@ const year = date.getFullYear();
       <div className={styles.container}>
           <div >
               <Row gutter={[20, 20]}>
-               {/* -------------about----------- */}
-                  <Col lg={6} md={12}>
-              <div className={styles.footer_info}>
-                  <h4>About us</h4>
-                  <p>
-                   We're your premier tour management platform, facilitating a dynamic exchange between travel agencies and enthusiastic explorers. Join us to seamlessly connect and share travel services, creating unforgettable experiences for both providers and seekers. </p>
-              </div>
-                  </Col>
                            {/* ------------contact info---------- */}
-                  <Col lg={6} md={12} sm={24}>
+                  <Col  md={8} sm={24}>
                    <div className={styles.footer_info}>
                   <h4>Contact Info</h4>
                   <p style={{color:'var(--primary-color)',fontWeight:"bold"}}>GEC, Chattogram, Bangladesh</p>
@@ -31,7 +23,7 @@ const year = date.getFullYear();
               </div>
                   </Col>
               {/* ------------Social media---------- */}
-                  <Col lg={6} md={12}>
+                  <Col  md={8} sm={24}>
                    <div className={styles.footer_info}>
                   <h4>Social Media</h4>
                   <a href='https://github.com/MainUddin1223/' target='_blank'>Github</a>
@@ -40,7 +32,7 @@ const year = date.getFullYear();
                   <a href='https://www.facebook.com/webdev.main.uddin' target='_blank'>Facebook</a>
               </div></Col>
                       {/* ------------Newsletter---------- */}
-                  <Col lg={6} md={12}>
+                  <Col  md={8} sm={24}>
                                         <div className={styles.footer_info}>
                   <h4>Newsletter</h4>
                   <p>
@@ -58,10 +50,10 @@ const year = date.getFullYear();
           <div className={styles.icons_container}>
               <p>{` © ${year} · Next Adventure`}</p>
               <div className={styles.icons}>
-                  <GithubOutlined />
-                  <LinkedinOutlined />
-                  <FacebookOutlined />
-                  <MediumOutlined/>
+                                  <a href='https://github.com/MainUddin1223/' target='_blank'><GithubOutlined style={{fontSize:"25px"}}/></a>
+                  <a href='www.linkedin.com/in/md-main-uddin-dev' target='_blank' style={{fontSize:"25px"}}> <LinkedinOutlined /></a>
+                  <a href='https://medium.com/@main-uddin' target='_blank' style={{fontSize:"25px"}}><MediumOutlined/></a>
+                  <a href='https://www.facebook.com/webdev.main.uddin' target='_blank' style={{fontSize:"25px"}}><FacebookOutlined /></a>
               </div>
           </div>
     </div>
