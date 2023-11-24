@@ -9,6 +9,11 @@
 	align-items: center;
 	justify-content: center;
 }
+.hero_container {
+	width: 80%;
+	margin: 0 auto;
+	background-color: var(--secondary-color);
+}
 .search_field_container {
 	width: 50%;
 	display: block;
@@ -17,17 +22,17 @@
 .hero_container {
 	color: rgb(255, 255, 255);
 }
-.bannner_info {
+.banner_info {
 	width: 100%;
 	padding: 15px;
 	text-align: center;
 }
-.bannner_info h1 {
+.banner_info h1 {
 	font-size: 4.5rem;
 	padding: 15px;
 	color: white;
 }
-.bannner_info h2 {
+.banner_info h2 {
 	font-size: 2.4rem;
 	padding: 10px;
 	color: white;
@@ -44,13 +49,13 @@
 		width: 75%;
 		display: block;
 	}
-	.bannner_info {
+	.banner_info {
 		background-color: transparent;
 	}
-	.bannner_info h1 {
+	.banner_info h1 {
 		font-size: 2rem;
 	}
-	.bannner_info h2 {
+	.banner_info h2 {
 		font-size: 1.4rem;
 	}
 }
@@ -66,13 +71,13 @@
 		width: 75%;
 		display: block;
 	}
-	.bannner_info {
+	.banner_info {
 		background-color: transparent;
 	}
-	.bannner_info h1 {
+	.banner_info h1 {
 		font-size: 2.8rem;
 	}
-	.bannner_info h2 {
+	.banner_info h2 {
 		font-size: 1.7rem;
 	}
 }
@@ -82,7 +87,7 @@
 	.cover_banner h1 {
 		font-size: 2.5rem;
 	}
-	.bannner_info h2 {
+	.banner_info h2 {
 		font-size: 1.4rem;
 	}
 }

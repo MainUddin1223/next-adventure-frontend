@@ -3,6 +3,7 @@
 import { useGetLandingPageDataQuery } from '@/redux/api/publicApi';
 import { isLoggedIn } from '@/services/auth.service';
 import SkeletonLoader from '../Skeleton/Skeleton';
+import Activities from './Activities/Activities';
 import AgencyBanner from './Banners/Agency-banner/AgencyBanner';
 import Motto from './Banners/Motto-banner/Motto';
 import FeaturedTour from './Featured-tour/FeaturedTour';
@@ -24,6 +25,7 @@ const LandingPageProvider = () => {
 	return (
 		<>
 			<div className="landing_page_container">
+				<Activities/>
 				<div style={{ margin: '100px 0' }}>
 					<FeaturedTour tours={data} />
 				</div>
