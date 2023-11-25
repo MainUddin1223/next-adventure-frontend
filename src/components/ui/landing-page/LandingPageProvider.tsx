@@ -1,7 +1,7 @@
 'use client';
 
 import { useGetLandingPageDataQuery } from '@/redux/api/publicApi';
-import { isLoggedIn } from '@/services/auth.service';
+import { getUserInfo } from '@/services/auth.service';
 import SkeletonLoader from '../Skeleton/Skeleton';
 import Activities from './Activities/Activities';
 import AgencyBanner from './Banners/Agency-banner/AgencyBanner';
@@ -14,7 +14,7 @@ import Reviews from './Review/Reviews';
 import PopularAgencies from './popular-agencies/PopularAgencies';
 
 const LandingPageProvider = () => {
-	const isLoggedInUser = isLoggedIn();
+	const {role} = getUserInfo() as any
 	const { data, isLoading } = useGetLandingPageDataQuery(undefined);
 	if (isLoading) {
 		return (
@@ -49,7 +49,7 @@ const LandingPageProvider = () => {
 				<div style={{ margin: '100px 0' }}>
 					<Reviews reviews={data} />
 				</div>
-				{isLoggedInUser && (
+				{role == 'user' && (
 					<div style={{ margin: '100px 0' }}>
 						<LeaveReview />
 					</div>

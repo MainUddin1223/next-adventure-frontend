@@ -2,6 +2,7 @@
 
 import { useGetTourPlansQuery } from '@/redux/api/publicApi';
 import { useAppSelector, useDebounced } from '@/redux/hooks';
+import { UndoOutlined } from '@ant-design/icons';
 import { Col, Input, Row } from 'antd';
 import { useState } from 'react';
 import DataNotFound from '../DataNotFound/DataNotFound';
@@ -53,7 +54,8 @@ const TourPlanContainer = () => {
 						size="large"
 						placeholder="Search ... "
 						value={searchTerm}
-						onChange={(e) => setSearchTerm(e.target.value)}
+						onChange={(e) => { setSearchTerm(e.target.value) }}
+						suffix={searchTerm && <UndoOutlined style={{color:'var(--primary-color)',cursor:'pointer'}} onClick={()=>setSearchTerm('')} />}
 					/>
 				</div>
 				{tourPlans?.length ? (

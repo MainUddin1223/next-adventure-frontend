@@ -30,7 +30,7 @@ const publicApi = baseApi.injectEndpoints({
 
 		getPlanDetails: build.query({
 			query: (id: number) => ({
-				url: `/user/plan-details/${id}`,
+				url: `/user/plans/${id}`,
 				method: 'GET',
 			}),
 			providesTags: ['user'],
