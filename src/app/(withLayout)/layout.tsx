@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 import styles from './layout.module.css';
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-	const [open, setOpen] = useState(false);
 	const userLoggedIn = isLoggedIn();
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState<boolean>(false);

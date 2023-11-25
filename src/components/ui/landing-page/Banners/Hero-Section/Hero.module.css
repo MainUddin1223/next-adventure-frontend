@@ -13,6 +13,7 @@
 	width: 80%;
 	margin: 0 auto;
 	background-color: var(--secondary-color);
+	color: rgb(255, 255, 255);
 }
 .search_field_container {
 	padding-top: 15px;
@@ -20,9 +21,7 @@
 	display: block;
 	margin: 20px auto;
 }
-.hero_container {
-	color: rgb(255, 255, 255);
-}
+
 .banner_info {
 	width: 100%;
 	padding: 15px;
@@ -40,9 +39,6 @@
 }
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 300px) and (max-width: 480px) {
-	.parallox {
-		max-height: 60vh;
-	}
 	.hero_container {
 		margin-top: 50px;
 	}
@@ -59,12 +55,12 @@
 	.banner_info h2 {
 		font-size: 1.4rem;
 	}
+	.hero_container {
+		width: 95%;
+	}
 }
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-	.parallox {
-		max-height: 60vh;
-	}
 	.hero_container {
 		margin-top: 50px;
 	}
@@ -80,6 +76,9 @@
 	}
 	.banner_info h2 {
 		font-size: 1.7rem;
+	}
+	.hero_container {
+		width: 90%;
 	}
 }
 

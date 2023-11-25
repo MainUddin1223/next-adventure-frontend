@@ -24,7 +24,7 @@
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (max-width: 768px) {
 	.header_container {
-		padding: 25px;
+		padding: 15px;
 	}
 	.nav_container {
 		display: none;
