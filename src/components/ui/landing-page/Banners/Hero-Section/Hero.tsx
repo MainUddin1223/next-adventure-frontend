@@ -36,8 +36,7 @@ const Hero = () => {
 					</Col>
 					
 				</Row> */}
-														<div className={styles.banner_info}>
-
+				<div className={styles.banner_info}>
 					<h1>Enjoy your Holidays</h1>
 					<h2>Find the best plan from the uncountable options</h2>
 					<Button

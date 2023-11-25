@@ -11,7 +11,32 @@ const SkeletonLoader = ({
 	md?: number;
 }) => {
 	return (
-		<div style={{ width: '80%', margin: '20px auto' }}>
+		<div >
+			{/* activities sceleton */}
+			<div>
+				<Row gutter={[20,20]} style={{margin: '100px 0'}}>
+					<Col xs={24} md={12}>
+					<Skeleton.Input active={true} block={true} style={{ width: '100%',height:'70px' }} />
+					</Col>
+					<Col xs={24} md={12}>
+					<Skeleton.Input active={true} block={true} style={{ width: '100%',height:'70px' }} />
+					</Col>
+					<Col xs={24} md={12}>
+					<Skeleton.Input active={true} block={true} style={{ width: '100%',height:'70px' }} />
+					</Col>
+					<Col xs={24} md={12}>
+					<Skeleton.Input active={true} block={true} style={{ width: '100%',height:'70px' }}	 />
+					</Col>
+				</Row>
+			</div>
+
+			{/* plan section */}
+			<div>
+				<div>
+					<Skeleton.Input active style={{ height:'35px',width:'250px' }} />
+				</div>
+</div>
+
 			<Row gutter={[15, 15]} justify={'center'}>
 				<PlanSkeleton />
 				{Array.from({ length: items }, (_, index) => (

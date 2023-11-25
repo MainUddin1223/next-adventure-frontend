@@ -48,16 +48,15 @@ const FeaturedTour = ({ tours }: any) => {
 									position: 'absolute',
 									right: '40px',
 									fontSize: '20px',
-									backgroundColor: "var(--accent-color)",
-									padding: "5px 15px",
-									marginRight:"25px",
-									boxShadow: "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
-									cursor:'pointer'
+									backgroundColor: 'var(--accent-color)',
+									padding: '5px 15px',
+									marginRight: '25px',
+									boxShadow:
+										'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px',
+									cursor: 'pointer',
 								}}
 							>
-								<ArrowLeftOutlined
-									style={{ color: 'var(--button-color)' }}
-								/>
+								<ArrowLeftOutlined style={{ color: 'var(--button-color)' }} />
 							</div>
 						)
 					);
@@ -70,10 +69,11 @@ const FeaturedTour = ({ tours }: any) => {
 									position: 'absolute',
 									right: '10px',
 									fontSize: '20px',
-									backgroundColor: "var(--accent-color)",
-									padding: "5px 15px",
-									boxShadow: "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
-									cursor:'pointer'
+									backgroundColor: 'var(--accent-color)',
+									padding: '5px 15px',
+									boxShadow:
+										'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px',
+									cursor: 'pointer',
 								}}
 							>
 								<ArrowRightOutlined style={{ color: 'var(--button-color)' }} />

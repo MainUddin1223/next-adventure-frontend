@@ -150,7 +150,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 								className={styles.desktop_navigation_item}
 								href={`/${role}/upcoming-plan`}
 								style={{
-									border: '1px solid var(--primary-color) ',
+									border: '1px soliyd var(--primary-color) ',
 									fontWeight: 'bold',
 									color: 'var(--primary-color)',
 									padding: '5px',

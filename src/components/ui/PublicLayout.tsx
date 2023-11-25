@@ -9,8 +9,8 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => {
 			<Layout>
 				<NavBar />
 				<div style={{ minHeight: '100vh' }}>{children}</div>
-				<div >
-					<FooterSection/>
+				<div>
+					<FooterSection />
 				</div>
 			</Layout>
 		</div>

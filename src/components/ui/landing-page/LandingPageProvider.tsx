@@ -26,7 +26,7 @@ const LandingPageProvider = () => {
 	return (
 		<>
 			<div className="landing_page_container">
-				<Activities/>
+				<Activities />
 				<div style={{ margin: '100px 0' }}>
 					<FeaturedTour tours={data} />
 				</div>
@@ -36,7 +36,7 @@ const LandingPageProvider = () => {
 				<div style={{ margin: '100px 0' }}>
 					<PopularAgencies agencies={data} />
 				</div>
-			<div style={{ margin: '100px 0' }}>
+				<div style={{ margin: '100px 0' }}>
 					<CeoSection />
 				</div>
 			</div>
