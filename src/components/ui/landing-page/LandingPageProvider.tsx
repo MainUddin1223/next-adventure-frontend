@@ -14,7 +14,7 @@ import Reviews from './Review/Reviews';
 import PopularAgencies from './popular-agencies/PopularAgencies';
 
 const LandingPageProvider = () => {
-	const {role} = getUserInfo() as any
+	const { role } = getUserInfo() as any;
 	const { data, isLoading } = useGetLandingPageDataQuery(undefined);
 	if (isLoading) {
 		return (

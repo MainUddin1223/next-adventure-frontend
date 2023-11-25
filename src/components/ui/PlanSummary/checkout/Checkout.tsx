@@ -11,8 +11,8 @@ const Checkout = ({ setStep }: ICheckoutProps) => {
 	const router = useRouter();
 	const { plan, quantity } = useAppSelector((state) => state.orderSummary);
 	const dispatch = useAppDispatch();
-	const startingTime = formateDateAndTime(plan.starting_time);
-
+	const startingTime = formateDateAndTime(plan.departureTime);
+	console.log(plan);
 	return (
 		<div>
 			<div>
@@ -53,7 +53,7 @@ const Checkout = ({ setStep }: ICheckoutProps) => {
 										{quantity > 1 ? 'Seats' : 'Seat'}
 									</span>
 									<div style={{ fontSize: '17px', fontWeight: 'bold' }}>
-										<p>Starting point: {plan?.starting_location}</p>
+										<p>Starting point: {plan.departureFrom}</p>
 										<p>Reporting time : {startingTime.time}</p>
 										<p>Reporting Date : {startingTime.date}</p>
 										<p>

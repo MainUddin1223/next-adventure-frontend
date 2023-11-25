@@ -52,8 +52,14 @@ const AgenciesContainer = () => {
 						placeholder="Search ... "
 						value={searchTerm}
 						onChange={(e) => setSearchTerm(e.target.value)}
-						suffix={searchTerm && <UndoOutlined style={{ color: 'var(--primary-color)', cursor: 'pointer' }} onClick={() => setSearchTerm('')} />}
-					
+						suffix={
+							searchTerm && (
+								<UndoOutlined
+									style={{ color: 'var(--primary-color)', cursor: 'pointer' }}
+									onClick={() => setSearchTerm('')}
+								/>
+							)
+						}
 					/>
 				</div>
 				{agencies?.length ? (
