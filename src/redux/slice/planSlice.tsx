@@ -12,12 +12,12 @@ export const planSlice = createSlice({
 	name: 'planState',
 	initialState,
 	reducers: {
-		serachValueState: (state, action) => {
+		searchValueState: (state, action) => {
 			state.searchTermValue = action.payload;
 		},
 	},
 });
 
-export const { serachValueState } = planSlice.actions;
+export const { searchValueState } = planSlice.actions;
 
 export default planSlice.reducer;

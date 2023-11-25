@@ -105,7 +105,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 									fontWeight: 'bold',
 									color: 'var(--primary-color)',
 									padding: '5px',
-									fontSize:'18px'
+									fontSize: '18px',
 								}}
 							>
 								Logout
@@ -144,7 +144,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 							/>
 						)}
 					</div>
-				) : role == 'agency' ?(
+				) : role == 'agency' ? (
 					<div className={styles.navigation_item_container}>
 						<p>
 							<Link
@@ -200,8 +200,8 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 							</a>
 						</Dropdown>
 					</div>
-					) : (
-						<div className={styles.navigation_item_container}>
+				) : (
+					<div className={styles.navigation_item_container}>
 						<p>
 							<Link
 								className={styles.desktop_navigation_item}

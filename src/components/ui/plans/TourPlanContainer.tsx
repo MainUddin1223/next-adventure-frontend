@@ -52,6 +52,7 @@ const TourPlanContainer = () => {
 						type="text"
 						size="large"
 						placeholder="Search ... "
+						value={searchTerm}
 						onChange={(e) => setSearchTerm(e.target.value)}
 					/>
 				</div>

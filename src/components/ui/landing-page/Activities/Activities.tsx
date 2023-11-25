@@ -14,32 +14,33 @@ const Activities = () => {
 		<Row gutter={[20, 20]} className={styles.container}>
 			<Col xs={24} md={12} onClick={() => router.push('/agencies')}>
 				<div className={styles.activities_container}>
-					<div className={styles.activities_image_container} >
-					<Image
+					<div className={styles.activities_image_container}>
+						<Image
 							src={search_icon}
 							alt="search_icon"
 							width={20}
 							height={20}
 							layout="responsive"
-						/></div>
-					<div style={{fontSize:'1.7rem',textAlign:'center',flex:'1'}}>
-
-					<h3 >Find Tour Planners</h3>
+						/>
+					</div>
+					<div style={{ fontSize: '1.7rem', textAlign: 'center', flex: '1' }}>
+						<h3>Find Tour Planners</h3>
 					</div>
 				</div>
 			</Col>
 			<Col xs={24} md={12} onClick={() => router.push('/plans')}>
 				<div className={styles.activities_container}>
-										<div className={styles.activities_image_container} >
-					<Image
+					<div className={styles.activities_image_container}>
+						<Image
 							src={search_icon}
 							alt="search_icon"
 							width={20}
 							height={20}
 							layout="responsive"
-						/></div>
-								<div style={{fontSize:'1.7rem',textAlign:'center',flex:'1'}}>
-					<h3>Book Plans</h3>
+						/>
+					</div>
+					<div style={{ fontSize: '1.7rem', textAlign: 'center', flex: '1' }}>
+						<h3>Book Plans</h3>
 					</div>
 				</div>
 			</Col>
@@ -49,16 +50,17 @@ const Activities = () => {
 				onClick={() => router.push(`${role ? `${role}/profile` : '/login'}`)}
 			>
 				<div className={styles.activities_container}>
-										<div className={styles.activities_image_container} >
-					<Image
+					<div className={styles.activities_image_container}>
+						<Image
 							src={manage_icon}
 							alt="manage_icon"
 							width={20}
 							height={20}
 							layout="responsive"
-						/></div>
-								<div style={{fontSize:'1.7rem',textAlign:'center',flex:'1'}}>
-					<h3>Manage Plans</h3>
+						/>
+					</div>
+					<div style={{ fontSize: '1.7rem', textAlign: 'center', flex: '1' }}>
+						<h3>Manage Plans</h3>
 					</div>
 				</div>
 			</Col>
@@ -78,7 +80,7 @@ const Activities = () => {
 						/>
 					</div>
 					<div style={{ fontSize: '1.7rem', textAlign: 'center', flex: '1' }}>
-					<h3>Share Experience</h3>
+						<h3>Share Experience</h3>
 					</div>
 				</div>
 			</Col>

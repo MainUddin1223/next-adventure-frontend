@@ -1,4 +1,6 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { useRouter } from 'next/navigation';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import PlanCard from '../../planCard/PlanCard';
@@ -14,6 +16,7 @@ const responsive = {
 
 const FeaturedTour = ({ tours }: any) => {
 	const plans = tours?.plans;
+	const router = useRouter();
 
 	const items = plans.map((item: any) => {
 		return (
@@ -85,6 +88,14 @@ const FeaturedTour = ({ tours }: any) => {
 				responsive={responsive}
 				controlsStrategy="alternate"
 			/>
+			<Button
+				onClick={() => router.push('/plans')}
+				size="large"
+				style={{ marginLeft: '10px' }}
+				type="primary"
+			>
+				See more <ArrowRightOutlined />
+			</Button>
 		</div>
 	);
 };

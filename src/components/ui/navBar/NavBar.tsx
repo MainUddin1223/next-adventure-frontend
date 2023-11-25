@@ -29,7 +29,7 @@ const NavBar = () => {
 					position: 'sticky',
 					top: 0,
 					zIndex: 1,
-					padding:0,
+					padding: 0,
 					width: '100%',
 					backgroundColor: 'var(--accent-color)',
 				}}

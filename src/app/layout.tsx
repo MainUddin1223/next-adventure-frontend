@@ -22,9 +22,8 @@ export default function RootLayout({
 				theme={{
 					components: {
 						Layout: {
-							headerHeight:80
-						}
-						,
+							headerHeight: 80,
+						},
 						Input: {
 							activeBg: 'white',
 							hoverBg: 'rgb(229, 235, 240)',
