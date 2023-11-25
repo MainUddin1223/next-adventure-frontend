@@ -69,7 +69,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 						<p>
 							<Link
 								className={styles.desktop_navigation_item}
-								href="/plans"
+								href="/agencies"
 								style={{
 									border: '1px solid var(--primary-color) ',
 									fontWeight: 'bold',
@@ -77,7 +77,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 									padding: '5px',
 								}}
 							>
-								Ongoing Plans
+								Planners
 							</Link>
 						</p>
 						<p>
@@ -105,6 +105,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 									fontWeight: 'bold',
 									color: 'var(--primary-color)',
 									padding: '5px',
+									fontSize:'18px'
 								}}
 							>
 								Logout
@@ -143,7 +144,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 							/>
 						)}
 					</div>
-				) : (
+				) : role == 'agency' ?(
 					<div className={styles.navigation_item_container}>
 						<p>
 							<Link
@@ -157,6 +158,76 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 								}}
 							>
 								Upcoming plans
+							</Link>
+						</p>
+						<Dropdown menu={{ items }}>
+							<a onClick={(e) => e.preventDefault()}>
+								<Space>
+									{profile_img ? (
+										<Image
+											src={profile_img}
+											alt="profile_img"
+											width={80}
+											height={80}
+											style={{
+												fontSize: '20px',
+												padding: '5px',
+												color: 'white',
+												cursor: 'pointer',
+												height: '45px',
+												width: '45px',
+												borderRadius: '50%',
+											}}
+											onClick={() => router.push(`${role}/profile`)}
+										/>
+									) : (
+										<UserOutlined
+											style={{
+												fontSize: '25px',
+												padding: '5px',
+												color: 'white',
+												cursor: 'pointer',
+												borderRadius: '50%',
+												backgroundColor: 'var(--primary-color)',
+											}}
+											onClick={() => router.push(`${role}/profile`)}
+										/>
+									)}
+									<CaretDownOutlined
+										style={{ fontSize: '16px', color: 'var(--primary-color)' }}
+									/>
+								</Space>
+							</a>
+						</Dropdown>
+					</div>
+					) : (
+						<div className={styles.navigation_item_container}>
+						<p>
+							<Link
+								className={styles.desktop_navigation_item}
+								href={`/${role}/tour-plans`}
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Manage Plans
+							</Link>
+						</p>
+						<p>
+							<Link
+								className={styles.desktop_navigation_item}
+								href={`/${role}/agencies`}
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Manage agencies
 							</Link>
 						</p>
 						<Dropdown menu={{ items }}>

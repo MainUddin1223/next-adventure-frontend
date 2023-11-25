@@ -50,11 +50,6 @@ export const sidebarItems = (role: string) => {
 			key: `/${role}/users`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
-		{
-			label: <LogoutBtn />,
-			key: `/${role}/logout`,
-			style: { border: '1px solid var(--primary-color)' },
-		},
 	];
 
 	const superAdminSidebarItems: MenuProps['items'] = [
@@ -72,10 +67,22 @@ export const sidebarItems = (role: string) => {
 			key: `/${role}/payouts`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
+			{
+			label: <LogoutBtn title={true} />,
+			icon: <LogoutBtn />,
+			key: `/${role}/logout`,
+			style: { border: '1px solid var(--primary-color)' },
+		}
 	];
 	const adminSidebarItems: MenuProps['items'] = [
 		...defaultSidebarItems,
 		...commonAdminSidebarItems,
+				{
+			label: <LogoutBtn title={true} />,
+			icon: <LogoutBtn />,
+			key: `/${role}/logout`,
+			style: { border: '1px solid var(--primary-color)' },
+		}
 	];
 
 	const userSidebarItems: MenuProps['items'] = [
@@ -92,11 +99,12 @@ export const sidebarItems = (role: string) => {
 			key: `/${role}/booking-history`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
-		{
-			label: <LogoutBtn />,
+				{
+			label: <LogoutBtn title={true} />,
+			icon: <LogoutBtn />,
 			key: `/${role}/logout`,
 			style: { border: '1px solid var(--primary-color)' },
-		},
+		}
 	];
 
 	const agencySidebarItems: MenuProps['items'] = [
@@ -136,7 +144,7 @@ export const sidebarItems = (role: string) => {
 			icon: <LogoutBtn />,
 			key: `/${role}/logout`,
 			style: { border: '1px solid var(--primary-color)' },
-		},
+		}
 	];
 
 	if (role === USER_ROLE.SUPER_ADMIN) return superAdminSidebarItems;

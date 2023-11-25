@@ -21,6 +21,10 @@ export default function RootLayout({
 			<ConfigProvider
 				theme={{
 					components: {
+						Layout: {
+							headerHeight:80
+						}
+						,
 						Input: {
 							activeBg: 'white',
 							hoverBg: 'rgb(229, 235, 240)',

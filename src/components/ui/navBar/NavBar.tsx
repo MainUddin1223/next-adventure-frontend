@@ -29,8 +29,8 @@ const NavBar = () => {
 					position: 'sticky',
 					top: 0,
 					zIndex: 1,
+					padding:0,
 					width: '100%',
-					padding: 0,
 					backgroundColor: 'var(--accent-color)',
 				}}
 			>
@@ -39,7 +39,7 @@ const NavBar = () => {
 						<Image
 							style={{ cursor: 'pointer' }}
 							src={logo}
-							height={40}
+							height={50}
 							alt="logo"
 							onClick={() => router.push(`/`)}
 						/>
