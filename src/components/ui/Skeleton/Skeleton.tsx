@@ -11,40 +11,51 @@ const SkeletonLoader = ({
 	md?: number;
 }) => {
 	return (
-		<div >
+		<div>
 			{/* activities sceleton */}
 			<div>
-				<Row gutter={[20,20]} style={{margin: '100px 0'}}>
+				<Row gutter={[20, 20]} style={{ margin: '100px 0' }}>
 					<Col xs={24} md={12}>
-					<Skeleton.Input active={true} block={true} style={{ width: '100%',height:'70px' }} />
+						<Skeleton.Input
+							active={true}
+							block={true}
+							style={{ width: '100%', height: '80px' }}
+						/>
 					</Col>
 					<Col xs={24} md={12}>
-					<Skeleton.Input active={true} block={true} style={{ width: '100%',height:'70px' }} />
+						<Skeleton.Input
+							active={true}
+							block={true}
+							style={{ width: '100%', height: '80px' }}
+						/>
 					</Col>
 					<Col xs={24} md={12}>
-					<Skeleton.Input active={true} block={true} style={{ width: '100%',height:'70px' }} />
+						<Skeleton.Input
+							active={true}
+							block={true}
+							style={{ width: '100%', height: '80px' }}
+						/>
 					</Col>
 					<Col xs={24} md={12}>
-					<Skeleton.Input active={true} block={true} style={{ width: '100%',height:'70px' }}	 />
+						<Skeleton.Input
+							active={true}
+							block={true}
+							style={{ width: '100%', height: '80px' }}
+						/>
 					</Col>
 				</Row>
 			</div>
 
 			{/* plan section */}
-			<div>
-				<div>
-					<Skeleton.Input active style={{ height:'35px',width:'250px' }} />
-				</div>
-</div>
+			<PlanSkeleton />
 
 			<Row gutter={[15, 15]} justify={'center'}>
-				<PlanSkeleton />
 				{Array.from({ length: items }, (_, index) => (
 					<Col sm={sm} md={md} key={index}>
 						<div>
 							<div>
 								<Skeleton.Image active style={{ margin: '10px' }} />
-								<Skeleton.Image active />
+								<Skeleton active />
 							</div>
 							<Skeleton active />
 						</div>

@@ -1,0 +1,29 @@
+.plans_skeleton_container {
+	display: flex;
+}
+
+.plans_container {
+	display: flex;
+	gap: 10px;
+	width: 80%;
+}
+
+.plan_Skeleton_container {
+	margin: 100px auto;
+}
+
+/* Mobile devices (320px to 480px) */
+@media only screen and (min-width: 280px) and (max-width: 480px) {
+	/* Your CSS styles for mobile devices go here */
+	.plans_mobile {
+		display: none;
+	}
+}
+
+/* iPads and Tablets (481px to 768px) */
+@media only screen and (min-width: 481px) and (max-width: 968px) {
+	/* Your CSS styles for iPads and tablets go here */
+	.plans_ipad {
+		display: none;
+	}
+}

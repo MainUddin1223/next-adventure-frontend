@@ -128,24 +128,24 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 								onClick={() => router.push(`${role}/profile`)}
 							/>
 						) : (
-								<UserOutlined
-									className={styles.desktop_navigation_item}
+							<UserOutlined
+								className={styles.desktop_navigation_item}
 								style={{
 									fontSize: '20px',
 									padding: '3px',
-									color: "var(--primary-color)",
-										cursor: 'pointer',
-										backgroundColor: 'var(--accent-color)',
-									borderRadius: "50%",
-									border:'1px solid var(--primary-color)',
+									color: 'var(--primary-color)',
+									cursor: 'pointer',
+									backgroundColor: 'var(--accent-color)',
+									borderRadius: '50%',
+									border: '1px solid var(--primary-color)',
 								}}
 								onClick={() => router.push(`${role}/profile`)}
 							/>
 						)}
 					</div>
 				) : (
-						<div className={styles.navigation_item_container}>
-													<p>
+					<div className={styles.navigation_item_container}>
+						<p>
 							<Link
 								className={styles.desktop_navigation_item}
 								href={`/${role}/upcoming-plan`}

@@ -18,7 +18,7 @@ const LandingPageProvider = () => {
 	const { data, isLoading } = useGetLandingPageDataQuery(undefined);
 	if (isLoading) {
 		return (
-			<div style={{ margin: '10px' }}>
+			<div className="landing_page_container">
 				<SkeletonLoader items={4} />
 			</div>
 		);
