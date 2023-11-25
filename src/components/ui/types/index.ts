@@ -135,4 +135,5 @@ export interface IFeaturedTourDataProps {
 }
 export interface IPlanProps {
 	plan: IPublicPlanData;
+	agencyProfile?: boolean;
 }

@@ -21,7 +21,7 @@ const contentStyle: React.CSSProperties = {
 	background: '#364d79',
 };
 
-const PlanCard = ({ plan }: IPlanProps) => {
+const PlanCard = ({ plan,agencyProfile=false }: IPlanProps) => {
 	const router = useRouter();
 	const pathname = usePathname();
 	const isValidDate = checkValidity(plan?.deadline);
@@ -82,7 +82,7 @@ const PlanCard = ({ plan }: IPlanProps) => {
 						</Tag>
 					)}
 
-					<div>
+					{!agencyProfile&&<div>
 						<hr />
 						<p
 							style={{
@@ -108,7 +108,7 @@ const PlanCard = ({ plan }: IPlanProps) => {
 							style={{ color: 'var(--primary-color)' }}
 							defaultValue={plan.agency.rating}
 						/>
-					</div>
+					</div>}
 				</div>
 				<div>
 					<Button

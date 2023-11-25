@@ -12,7 +12,7 @@ const userApi = baseApi.injectEndpoints({
 		}),
 		getAgencyById: build.query({
 			query: (id) => ({
-				url: `/user/agency/${id}`,
+				url: `/user/agencies/${id}`,
 				method: 'GET',
 			}),
 			providesTags: ['user'],
