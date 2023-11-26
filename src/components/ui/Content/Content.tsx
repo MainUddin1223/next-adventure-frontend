@@ -64,7 +64,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 					<MenuOutlined
 						onClick={() => setOpen(true)}
 						style={{
-							fontSize: '18px',
+							fontSize: '35px',
 							color: 'var(--button-color)',
 						}}
 					/>

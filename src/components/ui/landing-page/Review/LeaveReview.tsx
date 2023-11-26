@@ -27,7 +27,6 @@ const LeaveReview = () => {
 		const result = await leaveReview(data);
 		//@ts-ignore
 		const status = result.data.success;
-		console.log(status);
 		if (status) {
 			message.success('Successfully submit the review');
 		}

@@ -17,8 +17,8 @@ const Summary = () => {
 	const { plan, quantity } = useAppSelector((state) => state.orderSummary);
 
 	const handleConfirmation = async () => {
-		const payload = { planId: plan.id, quantity: quantity };
-		const result = await bookPlan(payload).unwrap();
+		const data = { totalSeat: quantity };
+		const result = await bookPlan({ id: plan.id, data }).unwrap();
 		if (result) {
 			setStep(2);
 		}

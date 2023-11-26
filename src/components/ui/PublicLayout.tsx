@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
-import { Footer } from 'antd/es/layout/layout';
 import React from 'react';
+import FooterSection from './Footer/Footer';
 import NavBar from './navBar/NavBar';
 
 const PublicLayout = ({ children }: { children: React.ReactNode }) => {
@@ -9,14 +9,9 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => {
 			<Layout>
 				<NavBar />
 				<div style={{ minHeight: '100vh' }}>{children}</div>
-				<Footer
-					style={{
-						backgroundColor: 'var(--accent-color)',
-						textAlign: 'center',
-					}}
-				>
-					Footer
-				</Footer>
+				<div>
+					<FooterSection />
+				</div>
 			</Layout>
 		</div>
 	);

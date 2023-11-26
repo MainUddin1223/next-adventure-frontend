@@ -1,10 +1,12 @@
 'use client';
 
 import { useGetLandingPageDataQuery } from '@/redux/api/publicApi';
-import { isLoggedIn } from '@/services/auth.service';
+import { getUserInfo } from '@/services/auth.service';
 import SkeletonLoader from '../Skeleton/Skeleton';
+import Activities from './Activities/Activities';
 import AgencyBanner from './Banners/Agency-banner/AgencyBanner';
 import Motto from './Banners/Motto-banner/Motto';
+import CeoSection from './CeoSection/CeoSection';
 import FeaturedTour from './Featured-tour/FeaturedTour';
 import Guideline from './Guideline/Guideline';
 import LeaveReview from './Review/LeaveReview';
@@ -12,11 +14,11 @@ import Reviews from './Review/Reviews';
 import PopularAgencies from './popular-agencies/PopularAgencies';
 
 const LandingPageProvider = () => {
-	const isLoggedInUser = isLoggedIn();
+	const { role } = getUserInfo() as any;
 	const { data, isLoading } = useGetLandingPageDataQuery(undefined);
 	if (isLoading) {
 		return (
-			<div style={{ margin: '10px' }}>
+			<div className="landing_page_container">
 				<SkeletonLoader items={4} />
 			</div>
 		);
@@ -24,6 +26,7 @@ const LandingPageProvider = () => {
 	return (
 		<>
 			<div className="landing_page_container">
+				<Activities />
 				<div style={{ margin: '100px 0' }}>
 					<FeaturedTour tours={data} />
 				</div>
@@ -32,6 +35,9 @@ const LandingPageProvider = () => {
 				</div>
 				<div style={{ margin: '100px 0' }}>
 					<PopularAgencies agencies={data} />
+				</div>
+				<div style={{ margin: '100px 0' }}>
+					<CeoSection />
 				</div>
 			</div>
 			<div className="landing_page_banner_container">
@@ -43,7 +49,7 @@ const LandingPageProvider = () => {
 				<div style={{ margin: '100px 0' }}>
 					<Reviews reviews={data} />
 				</div>
-				{isLoggedInUser && (
+				{role == 'user' && (
 					<div style={{ margin: '100px 0' }}>
 						<LeaveReview />
 					</div>

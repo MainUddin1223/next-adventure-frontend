@@ -1,0 +1,32 @@
+.container {
+	margin: 100px 0;
+	color: var(--primary-color);
+}
+.activities_container {
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	cursor: pointer;
+
+	box-shadow:
+		rgba(0, 0, 0, 0.16) 0px 3px 6px,
+		rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+	transition: 1s ease;
+}
+.activities_container:hover {
+	box-shadow:
+		rgba(0, 0, 0, 0.25) 0px 14px 28px,
+		rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.activities_image_container {
+	width: 100px;
+	padding: 10px;
+	background-color: var(--accent-color);
+}
+
+/* iPads and Tablets (481px to 768px) */
+@media only screen and (max-width: 768px) {
+	/* Your CSS styles for iPads and tablets go here */
+}

@@ -21,7 +21,7 @@ const contentStyle: React.CSSProperties = {
 	background: '#364d79',
 };
 
-const PlanCard = ({ plan }: IPlanProps) => {
+const PlanCard = ({ plan, agencyProfile = false }: IPlanProps) => {
 	const router = useRouter();
 	const pathname = usePathname();
 	const isValidDate = checkValidity(plan?.deadline);
@@ -55,9 +55,9 @@ const PlanCard = ({ plan }: IPlanProps) => {
 					</Carousel>
 				)}
 				<div className={styles.tour_details}>
-					{plan?.planName?.length > 20 ? (
+					{plan?.planName?.length > 25 ? (
 						<Tooltip placement="topLeft" title={plan?.planName}>
-							<h4>{plan?.planName.substring(0, 20)}...</h4>
+							<h4>{plan?.planName.substring(0, 25)}...</h4>
 						</Tooltip>
 					) : (
 						<h4>{plan?.planName}</h4>
@@ -82,33 +82,35 @@ const PlanCard = ({ plan }: IPlanProps) => {
 						</Tag>
 					)}
 
-					<div>
-						<hr />
-						<p
-							style={{
-								display: 'flex',
-								gap: '10px',
-								fontWeight: 'bold',
-								alignItems: 'center',
-							}}
-						>
-							<Image
-								src={plan.agency.profileImg}
-								alt="profile-img"
-								width={40}
-								height={40}
-								style={{ borderRadius: '50%' }}
+					{!agencyProfile && (
+						<div>
+							<hr />
+							<p
+								style={{
+									display: 'flex',
+									gap: '10px',
+									fontWeight: 'bold',
+									alignItems: 'center',
+								}}
+							>
+								<Image
+									src={plan.agency.profileImg}
+									alt="profile-img"
+									width={40}
+									height={40}
+									style={{ borderRadius: '50%' }}
+								/>
+								<span style={{ textTransform: 'capitalize' }}>
+									{plan.agency.name}
+								</span>
+							</p>
+							<Rate
+								disabled
+								style={{ color: 'var(--primary-color)' }}
+								defaultValue={plan.agency.rating}
 							/>
-							<span style={{ textTransform: 'capitalize' }}>
-								{plan.agency.name}
-							</span>
-						</p>
-						<Rate
-							disabled
-							style={{ color: 'var(--primary-color)' }}
-							defaultValue={plan.agency.rating}
-						/>
-					</div>
+						</div>
+					)}
 				</div>
 				<div>
 					<Button

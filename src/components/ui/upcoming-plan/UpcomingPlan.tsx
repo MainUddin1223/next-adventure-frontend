@@ -17,7 +17,7 @@ interface DataType {
 	upgradeNum: number;
 	creator: string;
 	createdAt: string;
-	booking_history?: any[];
+	bookings?: any[];
 }
 
 interface ExpandedDataType {
@@ -56,7 +56,6 @@ const UpcomingPlan = () => {
 
 	const myPlans = data?.result;
 	const meta = data?.meta;
-	console.log(myPlans);
 	const onTableChange = (pagination: any, filter: any, sorter: any) => {
 		const { field, order } = sorter;
 		setSortBy(field as string);
@@ -68,10 +67,11 @@ const UpcomingPlan = () => {
 		setSortOrder('');
 		setSearchTerm('');
 	};
+	console.log(myPlans);
 
 	const defaultExpandable = {
 		expandedRowRender: (record: DataType) => {
-			console.log(record.booking_history);
+			console.log(record);
 			const columns: TableColumnsType<ExpandedDataType> = [
 				{
 					title: 'Status',
@@ -100,7 +100,7 @@ const UpcomingPlan = () => {
 										{status}
 									</strong>
 								) : (
-									status == 'cenceled' && (
+									status == 'canceled' && (
 										<strong
 											style={{ color: 'red', textTransform: 'capitalize' }}
 										>
@@ -122,7 +122,7 @@ const UpcomingPlan = () => {
 				},
 				{
 					title: 'Total Seats',
-					dataIndex: 'quantity',
+					dataIndex: 'seats',
 					render: function (data: any) {
 						return (
 							<strong>
@@ -133,7 +133,7 @@ const UpcomingPlan = () => {
 				},
 				{
 					title: 'Amount',
-					dataIndex: 'total_amount',
+					dataIndex: 'totalAmount',
 					render: (data) => <strong>${data}</strong>,
 				},
 				{
@@ -142,8 +142,8 @@ const UpcomingPlan = () => {
 					key: 'status',
 					render: () => (
 						<Space size="middle">
-							<a>Pause</a>
-							<a>Stop</a>
+							<Button type="primary">Accept</Button>
+							<Button danger>Reject</Button>
 						</Space>
 					),
 				},
@@ -152,7 +152,7 @@ const UpcomingPlan = () => {
 			return (
 				<Table
 					columns={columns}
-					dataSource={record.booking_history}
+					dataSource={record.bookings}
 					pagination={false}
 				/>
 			);
@@ -162,8 +162,8 @@ const UpcomingPlan = () => {
 	const columns = [
 		{
 			title: 'Plan name',
-			dataIndex: 'plan_name',
-			key: 'plan_name',
+			dataIndex: 'planName',
+			key: 'planName',
 		},
 		{
 			title: 'Destination',
@@ -171,18 +171,21 @@ const UpcomingPlan = () => {
 			key: 'destination',
 		},
 		{
-			title: 'Plan Date',
-			dataIndex: 'starting_time',
+			title: 'Deadline',
+			dataIndex: 'deadline',
 			render: function (data: any) {
 				return data && dayjs(data).format('MMM D, YYYY hh:mm A');
 			},
 		},
 		{
-			title: 'Deadline',
-			dataIndex: 'booking_deadline',
-			render: function (data: any) {
-				return data && dayjs(data).format('MMM D, YYYY hh:mm A');
-			},
+			title: 'Total Booking',
+			dataIndex: 'totalBooking',
+			key: 'totalBooking',
+		},
+		{
+			title: 'Total Seats',
+			dataIndex: 'totalSeats',
+			key: 'totalSeats',
 		},
 		// {
 		//   title: 'Bookings',render: function (data:any) {

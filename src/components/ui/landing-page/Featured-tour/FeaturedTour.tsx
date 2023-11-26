@@ -1,4 +1,6 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { useRouter } from 'next/navigation';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import PlanCard from '../../planCard/PlanCard';
@@ -14,6 +16,7 @@ const responsive = {
 
 const FeaturedTour = ({ tours }: any) => {
 	const plans = tours?.plans;
+	const router = useRouter();
 
 	const items = plans.map((item: any) => {
 		return (
@@ -47,12 +50,16 @@ const FeaturedTour = ({ tours }: any) => {
 								style={{
 									position: 'absolute',
 									right: '40px',
-									fontSize: '35px',
+									fontSize: '20px',
+									backgroundColor: 'var(--accent-color)',
+									padding: '5px 15px',
+									marginRight: '25px',
+									boxShadow:
+										'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px',
+									cursor: 'pointer',
 								}}
 							>
-								<ArrowLeftOutlined
-									style={{ width: '48px', color: 'var(--button-color)' }}
-								/>
+								<ArrowLeftOutlined style={{ color: 'var(--button-color)' }} />
 							</div>
 						)
 					);
@@ -64,7 +71,12 @@ const FeaturedTour = ({ tours }: any) => {
 								style={{
 									position: 'absolute',
 									right: '10px',
-									fontSize: '35px',
+									fontSize: '20px',
+									backgroundColor: 'var(--accent-color)',
+									padding: '5px 15px',
+									boxShadow:
+										'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px',
+									cursor: 'pointer',
 								}}
 							>
 								<ArrowRightOutlined style={{ color: 'var(--button-color)' }} />
@@ -76,6 +88,14 @@ const FeaturedTour = ({ tours }: any) => {
 				responsive={responsive}
 				controlsStrategy="alternate"
 			/>
+			<Button
+				onClick={() => router.push('/plans')}
+				size="large"
+				style={{ marginLeft: '10px' }}
+				type="primary"
+			>
+				See more <ArrowRightOutlined />
+			</Button>
 		</div>
 	);
 };

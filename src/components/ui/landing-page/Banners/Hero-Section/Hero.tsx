@@ -1,42 +1,50 @@
 'use client';
 
-import { useAppDispatch, useDebounced } from '@/redux/hooks';
-import { serachValueState } from '@/redux/slice/planSlice';
-import { ArrowRightOutlined, SearchOutlined } from '@ant-design/icons';
-import { Button, Input } from 'antd';
+import { useAppDispatch } from '@/redux/hooks';
+import { searchValueState } from '@/redux/slice/planSlice';
+import {
+	ArrowRightOutlined,
+	LoadingOutlined,
+	SearchOutlined,
+} from '@ant-design/icons';
+import { Button, Input, Spin } from 'antd';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styles from './Hero.module.css';
 
 const Hero = () => {
-	const dispatch = useAppDispatch();
 	const router = useRouter();
-	const [searchTerm, setSearchTerm] = useState<string>('');
-	const query: Record<string, any> = {};
+	const dispatch = useAppDispatch();
+	const [searching, setSearching] = useState(false);
 
-	const debouncedTerm = useDebounced({
-		searchQuery: searchTerm,
-		delay: 2000,
-	});
-	if (!!debouncedTerm) {
-		dispatch(serachValueState(debouncedTerm));
-		router.push('/plans');
-	}
+	const handleSearch = (value: string) => {
+		setSearching(true);
+		setTimeout(() => {
+			dispatch(searchValueState(value));
+			router.push('/plans');
+		}, 4000);
+	};
 
 	return (
 		<div className={styles.parallox}>
 			<div className={styles.hero_container}>
-				<div className={styles.bannner_info}>
-					<div className={styles.search_field_container}>
-						<Input
-							type="text"
-							size="large"
-							placeholder="Search ... "
-							onChange={(e) => setSearchTerm(e.target.value)}
-							prefix={<SearchOutlined style={{ color: 'gray' }} />}
-						/>
-					</div>
-
+				<div className={styles.search_field_container}>
+					<Input
+						size="large"
+						prefix={<SearchOutlined />}
+						suffix={
+							searching && (
+								<Spin
+									indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />}
+								/>
+							)
+						}
+						type="text"
+						placeholder="Search upcoming plans"
+						onChange={(e) => handleSearch(e.target.value)}
+					/>
+				</div>
+				<div className={styles.banner_info}>
 					<h1>Enjoy your Holidays</h1>
 					<h2>Find the best plan from the uncountable options</h2>
 					<Button
