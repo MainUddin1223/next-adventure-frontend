@@ -1,6 +1,5 @@
 'use client';
-
-import AgencyProfile from '@/components/profile/agencyProfile';
+import AgencyProfile from '@/components/profile/AgencyProfile';
 import PerLoader from '@/components/ui/loader/PreLoader';
 import { useGetUserProfileQuery } from '@/redux/api/userApi';
 

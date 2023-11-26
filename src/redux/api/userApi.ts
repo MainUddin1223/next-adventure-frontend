@@ -3,10 +3,10 @@ import { baseApi } from './baseApi';
 const userApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		bookPlan: build.mutation({
-			query: (data) => ({
-				url: `/user/book-plan`,
+			query: ({ data, id }) => ({
+				url: `/user/book-plan/${id}`,
 				method: 'POST',
-				data,
+				data: data,
 			}),
 			invalidatesTags: ['user'],
 		}),
@@ -34,14 +34,14 @@ const userApi = baseApi.injectEndpoints({
 		}),
 		getUpcomingSchedules: build.query({
 			query: () => ({
-				url: `/user/upcoming-schedules`,
+				url: `/user/upcoming-schedule`,
 				method: 'GET',
 			}),
 			providesTags: ['user'],
 		}),
 		bookingHistory: build.query({
 			query: (arg: any) => ({
-				url: `/user/booking-history`,
+				url: `/user/bookings`,
 				method: 'GET',
 				params: arg,
 			}),
