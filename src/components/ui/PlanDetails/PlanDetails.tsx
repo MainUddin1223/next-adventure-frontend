@@ -65,7 +65,7 @@ const PlanDetails = ({ id }: { id: number }) => {
 								<CarOutlined
 									style={{ color: 'var(--button-color)', fontSize: '25px' }}
 								/>{' '}
-								Departure : {info?.destination}
+								Departure : {info?.departureFrom}
 							</p>
 						</div>
 					</Col>

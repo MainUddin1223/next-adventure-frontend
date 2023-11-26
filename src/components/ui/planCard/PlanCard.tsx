@@ -21,7 +21,7 @@ const contentStyle: React.CSSProperties = {
 	background: '#364d79',
 };
 
-const PlanCard = ({ plan,agencyProfile=false }: IPlanProps) => {
+const PlanCard = ({ plan, agencyProfile = false }: IPlanProps) => {
 	const router = useRouter();
 	const pathname = usePathname();
 	const isValidDate = checkValidity(plan?.deadline);
@@ -82,33 +82,35 @@ const PlanCard = ({ plan,agencyProfile=false }: IPlanProps) => {
 						</Tag>
 					)}
 
-					{!agencyProfile&&<div>
-						<hr />
-						<p
-							style={{
-								display: 'flex',
-								gap: '10px',
-								fontWeight: 'bold',
-								alignItems: 'center',
-							}}
-						>
-							<Image
-								src={plan.agency.profileImg}
-								alt="profile-img"
-								width={40}
-								height={40}
-								style={{ borderRadius: '50%' }}
+					{!agencyProfile && (
+						<div>
+							<hr />
+							<p
+								style={{
+									display: 'flex',
+									gap: '10px',
+									fontWeight: 'bold',
+									alignItems: 'center',
+								}}
+							>
+								<Image
+									src={plan.agency.profileImg}
+									alt="profile-img"
+									width={40}
+									height={40}
+									style={{ borderRadius: '50%' }}
+								/>
+								<span style={{ textTransform: 'capitalize' }}>
+									{plan.agency.name}
+								</span>
+							</p>
+							<Rate
+								disabled
+								style={{ color: 'var(--primary-color)' }}
+								defaultValue={plan.agency.rating}
 							/>
-							<span style={{ textTransform: 'capitalize' }}>
-								{plan.agency.name}
-							</span>
-						</p>
-						<Rate
-							disabled
-							style={{ color: 'var(--primary-color)' }}
-							defaultValue={plan.agency.rating}
-						/>
-					</div>}
+						</div>
+					)}
 				</div>
 				<div>
 					<Button
