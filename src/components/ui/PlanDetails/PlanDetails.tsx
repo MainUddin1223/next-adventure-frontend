@@ -28,6 +28,7 @@ const PlanDetails = ({ id }: { id: number }) => {
 	const bookingDeadline = formateDateAndTime(info?.deadline);
 	const reportingTime = formateDateAndTime(info?.departureTime);
 	const isValidDate = checkValidity(info?.deadline);
+	console.log(info);
 	const title = (
 		<div className={styles.details_header_section}>
 			<h2 style={{ textTransform: 'capitalize', padding: '10px 0' }}>

@@ -15,24 +15,24 @@ import ProfileImageUploader from '../ImageUploader/ImageUploader';
 import styles from './EditProfile.module.css';
 
 const EditProfileForm = () => {
-	const [userInfo,setUserInfo] = useState({})
+	const [userInfo, setUserInfo] = useState({});
 	const { data: profileData } = useGetUserProfileQuery(undefined);
 	const router = useRouter();
 
 	useEffect(() => {
-	setUserInfo({
-		name: profileData?.name,
-		contactNo: profileData?.contactNo,
-		profileImg: profileData?.profileImg,
-		about: profileData?.about,
-	})
-},[])
+		setUserInfo({
+			name: profileData?.name,
+			contactNo: profileData?.contactNo,
+			profileImg: profileData?.profileImg,
+			about: profileData?.about,
+		});
+	}, []);
 
 	const [updateUserProfile] = useUpdateUserProfileMutation();
 
 	const onsubmit: SubmitHandler<any> = async (data: any) => {
 		const res: any = await updateUserProfile(data);
-	setUserInfo(data)
+		setUserInfo(data);
 		if (res?.data?.success == true) {
 			router.back();
 		}

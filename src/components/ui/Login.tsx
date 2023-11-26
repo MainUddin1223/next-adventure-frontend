@@ -35,7 +35,8 @@ const Login = () => {
 				typeof window !== 'undefined' && localStorage.removeItem('prevRoute');
 				typeof window !== 'undefined' &&
 					res?.result?.profileImg &&
-					typeof window !== 'undefined' && localStorage.setItem('profile_img', res?.result?.profileImg);
+					typeof window !== 'undefined' &&
+					localStorage.setItem('profile_img', res?.result?.profileImg);
 				const redirectUrl =
 					typeof window !== 'undefined' && localStorage.getItem('redirectTo');
 				if (redirectUrl) {

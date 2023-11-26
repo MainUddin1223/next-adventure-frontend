@@ -4,8 +4,8 @@ import Form from '@/components/form/Form';
 import FormInput from '@/components/form/FormInput';
 import FormTextArea from '@/components/form/FormTextArea';
 import {
-    useGetUserProfileQuery,
-    useUpdateUserProfileMutation,
+	useGetUserProfileQuery,
+	useUpdateUserProfileMutation,
 } from '@/redux/api/userApi';
 import { Button, Card, Col, Row } from 'antd';
 import { useRouter } from 'next/navigation';
@@ -18,7 +18,7 @@ const EditAgencyProfile = () => {
 	const router = useRouter();
 
 	const userInfo = {
-		name:profileData.name,
+		name: profileData.name,
 		contactNo: profileData?.contactNo,
 		profileImg: profileData?.profileImg,
 		about: profileData?.about,

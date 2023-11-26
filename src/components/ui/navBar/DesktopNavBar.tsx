@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons';
 import { Dropdown, MenuProps, Space } from 'antd';
 import Image from 'next/image';

@@ -33,6 +33,21 @@ const agencyApi = baseApi.injectEndpoints({
 			}),
 			invalidatesTags: ['agency'],
 		}),
+		getPlanById: build.query({
+			query: (id) => ({
+				url: `/agency/plan/${id}`,
+				method: 'GET',
+			}),
+			providesTags: ['agency'],
+		}),
+		updatePlanById: build.mutation({
+			query: (data) => ({
+				url: `/agency/plan/${data.id}`,
+				method: 'PATCH',
+				data: { ...data.updatedData },
+			}),
+			invalidatesTags: ['agency'],
+		}),
 	}),
 });
 
@@ -41,4 +56,6 @@ export const {
 	useGetMyTourPlansQuery,
 	useGetMyBookingHistoryQuery,
 	useManageBookingsMutation,
+	useGetPlanByIdQuery,
+	useUpdatePlanByIdMutation,
 } = agencyApi;

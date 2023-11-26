@@ -2,7 +2,7 @@
 
 import { useGetMyTourPlansQuery } from '@/redux/api/agencyApi';
 import { useDebounced } from '@/redux/hooks';
-import { EditOutlined, ReloadOutlined } from '@ant-design/icons';
+import { ReloadOutlined } from '@ant-design/icons';
 import { Button, Card, Input, Space, Table, TableColumnsType } from 'antd';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
@@ -67,7 +67,6 @@ const UpcomingPlan = () => {
 		setSortOrder('');
 		setSearchTerm('');
 	};
-	console.log(myPlans);
 
 	const defaultExpandable = {
 		expandedRowRender: (record: DataType) => {
@@ -187,26 +186,17 @@ const UpcomingPlan = () => {
 			dataIndex: 'totalSeats',
 			key: 'totalSeats',
 		},
-		// {
-		//   title: 'Bookings',render: function (data:any) {
-		//     return (
-		//       <>
-		//            <div style={{ display: "flex", gap: "5px" }}>
-		//        <Button type="primary" onClick={()=>router.push(`plan-history/${data.id}`)}>See Booking</Button>
-		//         </div>
-
-		//       </>
-		//     )
-		//  }
-		// },
 		{
 			title: 'Action',
 			render: function (data: any) {
 				return (
 					<>
 						<div style={{ display: 'flex', gap: '5px' }}>
-							<Button type="primary">
-								<EditOutlined />
+							<Button
+								type="primary"
+								onClick={() => router.push(`my-plans/${data.id}`)}
+							>
+								Details
 							</Button>
 						</div>
 					</>

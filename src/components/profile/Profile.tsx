@@ -9,7 +9,7 @@ import styles from './profile.module.css';
 const CommonProfile = () => {
 	const { data, isLoading } = useGetUserProfileQuery(undefined);
 	return (
-				<div>
+		<div>
 			{/* desktop */}
 			<div className={styles.profile_container}>
 				<Card style={{ width: '100%' }}>
@@ -24,14 +24,19 @@ const CommonProfile = () => {
 							<div className={styles.profile_info}>
 								<div>
 									<p>Email : {data?.auth?.email}</p>
-									<p>Phone : {data?.contactNo?data?.contactNo:"Not added"}</p></div>
+									<p>
+										Phone : {data?.contactNo ? data?.contactNo : 'Not added'}
+									</p>
+								</div>
 							</div>{' '}
 						</div>
 					</div>
 					<hr style={{ margin: '20px 0' }} />
 					<div>
 						<h3 style={{ fontSize: '1.3rem' }}>About</h3>
-						<p style={{ margin: '20px 0', fontSize: '17px' }}>{data?.about?data?.about:"Not added"}</p>
+						<p style={{ margin: '20px 0', fontSize: '17px' }}>
+							{data?.about ? data?.about : 'Not added'}
+						</p>
 					</div>
 					<div className={styles.edit_button}>
 						<Link href={`profile/edit`}>
