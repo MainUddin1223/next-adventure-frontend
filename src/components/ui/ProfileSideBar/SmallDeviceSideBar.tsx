@@ -21,7 +21,7 @@ const SmallDeviceSideBar = ({ open, setOpen }: ISideBarProps) => {
 
 	const handleLogout = async () => {
 		await userLogout(undefined);
-		localStorage.clear();
+		typeof window !== 'undefined' && localStorage.clear();
 		onClose();
 		router.push('/');
 	};

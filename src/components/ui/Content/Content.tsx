@@ -43,7 +43,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 
 	const handleLogout = async () => {
 		await userLogout(undefined);
-		localStorage.clear();
+		typeof window !== 'undefined' && localStorage.clear();
 		router.push('/');
 	};
 
