@@ -1,7 +1,7 @@
 import { sidebarItems } from '@/constants/sidebarItems';
 import { useUserLogoutMutation } from '@/redux/api/authApi';
 import { getUserInfo } from '@/services/auth.service';
-import { CloseCircleOutlined, LogoutOutlined } from '@ant-design/icons';
+import { CloseCircleOutlined } from '@ant-design/icons';
 import { Drawer, Menu } from 'antd';
 import { useRouter } from 'next/navigation';
 
@@ -51,23 +51,6 @@ const SmallDeviceSideBar = ({ open, setOpen }: ISideBarProps) => {
 					mode="inline"
 					items={sidebarItems(role)}
 				/>
-				<p
-					onClick={handleLogout}
-					style={{
-						cursor: 'pointer',
-						border: '1px solid',
-						padding: '10px 20px ',
-						margin: '0 auto',
-						width: '97%',
-						fontSize: '19px',
-						fontWeight: 'bold',
-						backgroundColor: 'var(--accent-color)',
-						color: 'var(--primary-color)',
-					}}
-				>
-					<LogoutOutlined style={{ fontSize: '21px', marginRight: '10px' }} />
-					Logout
-				</p>
 			</Drawer>
 		</>
 	);
