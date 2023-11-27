@@ -1,9 +1,10 @@
-import UpcomingPlan from '@/components/ui/upcoming-plan/UpcomingPlan';
+'use client'
+import MyAllPlans from '@/components/ui/agencies/AllPlans/AllPlans';
 
 const UpcomingTourPlan = () => {
 	return (
 		<div>
-			<UpcomingPlan />
+			<MyAllPlans/>
 		</div>
 	);
 };

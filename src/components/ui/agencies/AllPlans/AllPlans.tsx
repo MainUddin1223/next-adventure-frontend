@@ -1,15 +1,15 @@
 'use client';
 
 import {
-	useGetUpcomingPlansQuery,
-	useManageBookingsMutation
+    useGetMyTourPlansQuery,
+    useManageBookingsMutation,
 } from '@/redux/api/agencyApi';
 import { useDebounced } from '@/redux/hooks';
 import { Button, Card, Space, Table, TableColumnsType, Tag } from 'antd';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import DesktopTable from '../Tables/TableForDesktop/DesktopTable';
+import DesktopTable from '../../Tables/TableForDesktop/DesktopTable';
 
 interface DataType {
 	key: React.Key;
@@ -29,7 +29,7 @@ interface ExpandedDataType {
 	upgradeNum: string;
 }
 
-const UpcomingPlan = () => {
+const MyAllPlans = () => {
 	const query: Record<string, any> = {};
 	const router = useRouter();
 	const [size, setSize] = useState<number>(10);
@@ -55,7 +55,7 @@ const UpcomingPlan = () => {
 		query['search'] = searchTerm;
 	}
 
-	const { data, isLoading } = useGetUpcomingPlansQuery(undefined);
+	const { data, isLoading } = useGetMyTourPlansQuery(undefined);
 
 	const myPlans = data?.result;
 	const meta = data?.meta;
@@ -308,4 +308,4 @@ const UpcomingPlan = () => {
 	);
 };
 
-export default UpcomingPlan;
+export default MyAllPlans;

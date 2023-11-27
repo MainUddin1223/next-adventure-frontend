@@ -18,6 +18,15 @@ const agencyApi = baseApi.injectEndpoints({
 			}),
 			providesTags: ['agency'],
 		}),
+
+		getUpcomingPlans: build.query({
+			query: (arg: any) => ({
+				url: `/agency/upcoming-schedules`,
+				method: 'GET',
+				params: arg,
+			}),
+			providesTags: ['agency'],
+		}),
 		getMyBookingHistory: build.query({
 			query: (id: number) => ({
 				url: `/agency/booking-history/${id}`,
@@ -66,4 +75,5 @@ export const {
 	useGetPlanByIdQuery,
 	useUpdatePlanByIdMutation,
 	useGetPayoutsQuery,
+	useGetUpcomingPlansQuery,
 } = agencyApi;
