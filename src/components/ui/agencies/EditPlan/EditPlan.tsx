@@ -3,7 +3,7 @@
 import { useUpdatePlanByIdMutation } from '@/redux/api/agencyApi';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Drawer, Input, Modal, Tag, message } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface IUpdatedData {
 	totalSeats: number;
@@ -22,11 +22,15 @@ const EditPlan = ({ open, setOpen, data, id }: IEditPlanProps) => {
 	const [tag, setTag] = useState('');
 	const [updatePlanById] = useUpdatePlanByIdMutation();
 	const [updatedData, setUpdatedData] = useState<IUpdatedData>(data);
-	const [newTags, setNewTags] = useState<string[]>(data.notAllowed);
+	const [newTags, setNewTags] = useState<string[]>([]);
+
+	useEffect(() => {
+		setNewTags([...updatedData.notAllowed])
+	},[])
+
 	const handleUpdate = async () => {
-		console.log(updatedData);
 		try {
-			const res = await updatePlanById({ id, updatedData }).unwrap();
+			const res = await updatePlanById({ id, updatedData:{...updatedData, notAllowed: newTags} }).unwrap();
 			if (res?.success) {
 				setOpen(false);
 				message.success('Tour plan Updated successfully');
@@ -41,18 +45,16 @@ const EditPlan = ({ open, setOpen, data, id }: IEditPlanProps) => {
 
 	const addTags = () => {
 		setNewTags([...newTags, tag]);
-		setUpdatedData({ ...updatedData, notAllowed: newTags });
 		setTag('');
 	};
 
 	const removeTags = (value: string) => {
-		newTags.map((vl, i) => {
-			if (vl == value) {
-				newTags.splice(i, 1);
-			}
-		});
-		setUpdatedData({ ...updatedData, notAllowed: newTags });
+		if(newTags.includes(value)){
+			const updatedTags = newTags.filter((vl) => vl !== value);
+			setNewTags(updatedTags)
+		}
 	};
+	
 	return (
 		<div>
 			<Drawer
@@ -96,7 +98,8 @@ const EditPlan = ({ open, setOpen, data, id }: IEditPlanProps) => {
 									<Tag
 										key={i}
 										closeIcon={<CloseCircleOutlined />}
-										onClose={() => {
+										onClose={(e) => {
+											e.preventDefault()
 											removeTags(value);
 										}}
 									>
@@ -112,7 +115,10 @@ const EditPlan = ({ open, setOpen, data, id }: IEditPlanProps) => {
 									placeholder="Add new not allowed activities"
 									onChange={(e) => setTag(e.target.value)}
 								/>
-								<Button onClick={addTags}>Add</Button>
+								<Button
+									disabled={!tag && true}
+									onClick={addTags}
+								>Add</Button>
 							</div>
 						</Card>
 					</div>
