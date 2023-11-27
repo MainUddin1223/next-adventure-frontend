@@ -1,8 +1,8 @@
 'use client';
 
 import {
-    useGetMyTourPlansQuery,
-    useManageBookingsMutation,
+	useGetMyTourPlansQuery,
+	useManageBookingsMutation,
 } from '@/redux/api/agencyApi';
 import { useDebounced } from '@/redux/hooks';
 import { Button, Card, Space, Table, TableColumnsType, Tag } from 'antd';
