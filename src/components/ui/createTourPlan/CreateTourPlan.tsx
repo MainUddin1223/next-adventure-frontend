@@ -24,6 +24,7 @@ const CreateTourPlan = () => {
 
 	const onsubmit: SubmitHandler<any> = async (data: any) => {
 		try {
+			setIsLoading(true)
 			const res = await createTourPlan(data).unwrap();
 			if (res?.success) {
 				setIsLoading(false);
@@ -142,7 +143,7 @@ const CreateTourPlan = () => {
 										label="Not allowed activities"
 									/>
 								</Col>
-								<Col sm={24} md={24} style={{ margin: '5px 0' }}>
+								<Col sm={16} md={8} lg={6} style={{ margin: '5px 0' }}>
 									<TagMaker
 										name="events"
 										type="number"

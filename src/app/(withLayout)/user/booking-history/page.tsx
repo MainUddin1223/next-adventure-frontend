@@ -43,7 +43,7 @@ const BookingHistory = () => {
 		plan_id: number,
 		agency_id: number
 	) => {
-		const data = { rating, feedback, plan_id, agency_id };
+		const data = { rating, feedback};
 		const res = await reviewPlan({ data, id });
 		//@ts-ignore
 		if (res?.data?.success == false) {
@@ -65,6 +65,7 @@ const BookingHistory = () => {
 		setSearchTerm('');
 	};
 
+
 	const items = bookings?.map((booking: any) => {
 		const { date: bookingDate } = formateDateAndTime(booking?.createdAt);
 		return {
@@ -72,15 +73,15 @@ const BookingHistory = () => {
 			label: (
 				<div>
 					<p style={{ fontSize: '18px', fontWeight: 'bold' }}>
-						{booking?.plan?.plan_name}
+						{booking?.plan?.planName}
 					</p>
 					<div style={{ fontSize: '18px' }}>
 						{booking.status == 'pending' ? (
 							<strong style={{ color: 'yellowgreen' }}>Pending</strong>
-						) : booking.status == 'booked' ? (
+						) : booking.status == 'confirmed' ? (
 							<strong style={{ color: 'var(--button-color)' }}>Booked</strong>
 						) : (
-							booking.status == 'cenceled' && (
+							booking.status == 'canceled' && (
 								<strong style={{ color: 'red' }}> Canceled</strong>
 							)
 						)}
@@ -90,14 +91,12 @@ const BookingHistory = () => {
 			children: (
 				<div>
 					<h3>
-						Planner : {booking?.user?.first_name} {booking?.user?.last_name}
+						Planner : {booking?.agency?.name}
 					</h3>
 					<p style={{ fontWeight: 'bold' }}>Booking date : {bookingDate}</p>
+					<p style={{ fontWeight: 'bold' }}>Destination: {booking?.plan?.destination}</p>
 					<p style={{ fontWeight: 'bold' }}>
-						Booked for: {booking?.quantity} Person
-					</p>
-					<p style={{ fontWeight: 'bold' }}>
-						Total Amount : $ {booking?.total_amount}
+						Total Amount : $ {booking?.totalAmount}
 					</p>
 					<Button
 						type="primary"
@@ -112,7 +111,7 @@ const BookingHistory = () => {
 						centered
 						open={modal}
 						onOk={() =>
-							handleReview(booking?.id, booking?.plan.id, booking?.user?.id)
+							handleReview(booking?.id, booking?.plan.id, booking?.agency?.id)
 						}
 						okButtonProps={{ disabled: feedback ? false : true }}
 						onCancel={() => setModal(false)}

@@ -48,9 +48,10 @@ const userApi = baseApi.injectEndpoints({
 			providesTags: ['user'],
 		}),
 		manageBookings: build.mutation({
-			query: (id) => ({
-				url: `/user/manage-booking/${id}`,
+			query: ({ id, status }) => ({
+				url: `/user/manage-Schedule/${id}`,
 				method: 'PATCH',
+				params: { status },
 			}),
 			invalidatesTags: ['user'],
 		}),
@@ -64,7 +65,7 @@ const userApi = baseApi.injectEndpoints({
 		}),
 		reviewPlan: build.mutation({
 			query: ({ data, id }) => ({
-				url: `/user/plan-review/${id}`,
+				url: `/user/booking/review/${id}`,
 				method: 'POST',
 				data,
 			}),
