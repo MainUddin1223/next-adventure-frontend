@@ -1,10 +1,10 @@
-import EditProfileForm from '@/components/ui/EditProfileForm/EditProfileForm';
-import React from 'react';
+'use client'
+import EditAgencyProfile from '@/components/ui/EditProfileForm/EditAgency';
 
 const EditProfile = () => {
 	return (
 		<div>
-			<EditProfileForm />
+			<EditAgencyProfile />
 		</div>
 	);
 };

@@ -8,7 +8,7 @@ const LogoutBtn = ({ title = false }) => {
 	return (
 		<p
 			onClick={() => {
-				localStorage.clear();
+				typeof window !== 'undefined' && localStorage.clear();
 				router.push('/');
 			}}
 			style={{

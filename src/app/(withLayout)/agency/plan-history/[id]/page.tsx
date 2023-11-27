@@ -1,5 +1,5 @@
+'use client'
 import MyPlans from '@/components/ui/agencies/BookingHistory/BookingHistoryTable';
-import React from 'react';
 
 const PlanBookingHistory = ({ params }: { params: any }) => {
 	return (

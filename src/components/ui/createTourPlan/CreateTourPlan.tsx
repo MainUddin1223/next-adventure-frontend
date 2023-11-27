@@ -1,28 +1,20 @@
 'use client';
 
 import Form from '@/components/form/Form';
-import FormInput from '@/components/form/FormInput';
-import { Button, Card, Col, DatePicker, Modal, Row, message } from 'antd';
-import { SubmitHandler } from 'react-hook-form';
-import styles from './CreateTourPlan.module.css';
-import { useRouter } from 'next/navigation';
-import { getUserInfo, storeUserInfo } from '@/services/auth.service';
-import { useRegisterAgencyMutation } from '@/redux/api/authApi';
-import { yupResolver } from '@hookform/resolvers/yup';
-import FormTextArea from '@/components/form/FormTextArea';
-import PublicLayout from '../PublicLayout';
-import PerLoader from '../loader/PreLoader';
-import { useState } from 'react';
-import RegisterImageUploader from '../ImageUploader/RegisterImageUploader';
-import { registerSchema } from '@/schemas/auth';
-import { formateDateAndTime } from '@/services/timeFormater';
-import dayjs from 'dayjs';
 import FormDatePicker from '@/components/form/FormDatePicker';
+import FormInput from '@/components/form/FormInput';
+import FormTextArea from '@/components/form/FormTextArea';
 import TagMaker from '@/components/form/TagMaker';
-import TourImagesUploader from './TourImages';
 import { useCreateTourPlanMutation } from '@/redux/api/agencyApi';
-import Link from 'next/link';
 import { planFormSchema } from '@/schemas/planForm';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Button, Card, Col, Modal, Row, message } from 'antd';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { SubmitHandler } from 'react-hook-form';
+import PerLoader from '../loader/PreLoader';
+import styles from './CreateTourPlan.module.css';
+import TourImagesUploader from './TourImages';
 
 const CreateTourPlan = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +26,6 @@ const CreateTourPlan = () => {
 		try {
 			const res = await createTourPlan(data).unwrap();
 			if (res?.success) {
-				const authInfo: any = getUserInfo();
 				setIsLoading(false);
 				router.push(`profile`);
 				message.success('Tour plan listed successfully');

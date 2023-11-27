@@ -1,3 +1,4 @@
+'use client'
 import CommonProfile from '@/components/profile/Profile';
 
 const page = () => {

@@ -18,6 +18,15 @@ const agencyApi = baseApi.injectEndpoints({
 			}),
 			providesTags: ['agency'],
 		}),
+
+		getUpcomingPlans: build.query({
+			query: (arg: any) => ({
+				url: `/agency/upcoming-schedules`,
+				method: 'GET',
+				params: arg,
+			}),
+			providesTags: ['agency'],
+		}),
 		getMyBookingHistory: build.query({
 			query: (id: number) => ({
 				url: `/agency/booking-history/${id}`,
@@ -26,12 +35,34 @@ const agencyApi = baseApi.injectEndpoints({
 			providesTags: ['agency'],
 		}),
 		manageBookings: build.mutation({
-			query: (data) => ({
-				url: `/agency/booking-status/${data.id}`,
+			query: ({ id, status }) => ({
+				url: `/agency/manage-booking/${id}`,
 				method: 'PATCH',
-				data: { status: data.status },
+				params: { status },
 			}),
 			invalidatesTags: ['agency'],
+		}),
+		getPlanById: build.query({
+			query: (id) => ({
+				url: `/agency/plan/${id}`,
+				method: 'GET',
+			}),
+			providesTags: ['agency'],
+		}),
+		updatePlanById: build.mutation({
+			query: (data) => ({
+				url: `/agency/plan/${data.id}`,
+				method: 'PATCH',
+				data: { ...data.updatedData },
+			}),
+			invalidatesTags: ['agency'],
+		}),
+		getPayouts: build.query({
+			query: (status) => ({
+				url: `/agency/payouts`,
+				method: 'GET',
+				params: { status },
+			}),
 		}),
 	}),
 });
@@ -41,4 +72,8 @@ export const {
 	useGetMyTourPlansQuery,
 	useGetMyBookingHistoryQuery,
 	useManageBookingsMutation,
+	useGetPlanByIdQuery,
+	useUpdatePlanByIdMutation,
+	useGetPayoutsQuery,
+	useGetUpcomingPlansQuery,
 } = agencyApi;

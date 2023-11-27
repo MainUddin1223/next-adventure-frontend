@@ -1,3 +1,4 @@
+'use client';
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons';
 import { Dropdown, MenuProps, Space } from 'antd';
 import Image from 'next/image';
@@ -37,7 +38,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 						padding: '2px 5px',
 					}}
 					onClick={() => {
-						localStorage.clear();
+						typeof window !== 'undefined' && localStorage.clear();
 						router.push('/');
 					}}
 				>
@@ -151,7 +152,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 								className={styles.desktop_navigation_item}
 								href={`/${role}/upcoming-plan`}
 								style={{
-									border: '1px soliyd var(--primary-color) ',
+									border: '1px solid var(--primary-color) ',
 									fontWeight: 'bold',
 									color: 'var(--primary-color)',
 									padding: '5px',

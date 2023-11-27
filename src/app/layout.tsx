@@ -21,6 +21,9 @@ export default function RootLayout({
 			<ConfigProvider
 				theme={{
 					components: {
+						Menu: {
+							itemHoverColor:'var(--primary-color)'
+						},
 						Layout: {
 							headerHeight: 80,
 						},

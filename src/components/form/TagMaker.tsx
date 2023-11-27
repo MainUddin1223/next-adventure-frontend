@@ -1,10 +1,10 @@
 'use client';
 
-import { useFormContext, Controller } from 'react-hook-form';
-import { Button, Card, Input, Tag } from 'antd';
 import { getErrorMessageByPropartyName } from '@/utils/schemaValidator';
-import { useEffect, useState } from 'react';
 import { CloseCircleOutlined } from '@ant-design/icons';
+import { Button, Card, Input, Tag } from 'antd';
+import { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 interface IInput {
 	type?: string;
@@ -50,7 +50,6 @@ const TagMaker = ({
 				setValue(name, newTags);
 			}
 		});
-		console.log(newTags);
 	};
 
 	return (

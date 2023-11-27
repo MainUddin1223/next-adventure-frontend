@@ -1,7 +1,10 @@
 import LogoutBtn from '@/components/ui/LogoutBtn';
 import {
 	CreditCardOutlined,
+	FundOutlined,
 	HomeOutlined,
+	PlusSquareOutlined,
+	ScheduleOutlined,
 	TableOutlined,
 	ThunderboltOutlined,
 	UserOutlined,
@@ -111,13 +114,13 @@ export const sidebarItems = (role: string) => {
 		...defaultSidebarItems,
 		{
 			label: <Link href={`/${role}`}>Dashboard</Link>,
-			icon: <TableOutlined style={{ fontSize: '21px' }} />,
+			icon: <FundOutlined style={{ fontSize: '21px' }} />,
 			key: `/${role}`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/upcoming-plan`}>Upcoming Plans</Link>,
-			icon: <TableOutlined style={{ fontSize: '21px' }} />,
+			icon: <ScheduleOutlined style={{ fontSize: '21px' }} />,
 			key: `/${role}/upcoming-plan`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
@@ -125,11 +128,11 @@ export const sidebarItems = (role: string) => {
 			label: <Link href={`/${role}/my-plans`}>All Plans</Link>,
 			icon: <TableOutlined style={{ fontSize: '21px' }} />,
 			key: `/${role}/my-plans`,
-			style: { border: '1px solid var(--primary-color)' },
+			style: { border: '1px solid var(--primary-color)' }
 		},
 		{
 			label: <Link href={`/${role}/create-plan`}>Create Tour Plan</Link>,
-			icon: <TableOutlined style={{ fontSize: '21px' }} />,
+			icon: <PlusSquareOutlined style={{ fontSize: '21px' }} />,
 			key: `/${role}/create-plan`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
