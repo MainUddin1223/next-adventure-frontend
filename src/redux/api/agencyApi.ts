@@ -26,10 +26,10 @@ const agencyApi = baseApi.injectEndpoints({
 			providesTags: ['agency'],
 		}),
 		manageBookings: build.mutation({
-			query: (data) => ({
-				url: `/agency/booking-status/${data.id}`,
+			query: ({ id, status }) => ({
+				url: `/agency/manage-booking/${id}`,
 				method: 'PATCH',
-				data: { status: data.status },
+				params: { status },
 			}),
 			invalidatesTags: ['agency'],
 		}),
@@ -48,6 +48,13 @@ const agencyApi = baseApi.injectEndpoints({
 			}),
 			invalidatesTags: ['agency'],
 		}),
+		getPayouts: build.query({
+			query: (status) => ({
+				url: `/agency/payouts`,
+				method: 'GET',
+				params: { status },
+			}),
+		}),
 	}),
 });
 
@@ -58,4 +65,5 @@ export const {
 	useManageBookingsMutation,
 	useGetPlanByIdQuery,
 	useUpdatePlanByIdMutation,
+	useGetPayoutsQuery,
 } = agencyApi;

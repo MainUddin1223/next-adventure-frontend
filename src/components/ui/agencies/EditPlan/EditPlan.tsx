@@ -25,12 +25,15 @@ const EditPlan = ({ open, setOpen, data, id }: IEditPlanProps) => {
 	const [newTags, setNewTags] = useState<string[]>([]);
 
 	useEffect(() => {
-		setNewTags([...updatedData.notAllowed])
-	},[])
+		setNewTags([...updatedData.notAllowed]);
+	}, []);
 
 	const handleUpdate = async () => {
 		try {
-			const res = await updatePlanById({ id, updatedData:{...updatedData, notAllowed: newTags} }).unwrap();
+			const res = await updatePlanById({
+				id,
+				updatedData: { ...updatedData, notAllowed: newTags },
+			}).unwrap();
 			if (res?.success) {
 				setOpen(false);
 				message.success('Tour plan Updated successfully');
@@ -49,12 +52,12 @@ const EditPlan = ({ open, setOpen, data, id }: IEditPlanProps) => {
 	};
 
 	const removeTags = (value: string) => {
-		if(newTags.includes(value)){
+		if (newTags.includes(value)) {
 			const updatedTags = newTags.filter((vl) => vl !== value);
-			setNewTags(updatedTags)
+			setNewTags(updatedTags);
 		}
 	};
-	
+
 	return (
 		<div>
 			<Drawer
@@ -99,7 +102,7 @@ const EditPlan = ({ open, setOpen, data, id }: IEditPlanProps) => {
 										key={i}
 										closeIcon={<CloseCircleOutlined />}
 										onClose={(e) => {
-											e.preventDefault()
+											e.preventDefault();
 											removeTags(value);
 										}}
 									>
@@ -115,10 +118,9 @@ const EditPlan = ({ open, setOpen, data, id }: IEditPlanProps) => {
 									placeholder="Add new not allowed activities"
 									onChange={(e) => setTag(e.target.value)}
 								/>
-								<Button
-									disabled={!tag && true}
-									onClick={addTags}
-								>Add</Button>
+								<Button disabled={!tag && true} onClick={addTags}>
+									Add
+								</Button>
 							</div>
 						</Card>
 					</div>

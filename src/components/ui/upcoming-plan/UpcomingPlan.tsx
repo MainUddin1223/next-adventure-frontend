@@ -1,9 +1,12 @@
 'use client';
 
-import { useGetMyTourPlansQuery } from '@/redux/api/agencyApi';
+import {
+	useGetMyTourPlansQuery,
+	useManageBookingsMutation,
+} from '@/redux/api/agencyApi';
 import { useDebounced } from '@/redux/hooks';
 import { ReloadOutlined } from '@ant-design/icons';
-import { Button, Card, Input, Space, Table, TableColumnsType } from 'antd';
+import { Button, Card, Input, Space, Table, TableColumnsType, Tag } from 'antd';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -35,6 +38,7 @@ const UpcomingPlan = () => {
 	const [sortBy, setSortBy] = useState<string>('');
 	const [sortOrder, setSortOrder] = useState<string>('');
 	const [searchTerm, setSearchTerm] = useState<string>('');
+	const [manageBookings] = useManageBookingsMutation();
 
 	query['limit'] = size;
 	query['page'] = page;
@@ -56,6 +60,7 @@ const UpcomingPlan = () => {
 
 	const myPlans = data?.result;
 	const meta = data?.meta;
+
 	const onTableChange = (pagination: any, filter: any, sorter: any) => {
 		const { field, order } = sorter;
 		setSortBy(field as string);
@@ -68,9 +73,15 @@ const UpcomingPlan = () => {
 		setSearchTerm('');
 	};
 
+	const handleBooking = async (
+		id: number,
+		status: 'confirmed' | 'rejected'
+	) => {
+		await manageBookings({ id, status });
+	};
+
 	const defaultExpandable = {
 		expandedRowRender: (record: DataType) => {
-			console.log(record);
 			const columns: TableColumnsType<ExpandedDataType> = [
 				{
 					title: 'Status',
@@ -79,33 +90,62 @@ const UpcomingPlan = () => {
 						return (
 							<div>
 								{status == 'pending' ? (
-									<strong
+									<Tag
+										color="blue"
 										style={{
-											color: 'yellowgreen',
+											margin: '5px 0',
+											marginRight: '15px',
+											padding: '5px',
+											fontSize: '16px',
+											fontWeight: 'bold',
 											textTransform: 'capitalize',
 										}}
 									>
-										{' '}
-										{status}
-									</strong>
-								) : status == 'booked' ? (
-									<strong
+										Pending
+									</Tag>
+								) : status == 'confirmed' ? (
+									<Tag
+										color="green"
 										style={{
-											color: 'var(--button-color)',
+											margin: '5px 0',
+											marginRight: '15px',
+											padding: '5px',
+											fontSize: '16px',
+											fontWeight: 'bold',
 											textTransform: 'capitalize',
 										}}
 									>
-										{' '}
-										{status}
-									</strong>
+										Confirmed
+									</Tag>
+								) : status == 'requested' ? (
+									<Tag
+										color="blue"
+										style={{
+											margin: '5px 0',
+											marginRight: '15px',
+											padding: '5px',
+											fontSize: '16px',
+											fontWeight: 'bold',
+											textTransform: 'capitalize',
+										}}
+									>
+										Requested
+									</Tag>
 								) : (
 									status == 'canceled' && (
-										<strong
-											style={{ color: 'red', textTransform: 'capitalize' }}
+										<Tag
+											color="error"
+											style={{
+												margin: '5px 0',
+												marginRight: '15px',
+												padding: '5px',
+												fontSize: '16px',
+												fontWeight: 'bold',
+												textTransform: 'capitalize',
+											}}
 										>
-											{' '}
-											{status}
-										</strong>
+											Confirmed
+										</Tag>
 									)
 								)}
 							</div>
@@ -137,14 +177,30 @@ const UpcomingPlan = () => {
 				},
 				{
 					title: 'Handle Bookings',
-					dataIndex: 'status',
-					key: 'status',
-					render: () => (
-						<Space size="middle">
-							<Button type="primary">Accept</Button>
-							<Button danger>Reject</Button>
-						</Space>
-					),
+					render: function (data: any) {
+						const isDIsabled =
+							data.status == 'confirmed' || data.status == 'rejected'
+								? true
+								: false;
+						return (
+							<Space size="middle">
+								<Button
+									disabled={isDIsabled}
+									type="primary"
+									onClick={() => handleBooking(data.id, 'confirmed')}
+								>
+									Confirm
+								</Button>
+								<Button
+									disabled={isDIsabled}
+									danger
+									onClick={() => handleBooking(data.id, 'rejected')}
+								>
+									Reject
+								</Button>
+							</Space>
+						);
+					},
 				},
 			];
 
@@ -204,6 +260,7 @@ const UpcomingPlan = () => {
 			},
 		},
 	];
+
 	return (
 		<>
 			<Card>

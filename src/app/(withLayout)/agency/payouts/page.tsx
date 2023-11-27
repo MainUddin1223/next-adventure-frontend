@@ -1,11 +1,14 @@
+'use client';
+import { useGetPayoutsQuery } from '@/redux/api/agencyApi';
 import { Card } from 'antd';
-import React from 'react';
 
 const Payouts = () => {
+	const { data, isLoading } = useGetPayoutsQuery(undefined);
+	console.log(data);
 	return (
 		<div>
 			<Card>
-				<h1 style={{ textAlign: 'center' }}>Payouts Coming Soon...</h1>
+				<h1 style={{ textAlign: 'center' }}>Payoutsg Coming Soon...</h1>
 			</Card>
 		</div>
 	);
