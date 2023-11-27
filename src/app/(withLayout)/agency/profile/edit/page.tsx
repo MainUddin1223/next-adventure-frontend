@@ -1,3 +1,4 @@
+'use client'
 import EditAgencyProfile from '@/components/ui/EditProfileForm/EditAgency';
 
 const EditProfile = () => {
