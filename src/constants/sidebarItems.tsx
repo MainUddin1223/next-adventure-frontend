@@ -128,7 +128,7 @@ export const sidebarItems = (role: string) => {
 			label: <Link href={`/${role}/my-plans`}>All Plans</Link>,
 			icon: <TableOutlined style={{ fontSize: '21px' }} />,
 			key: `/${role}/my-plans`,
-			style: { border: '1px solid var(--primary-color)' },
+			style: { border: '1px solid var(--primary-color)' }
 		},
 		{
 			label: <Link href={`/${role}/create-plan`}>Create Tour Plan</Link>,
