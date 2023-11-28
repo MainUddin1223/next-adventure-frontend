@@ -24,6 +24,7 @@ const CreateTourPlan = () => {
 
 	const onsubmit: SubmitHandler<any> = async (data: any) => {
 		try {
+			setIsLoading(true);
 			const res = await createTourPlan(data).unwrap();
 			if (res?.success) {
 				setIsLoading(false);
@@ -41,7 +42,7 @@ const CreateTourPlan = () => {
 
 	return (
 		<div>
-			<Card style={{ width: '80%', margin: '0 auto', marginTop: '30px' }}>
+			<Card style={{ margin: '0 auto', marginTop: '30px' }}>
 				{isLoading && <PerLoader />}
 				<div className={styles.form_container}>
 					<h1 style={{ margin: '15px 0' }}>Create tour plan</h1>
@@ -58,7 +59,7 @@ const CreateTourPlan = () => {
 								</Col>
 								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
 									<FormInput
-										name="plan_name"
+										name="planName"
 										type="text"
 										size="large"
 										label="Plan name"
@@ -66,7 +67,15 @@ const CreateTourPlan = () => {
 								</Col>
 								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
 									<FormInput
-										name="starting_location"
+										name="totalSeats"
+										type="number"
+										size="large"
+										label="Total seats"
+									/>
+								</Col>
+								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
+									<FormInput
+										name="departureFrom"
 										type="text"
 										size="large"
 										label="Start from"
@@ -90,43 +99,51 @@ const CreateTourPlan = () => {
 								</Col>
 								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
 									<FormDatePicker
-										name="booking_deadline"
+										name="deadline"
 										size="large"
 										label="Booking Deadline"
 									/>
 								</Col>
 								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
 									<FormDatePicker
-										name="starting_time"
+										name="departureTime"
 										size="large"
 										label="Start time"
 									/>
 								</Col>
 								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
 									<FormInput
-										name="total_meals"
-										type="number"
+										name="meals"
+										type="text"
 										size="large"
 										label="Total Meals"
 									/>
 								</Col>
 								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
 									<FormInput
-										name="tour_duration"
-										type="number"
+										name="duration"
+										type="text"
 										size="large"
 										label="Tour duration"
 									/>
 								</Col>
 								<Col sm={24} md={24} style={{ margin: '5px 0' }}>
 									<TagMaker
-										name="cover_location"
+										name="coverLocations"
 										type="number"
 										size="large"
 										label="Cover locations"
 									/>
 								</Col>
 								<Col sm={24} md={24} style={{ margin: '5px 0' }}>
+									<TagMaker
+										name="notAllowed"
+										type="number"
+										size="large"
+										label="Not allowed activities"
+									/>
+								</Col>
+								<Col sm={16} md={8} lg={6} style={{ margin: '5px 0' }}>
 									<TagMaker
 										name="events"
 										type="number"

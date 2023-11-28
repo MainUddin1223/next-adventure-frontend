@@ -17,8 +17,10 @@
 
 .nav_container_mobile {
 	display: flex;
-	font-size: 30px;
-	color: white;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0 10px;
+	height: 100%;
 }
 
 /* iPads and Tablets (481px to 768px) */

@@ -119,7 +119,7 @@ const Payouts = () => {
 	return (
 		<div>
 			<Card>
-				<h1 style={{ textAlign: 'center' }}>Payoutsg Coming Soon...</h1>
+				<h2>My payout details</h2>
 				<Tabs defaultActiveKey="1" items={items} onChange={onChange} />
 			</Card>
 		</div>

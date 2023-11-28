@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import MyPlans from '@/components/ui/agencies/BookingHistory/BookingHistoryTable';
 
 const PlanBookingHistory = ({ params }: { params: any }) => {

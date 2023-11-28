@@ -22,7 +22,7 @@ export default function RootLayout({
 				theme={{
 					components: {
 						Menu: {
-							itemHoverColor:'var(--primary-color)'
+							itemHoverColor: 'var(--primary-color)',
 						},
 						Layout: {
 							headerHeight: 80,

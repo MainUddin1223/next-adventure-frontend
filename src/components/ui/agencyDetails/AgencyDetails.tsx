@@ -187,7 +187,7 @@ const AgencyDetailsCompo = ({ id }: { id: number }) => {
 			</Card>
 			<Card>
 				<div>
-					<h2>Ongoing Tour Plans</h2>
+					<h2 style={{ margin: '15px 0' }}>Ongoing Tour Plans</h2>
 					<div>
 						<Row gutter={[25, 25]}>
 							{data?.plans?.map((plan: any) => (

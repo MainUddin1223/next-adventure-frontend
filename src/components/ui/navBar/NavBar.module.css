@@ -46,6 +46,10 @@
 .navigation_item:hover {
 	color: var(--button-color);
 }
+
+.mobile_navigation_item:hover {
+	color: var(--button-color);
+}
 .drawer_container {
 	display: none;
 }

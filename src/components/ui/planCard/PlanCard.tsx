@@ -55,13 +55,18 @@ const PlanCard = ({ plan, agencyProfile = false }: IPlanProps) => {
 					</Carousel>
 				)}
 				<div className={styles.tour_details}>
-					{plan?.planName?.length > 25 ? (
-						<Tooltip placement="topLeft" title={plan?.planName}>
-							<h4>{plan?.planName.substring(0, 25)}...</h4>
-						</Tooltip>
-					) : (
+					<div className={styles.plan_header_desktop}>
+						{plan?.planName?.length > 25 ? (
+							<Tooltip placement="topLeft" title={plan?.planName}>
+								<h4>{plan?.planName.substring(0, 25)}...</h4>
+							</Tooltip>
+						) : (
+							<h4>{plan?.planName}</h4>
+						)}
+					</div>
+					<div className={styles.plan_header_mobile}>
 						<h4>{plan?.planName}</h4>
-					)}
+					</div>
 					<strong style={{ fontSize: '16px' }}>
 						<DollarOutlined style={{ color: 'var(--button-color)' }} />{' '}
 						{plan.price}
@@ -73,7 +78,11 @@ const PlanCard = ({ plan, agencyProfile = false }: IPlanProps) => {
 						</span>
 					</p>
 					{isValidDate ? (
-						<Tag icon={<SyncOutlined spin />} color="green">
+						<Tag
+							style={{ padding: '5px', marginTop: '5px' }}
+							icon={<SyncOutlined />}
+							color="green"
+						>
 							Booking going on
 						</Tag>
 					) : (

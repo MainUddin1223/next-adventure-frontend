@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import UpcomingPlan from '@/components/ui/upcoming-plan/UpcomingPlan';
 
 const UpcomingTourPlan = () => {
