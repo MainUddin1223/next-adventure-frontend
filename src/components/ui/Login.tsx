@@ -29,9 +29,9 @@ const Login = () => {
 			if (res?.accessToken) {
 				const accessToken = res?.accessToken;
 				storeUserInfo(accessToken);
-					typeof window !== 'undefined' &&
+				typeof window !== 'undefined' &&
 					res?.profileData?.profileImg &&
-						localStorage.setItem('profile_img', res?.profileData?.profileImg);
+					localStorage.setItem('profile_img', res?.profileData?.profileImg);
 				const authInfo: any = await getUserInfo();
 				message.success('User logged in successfully');
 				setIsLoading(false);

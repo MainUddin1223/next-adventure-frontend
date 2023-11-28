@@ -43,7 +43,7 @@ const BookingHistory = () => {
 		plan_id: number,
 		agency_id: number
 	) => {
-		const data = { rating, feedback};
+		const data = { rating, feedback };
 		const res = await reviewPlan({ data, id });
 		//@ts-ignore
 		if (res?.data?.success == false) {
@@ -64,7 +64,6 @@ const BookingHistory = () => {
 		setSortOrder('');
 		setSearchTerm('');
 	};
-
 
 	const items = bookings?.map((booking: any) => {
 		const { date: bookingDate } = formateDateAndTime(booking?.createdAt);
@@ -90,11 +89,11 @@ const BookingHistory = () => {
 			),
 			children: (
 				<div>
-					<h3>
-						Planner : {booking?.agency?.name}
-					</h3>
+					<h3>Planner : {booking?.agency?.name}</h3>
 					<p style={{ fontWeight: 'bold' }}>Booking date : {bookingDate}</p>
-					<p style={{ fontWeight: 'bold' }}>Destination: {booking?.plan?.destination}</p>
+					<p style={{ fontWeight: 'bold' }}>
+						Destination: {booking?.plan?.destination}
+					</p>
 					<p style={{ fontWeight: 'bold' }}>
 						Total Amount : $ {booking?.totalAmount}
 					</p>

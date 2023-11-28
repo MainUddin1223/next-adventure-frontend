@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import ManageSchedules from '@/components/ui/users/Schedules/Schedules';
 
 const Schedules = () => {

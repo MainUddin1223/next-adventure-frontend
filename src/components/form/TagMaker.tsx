@@ -71,9 +71,15 @@ const TagMaker = ({
 				) : (
 					<></>
 				)}
-				<div style={{ width:'250px',display: 'flex', gap: '10px', marginTop: '10px' }}>
+				<div
+					style={{
+						width: '250px',
+						display: 'flex',
+						gap: '10px',
+						marginTop: '10px',
+					}}
+				>
 					<Input
-						
 						value={tag}
 						placeholder={placeholder}
 						onChange={(e) => setTag(e.target.value)}

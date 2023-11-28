@@ -51,7 +51,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 		<Content style={{ minHeight: '100vh', color: 'black' }}>
 			<Header
 				className={styles.header_container}
-				style={{ backgroundColor: 'var(--accent-color)',padding:'0px'}}
+				style={{ backgroundColor: 'var(--accent-color)', padding: '0px' }}
 			>
 				<div className={styles.nav_container_mobile}>
 					<Image

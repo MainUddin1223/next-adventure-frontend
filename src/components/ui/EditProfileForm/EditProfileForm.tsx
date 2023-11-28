@@ -43,15 +43,15 @@ const EditProfileForm = () => {
 				<h1 style={{ margin: '15px 0' }}>Update your profile</h1>
 				<div>
 					<Form submitHandler={onsubmit} defaultValues={userInfo}>
-														<div style={{ margin: '15px 0' }}>
-									<ProfileImageUploader
-										name={'profileImg'}
-										defaultUrl={profileData?.profileImg}
-									/>
-								</div>
+						<div style={{ margin: '15px 0' }}>
+							<ProfileImageUploader
+								name={'profileImg'}
+								defaultUrl={profileData?.profileImg}
+							/>
+						</div>
 						<Row gutter={[20, 20]}>
 							<Col xs={24} sm={24} md={12}>
-								<div style={{ margin: '15px 0',width:'100%' }}>
+								<div style={{ margin: '15px 0', width: '100%' }}>
 									<FormInput
 										name="name"
 										type="text"
@@ -60,7 +60,7 @@ const EditProfileForm = () => {
 									/>
 								</div>
 							</Col>
-							<Col xs={24} sm={24} md={12} >
+							<Col xs={24} sm={24} md={12}>
 								<div style={{ margin: '15px 0' }}>
 									<FormInput
 										name="contactNo"

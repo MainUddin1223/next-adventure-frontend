@@ -18,24 +18,28 @@ const ManageSchedules = () => {
 		id: number
 	) => {
 		return status == 'confirmed' || status == 'pending' ? (
-			<div style={{ display: 'flex', gap: '5px',marginTop:'10px' }}>
+			<div style={{ display: 'flex', gap: '5px', marginTop: '10px' }}>
 				<Button
 					danger
 					disabled={isValidDeadline ? false : true}
-					onClick={() => handleBookings("canceled",id)}
+					onClick={() => handleBookings('canceled', id)}
 				>
 					Cancel Booking
 				</Button>
 			</div>
 		) : status == 'canceled' || status == 'rejected' ? (
 			<div>
-				<Button disabled danger style={{ textTransform: 'capitalize',marginTop:'10px' }}>
+				<Button
+					disabled
+					danger
+					style={{ textTransform: 'capitalize', marginTop: '10px' }}
+				>
 					{status}
 				</Button>
 			</div>
 		) : (
-			<div style={{ display: 'flex', gap: '5px',marginTop:'10px' }}>
-				<Button type="primary" onClick={() => handleBookings("canceled",id)}>
+			<div style={{ display: 'flex', gap: '5px', marginTop: '10px' }}>
+				<Button type="primary" onClick={() => handleBookings('canceled', id)}>
 					Cancel Booking
 				</Button>
 			</div>
@@ -72,7 +76,7 @@ const ManageSchedules = () => {
 		);
 	};
 
-	const handleBookings = async (status:string,id: number) => {
+	const handleBookings = async (status: string, id: number) => {
 		const result = await manageBookings({ id, status });
 		//@ts-ignore
 		const data = result?.data;
@@ -161,7 +165,7 @@ const ManageSchedules = () => {
 
 	//for mobile view
 	const items = upcomingSchedulesList?.map((schedule: any) => {
-console.log(schedule)
+		console.log(schedule);
 		const currentDate = new Date();
 		currentDate.setHours(currentDate.getHours() + 6);
 		const formattedDate = currentDate.toISOString();
@@ -191,9 +195,7 @@ console.log(schedule)
 				<div>
 					<h3>Booked for: {schedule?.quantity} Person</h3>
 					<h3>Total Amount : $ {schedule?.totalAmount}</h3>
-					<h3>
-						Total booking : {schedule.seats} seats
-					</h3>
+					<h3>Total booking : {schedule.seats} seats</h3>
 					<h3>
 						Departure : {time} {date}
 					</h3>

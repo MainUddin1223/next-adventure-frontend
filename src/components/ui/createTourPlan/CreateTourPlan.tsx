@@ -24,7 +24,7 @@ const CreateTourPlan = () => {
 
 	const onsubmit: SubmitHandler<any> = async (data: any) => {
 		try {
-			setIsLoading(true)
+			setIsLoading(true);
 			const res = await createTourPlan(data).unwrap();
 			if (res?.success) {
 				setIsLoading(false);
@@ -42,7 +42,7 @@ const CreateTourPlan = () => {
 
 	return (
 		<div>
-			<Card style={{margin: '0 auto', marginTop: '30px' }}>
+			<Card style={{ margin: '0 auto', marginTop: '30px' }}>
 				{isLoading && <PerLoader />}
 				<div className={styles.form_container}>
 					<h1 style={{ margin: '15px 0' }}>Create tour plan</h1>
