@@ -158,48 +158,72 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 									padding: '5px',
 								}}
 							>
-								Upcoming plans
+								My plans
 							</Link>
 						</p>
-						<Dropdown menu={{ items }}>
-							<a onClick={(e) => e.preventDefault()}>
-								<Space>
-									{profile_img ? (
-										<Image
-											src={profile_img}
-											alt="profile_img"
-											width={80}
-											height={80}
-											style={{
-												fontSize: '20px',
-												padding: '5px',
-												color: 'white',
-												cursor: 'pointer',
-												height: '45px',
-												width: '45px',
-												borderRadius: '50%',
-											}}
-											onClick={() => router.push(`${role}/profile`)}
-										/>
-									) : (
-										<UserOutlined
-											style={{
-												fontSize: '25px',
-												padding: '5px',
-												color: 'white',
-												cursor: 'pointer',
-												borderRadius: '50%',
-												backgroundColor: 'var(--primary-color)',
-											}}
-											onClick={() => router.push(`${role}/profile`)}
-										/>
-									)}
-									<CaretDownOutlined
-										style={{ fontSize: '16px', color: 'var(--primary-color)' }}
-									/>
-								</Space>
-							</a>
-						</Dropdown>
+						<p>
+							<Link
+								className={styles.desktop_navigation_item}
+								href={`/${role}/profile`}
+								style={{
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+								}}
+							>
+								Dashboard
+							</Link>
+						</p>
+						<p>
+							<button
+								onClick={logout}
+								className={styles.desktop_navigation_item}
+								style={{
+									cursor: 'pointer',
+									backgroundColor: 'var(--accent-color)',
+									border: '1px solid var(--primary-color) ',
+									fontWeight: 'bold',
+									color: 'var(--primary-color)',
+									padding: '5px',
+									fontSize: '18px',
+								}}
+							>
+								Logout
+							</button>
+						</p>
+						{profile_img ? (
+							<Image
+								src={profile_img}
+								alt="profile_img"
+								width={80}
+								height={80}
+								style={{
+									fontSize: '20px',
+									padding: '5px',
+									color: 'white',
+									cursor: 'pointer',
+									height: '45px',
+									width: '45px',
+									borderRadius: '50%',
+								}}
+								onClick={() => router.push(`${role}/profile`)}
+							/>
+						) : (
+							<UserOutlined
+								className={styles.desktop_navigation_item}
+								style={{
+									fontSize: '20px',
+									padding: '3px',
+									color: 'var(--primary-color)',
+									cursor: 'pointer',
+									backgroundColor: 'var(--accent-color)',
+									borderRadius: '50%',
+									border: '1px solid var(--primary-color)',
+								}}
+								onClick={() => router.push(`${role}/profile`)}
+							/>
+						)}
 					</div>
 				) : (
 					<div className={styles.navigation_item_container}>

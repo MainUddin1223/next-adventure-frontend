@@ -143,7 +143,7 @@ const UpcomingPlan = () => {
 												textTransform: 'capitalize',
 											}}
 										>
-											Confirmed
+											Canceled
 										</Tag>
 									)
 								)}
@@ -178,7 +178,9 @@ const UpcomingPlan = () => {
 					title: 'Handle Bookings',
 					render: function (data: any) {
 						const isDIsabled =
-							data.status == 'confirmed' || data.status == 'rejected'
+							data.status == 'confirmed' ||
+							data.status == 'rejected' ||
+							'canceled'
 								? true
 								: false;
 						return (

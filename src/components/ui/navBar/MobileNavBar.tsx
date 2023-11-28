@@ -73,8 +73,6 @@ const MobileNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 										cursor: 'pointer',
 										height: '80px',
 										width: '80px',
-										padding: '10px',
-										backgroundColor: 'var(--button-color)',
 										borderRadius: '50%',
 									}}
 									onClick={() => router.push(`${role}/profile`)}

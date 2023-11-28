@@ -43,6 +43,8 @@ const NavBar = () => {
 							alt="logo"
 							onClick={() => router.push(`/`)}
 						/>
+						{/* nav bar for desktop */}
+
 						<div style={{ display: 'flex', gap: '30px' }}>
 							<DesktopNavBar
 								role={role}
