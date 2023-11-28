@@ -12,7 +12,6 @@ const Checkout = ({ setStep }: ICheckoutProps) => {
 	const { plan, quantity } = useAppSelector((state) => state.orderSummary);
 	const dispatch = useAppDispatch();
 	const startingTime = formateDateAndTime(plan.departureTime);
-	console.log(plan);
 	return (
 		<div>
 			<div>

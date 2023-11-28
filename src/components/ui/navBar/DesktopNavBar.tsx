@@ -64,7 +64,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 									padding: '5px',
 								}}
 							>
-								Book a plan
+								Plans
 							</Link>
 						</p>
 						<p>
@@ -78,7 +78,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 									padding: '5px',
 								}}
 							>
-								Planners
+								Agencies
 							</Link>
 						</p>
 						<p>
@@ -92,7 +92,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 									padding: '5px',
 								}}
 							>
-								Schedules
+								My Bookings
 							</Link>
 						</p>
 						<p>
@@ -106,7 +106,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 									fontWeight: 'bold',
 									color: 'var(--primary-color)',
 									padding: '5px',
-									fontSize: '18px',
+									fontSize: '16px',
 								}}
 							>
 								Logout
@@ -309,7 +309,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 								padding: '5px',
 							}}
 						>
-							Tour Planners
+							Agencies
 						</Link>
 					</p>
 					<p>

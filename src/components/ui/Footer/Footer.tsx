@@ -15,7 +15,8 @@ const FooterSection = () => {
 	const date = new Date();
 	const year = date.getFullYear();
 	return (
-		<div className={styles.container}>
+		<div className={styles.footer}>
+			<div className={styles.container}>
 			<div>
 				<Row gutter={[20, 20]}>
 					{/* ------------contact info---------- */}
@@ -102,6 +103,7 @@ const FooterSection = () => {
 					</a>
 				</div>
 			</div>
+		</div>
 		</div>
 	);
 };

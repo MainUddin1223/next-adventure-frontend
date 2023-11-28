@@ -1,3 +1,4 @@
+import book_icon from '@/assets/book-icon.png';
 import manage_icon from '@/assets/manage-icon.png';
 import search_icon from '@/assets/search-icon.png';
 import share_icon from '@/assets/share-icon.png';
@@ -11,8 +12,9 @@ const Activities = () => {
 	const router = useRouter();
 	const { role } = getUserInfo() as any;
 	return (
+		<>
 		<Row gutter={[20, 20]} className={styles.container}>
-			<Col xs={24} md={12} onClick={() => router.push('/agencies')}>
+			<Col xs={12} md={12} onClick={() => router.push('/agencies')}>
 				<div className={styles.activities_container}>
 					<div className={styles.activities_image_container}>
 						<Image
@@ -28,11 +30,11 @@ const Activities = () => {
 					</div>
 				</div>
 			</Col>
-			<Col xs={24} md={12} onClick={() => router.push('/plans')}>
+			<Col xs={12} md={12} onClick={() => router.push('/plans')}>
 				<div className={styles.activities_container}>
 					<div className={styles.activities_image_container}>
 						<Image
-							src={search_icon}
+							src={book_icon}
 							alt="search_icon"
 							width={20}
 							height={20}
@@ -84,7 +86,8 @@ const Activities = () => {
 					</div>
 				</div>
 			</Col>
-		</Row>
+			</Row>
+		</>
 	);
 };
 

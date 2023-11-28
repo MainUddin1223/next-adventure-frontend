@@ -234,6 +234,32 @@ const PlanDetails = ({ id }: { id: number }) => {
 										</Tag>
 									))}
 								</div>
+								<div>
+									<p
+										style={{
+											margin: '5px 0',
+											fontSize: '16px',
+											fontWeight: 'bold',
+										}}
+									>
+										Not allowed activities
+									</p>
+									{info?.notAllowed?.map((event: string, index: number) => (
+										<Tag
+											color="red"
+											key={index}
+											style={{
+												margin: '5px 0',
+												marginRight: '10px',
+												padding: '5px',
+												fontSize: '16px',
+												fontWeight: 'bold',
+											}}
+										>
+											{event}
+										</Tag>
+									))}
+								</div>
 								<hr />
 								<div>
 									<Row gutter={[20, 10]}>
