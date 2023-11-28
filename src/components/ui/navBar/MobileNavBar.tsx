@@ -115,7 +115,14 @@ const MobileNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 							</Link>{' '}
 						</>
 					) : role == 'user' ? (
-						<>
+							<>
+															<Link
+								href={`${role}/profile`}
+								className={styles.mobile_navigation_item}
+							>
+								{' '}
+								<p>Dashboard</p>
+							</Link>
 							<Link href="/agencies" className={styles.mobile_navigation_item}>
 								{' '}
 								<p>Agencies</p>

@@ -28,6 +28,7 @@ const Hero = () => {
 	return (
 		<div className={styles.parallox}>
 			<div className={styles.hero_container}>
+				<div className={styles.banner_info}>
 				<div className={styles.search_field_container}>
 					<Input
 						size="large"
@@ -44,7 +45,6 @@ const Hero = () => {
 						onChange={(e) => handleSearch(e.target.value)}
 					/>
 				</div>
-				<div className={styles.banner_info}>
 					<h1>Enjoy your Holidays</h1>
 					<h2>Find the best plan from the uncountable options</h2>
 					<Button

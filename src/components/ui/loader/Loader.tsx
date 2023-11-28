@@ -1,7 +1,8 @@
-import { LoadingOutlined } from '@ant-design/icons';
+import { Loading3QuartersOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 const LoadingSpinner = () => {
-	const antIcon = <LoadingOutlined style={{ fontSize: 100 }} spin />;
+	
+	const antIcon = <Loading3QuartersOutlined style={{ fontSize: 100 }} spin />;
 	return (
 		<div
 			style={{

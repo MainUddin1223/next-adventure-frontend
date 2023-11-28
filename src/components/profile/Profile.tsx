@@ -4,6 +4,7 @@ import { useGetUserProfileQuery } from '@/redux/api/userApi';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Button, Card } from 'antd';
 import Link from 'next/link';
+import PerLoader from '../ui/loader/PreLoader';
 import styles from './profile.module.css';
 
 const CommonProfile = () => {
@@ -11,9 +12,13 @@ const CommonProfile = () => {
 	return (
 		<div>
 			{/* desktop */}
-			<div className={styles.profile_container}>
+			
+			{
+				isLoading ? <PerLoader /> : 
+								<div className={styles.profile_container}>
 				<Card style={{ width: '100%' }}>
-					<div className={styles.profile_image_container}>
+							<>
+									<div className={styles.profile_image_container}>
 						{data?.profileImg ? (
 							<Avatar src={data.profileImg} size={120} />
 						) : (
@@ -43,8 +48,12 @@ const CommonProfile = () => {
 							<Button type="primary">Edit Profile</Button>
 						</Link>
 					</div>
+							</>
 				</Card>
 			</div>
+			}
+	
+
 		</div>
 	);
 };

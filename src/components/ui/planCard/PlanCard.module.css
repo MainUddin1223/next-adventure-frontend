@@ -11,3 +11,15 @@
 .tour_details p {
 	font-size: 18px;
 }
+.plan_header_mobile {
+	display: none;
+}
+/* Mobile devices (280px to 480px) */
+@media only screen and (min-width: 280px) and (max-width: 567px) {
+	.plan_header_desktop {
+		display: none;
+	}
+	.plan_header_mobile {
+		display: block;
+	}
+}

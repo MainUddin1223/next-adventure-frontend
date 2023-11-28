@@ -53,6 +53,7 @@ const NavBar = () => {
 						</div>
 					</span>
 				</div>
+				{/* This is mobile nav bar */}
 				<span>
 					<MobileNavBar
 						role={role}

@@ -21,7 +21,8 @@
 /* Mobile devices (280px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
 	.agency_details_container {
-		width: 95%;
+		width: 100%;
+		margin: 0 auto;
 	}
 	.profile_container {
 		flex-direction: column;
@@ -33,6 +34,7 @@
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
 	.agency_details_container {
-		width: 90%;
+		width: 100%;
+		margin: 0 auto;
 	}
 }
