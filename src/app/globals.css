@@ -63,21 +63,17 @@ hr {
 }
 
 /* Extra large screens and TVs (1201px and above) */
-@media only screen and (min-width: 1801px) {
+@media only screen and (min-width: 2001px) {
+	.extra_large_layout {
+		width: 1200px;
+		margin: 0 auto;
+	}
 	.landing_page_container {
 		width: 1200px;
 		margin: 0 auto;
 	}
 	.landing_page_banner_container {
 		width: 1200px;
-		margin: 0 auto;
-	}
-	/* Your CSS styles for extra large screens and TVs go here */
-}
-/* Extra large screens and TVs (1201px and above) */
-@media only screen and (min-width: 1025px) and (max-width: 1801px) {
-	.landing_page_banner_container {
-		width: 80%;
 		margin: 0 auto;
 	}
 	/* Your CSS styles for extra large screens and TVs go here */

@@ -88,13 +88,13 @@ const PlanDetails = ({ id }: { id: number }) => {
 									alt="profile"
 									style={{ borderRadius: '50%', cursor: 'pointer' }}
 								/>
+							</div>
 								<p>
 									<span style={{ textTransform: 'capitalize' }}>
 										{info?.agency?.name}
 									</span>
 								</p>
-							</div>
-							<Rate disabled defaultValue={5} />
+							<Rate disabled defaultValue={5} style={{color:"var(--primary-color)"}}/>
 						</div>
 					</Col>
 				</Row>

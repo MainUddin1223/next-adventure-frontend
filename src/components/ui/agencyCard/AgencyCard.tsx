@@ -11,10 +11,15 @@ const AgencyCard = ({ agency }: IAgencyProps) => {
 	const pathname = usePathname();
 	const isLoggedInUser = isLoggedIn();
 	const rating = Number(agency.rating);
-	!isLoggedInUser && localStorage.setItem('prevRoute', pathname);
+	 localStorage.removeItem('prevRoute');
+
 	return (
 		<div
-			onClick={() => router.push(`/agencies/${agency.id}`)}
+			onClick={() => {
+				!isLoggedInUser && localStorage.setItem('prevRoute', pathname);
+				router.push(`/agencies/${agency.id}`
+				)
+			}}
 			style={{
 				boxShadow:
 					'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px',
@@ -43,10 +48,10 @@ const AgencyCard = ({ agency }: IAgencyProps) => {
 					<h3 className={styles.mobile_header}>{agency.name}</h3>
 					<Rate
 						disabled
-						style={{ color: 'var(--primary-color)' }}
+						style={{ color: 'var(--primary-color)',padding:'5px 0' }}
 						defaultValue={rating === 0 ? 5 : rating}
 					/>
-					<p style={{ fontWeight: 'bold' }}>
+					<p style={{ fontWeight: 'bold' ,padding:'5px 0'}}>
 						{agency?.ongoingPlans > 0 ? (
 							<p>
 								<span style={{ color: 'var(--primary-color)' }}>
@@ -58,8 +63,8 @@ const AgencyCard = ({ agency }: IAgencyProps) => {
 							<p>No active plan</p>
 						)}
 					</p>
-					<p>
-						<EnvironmentOutlined />
+					<p style={{padding:'5px 0',display:'flex',gap:'5px'}}>
+						<EnvironmentOutlined style={{color:'var(--primary-color)'}}/> <p>{agency.location}</p>
 					</p>
 				</div>
 			</div>

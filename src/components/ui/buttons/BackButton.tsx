@@ -13,6 +13,7 @@ const BackButton = () => {
 						typeof window !== 'undefined' && localStorage.getItem('prevRoute');
 					typeof window !== 'undefined' &&
 						localStorage.removeItem('redirectTo');
+					console.log(prevUrl)
 					if (prevUrl) {
 						router.push(prevUrl);
 					} else {

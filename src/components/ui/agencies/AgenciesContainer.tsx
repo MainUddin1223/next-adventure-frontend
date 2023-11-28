@@ -67,14 +67,14 @@ const AgenciesContainer = () => {
 						<div>
 							<Row gutter={[24, 24]}>
 								{agencies.map((agency: any) => (
-									<Col xs={24} sm={24} md={12} lg={12} xl={8} key={agency.id}>
+									<Col xs={24} sm={24} md={12} lg={8} xl={6} key={agency.id}>
 										<AgencyCard agency={agency} />
 									</Col>
 								))}
 							</Row>
 						</div>
 						<PaginationCompo
-							totalPage={meta?.totalPage}
+							totalPage={meta?.total}
 							setSize={setSize}
 							setPage={setPage}
 						/>
