@@ -1,4 +1,5 @@
 'use client';
+import { getStripeSecret } from '@/helpers/config/envConfig';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addToCart, decreaseQuantity } from '@/redux/slice/orderSlice';
 import { formateDateAndTime } from '@/services/timeFormater';
@@ -10,8 +11,8 @@ import { useRouter } from 'next/navigation';
 import { ICheckoutProps } from '../../types';
 import CheckoutForm from '../checkoutForm/CheckoutForm';
 
-const stripePromise = loadStripe(process.env.STRIPE_SECRET as string);
-
+const stripeSecret = getStripeSecret()
+const stripePromise = loadStripe(stripeSecret);
 const Checkout = ({ setStep }: ICheckoutProps) => {
 
 	const router = useRouter();

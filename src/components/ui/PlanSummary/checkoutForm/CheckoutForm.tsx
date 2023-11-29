@@ -1,7 +1,7 @@
 'use client'
 import { useOrderSummaryMutation } from "@/redux/api/userApi";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 const CheckoutForm = ({quantity,planId}:{quantity:number,planId:number}) => {
     const stripe = useStripe();
@@ -13,44 +13,21 @@ const CheckoutForm = ({quantity,planId}:{quantity:number,planId:number}) => {
     const [clientSecret, setClientSecret] = useState("");
     const [orderSummary] = useOrderSummaryMutation()
 const order = {_id:1,paymentPrice:500,userName:'xyz',userEmail:'user@gmail.com' }
-    const { _id, paymentPrice, userName, userEmail } = order;
+    const { _id, userName, userEmail } = order;
 
-
-    useEffect(() => {
-        fetch(`http://localhost:8000/api/v1/user/order-summary/${quantity}`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-                authorization: `${localStorage.getItem("accessToken")}`,
-            },
-            body: JSON.stringify({ paymentPrice }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                        console.log("paymentIntent",data)
-                if (data?.data?.client_secret) {
-                    setClientSecret(data?.data.client_secret);
-                }
-            });
-    }, [paymentPrice]);
 
         const handleOrderSummary = async () => {
             const data:any = await orderSummary({ data: {totalSeat:quantity}, id: planId });
             setClientSecret(data?.data?.id);
-            console.log(clientSecret)
-    }
+        }
     
 
     useMemo(() => {
         if (quantity || planId) {
-            
             handleOrderSummary()
         }
     }, [quantity,planId])
     
-
-
-        console.log("paymentIntent","paymentIntent",clientSecret)
     const handleSubmit = async (event:any) => {
         event.preventDefault();
         if (!stripe || !elements) {
@@ -64,6 +41,7 @@ const order = {_id:1,paymentPrice:500,userName:'xyz',userEmail:'user@gmail.com' 
             type: "card",
             card,
         });
+        console.log(card)
 
         // ERROR
         if (error) {
@@ -75,8 +53,6 @@ const order = {_id:1,paymentPrice:500,userName:'xyz',userEmail:'user@gmail.com' 
             setCardError("");
             console.log("[PaymentMethod]", paymentMethod);
         }
-
-        console.log("paymentIntent","paymentIntent",clientSecret)
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
                     card: card,
@@ -86,7 +62,7 @@ const order = {_id:1,paymentPrice:500,userName:'xyz',userEmail:'user@gmail.com' 
                     },
                 },
             });
-        console.log("intentError",intentError)
+        console.log("intentError",paymentIntent)
         if (intentError) {
             setCardError(intentError?.message as string);
             console.log(intentError)
@@ -117,23 +93,24 @@ const order = {_id:1,paymentPrice:500,userName:'xyz',userEmail:'user@gmail.com' 
                 });
         }
     };
+
     return (
         <>
             <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{
-                        // style: {
-                        //     base: {
-                        //         fontSize: "16px",
-                        //         color: "#424770",
-                        //         "::placeholder": {
-                        //             color: "#aab7c4",
-                        //         },
-                        //     },
-                        //     invalid: {
-                        //         color: "#9e2146",
-                        //     },
-                        // },
+                        style: {
+                            base: {
+                                fontSize: "16px",
+                                color: "#424770",
+                                "::placeholder": {
+                                    color: "#aab7c4",
+                                }
+                            },
+                            invalid: {
+                                color: "#9e2146",
+                            },
+                        },
                     }}
                 />
                 <button
