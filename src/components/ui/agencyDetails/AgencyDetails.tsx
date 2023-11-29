@@ -69,7 +69,7 @@ const AgencyDetailsCompo = ({ id }: { id: number }) => {
 				</div>
 				<div>
 					<div>
-						<Image src={review?.plan?.images[0]} alt="planImg" width={100} />
+						<Image src={review?.plan?.images[0]} alt="planImg" height={100} width={100} />
 					</div>
 					<h3>{review?.plan?.planName}</h3>
 					<h4>

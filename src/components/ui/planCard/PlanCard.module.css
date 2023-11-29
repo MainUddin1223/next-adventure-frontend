@@ -1,14 +1,8 @@
 .plan_card_container {
 	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 	transition: 0.5s;
-	cursor: pointer;
 }
-.plan_card_container:hover {
-	box-shadow:
-		rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-		rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-		rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-}
+
 .tour_details {
 	padding: 5px;
 	line-height: 35px;

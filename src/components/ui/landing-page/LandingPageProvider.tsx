@@ -3,7 +3,7 @@
 import { useGetLandingPageDataQuery } from '@/redux/api/publicApi';
 import { getUserInfo } from '@/services/auth.service';
 import SkeletonLoader from '../Skeleton/Skeleton';
-import Activities from './Activities/Activities';
+import Accordion from './Accordion/Accordion';
 import AgencyBanner from './Banners/Agency-banner/AgencyBanner';
 import Motto from './Banners/Motto-banner/Motto';
 import CeoSection from './CeoSection/CeoSection';
@@ -26,7 +26,10 @@ const LandingPageProvider = () => {
 	return (
 		<>
 			<div className="landing_page_container">
-				<Activities />
+					<div style={{ margin: '100px 0' }}>
+					<CeoSection />
+				</div>
+				{/* <Activities /> */}
 				<div style={{ margin: '100px 0' }}>
 					<FeaturedTour tours={data} />
 				</div>
@@ -35,9 +38,6 @@ const LandingPageProvider = () => {
 				</div>
 				<div style={{ margin: '100px 0' }}>
 					<PopularAgencies agencies={data} />
-				</div>
-				<div style={{ margin: '100px 0' }}>
-					<CeoSection />
 				</div>
 			</div>
 			<div className="landing_page_banner_container">
@@ -58,6 +58,11 @@ const LandingPageProvider = () => {
 			<div className="landing_page_banner_container">
 				<div style={{ margin: '100px 0' }}>
 					<Motto />
+				</div>
+			</div>
+			<div className="landing_page_banner_container">
+				<div style={{ margin: '100px 0' }}>
+					<Accordion/>
 				</div>
 			</div>
 		</>

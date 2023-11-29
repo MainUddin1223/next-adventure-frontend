@@ -18,7 +18,7 @@ const order = {_id:1,paymentPrice:500,userName:'xyz',userEmail:'user@gmail.com' 
 
         const handleOrderSummary = async () => {
             const data:any = await orderSummary({ data: {totalSeat:quantity}, id: planId });
-            setClientSecret(data?.data?.id);
+            setClientSecret(data?.data?.client_secret);
         }
     
 
