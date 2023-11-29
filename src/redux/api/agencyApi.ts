@@ -34,7 +34,7 @@ const agencyApi = baseApi.injectEndpoints({
 			}),
 			providesTags: ['agency'],
 		}),
-		manageBookings: build.mutation({
+		manageAgencyBookings: build.mutation({
 			query: ({ id, status }) => ({
 				url: `/agency/manage-booking/${id}`,
 				method: 'PATCH',
@@ -71,7 +71,7 @@ export const {
 	useCreateTourPlanMutation,
 	useGetMyTourPlansQuery,
 	useGetMyBookingHistoryQuery,
-	useManageBookingsMutation,
+	useManageAgencyBookingsMutation,
 	useGetPlanByIdQuery,
 	useUpdatePlanByIdMutation,
 	useGetPayoutsQuery,

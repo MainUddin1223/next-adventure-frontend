@@ -2,7 +2,7 @@
 
 import {
 	useGetUpcomingPlansQuery,
-	useManageBookingsMutation,
+	useManageAgencyBookingsMutation,
 } from '@/redux/api/agencyApi';
 import { useDebounced } from '@/redux/hooks';
 import { Button, Card, Space, Table, TableColumnsType, Tag } from 'antd';
@@ -37,7 +37,7 @@ const UpcomingPlan = () => {
 	const [sortBy, setSortBy] = useState<string>('');
 	const [sortOrder, setSortOrder] = useState<string>('');
 	const [searchTerm, setSearchTerm] = useState<string>('');
-	const [manageBookings] = useManageBookingsMutation();
+	const [manageAgencyBookings] = useManageAgencyBookingsMutation();
 
 	query['limit'] = size;
 	query['page'] = page;
@@ -76,7 +76,7 @@ const UpcomingPlan = () => {
 		id: number,
 		status: 'confirmed' | 'rejected'
 	) => {
-		await manageBookings({ id, status });
+		await manageAgencyBookings({ id, status });
 	};
 
 	const defaultExpandable = {
@@ -177,23 +177,23 @@ const UpcomingPlan = () => {
 				{
 					title: 'Handle Bookings',
 					render: function (data: any) {
-						const isDIsabled =
+						const isDisabled =
 							data.status == 'confirmed' ||
 							data.status == 'rejected' ||
-							'canceled'
+							data.status == 'canceled'
 								? true
 								: false;
 						return (
 							<Space size="middle">
 								<Button
-									disabled={isDIsabled}
+									disabled={isDisabled}
 									type="primary"
 									onClick={() => handleBooking(data.id, 'confirmed')}
 								>
 									Confirm
 								</Button>
 								<Button
-									disabled={isDIsabled}
+									disabled={isDisabled}
 									danger
 									onClick={() => handleBooking(data.id, 'rejected')}
 								>

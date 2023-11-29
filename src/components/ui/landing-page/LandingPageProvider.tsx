@@ -26,7 +26,7 @@ const LandingPageProvider = () => {
 	return (
 		<>
 			<div className="landing_page_container">
-					<div style={{ margin: '100px 0' }}>
+				<div style={{ margin: '100px 0' }}>
 					<CeoSection />
 				</div>
 				{/* <Activities /> */}
@@ -62,7 +62,7 @@ const LandingPageProvider = () => {
 			</div>
 			<div className="landing_page_banner_container">
 				<div style={{ margin: '100px 0' }}>
-					<Accordion/>
+					<Accordion />
 				</div>
 			</div>
 		</>

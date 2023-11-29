@@ -5,21 +5,19 @@ import { addToCart, decreaseQuantity } from '@/redux/slice/orderSlice';
 import { formateDateAndTime } from '@/services/timeFormater';
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from '@stripe/stripe-js';
 import { Button, Card, Col, Row } from 'antd';
 import { useRouter } from 'next/navigation';
 import { ICheckoutProps } from '../../types';
 import CheckoutForm from '../checkoutForm/CheckoutForm';
 
-const stripeSecret = getStripeSecret()
+const stripeSecret = getStripeSecret();
 const stripePromise = loadStripe(stripeSecret);
 const Checkout = ({ setStep }: ICheckoutProps) => {
-
 	const router = useRouter();
 	const { plan, quantity } = useAppSelector((state) => state.orderSummary);
 	const dispatch = useAppDispatch();
 	const startingTime = formateDateAndTime(plan.departureTime);
-	
 	return (
 		<div>
 			<div>
@@ -81,9 +79,16 @@ const Checkout = ({ setStep }: ICheckoutProps) => {
 					</Col>
 					<Col sm={24} md={12}>
 						<Card>
-							  <Elements stripe={stripePromise}>
-								<CheckoutForm quantity={quantity} planId={ plan.id} />
-                                    </Elements>
+							<div>
+								<div>
+									<h2 style={{ margin: '15px 0' }}>
+										Input your card information
+									</h2>
+								</div>
+								<Elements stripe={stripePromise}>
+									<CheckoutForm quantity={quantity} planId={plan.id} />
+								</Elements>
+							</div>
 						</Card>
 					</Col>
 				</Row>

@@ -97,11 +97,19 @@ const MobileNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 
 					{!isUser ? (
 						<>
-							<Link onClick={()=>setOpen(false)} href="/agencies" className={styles.mobile_navigation_item}>
+							<Link
+								onClick={() => setOpen(false)}
+								href="/agencies"
+								className={styles.mobile_navigation_item}
+							>
 								{' '}
 								<p>Agencies</p>
 							</Link>
-							<Link onClick={()=>setOpen(false)} href="/plans" className={styles.mobile_navigation_item}>
+							<Link
+								onClick={() => setOpen(false)}
+								href="/plans"
+								className={styles.mobile_navigation_item}
+							>
 								{' '}
 								<p>Tour plans</p>
 							</Link>

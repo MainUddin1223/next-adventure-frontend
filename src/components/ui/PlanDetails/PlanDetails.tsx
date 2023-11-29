@@ -28,7 +28,6 @@ const PlanDetails = ({ id }: { id: number }) => {
 	const bookingDeadline = formateDateAndTime(info?.deadline);
 	const reportingTime = formateDateAndTime(info?.departureTime);
 	const isValidDate = checkValidity(info?.deadline);
-	console.log(info);
 	const title = (
 		<div className={styles.details_header_section}>
 			<h2 style={{ textTransform: 'capitalize', padding: '10px 0' }}>
@@ -96,7 +95,7 @@ const PlanDetails = ({ id }: { id: number }) => {
 							</p>
 							<Rate
 								disabled
-								defaultValue={5}
+								defaultValue={Number(info?.agency?.rating)}
 								style={{ color: 'var(--primary-color)' }}
 							/>
 						</div>
