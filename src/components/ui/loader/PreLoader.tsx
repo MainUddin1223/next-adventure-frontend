@@ -1,11 +1,11 @@
-import { Alert, Spin } from 'antd';
-import React from 'react';
+import { Spin } from 'antd';
 
 const PerLoader = () => {
 	return (
 		<div
 			style={{
 				position: 'absolute',
+				zIndex: '99999',
 				top: '50%',
 				left: '50%',
 				transform: '-50% -50%',
