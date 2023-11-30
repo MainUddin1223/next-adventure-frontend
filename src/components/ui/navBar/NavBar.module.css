@@ -13,7 +13,7 @@
 .navigation_item_container {
 	display: flex;
 	gap: 15px;
-	font-size: 18px;
+	font-size: 16px;
 	align-items: center;
 }
 .desktop_navigation_item:hover {
@@ -89,7 +89,7 @@
 	}
 }
 /* Extra large screens and TVs (1201px and above) */
-@media only screen and (min-width: 1801px) {
+@media only screen and (min-width: 2001px) {
 	.landscape_container {
 		width: 1200px;
 		margin: 0 auto;

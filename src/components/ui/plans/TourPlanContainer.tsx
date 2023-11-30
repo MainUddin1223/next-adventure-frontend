@@ -58,12 +58,10 @@ const TourPlanContainer = () => {
 							setSearchTerm(e.target.value);
 						}}
 						suffix={
-							searchTerm && (
-								<UndoOutlined
-									style={{ color: 'var(--primary-color)', cursor: 'pointer' }}
-									onClick={() => setSearchTerm('')}
-								/>
-							)
+							<UndoOutlined
+								style={{ color: 'var(--primary-color)', cursor: 'pointer' }}
+								onClick={() => setSearchTerm('')}
+							/>
 						}
 					/>
 				</div>
@@ -72,14 +70,14 @@ const TourPlanContainer = () => {
 						<div>
 							<Row gutter={[24, 24]}>
 								{tourPlans.map((plan: any) => (
-									<Col xs={24} sm={24} md={12} lg={12} xl={8} key={plan.id}>
+									<Col xs={24} sm={24} md={12} lg={12} xl={6} key={plan.id}>
 										<PlanCard plan={plan} />
 									</Col>
 								))}
 							</Row>
 						</div>
 						<PaginationCompo
-							totalPage={meta?.totalPage}
+							totalPage={meta?.total}
 							setSize={setSize}
 							setPage={setPage}
 						/>

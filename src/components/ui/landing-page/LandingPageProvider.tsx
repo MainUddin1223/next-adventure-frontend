@@ -3,7 +3,7 @@
 import { useGetLandingPageDataQuery } from '@/redux/api/publicApi';
 import { getUserInfo } from '@/services/auth.service';
 import SkeletonLoader from '../Skeleton/Skeleton';
-import Activities from './Activities/Activities';
+import Accordion from './Accordion/Accordion';
 import AgencyBanner from './Banners/Agency-banner/AgencyBanner';
 import Motto from './Banners/Motto-banner/Motto';
 import CeoSection from './CeoSection/CeoSection';
@@ -26,18 +26,18 @@ const LandingPageProvider = () => {
 	return (
 		<>
 			<div className="landing_page_container">
-				<Activities />
-				<div style={{ margin: '100px 0' }}>
+				<div className='landing_page_sections'>
+					<CeoSection />
+				</div>
+				{/* <Activities /> */}
+				<div className='landing_page_sections'>
 					<FeaturedTour tours={data} />
 				</div>
-				<div style={{ margin: '100px 0' }}>
+				<div className='landing_page_sections'>
 					<AgencyBanner />
 				</div>
-				<div style={{ margin: '100px 0' }}>
+				<div className='landing_page_sections'>
 					<PopularAgencies agencies={data} />
-				</div>
-				<div style={{ margin: '100px 0' }}>
-					<CeoSection />
 				</div>
 			</div>
 			<div className="landing_page_banner_container">
@@ -50,7 +50,7 @@ const LandingPageProvider = () => {
 					<Reviews reviews={data} />
 				</div>
 				{role == 'user' && (
-					<div style={{ margin: '100px 0' }}>
+					<div className='landing_page_sections'>
 						<LeaveReview />
 					</div>
 				)}
@@ -58,6 +58,11 @@ const LandingPageProvider = () => {
 			<div className="landing_page_banner_container">
 				<div style={{ margin: '100px 0' }}>
 					<Motto />
+				</div>
+			</div>
+			<div className="landing_page_banner_container">
+				<div style={{ margin: '100px 0' }}>
+					<Accordion />
 				</div>
 			</div>
 		</>

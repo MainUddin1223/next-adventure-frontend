@@ -1,0 +1,17 @@
+.login_container {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+/* iPads and Tablets (481px to 768px) */
+@media only screen and (max-width: 768px) {
+	.login_container {
+		width: 95%;
+	}
+}
+@media only screen and (min-width: 2001px) {
+	.login_container {
+		width: 1200px;
+	}
+	/* Your CSS styles for extra large screens and TVs go here */
+}

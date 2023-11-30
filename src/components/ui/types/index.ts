@@ -4,6 +4,7 @@ export interface IPublicAgencyData {
 	profileImg: string;
 	rating: string;
 	ongoingPlans: number;
+	location?: true;
 }
 
 export type IAgencyProps = {

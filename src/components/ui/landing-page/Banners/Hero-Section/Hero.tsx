@@ -27,7 +27,7 @@ const Hero = () => {
 
 	return (
 		<div className={styles.parallox}>
-			<div className={styles.hero_container}>
+			<div className={`${styles.extra_large_layout} ${styles.hero_container}`}>
 				<div className={styles.banner_info}>
 					<div className={styles.search_field_container}>
 						<Input

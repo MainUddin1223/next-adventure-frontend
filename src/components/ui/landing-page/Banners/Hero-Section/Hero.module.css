@@ -92,3 +92,9 @@
 		font-size: 1.4rem;
 	}
 }
+@media only screen and (min-width: 2001px) {
+	.extra_large_layout {
+		width: 1200px;
+		margin: 0 auto;
+	}
+}

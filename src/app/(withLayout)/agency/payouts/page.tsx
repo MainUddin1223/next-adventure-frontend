@@ -44,6 +44,29 @@ const Payouts = () => {
 			key: 'totalAmount',
 		},
 		{
+			title: 'Status',
+			dataIndex: 'status',
+			render: (data: string) => {
+				const status =
+					data == 'pending' || 'postponed' ? (
+						<p
+							style={{
+								fontWeight: 'bold',
+								color: 'red',
+								textTransform: 'capitalize',
+							}}
+						>
+							{data}
+						</p>
+					) : (
+						<p style={{ fontWeight: 'bold', color: 'var()--primary-color' }}>
+							Released
+						</p>
+					);
+				return status;
+			},
+		},
+		{
 			title: 'Booked Seats',
 			render: function (data: any) {
 				return (
@@ -91,7 +114,7 @@ const Payouts = () => {
 		},
 		{
 			key: 'released',
-			label: 'released',
+			label: 'Released',
 			children: (
 				<Table
 					loading={isLoading}

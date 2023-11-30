@@ -2,7 +2,7 @@
 
 import {
 	useGetMyTourPlansQuery,
-	useManageBookingsMutation,
+	useManageAgencyBookingsMutation,
 } from '@/redux/api/agencyApi';
 import { useDebounced } from '@/redux/hooks';
 import { Button, Card, Space, Table, TableColumnsType, Tag } from 'antd';
@@ -37,7 +37,7 @@ const MyAllPlans = () => {
 	const [sortBy, setSortBy] = useState<string>('');
 	const [sortOrder, setSortOrder] = useState<string>('');
 	const [searchTerm, setSearchTerm] = useState<string>('');
-	const [manageBookings] = useManageBookingsMutation();
+	const [manageAgencyBookings] = useManageAgencyBookingsMutation();
 
 	query['limit'] = size;
 	query['page'] = page;
@@ -76,7 +76,7 @@ const MyAllPlans = () => {
 		id: number,
 		status: 'confirmed' | 'rejected'
 	) => {
-		await manageBookings({ id, status });
+		await manageAgencyBookings({ id, status });
 	};
 
 	const defaultExpandable = {

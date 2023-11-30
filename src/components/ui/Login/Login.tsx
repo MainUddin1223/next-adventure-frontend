@@ -10,12 +10,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import Form from '../form/Form';
-import FormInput from '../form/FormInput';
-import { FormValues } from '../types';
-import PublicLayout from './PublicLayout';
-import BackButton from './buttons/BackButton';
-import PerLoader from './loader/PreLoader';
+import Form from '../../form/Form';
+import FormInput from '../../form/FormInput';
+import { FormValues } from '../../types';
+import PublicLayout from '../PublicLayout';
+import BackButton from '../buttons/BackButton';
+import PerLoader from '../loader/PreLoader';
+import styles from './Login.module.css';
 
 const Login = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +58,7 @@ const Login = () => {
 
 	return (
 		<PublicLayout>
-			<div style={{ width: '80%', margin: '0 auto', marginTop: '30px' }}>
+			<div className={styles.login_container}>
 				<BackButton />
 				<Card>
 					{isLoading && <PerLoader />}

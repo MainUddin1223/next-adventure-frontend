@@ -28,7 +28,6 @@ const PlanDetails = ({ id }: { id: number }) => {
 	const bookingDeadline = formateDateAndTime(info?.deadline);
 	const reportingTime = formateDateAndTime(info?.departureTime);
 	const isValidDate = checkValidity(info?.deadline);
-	console.log(info);
 	const title = (
 		<div className={styles.details_header_section}>
 			<h2 style={{ textTransform: 'capitalize', padding: '10px 0' }}>
@@ -88,13 +87,17 @@ const PlanDetails = ({ id }: { id: number }) => {
 									alt="profile"
 									style={{ borderRadius: '50%', cursor: 'pointer' }}
 								/>
-								<p>
-									<span style={{ textTransform: 'capitalize' }}>
-										{info?.agency?.name}
-									</span>
-								</p>
 							</div>
-							<Rate disabled defaultValue={5} />
+							<p>
+								<span style={{ textTransform: 'capitalize' }}>
+									{info?.agency?.name}
+								</span>
+							</p>
+							<Rate
+								disabled
+								defaultValue={Number(info?.agency?.rating)}
+								style={{ color: 'var(--primary-color)' }}
+							/>
 						</div>
 					</Col>
 				</Row>
@@ -217,6 +220,32 @@ const PlanDetails = ({ id }: { id: number }) => {
 									{info?.events?.map((event: string, index: number) => (
 										<Tag
 											color="blue"
+											key={index}
+											style={{
+												margin: '5px 0',
+												marginRight: '10px',
+												padding: '5px',
+												fontSize: '16px',
+												fontWeight: 'bold',
+											}}
+										>
+											{event}
+										</Tag>
+									))}
+								</div>
+								<div>
+									<p
+										style={{
+											margin: '5px 0',
+											fontSize: '16px',
+											fontWeight: 'bold',
+										}}
+									>
+										Not allowed activities
+									</p>
+									{info?.notAllowed?.map((event: string, index: number) => (
+										<Tag
+											color="red"
 											key={index}
 											style={{
 												margin: '5px 0',

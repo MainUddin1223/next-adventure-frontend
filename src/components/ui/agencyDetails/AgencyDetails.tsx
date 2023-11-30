@@ -5,11 +5,11 @@ import {
 	ArrowRightOutlined,
 	EnvironmentOutlined,
 	StarFilled,
-	UserOutlined,
 } from '@ant-design/icons';
-import { Avatar, Card, Col, Empty, FloatButton, Row } from 'antd';
+import { Card, Col, Empty, FloatButton, Row } from 'antd';
 import Image from 'next/image';
 import AliceCarousel from 'react-alice-carousel';
+import PlanReviewCard from '../agencies/PlanReviewCard/PlanReviewCard';
 import BackButton from '../buttons/BackButton';
 import LoadingSpinner from '../loader/Loader';
 import PlanCard from '../planCard/PlanCard';
@@ -28,57 +28,14 @@ const AgencyDetailsCompo = ({ id }: { id: number }) => {
 	if (isLoading) {
 		return <LoadingSpinner />;
 	}
-
 	const items = data?.planReviews.map((review: any) => {
 		return (
-			<div style={{ margin: '10px' }}>
-				<div>
-					<div>
-						{review?.user?.profileImg ? (
-							<Image
-								src={review?.user?.profileImg}
-								alt="profile"
-								width={80}
-								height={80}
-								style={{ borderRadius: '50%', marginBottom: '10px' }}
-							/>
-						) : (
-							<Avatar
-								style={{
-									backgroundColor: 'var(--primary-color)',
-									height: '60px',
-									width: '60px',
-									marginBottom: '10px',
-								}}
-								icon={<UserOutlined style={{ fontSize: '55px' }} />}
-							/>
-						)}
-					</div>
-					<h3>{`${review?.user?.name ? review?.user?.name : 'User'}`}</h3>
-					<span>
-						{Array.from({ length: Number(data?.rating) || 5 }, (_, index) => (
-							<p>
-								<StarFilled
-									key={index}
-									style={{ color: 'var(--button-color)' }}
-								/>
-							</p>
-						))}{' '}
-						<p>{data?.rating}</p>
-					</span>
-				</div>
-				<div>
-					<div>
-						<Image src={review?.plan?.images[0]} alt="planImg" width={100} />
-					</div>
-					<h3>{review?.plan?.planName}</h3>
-					<h4>
-						<EnvironmentOutlined /> {review?.plan?.destination}
-					</h4>
-				</div>
+			<div style={{ margin: '5px' }}>
+				<PlanReviewCard review={review} />
 			</div>
 		);
 	});
+
 	return (
 		<div className={styles.agency_details_container}>
 			<BackButton />
@@ -112,9 +69,9 @@ const AgencyDetailsCompo = ({ id }: { id: number }) => {
 					<h3 style={{ fontSize: '1.3rem' }}>About me</h3>
 					<p style={{ marginTop: '20px', fontSize: '17px' }}>{data?.about}</p>
 				</div>
-				<div>
+				<div style={{ marginBottom: '25px' }}>
 					<h3 style={{ fontSize: '1.3rem', margin: '20px 0' }}>Reviews</h3>
-					{data?.planReviews?.length ? (
+					{items?.length ? (
 						<AliceCarousel
 							disableDotsControls={true}
 							renderPrevButton={(e) => {
