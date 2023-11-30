@@ -2,12 +2,12 @@
 
 import {
 	useGetMyBookingHistoryQuery,
-	useManageBookingsMutation,
+	useManageAgencyBookingsMutation,
 } from '@/redux/api/agencyApi';
 import { Button, Card, Table, message } from 'antd';
 
 const MyPlans = ({ id }: { id: number }) => {
-	const [manageBookings] = useManageBookingsMutation();
+	const [manageBookings] = useManageAgencyBookingsMutation();
 
 	const handleBookings = async (id: number, status: string) => {
 		const result = await manageBookings({ id, status });
@@ -15,8 +15,8 @@ const MyPlans = ({ id }: { id: number }) => {
 		const data = result?.data;
 		console.log(data);
 		if (data.success) {
-			if (status == 'cenceled') {
-				message.warning('Booking have cenceld successfully');
+			if (status == 'canceled') {
+				message.warning('Booking have canceled successfully');
 			}
 			if (status == 'rejected') {
 				message.warning('Booking have rejected successfully');

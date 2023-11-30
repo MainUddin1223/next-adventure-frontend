@@ -44,8 +44,8 @@ const AgencyCard = ({ agency }: IAgencyProps) => {
 					<h3 className={styles.mobile_header}>{agency.name}</h3>
 					<Rate
 						disabled
-						style={{ color: 'var(--primary-color)', padding: '5px 0' }}
-						defaultValue={rating === 0 ? 5 : rating}
+						style={{ color: 'var(--primary-color)' }}
+						defaultValue={rating}
 					/>
 					<p style={{ fontWeight: 'bold', padding: '5px 0' }}>
 						{agency?.ongoingPlans > 0 ? (
