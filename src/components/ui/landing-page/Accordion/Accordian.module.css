@@ -7,7 +7,7 @@
 	font-size: 1.5rem;
 }
 /* iPads and Tablets (481px to 768px) */
-@media only screen and (min-width: 481px) and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
 	/* Your CSS styles for iPads and tablets go here */
 	.container {
 		width: 95%;

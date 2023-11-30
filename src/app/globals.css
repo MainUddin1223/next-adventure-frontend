@@ -33,6 +33,9 @@ hr {
 	width: 80%;
 	margin: 0 auto;
 }
+.landing_page_sections {
+	margin: 100px 0;
+}
 
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
@@ -40,6 +43,9 @@ hr {
 	.landing_page_container {
 		width: 95%;
 		margin: 0 auto;
+	}
+	.landing_page_sections {
+		margin: 50px 0;
 	}
 }
 

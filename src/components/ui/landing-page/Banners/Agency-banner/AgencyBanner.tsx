@@ -24,7 +24,7 @@ const AgencyBanner = () => {
 					className={styles.offering_details_container}
 				>
 					<h1>Choose your Tour Planner</h1>
-					<h2 style={{ fontSize: '1.8em' }}>Make your tour worthy</h2>
+					<h2 style={{ fontSize: '1.8em',color: 'rgb(47, 46, 46)' }}>Make your tour worthy</h2>
 					<Link
 						href="/agencies"
 						style={{
@@ -34,7 +34,7 @@ const AgencyBanner = () => {
 						}}
 					>
 						<h3>
-							Expolore Agencies <ArrowRightOutlined />
+							Explore Agencies <ArrowRightOutlined />
 						</h3>{' '}
 					</Link>
 				</Col>
