@@ -2,10 +2,10 @@
 import { isLoggedIn } from '@/services/auth.service';
 import { usePathname, useRouter } from 'next/navigation';
 import { ReactElement, ReactNode, useState } from 'react';
-type IProtecedRoute = {
+type IProtectedRoute = {
 	children: ReactElement | ReactNode;
 };
-const ProtectedWithAuth = ({ children }: IProtecedRoute) => {
+const ProtectedWithAuth = ({ children }: IProtectedRoute) => {
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(true);
 	const isLoggedInUser = isLoggedIn();

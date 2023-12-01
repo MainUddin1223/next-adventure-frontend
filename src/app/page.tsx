@@ -1,6 +1,6 @@
 import PublicLayout from '@/components/ui/PublicLayout';
 import Hero from '@/components/ui/landing-page/Banners/Hero-Section/Hero';
-import LandingPageProvider from '@/components/ui/landing-page/LandingPageProvider';
+import LandingPageProvider from '@/components/ui/landing-page/LandingPageProvider/LandingPageProvider';
 import { Content } from 'antd/es/layout/layout';
 import { Metadata } from 'next';
 

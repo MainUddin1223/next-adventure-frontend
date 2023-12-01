@@ -155,7 +155,7 @@ const ManageSchedules = () => {
 				const isValidDeadline = data.plan?.deadline > formattedDate;
 				const handleBooking = bookingHandler(
 					data.status,
-					data?.plan?.deadline,
+					isValidDeadline,
 					data.id
 				);
 				return <>{handleBooking}</>;

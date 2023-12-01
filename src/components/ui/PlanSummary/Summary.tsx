@@ -4,7 +4,6 @@ import { useAppSelector } from '@/redux/hooks';
 import { LeftCircleFilled } from '@ant-design/icons';
 import { Card } from 'antd';
 import { useState } from 'react';
-import PaymentSteps from '../PaymentSteps';
 import BackButton from '../buttons/BackButton';
 import Checkout from './checkout/Checkout';
 import Confirmation from './confirmation/Confirmation';
@@ -45,9 +44,9 @@ const Summary = () => {
 					</div>
 				</>
 			)}
-			<div className={styles.stepper}>
+			{/* <div className={styles.stepper}>
 				<PaymentSteps step={step} />
-			</div>
+			</div> */}
 			<div>
 				<Card>
 					{step == 0 ? (
