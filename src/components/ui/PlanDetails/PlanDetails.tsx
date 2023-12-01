@@ -3,6 +3,7 @@ import PublicLayout from '@/components/ui/PublicLayout';
 import { useGetPlanDetailsQuery } from '@/redux/api/publicApi';
 import { useAppDispatch } from '@/redux/hooks';
 import { addToCart } from '@/redux/slice/orderSlice';
+import { getUserInfo } from '@/services/auth.service';
 import { checkValidity, formateDateAndTime } from '@/services/timeFormater';
 import {
 	CarOutlined,
@@ -18,6 +19,7 @@ import LoadingSpinner from '../loader/Loader';
 import styles from './PlanDetails.module.css';
 
 const PlanDetails = ({ id }: { id: number }) => {
+	const { role } = getUserInfo() as any;
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 	const { data, isLoading } = useGetPlanDetailsQuery(Number(id));
@@ -270,7 +272,7 @@ const PlanDetails = ({ id }: { id: number }) => {
 													margin: '5px 0',
 												}}
 											>
-												<span>We will start our journery at </span>
+												<span>We will start our journey at </span>
 												<span style={{ color: 'green' }}>
 													{reportingTime.time} {reportingTime.date}
 												</span>
@@ -326,7 +328,7 @@ const PlanDetails = ({ id }: { id: number }) => {
 						<Button
 							type="primary"
 							size="large"
-							disabled={isValidDate ? false : true}
+							disabled={isValidDate && role === 'user' ? false : true}
 							onClick={() => {
 								dispatch(addToCart(info));
 								router.push('/plan-summary');

@@ -186,7 +186,7 @@ const DesktopNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 									fontWeight: 'bold',
 									color: 'var(--primary-color)',
 									padding: '5px',
-									fontSize: '18px',
+									fontSize: '16px',
 								}}
 							>
 								Logout

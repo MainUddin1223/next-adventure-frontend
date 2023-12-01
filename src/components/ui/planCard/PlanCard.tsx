@@ -26,7 +26,6 @@ const PlanCard = ({ plan, agencyProfile = false }: IPlanProps) => {
 	const pathname = usePathname();
 	const isValidDate = checkValidity(plan?.deadline);
 	const isLoggedInUser = isLoggedIn();
-	!isLoggedInUser && localStorage.setItem('prevRoute', pathname);
 
 	return (
 		<>
@@ -125,7 +124,10 @@ const PlanCard = ({ plan, agencyProfile = false }: IPlanProps) => {
 					<Button
 						type="primary"
 						style={{ margin: '10px' }}
-						onClick={() => router.push(`/plan-details/${plan?.id}`)}
+						onClick={() => {
+							!isLoggedInUser && localStorage.setItem('prevRoute', pathname);
+							router.push(`/plan-details/${plan?.id}`);
+						}}
 					>
 						Details
 					</Button>
