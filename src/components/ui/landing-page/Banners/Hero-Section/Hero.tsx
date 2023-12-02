@@ -18,6 +18,7 @@ const Hero = () => {
 		searchQuery: searchTerm,
 		delay: 2000,
 	});
+	
 	if (!!debouncedTerm) {
 		dispatch(serachValueState(debouncedTerm));
 		router.push('/plans');
