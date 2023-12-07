@@ -16,7 +16,7 @@ const Hero = () => {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 	const [searching, setSearching] = useState(false);
-
+  
 	const handleSearch = (value: string) => {
 		setSearching(true);
 		setTimeout(() => {
