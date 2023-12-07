@@ -3,6 +3,7 @@ import PublicLayout from '@/components/ui/PublicLayout';
 import { useGetPlanDetailsQuery } from '@/redux/api/publicApi';
 import { useAppDispatch } from '@/redux/hooks';
 import { addToCart } from '@/redux/slice/orderSlice';
+import { getUserInfo } from '@/services/auth.service';
 import { checkValidity, formateDateAndTime } from '@/services/timeFormater';
 import {
 	CarOutlined,
@@ -18,6 +19,7 @@ import LoadingSpinner from '../loader/Loader';
 import styles from './PlanDetails.module.css';
 
 const PlanDetails = ({ id }: { id: number }) => {
+	const { role } = getUserInfo() as any;
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 	const { data, isLoading } = useGetPlanDetailsQuery(Number(id));
@@ -25,48 +27,82 @@ const PlanDetails = ({ id }: { id: number }) => {
 		return <LoadingSpinner />;
 	}
 	const info: any = data;
-	const bookingDeadline = formateDateAndTime(info?.booking_deadline);
-	const reportingTime = formateDateAndTime(info?.starting_time);
-	const isValidDate = checkValidity(info?.booking_deadline);
-
+	const bookingDeadline = formateDateAndTime(info?.deadline);
+	const reportingTime = formateDateAndTime(info?.departureTime);
+	const isValidDate = checkValidity(info?.deadline);
 	const title = (
 		<div className={styles.details_header_section}>
+			<h2 style={{ textTransform: 'capitalize', padding: '10px 0' }}>
+				{info?.planName}
+			</h2>
 			<span>
-				<h2 style={{ textTransform: 'capitalize', padding: '10px 0' }}>
-					{info?.plan_name}
-				</h2>
-				<div style={{ fontSize: '18px' }}>
-					<p
-						style={{
-							marginTop: '10px',
-							marginBottom: '5px',
-							fontWeight: 'bold',
-						}}
-					>
-						<DollarOutlined
-							style={{ color: 'var(--button-color)', fontSize: '25px' }}
-						/>{' '}
-						Booking Fee : {info?.price}{' '}
-					</p>
-					<p
-						style={{
-							margin: '10px 0',
-							marginBottom: '5px',
-							fontWeight: 'bold',
-						}}
-					>
-						<FlagOutlined
-							style={{ color: 'var(--button-color)', fontSize: '25px' }}
-						/>{' '}
-						Destination : {info?.destination}
-					</p>
-					<p style={{ margin: '10px 0px', fontWeight: 'bold' }}>
-						<CarOutlined
-							style={{ color: 'var(--button-color)', fontSize: '25px' }}
-						/>{' '}
-						Departure : {info?.destination}
-					</p>
-				</div>
+				<Row gutter={15}>
+					<Col md={12} xs={24} sm={24}>
+						<div style={{ fontSize: '18px' }}>
+							<p
+								style={{
+									marginTop: '10px',
+									marginBottom: '5px',
+									fontWeight: 'bold',
+								}}
+							>
+								<DollarOutlined
+									style={{ color: 'var(--button-color)', fontSize: '25px' }}
+								/>{' '}
+								Booking Fee : {info?.price}{' '}
+							</p>
+							<p
+								style={{
+									margin: '10px 0',
+									marginBottom: '5px',
+									fontWeight: 'bold',
+								}}
+							>
+								<FlagOutlined
+									style={{ color: 'var(--button-color)', fontSize: '25px' }}
+								/>{' '}
+								Destination : {info?.destination}
+							</p>
+							<p style={{ margin: '10px 0px', fontWeight: 'bold' }}>
+								<CarOutlined
+									style={{ color: 'var(--button-color)', fontSize: '25px' }}
+								/>{' '}
+								Departure : {info?.departureFrom}
+							</p>
+						</div>
+					</Col>
+					<Col md={12} sm={24}>
+						<div style={{ fontSize: '18px' }}>
+							<div
+								style={{
+									margin: '15px 0',
+									display: 'flex',
+									alignItems: 'center',
+									gap: '15px',
+								}}
+							>
+								<Image
+									onClick={() => router.push(`/agencies/${info.agency.id}`)}
+									src={info?.agency.profileImg}
+									width={50}
+									height={50}
+									alt="profile"
+									style={{ borderRadius: '50%', cursor: 'pointer' }}
+								/>
+							</div>
+							<p>
+								<span style={{ textTransform: 'capitalize' }}>
+									{info?.agency?.name}
+								</span>
+							</p>
+							<Rate
+								disabled
+								defaultValue={Number(info?.agency?.rating)}
+								style={{ color: 'var(--primary-color)' }}
+							/>
+						</div>
+					</Col>
+				</Row>
 			</span>
 			{isValidDate ? (
 				<Tag
@@ -108,7 +144,7 @@ const PlanDetails = ({ id }: { id: number }) => {
 				</div>
 				<Card title={title}>
 					<Row gutter={15}>
-						<Col md={12} sm={24}>
+						<Col lg={12} sm={24}>
 							{info?.images.length ? (
 								<Carousel>
 									{info?.images.map((img: string, i: number) => (
@@ -140,7 +176,9 @@ const PlanDetails = ({ id }: { id: number }) => {
 									</div>
 								</Carousel>
 							)}
-							<div style={{ margin: '15px 0' }}>
+						</Col>
+						<Col lg={12} sm={24}>
+							<div>
 								<h2>Basic Details</h2>
 								<hr />
 								<div>
@@ -153,7 +191,7 @@ const PlanDetails = ({ id }: { id: number }) => {
 									>
 										The Spots we will cover
 									</p>
-									{info?.cover_location?.map(
+									{info?.coverLocations?.map(
 										(location: string, index: number) => (
 											<Tag
 												color="green"
@@ -197,10 +235,36 @@ const PlanDetails = ({ id }: { id: number }) => {
 										</Tag>
 									))}
 								</div>
+								<div>
+									<p
+										style={{
+											margin: '5px 0',
+											fontSize: '16px',
+											fontWeight: 'bold',
+										}}
+									>
+										Not allowed activities
+									</p>
+									{info?.notAllowed?.map((event: string, index: number) => (
+										<Tag
+											color="red"
+											key={index}
+											style={{
+												margin: '5px 0',
+												marginRight: '10px',
+												padding: '5px',
+												fontSize: '16px',
+												fontWeight: 'bold',
+											}}
+										>
+											{event}
+										</Tag>
+									))}
+								</div>
 								<hr />
 								<div>
 									<Row gutter={[20, 10]}>
-										<Col sm={24} md={12}>
+										<Col md={24} lg={12}>
 											<p
 												style={{
 													fontSize: '16px',
@@ -208,7 +272,7 @@ const PlanDetails = ({ id }: { id: number }) => {
 													margin: '5px 0',
 												}}
 											>
-												<span>We will start our journery at </span>
+												<span>We will start our journey at </span>
 												<span style={{ color: 'green' }}>
 													{reportingTime.time} {reportingTime.date}
 												</span>
@@ -227,7 +291,7 @@ const PlanDetails = ({ id }: { id: number }) => {
 												</span>
 											</p>
 										</Col>
-										<Col sm={24} md={12}>
+										<Col md={24} lg={12}>
 											<p
 												style={{
 													fontSize: '16px',
@@ -237,8 +301,7 @@ const PlanDetails = ({ id }: { id: number }) => {
 											>
 												<span>Our journey will be </span>
 												<span style={{ color: 'green' }}>
-													{' '}
-													{info?.tour_duration} Days long
+													{`for ${info?.duration}`}
 												</span>
 											</p>
 											<p
@@ -249,43 +312,23 @@ const PlanDetails = ({ id }: { id: number }) => {
 												}}
 											>
 												<span>We will provide you total </span>
-												<span style={{ color: 'green' }}>
-													{' '}
-													{info?.total_meals} Meals
-												</span>
+												<span style={{ color: 'green' }}> {info?.meals}</span>
 											</p>
 										</Col>
 									</Row>
 								</div>
 							</div>
 						</Col>
-						<Col md={12} sm={24}>
-							<div style={{ margin: '15px 0' }}>
-								<Image
-									src={info?.users?.profile_img}
-									width={100}
-									height={100}
-									alt="profile"
-									style={{ borderRadius: '10%', cursor: 'pointer' }}
-								/>
-								<h2>
-									Planner :{' '}
-									<span style={{ textTransform: 'capitalize' }}>
-										{info?.users?.first_name} {info?.users?.last_name}
-									</span>
-								</h2>
-							</div>
-							<Rate disabled defaultValue={5} />
-							<hr />
+						<div style={{ padding: '10px' }}>
 							<h2 style={{ margin: '5px 0' }}>Description</h2>
 							<p style={{ fontSize: '16px' }}>{info?.description}</p>
-						</Col>
+						</div>
 					</Row>
 					<div className={styles.book_button}>
 						<Button
 							type="primary"
 							size="large"
-							disabled={isValidDate ? false : true}
+							disabled={isValidDate && role === 'user' ? false : true}
 							onClick={() => {
 								dispatch(addToCart(info));
 								router.push('/plan-summary');

@@ -6,7 +6,7 @@ import styles from './CardListLayout.module.css';
 
 const CardListLayout = ({ children, title, description }: ICardListProps) => {
 	return (
-		<div className={styles.layout_container}>
+		<div className={` ${styles.layout_container}`}>
 			<div>
 				<BackButton />
 			</div>

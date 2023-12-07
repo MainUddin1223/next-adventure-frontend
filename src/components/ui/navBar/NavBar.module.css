@@ -1,11 +1,3 @@
-.header_section {
-	position: sticky;
-	top: 0;
-	z-index: 1;
-	width: '100%';
-	background-color: var(--button-color);
-}
-
 .desktop_header_container {
 	display: flex;
 	align-items: center;
@@ -21,12 +13,26 @@
 .navigation_item_container {
 	display: flex;
 	gap: 15px;
-	font-size: 19px;
+	font-size: 16px;
 	align-items: center;
+}
+.desktop_navigation_item:hover {
+	box-shadow:
+		rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+		rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 .list_container {
 	display: flex;
-	gap: 15px;
+	gap: 10px;
+}
+.nav_item {
+	border: '1px solid var(--primary-color) ';
+	font-weight: 'bold';
+	color: 'var(--primary-color)';
+	padding: '5px';
+}
+.nav_item:hover {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navigation_item {
@@ -36,7 +42,12 @@
 	color: var(--button-color);
 	font-weight: bold;
 }
+
 .navigation_item:hover {
+	color: var(--button-color);
+}
+
+.mobile_navigation_item:hover {
 	color: var(--button-color);
 }
 .drawer_container {
@@ -52,7 +63,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin: 0 20px;
+		margin: 0 10px;
 		height: 100%;
 	}
 	.drawer_container {
@@ -78,7 +89,7 @@
 	}
 }
 /* Extra large screens and TVs (1201px and above) */
-@media only screen and (min-width: 1801px) {
+@media only screen and (min-width: 2001px) {
 	.landscape_container {
 		width: 1200px;
 		margin: 0 auto;

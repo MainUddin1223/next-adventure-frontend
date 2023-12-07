@@ -6,7 +6,6 @@ import { MenuOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
@@ -31,7 +30,6 @@ const getCrumbs = (currentPath: string) => {
 			});
 		}
 	});
-	items.pop();
 	return items;
 };
 
@@ -45,7 +43,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 
 	const handleLogout = async () => {
 		await userLogout(undefined);
-		localStorage.clear();
+		typeof window !== 'undefined' && localStorage.clear();
 		router.push('/');
 	};
 
@@ -53,89 +51,8 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 		<Content style={{ minHeight: '100vh', color: 'black' }}>
 			<Header
 				className={styles.header_container}
-				style={{ backgroundColor: 'var(--accent-color)' }}
+				style={{ backgroundColor: 'var(--accent-color)', padding: '0px' }}
 			>
-				{/* desktop nav bar */}
-				{role == 'user' ? (
-					<div className={styles.nav_container}>
-						<p>
-							<Link
-								href="/"
-								style={{
-									border: '1px solid var(--primary-color) ',
-									fontWeight: 'bold',
-									color: 'var(--primary-color)',
-									padding: '5px',
-								}}
-							>
-								Home
-							</Link>
-						</p>
-						<p>
-							<Link
-								href="/plans"
-								style={{
-									border: '1px solid var(--primary-color) ',
-									fontWeight: 'bold',
-									color: 'var(--primary-color)',
-									padding: '5px',
-								}}
-							>
-								Book a plan
-							</Link>
-						</p>
-						<p>
-							<button
-								onClick={handleLogout}
-								style={{
-									cursor: 'pointer',
-									backgroundColor: 'var(--accent-color)',
-									fontSize: '19px',
-									border: '1px solid var(--primary-color) ',
-									fontWeight: 'bold',
-									color: 'var(--primary-color)',
-									padding: '5px',
-								}}
-							>
-								Logout
-							</button>
-						</p>
-					</div>
-				) : (
-					<div className={styles.nav_container}>
-						<p>
-							<Link
-								href="/"
-								style={{
-									border: '1px solid var(--primary-color) ',
-									fontWeight: 'bold',
-									color: 'var(--primary-color)',
-									padding: '5px',
-								}}
-							>
-								Home
-							</Link>
-						</p>
-						<p>
-							<button
-								onClick={handleLogout}
-								style={{
-									cursor: 'pointer',
-									backgroundColor: 'var(--accent-color)',
-									fontSize: '19px',
-									border: '1px solid var(--primary-color) ',
-									fontWeight: 'bold',
-									color: 'var(--primary-color)',
-									padding: '5px',
-								}}
-							>
-								Logout
-							</button>
-						</p>
-					</div>
-				)}
-
-				{/* mobile nav bar */}
 				<div className={styles.nav_container_mobile}>
 					<Image
 						style={{ cursor: 'pointer' }}
@@ -153,6 +70,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 					/>
 				</div>
 			</Header>
+			{/* For mobile */}
 			<div>
 				<SmallDeviceSideBar open={open} setOpen={setOpen} />
 			</div>

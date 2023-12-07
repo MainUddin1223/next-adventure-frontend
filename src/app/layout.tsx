@@ -21,12 +21,18 @@ export default function RootLayout({
 			<ConfigProvider
 				theme={{
 					components: {
+						Menu: {
+							itemHoverColor: 'var(--primary-color)',
+						},
+						Layout: {
+							headerHeight: 80,
+						},
 						Input: {
 							activeBg: 'white',
 							hoverBg: 'rgb(229, 235, 240)',
 						},
 						Button: {
-							fontWeight: 500,
+							fontWeight: 600,
 						},
 						Drawer: {
 							colorBgElevated: 'var(--accent-color)',
@@ -34,11 +40,11 @@ export default function RootLayout({
 						Breadcrumb: {
 							itemColor: '#327012',
 							linkHoverColor: '#327012',
-							fontSize: 25,
+							fontSize: 18,
 						},
 					},
 					token: {
-						colorPrimary: '#088345',
+						colorPrimary: '#327012',
 						borderRadius: 0,
 					},
 				}}

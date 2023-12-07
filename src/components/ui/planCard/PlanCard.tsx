@@ -6,9 +6,10 @@ import {
 	ExclamationCircleOutlined,
 	SyncOutlined,
 } from '@ant-design/icons';
-import { Button, Carousel, Tag, Tooltip } from 'antd';
+import { Button, Carousel, Rate, Tag, Tooltip } from 'antd';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
+import { IPlanProps } from '../types';
 import styles from './PlanCard.module.css';
 
 const contentStyle: React.CSSProperties = {
@@ -20,12 +21,11 @@ const contentStyle: React.CSSProperties = {
 	background: '#364d79',
 };
 
-const PlanCard = ({ plan }: { plan: any }) => {
+const PlanCard = ({ plan, agencyProfile = false }: IPlanProps) => {
 	const router = useRouter();
 	const pathname = usePathname();
-	const isValidDate = checkValidity(plan?.booking_deadline);
+	const isValidDate = checkValidity(plan?.deadline);
 	const isLoggedInUser = isLoggedIn();
-	!isLoggedInUser && localStorage.setItem('prevRoute', pathname);
 
 	return (
 		<>
@@ -54,13 +54,18 @@ const PlanCard = ({ plan }: { plan: any }) => {
 					</Carousel>
 				)}
 				<div className={styles.tour_details}>
-					{plan?.plan_name?.length > 20 ? (
-						<Tooltip placement="topLeft" title={plan?.plan_name}>
-							<h4>{plan?.plan_name.substring(0, 20)}...</h4>
-						</Tooltip>
-					) : (
-						<h4>{plan?.plan_name}</h4>
-					)}
+					<div className={styles.plan_header_desktop}>
+						{plan?.planName?.length > 25 ? (
+							<Tooltip placement="topLeft" title={plan?.planName}>
+								<h4>{plan?.planName.substring(0, 25)}...</h4>
+							</Tooltip>
+						) : (
+							<h4>{plan?.planName}</h4>
+						)}
+					</div>
+					<div className={styles.plan_header_mobile}>
+						<h4>{plan?.planName}</h4>
+					</div>
 					<strong style={{ fontSize: '16px' }}>
 						<DollarOutlined style={{ color: 'var(--button-color)' }} />{' '}
 						{plan.price}
@@ -72,7 +77,11 @@ const PlanCard = ({ plan }: { plan: any }) => {
 						</span>
 					</p>
 					{isValidDate ? (
-						<Tag icon={<SyncOutlined spin />} color="green">
+						<Tag
+							style={{ padding: '5px', marginTop: '5px' }}
+							icon={<SyncOutlined />}
+							color="green"
+						>
 							Booking going on
 						</Tag>
 					) : (
@@ -80,12 +89,45 @@ const PlanCard = ({ plan }: { plan: any }) => {
 							Booking closed
 						</Tag>
 					)}
+
+					{!agencyProfile && (
+						<div>
+							<hr />
+							<p
+								style={{
+									display: 'flex',
+									gap: '10px',
+									fontWeight: 'bold',
+									alignItems: 'center',
+								}}
+							>
+								<Image
+									src={plan.agency.profileImg}
+									alt="profile-img"
+									width={40}
+									height={40}
+									style={{ borderRadius: '50%' }}
+								/>
+								<span style={{ textTransform: 'capitalize' }}>
+									{plan.agency.name}
+								</span>
+							</p>
+							<Rate
+								disabled
+								style={{ color: 'var(--primary-color)' }}
+								defaultValue={plan.agency.rating}
+							/>
+						</div>
+					)}
 				</div>
 				<div>
 					<Button
 						type="primary"
 						style={{ margin: '10px' }}
-						onClick={() => router.push(`/plan-details/${plan?.id}`)}
+						onClick={() => {
+							!isLoggedInUser && localStorage.setItem('prevRoute', pathname);
+							router.push(`/plan-details/${plan?.id}`);
+						}}
 					>
 						Details
 					</Button>

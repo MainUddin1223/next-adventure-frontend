@@ -25,6 +25,7 @@ const RegisterForm = () => {
 
 	const onsubmit: SubmitHandler<IRegisterFormValues> = async (data: any) => {
 		try {
+			setIsLoading(true);
 			const res = await registerAgency(data).unwrap();
 			if (res?.accessToken) {
 				const accessToken = res?.accessToken;
@@ -32,7 +33,7 @@ const RegisterForm = () => {
 				const authInfo: any = getUserInfo();
 				setIsLoading(false);
 				router.push(`${authInfo?.role}/profile`);
-				message.success('Registation successfull');
+				message.success('Registration successful');
 			}
 			if (!res.success) {
 				setIsLoading(false);
@@ -57,23 +58,15 @@ const RegisterForm = () => {
 							<Row gutter={20}>
 								<Col sm={24} md={24}>
 									<div style={{ margin: '15px 0' }}>
-										<RegisterImageUploader name={'profile_img'} />
+										<RegisterImageUploader name={'profileImg'} />
 									</div>
 								</Col>
 								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
 									<FormInput
-										name="first_name"
+										name="name"
 										type="text"
 										size="large"
 										label="First name"
-									/>
-								</Col>
-								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
-									<FormInput
-										name="last_name"
-										type="text"
-										size="large"
-										label="Last name"
 									/>
 								</Col>
 								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
@@ -94,15 +87,15 @@ const RegisterForm = () => {
 								</Col>
 								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
 									<FormInput
-										name="confirmPassword"
+										name="location"
 										type="password"
 										size="large"
-										label="Password"
+										label="Location"
 									/>
 								</Col>
 								<Col sm={24} md={12} style={{ margin: '5px 0' }}>
 									<FormInput
-										name="contact_no"
+										name="contactNo"
 										type="text"
 										size="large"
 										label="Contact no"
@@ -111,7 +104,7 @@ const RegisterForm = () => {
 								<Col sm={24} md={24}>
 									<div style={{ margin: '15px 0' }}>
 										<FormTextArea
-											name="about_user"
+											name="about"
 											rows={6}
 											placeholder="About..."
 											label="About"
@@ -124,7 +117,7 @@ const RegisterForm = () => {
 								htmlType="submit"
 								style={{ margin: '10px 0' }}
 							>
-								Sign up
+								Register
 							</Button>
 						</Form>
 					</div>

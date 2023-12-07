@@ -10,7 +10,6 @@ const PaginationCompo = ({ totalPage, setSize, setPage }: IPaginationProps) => {
 		setSize(pageSize);
 		setPage(current);
 	};
-
 	return (
 		<div
 			style={{ margin: '20px 10px', display: 'flex', justifyContent: 'end' }}

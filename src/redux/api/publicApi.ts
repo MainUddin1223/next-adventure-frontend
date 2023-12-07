@@ -2,9 +2,9 @@ import { baseApi } from './baseApi';
 
 const publicApi = baseApi.injectEndpoints({
 	endpoints: (build: any) => ({
-		getAgenciesAndPlans: build.query({
+		getLandingPageData: build.query({
 			query: () => ({
-				url: `/user/agency-plans`,
+				url: `/user/data`,
 				method: 'GET',
 			}),
 			providesTags: ['user'],
@@ -21,7 +21,7 @@ const publicApi = baseApi.injectEndpoints({
 
 		getTourPlans: build.query({
 			query: (arg: any) => ({
-				url: `/user/tour-plans`,
+				url: `/user/plans`,
 				method: 'GET',
 				params: arg,
 			}),
@@ -30,7 +30,7 @@ const publicApi = baseApi.injectEndpoints({
 
 		getPlanDetails: build.query({
 			query: (id: number) => ({
-				url: `/user/plan-details/${id}`,
+				url: `/user/plans/${id}`,
 				method: 'GET',
 			}),
 			providesTags: ['user'],
@@ -39,7 +39,7 @@ const publicApi = baseApi.injectEndpoints({
 });
 
 export const {
-	useGetAgenciesAndPlansQuery,
+	useGetLandingPageDataQuery,
 	useGetPlanDetailsQuery,
 	useGetAgenciesQuery,
 	useGetTourPlansQuery,

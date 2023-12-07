@@ -1,6 +1,8 @@
 .plan_card_container {
 	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+	transition: 0.5s;
 }
+
 .tour_details {
 	padding: 5px;
 	line-height: 35px;
@@ -10,4 +12,16 @@
 }
 .tour_details p {
 	font-size: 18px;
+}
+.plan_header_mobile {
+	display: none;
+}
+/* Mobile devices (280px to 480px) */
+@media only screen and (min-width: 280px) and (max-width: 567px) {
+	.plan_header_desktop {
+		display: none;
+	}
+	.plan_header_mobile {
+		display: block;
+	}
 }

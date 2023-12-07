@@ -3,16 +3,16 @@ import { baseApi } from './baseApi';
 const userApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		bookPlan: build.mutation({
-			query: (data) => ({
-				url: `/user/book-plan`,
+			query: ({ data, id }) => ({
+				url: `/user/book-plan/${id}`,
 				method: 'POST',
-				data,
+				data: data,
 			}),
 			invalidatesTags: ['user'],
 		}),
 		getAgencyById: build.query({
 			query: (id) => ({
-				url: `/user/agency/${id}`,
+				url: `/user/agencies/${id}`,
 				method: 'GET',
 			}),
 			providesTags: ['user'],
@@ -26,7 +26,7 @@ const userApi = baseApi.injectEndpoints({
 		}),
 		updateUserProfile: build.mutation({
 			query: (data) => ({
-				url: `/auth/profile/update`,
+				url: `/auth/profile`,
 				method: 'PATCH',
 				data,
 			}),
@@ -34,23 +34,24 @@ const userApi = baseApi.injectEndpoints({
 		}),
 		getUpcomingSchedules: build.query({
 			query: () => ({
-				url: `/user/upcoming-schedules`,
+				url: `/user/upcoming-schedule`,
 				method: 'GET',
 			}),
 			providesTags: ['user'],
 		}),
 		bookingHistory: build.query({
 			query: (arg: any) => ({
-				url: `/user/booking-history`,
+				url: `/user/bookings`,
 				method: 'GET',
 				params: arg,
 			}),
 			providesTags: ['user'],
 		}),
 		manageBookings: build.mutation({
-			query: (id) => ({
-				url: `/user/manage-booking/${id}`,
+			query: ({ id, status }) => ({
+				url: `/user/manage-Schedule/${id}`,
 				method: 'PATCH',
+				params: { status },
 			}),
 			invalidatesTags: ['user'],
 		}),
@@ -64,11 +65,19 @@ const userApi = baseApi.injectEndpoints({
 		}),
 		reviewPlan: build.mutation({
 			query: ({ data, id }) => ({
-				url: `/user/plan-review/${id}`,
+				url: `/user/booking/review/${id}`,
 				method: 'POST',
 				data,
 			}),
 			invalidatesTags: ['user'],
+		}),
+
+		orderSummary: build.mutation({
+			query: ({ data, id }) => ({
+				url: `/user/order-summary/${id}`,
+				method: 'POST',
+				data,
+			}),
 		}),
 	}),
 });
@@ -83,4 +92,5 @@ export const {
 	useBookingHistoryQuery,
 	useLeaveReviewMutation,
 	useReviewPlanMutation,
+	useOrderSummaryMutation,
 } = userApi;

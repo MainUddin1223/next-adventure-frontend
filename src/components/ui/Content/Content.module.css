@@ -17,14 +17,16 @@
 
 .nav_container_mobile {
 	display: flex;
-	font-size: 30px;
-	color: white;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0 10px;
+	height: 100%;
 }
 
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (max-width: 768px) {
 	.header_container {
-		padding: 25px;
+		padding: 15px;
 	}
 	.nav_container {
 		display: none;
@@ -42,6 +44,6 @@
 		display: none;
 	}
 	.header_container {
-		justify-content: end;
+		display: none;
 	}
 }

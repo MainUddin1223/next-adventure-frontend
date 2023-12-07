@@ -1,6 +1,10 @@
+import LogoutBtn from '@/components/ui/LogoutBtn';
 import {
 	CreditCardOutlined,
+	FundOutlined,
 	HomeOutlined,
+	PlusSquareOutlined,
+	ScheduleOutlined,
 	TableOutlined,
 	ThunderboltOutlined,
 	UserOutlined,
@@ -66,10 +70,22 @@ export const sidebarItems = (role: string) => {
 			key: `/${role}/payouts`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
+		{
+			label: <LogoutBtn title={true} />,
+			icon: <LogoutBtn />,
+			key: `/${role}/logout`,
+			style: { border: '1px solid var(--primary-color)' },
+		},
 	];
 	const adminSidebarItems: MenuProps['items'] = [
 		...defaultSidebarItems,
 		...commonAdminSidebarItems,
+		{
+			label: <LogoutBtn title={true} />,
+			icon: <LogoutBtn />,
+			key: `/${role}/logout`,
+			style: { border: '1px solid var(--primary-color)' },
+		},
 	];
 
 	const userSidebarItems: MenuProps['items'] = [
@@ -86,13 +102,25 @@ export const sidebarItems = (role: string) => {
 			key: `/${role}/booking-history`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
+		{
+			label: <LogoutBtn title={true} />,
+			icon: <LogoutBtn />,
+			key: `/${role}/logout`,
+			style: { border: '1px solid var(--primary-color)' },
+		},
 	];
 
 	const agencySidebarItems: MenuProps['items'] = [
 		...defaultSidebarItems,
 		{
+			label: <Link href={`/${role}`}>Dashboard</Link>,
+			icon: <FundOutlined style={{ fontSize: '21px' }} />,
+			key: `/${role}`,
+			style: { border: '1px solid var(--primary-color)' },
+		},
+		{
 			label: <Link href={`/${role}/upcoming-plan`}>Upcoming Plans</Link>,
-			icon: <TableOutlined style={{ fontSize: '21px' }} />,
+			icon: <ScheduleOutlined style={{ fontSize: '21px' }} />,
 			key: `/${role}/upcoming-plan`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
@@ -104,20 +132,20 @@ export const sidebarItems = (role: string) => {
 		},
 		{
 			label: <Link href={`/${role}/create-plan`}>Create Tour Plan</Link>,
-			icon: <TableOutlined style={{ fontSize: '21px' }} />,
+			icon: <PlusSquareOutlined style={{ fontSize: '21px' }} />,
 			key: `/${role}/create-plan`,
-			style: { border: '1px solid var(--primary-color)' },
-		},
-		{
-			label: <Link href={`/${role}/plan-history`}>Booking History</Link>,
-			icon: <ThunderboltOutlined style={{ fontSize: '21px' }} />,
-			key: `/${role}/plan-history`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
 		{
 			label: <Link href={`/${role}/payouts`}>Payouts</Link>,
 			icon: <CreditCardOutlined style={{ fontSize: '21px' }} />,
 			key: `/${role}/payouts`,
+			style: { border: '1px solid var(--primary-color)' },
+		},
+		{
+			label: <LogoutBtn title={true} />,
+			icon: <LogoutBtn />,
+			key: `/${role}/logout`,
 			style: { border: '1px solid var(--primary-color)' },
 		},
 	];

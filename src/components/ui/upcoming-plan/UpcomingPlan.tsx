@@ -1,9 +1,11 @@
 'use client';
 
-import { useGetMyTourPlansQuery } from '@/redux/api/agencyApi';
+import {
+	useGetUpcomingPlansQuery,
+	useManageAgencyBookingsMutation,
+} from '@/redux/api/agencyApi';
 import { useDebounced } from '@/redux/hooks';
-import { EditOutlined, ReloadOutlined } from '@ant-design/icons';
-import { Button, Card, Input, Space, Table, TableColumnsType } from 'antd';
+import { Button, Card, Space, Table, TableColumnsType, Tag } from 'antd';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -17,7 +19,7 @@ interface DataType {
 	upgradeNum: number;
 	creator: string;
 	createdAt: string;
-	booking_history?: any[];
+	bookings?: any[];
 }
 
 interface ExpandedDataType {
@@ -35,6 +37,7 @@ const UpcomingPlan = () => {
 	const [sortBy, setSortBy] = useState<string>('');
 	const [sortOrder, setSortOrder] = useState<string>('');
 	const [searchTerm, setSearchTerm] = useState<string>('');
+	const [manageAgencyBookings] = useManageAgencyBookingsMutation();
 
 	query['limit'] = size;
 	query['page'] = page;
@@ -52,7 +55,7 @@ const UpcomingPlan = () => {
 		query['search'] = searchTerm;
 	}
 
-	const { data, isLoading } = useGetMyTourPlansQuery(undefined);
+	const { data, isLoading } = useGetUpcomingPlansQuery(undefined);
 
 	const myPlans = data?.result;
 	const meta = data?.meta;
@@ -69,9 +72,15 @@ const UpcomingPlan = () => {
 		setSearchTerm('');
 	};
 
+	const handleBooking = async (
+		id: number,
+		status: 'confirmed' | 'rejected'
+	) => {
+		await manageAgencyBookings({ id, status });
+	};
+
 	const defaultExpandable = {
 		expandedRowRender: (record: DataType) => {
-			console.log(record.booking_history);
 			const columns: TableColumnsType<ExpandedDataType> = [
 				{
 					title: 'Status',
@@ -80,33 +89,62 @@ const UpcomingPlan = () => {
 						return (
 							<div>
 								{status == 'pending' ? (
-									<strong
+									<Tag
+										color="blue"
 										style={{
-											color: 'yellowgreen',
+											margin: '5px 0',
+											marginRight: '15px',
+											padding: '5px',
+											fontSize: '16px',
+											fontWeight: 'bold',
 											textTransform: 'capitalize',
 										}}
 									>
-										{' '}
-										{status}
-									</strong>
-								) : status == 'booked' ? (
-									<strong
+										Pending
+									</Tag>
+								) : status == 'confirmed' ? (
+									<Tag
+										color="green"
 										style={{
-											color: 'var(--button-color)',
+											margin: '5px 0',
+											marginRight: '15px',
+											padding: '5px',
+											fontSize: '16px',
+											fontWeight: 'bold',
 											textTransform: 'capitalize',
 										}}
 									>
-										{' '}
-										{status}
-									</strong>
+										Confirmed
+									</Tag>
+								) : status == 'requested' ? (
+									<Tag
+										color="blue"
+										style={{
+											margin: '5px 0',
+											marginRight: '15px',
+											padding: '5px',
+											fontSize: '16px',
+											fontWeight: 'bold',
+											textTransform: 'capitalize',
+										}}
+									>
+										Requested
+									</Tag>
 								) : (
-									status == 'cenceled' && (
-										<strong
-											style={{ color: 'red', textTransform: 'capitalize' }}
+									status == 'canceled' && (
+										<Tag
+											color="error"
+											style={{
+												margin: '5px 0',
+												marginRight: '15px',
+												padding: '5px',
+												fontSize: '16px',
+												fontWeight: 'bold',
+												textTransform: 'capitalize',
+											}}
 										>
-											{' '}
-											{status}
-										</strong>
+											Canceled
+										</Tag>
 									)
 								)}
 							</div>
@@ -122,7 +160,7 @@ const UpcomingPlan = () => {
 				},
 				{
 					title: 'Total Seats',
-					dataIndex: 'quantity',
+					dataIndex: 'seats',
 					render: function (data: any) {
 						return (
 							<strong>
@@ -133,26 +171,44 @@ const UpcomingPlan = () => {
 				},
 				{
 					title: 'Amount',
-					dataIndex: 'total_amount',
+					dataIndex: 'totalAmount',
 					render: (data) => <strong>${data}</strong>,
 				},
 				{
 					title: 'Handle Bookings',
-					dataIndex: 'status',
-					key: 'status',
-					render: () => (
-						<Space size="middle">
-							<a>Pause</a>
-							<a>Stop</a>
-						</Space>
-					),
+					render: function (data: any) {
+						const isDisabled =
+							data.status == 'confirmed' ||
+							data.status == 'rejected' ||
+							data.status == 'canceled'
+								? true
+								: false;
+						return (
+							<Space size="middle">
+								<Button
+									disabled={isDisabled}
+									type="primary"
+									onClick={() => handleBooking(data.id, 'confirmed')}
+								>
+									Confirm
+								</Button>
+								<Button
+									disabled={isDisabled}
+									danger
+									onClick={() => handleBooking(data.id, 'rejected')}
+								>
+									Reject
+								</Button>
+							</Space>
+						);
+					},
 				},
 			];
 
 			return (
 				<Table
 					columns={columns}
-					dataSource={record.booking_history}
+					dataSource={record.bookings}
 					pagination={false}
 				/>
 			);
@@ -162,8 +218,8 @@ const UpcomingPlan = () => {
 	const columns = [
 		{
 			title: 'Plan name',
-			dataIndex: 'plan_name',
-			key: 'plan_name',
+			dataIndex: 'planName',
+			key: 'planName',
 		},
 		{
 			title: 'Destination',
@@ -171,39 +227,33 @@ const UpcomingPlan = () => {
 			key: 'destination',
 		},
 		{
-			title: 'Plan Date',
-			dataIndex: 'starting_time',
+			title: 'Deadline',
+			dataIndex: 'deadline',
 			render: function (data: any) {
 				return data && dayjs(data).format('MMM D, YYYY hh:mm A');
 			},
 		},
 		{
-			title: 'Deadline',
-			dataIndex: 'booking_deadline',
-			render: function (data: any) {
-				return data && dayjs(data).format('MMM D, YYYY hh:mm A');
-			},
+			title: 'Total Booking',
+			dataIndex: 'totalBooking',
+			key: 'totalBooking',
 		},
-		// {
-		//   title: 'Bookings',render: function (data:any) {
-		//     return (
-		//       <>
-		//            <div style={{ display: "flex", gap: "5px" }}>
-		//        <Button type="primary" onClick={()=>router.push(`plan-history/${data.id}`)}>See Booking</Button>
-		//         </div>
-
-		//       </>
-		//     )
-		//  }
-		// },
+		{
+			title: 'Total Seats',
+			dataIndex: 'totalSeats',
+			key: 'totalSeats',
+		},
 		{
 			title: 'Action',
 			render: function (data: any) {
 				return (
 					<>
 						<div style={{ display: 'flex', gap: '5px' }}>
-							<Button type="primary">
-								<EditOutlined />
+							<Button
+								type="primary"
+								onClick={() => router.push(`my-plans/${data.id}`)}
+							>
+								Details
 							</Button>
 						</div>
 					</>
@@ -211,10 +261,11 @@ const UpcomingPlan = () => {
 			},
 		},
 	];
+
 	return (
 		<>
 			<Card>
-				<div
+				{/* <div
 					style={{
 						display: 'flex',
 						alignItems: 'center',
@@ -241,7 +292,7 @@ const UpcomingPlan = () => {
 							</Button>
 						)}
 					</div>
-				</div>
+				</div> */}
 				<DesktopTable
 					columns={columns}
 					dataSource={myPlans}

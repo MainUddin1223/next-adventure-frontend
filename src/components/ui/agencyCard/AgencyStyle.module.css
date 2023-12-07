@@ -1,27 +1,42 @@
+.agency_container {
+	transition: 0.5s;
+	cursor: pointer;
+	box-shadow:
+		rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+		rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+.agency_container:hover {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
 .popular_agency_card {
-	background-image: url('../../../assets/popular-agency.jpg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	padding: 25px 0;
 	min-height: 280px;
 	margin-top: 10px;
 	cursor: pointer;
 }
-.shadow_div {
-	position: absolute;
-	height: 80px;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-color: rgba(20, 19, 19, 0.404);
-	box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.5);
-}
+
 .agency_details {
-	color: white;
 	padding: 10px;
 }
 .agency_details h3 {
 	font-size: 1.2rem;
-	padding: 5px 0;
+}
+.agency_img {
+	height: 200px;
+	width: 100%;
+}
+.mobile_header {
+	display: none;
+}
+/* iPads and Tablets (481px to 768px) */
+@media only screen and (max-width: 768px) {
+	.agency_img {
+		height: 100%;
+		width: 100%;
+	}
+	.mobile_header {
+		display: block;
+	}
+	.desktop_header {
+		display: none;
+	}
 }

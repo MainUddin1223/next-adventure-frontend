@@ -1,8 +1,6 @@
-/* .featured_container {
-	width: 80%;
-	margin: 50px auto;
-	margin-bottom: 100px;
-} */
+.featured_container {
+	color: rgb(59, 58, 58);
+}
 .featured_header {
 	font-size: 2rem;
 	margin-bottom: 15px;
@@ -17,9 +15,20 @@
 .tour_details p {
 	font-size: 18px;
 }
-
+.planCard_container {
+	margin: 10px;
+}
+.right_button {
+	position: 'absolute';
+	right: '10px';
+	font-size: '25px';
+	cursor: 'pointer';
+}
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
+	.planCard_container {
+		margin: 5px;
+	}
 }
 /* iPads and Tablets (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {

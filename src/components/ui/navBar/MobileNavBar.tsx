@@ -73,8 +73,6 @@ const MobileNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 										cursor: 'pointer',
 										height: '80px',
 										width: '80px',
-										padding: '10px',
-										backgroundColor: 'var(--button-color)',
 										borderRadius: '50%',
 									}}
 									onClick={() => router.push(`${role}/profile`)}
@@ -99,11 +97,19 @@ const MobileNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 
 					{!isUser ? (
 						<>
-							<Link href="/agencies" className={styles.mobile_navigation_item}>
+							<Link
+								onClick={() => setOpen(false)}
+								href="/agencies"
+								className={styles.mobile_navigation_item}
+							>
 								{' '}
 								<p>Agencies</p>
 							</Link>
-							<Link href="/plans" className={styles.mobile_navigation_item}>
+							<Link
+								onClick={() => setOpen(false)}
+								href="/plans"
+								className={styles.mobile_navigation_item}
+							>
 								{' '}
 								<p>Tour plans</p>
 							</Link>
@@ -116,6 +122,13 @@ const MobileNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 						</>
 					) : role == 'user' ? (
 						<>
+							<Link
+								href={`${role}/profile`}
+								className={styles.mobile_navigation_item}
+							>
+								{' '}
+								<p>Dashboard</p>
+							</Link>
 							<Link href="/agencies" className={styles.mobile_navigation_item}>
 								{' '}
 								<p>Agencies</p>
@@ -129,7 +142,7 @@ const MobileNavBar = ({ role, isUser, logout, profile_img }: INavProps) => {
 								className={styles.mobile_navigation_item}
 							>
 								{' '}
-								<p>My plans</p>
+								<p>My bookings</p>
 							</Link>
 							<div onClick={logout} className={styles.mobile_navigation_item}>
 								{' '}

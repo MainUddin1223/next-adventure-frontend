@@ -9,82 +9,71 @@ import {
 } from '@/redux/api/userApi';
 import { Button, Card, Col, Row } from 'antd';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import ProfileImageUploader from '../ImageUploader/ImageUploader';
 import styles from './EditProfile.module.css';
 
 const EditProfileForm = () => {
+	const [userInfo, setUserInfo] = useState({});
 	const { data: profileData } = useGetUserProfileQuery(undefined);
 	const router = useRouter();
 
-	const userInfo = {
-		first_name: profileData?.first_name,
-		last_name: profileData?.last_name,
-		contact_no: profileData?.contact_no,
-		profile_img: profileData?.profile_img,
-		about_user: profileData?.about_user,
-	};
+	useEffect(() => {
+		setUserInfo({
+			name: profileData?.name,
+			contactNo: profileData?.contactNo,
+			profileImg: profileData?.profileImg,
+			about: profileData?.about,
+		});
+	}, []);
 
 	const [updateUserProfile] = useUpdateUserProfileMutation();
 
 	const onsubmit: SubmitHandler<any> = async (data: any) => {
 		const res: any = await updateUserProfile(data);
-
+		setUserInfo(data);
 		if (res?.data?.success == true) {
 			router.back();
 		}
 	};
-
 	return (
 		<div className={styles.edit_profile_container}>
 			<Card>
 				<h1 style={{ margin: '15px 0' }}>Update your profile</h1>
 				<div>
 					<Form submitHandler={onsubmit} defaultValues={userInfo}>
+						<div style={{ margin: '15px 0' }}>
+							<ProfileImageUploader
+								name={'profileImg'}
+								defaultUrl={profileData?.profileImg}
+							/>
+						</div>
 						<Row gutter={[20, 20]}>
-							<Col sm={24} md={24}>
-								<div style={{ margin: '15px 0' }}>
-									<ProfileImageUploader
-										name={'profile_img'}
-										defaultUrl={profileData?.profile_img}
-									/>
-								</div>
-							</Col>
-
-							<Col sm={24} md={12}>
-								<div style={{ margin: '15px 0' }}>
+							<Col xs={24} sm={24} md={12}>
+								<div style={{ margin: '15px 0', width: '100%' }}>
 									<FormInput
-										name="first_name"
+										name="name"
 										type="text"
 										size="large"
-										label="First name"
+										label="Name"
 									/>
 								</div>
 							</Col>
-							<Col sm={24} md={12}>
+							<Col xs={24} sm={24} md={12}>
 								<div style={{ margin: '15px 0' }}>
 									<FormInput
-										name="last_name"
-										type="text"
-										size="large"
-										label="Last name"
-									/>
-								</div>
-							</Col>
-							<Col sm={24} md={12}>
-								<div style={{ margin: '15px 0' }}>
-									<FormInput
-										name="contact_no"
+										name="contactNo"
 										type="text"
 										size="large"
 										label="Contact no"
 									/>
 								</div>
 							</Col>
-							<Col sm={24} md={24}>
+							<Col xs={24} sm={24} md={24}>
 								<div style={{ margin: '15px 0' }}>
 									<FormTextArea
-										name="about_user"
+										name="about"
 										rows={6}
 										placeholder="About..."
 										label="About"

@@ -5,8 +5,7 @@ import {
 	useManageBookingsMutation,
 } from '@/redux/api/userApi';
 import { formateDateAndTime } from '@/services/timeFormater';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { Button, Card, Table, Tag, message } from 'antd';
+import { Button, Card, Table, message } from 'antd';
 import MobileTable from '../../Tables/TableForMobile/MobileTable';
 import styles from './Schedules.module.css';
 
@@ -18,25 +17,29 @@ const ManageSchedules = () => {
 		isValidDeadline: boolean,
 		id: number
 	) => {
-		return status == 'booked' || status == 'pending' ? (
-			<div style={{ display: 'flex', gap: '5px' }}>
+		return status == 'confirmed' || status == 'pending' ? (
+			<div style={{ display: 'flex', gap: '5px', marginTop: '10px' }}>
 				<Button
 					danger
 					disabled={isValidDeadline ? false : true}
-					onClick={() => handleBookings(id)}
+					onClick={() => handleBookings('canceled', id)}
 				>
 					Cancel Booking
 				</Button>
 			</div>
-		) : status == 'cenceled' || status == 'rejected' ? (
+		) : status == 'canceled' || status == 'rejected' ? (
 			<div>
-				<Button disabled danger style={{ textTransform: 'capitalize' }}>
+				<Button
+					disabled
+					danger
+					style={{ textTransform: 'capitalize', marginTop: '10px' }}
+				>
 					{status}
 				</Button>
 			</div>
 		) : (
-			<div style={{ display: 'flex', gap: '5px' }}>
-				<Button type="primary" onClick={() => handleBookings(id)}>
+			<div style={{ display: 'flex', gap: '5px', marginTop: '10px' }}>
+				<Button type="primary" onClick={() => handleBookings('canceled', id)}>
 					Cancel Booking
 				</Button>
 			</div>
@@ -47,11 +50,11 @@ const ManageSchedules = () => {
 		return (
 			<div>
 				{status == 'pending' ? (
-					<strong style={{ color: 'yellowgreen', textTransform: 'capitalize' }}>
+					<strong style={{ color: 'blue', textTransform: 'capitalize' }}>
 						{' '}
 						{status}
 					</strong>
-				) : status == 'booked' ? (
+				) : status == 'confirmed' ? (
 					<strong
 						style={{
 							color: 'var(--button-color)',
@@ -62,7 +65,7 @@ const ManageSchedules = () => {
 						{status}
 					</strong>
 				) : (
-					status == 'cenceled' && (
+					status == 'canceled' && (
 						<strong style={{ color: 'red', textTransform: 'capitalize' }}>
 							{' '}
 							{status}
@@ -73,18 +76,18 @@ const ManageSchedules = () => {
 		);
 	};
 
-	const handleBookings = async (id: number) => {
-		const result = await manageBookings(id);
+	const handleBookings = async (status: string, id: number) => {
+		const result = await manageBookings({ id, status });
 		//@ts-ignore
 		const data = result?.data;
 		if (data.success) {
-			if (data.status == 'cenceled') {
-				message.warning('Booking have cenceld successfully');
+			if (data.status == 'canceled') {
+				message.warning('Booking have canceled successfully');
 			}
 			if (data.status == 'rejected') {
 				message.warning('Booking have rejected successfully');
 			}
-			if (data.status == 'booked') {
+			if (data.status == 'confirmed') {
 				message.success('Congratulations!!! You have confirmed the booking');
 			}
 		}
@@ -94,10 +97,12 @@ const ManageSchedules = () => {
 		useGetUpcomingSchedulesQuery(undefined);
 	const upcomingSchedulesList = bookingData?.result;
 
+	//For desktop view
+
 	const columns = [
 		{
 			title: 'Plan name',
-			render: (data: any) => <h3>{data?.plan?.plan_name}</h3>,
+			render: (data: any) => <h3>{data?.plan?.planName}</h3>,
 		},
 		{
 			title: 'Booking Status',
@@ -109,7 +114,7 @@ const ManageSchedules = () => {
 		{
 			title: 'Reporting time',
 			render: (data: any) => {
-				const { time, date } = formateDateAndTime(data?.plan?.starting_time);
+				const { time, date } = formateDateAndTime(data?.plan?.departureTime);
 				return (
 					<p>
 						{time} {date}
@@ -123,8 +128,8 @@ const ManageSchedules = () => {
 				const currentDate = new Date();
 				currentDate.setHours(currentDate.getHours() + 6);
 				const formattedDate = currentDate.toISOString();
-				const isValidDeadline = data.plan?.booking_deadline > formattedDate;
-				const { time, date } = formateDateAndTime(data?.plan?.booking_deadline);
+				const isValidDeadline = data.plan?.deadline > formattedDate;
+				const { time, date } = formateDateAndTime(data?.plan?.deadline);
 				return isValidDeadline ? (
 					<p>
 						{time} {date}
@@ -138,8 +143,8 @@ const ManageSchedules = () => {
 		},
 		{
 			title: 'Total Seat',
-			dataIndex: 'quantity',
-			key: 'quantity',
+			dataIndex: 'seats',
+			key: 'seats',
 		},
 		{
 			title: 'Action',
@@ -147,10 +152,10 @@ const ManageSchedules = () => {
 				const currentDate = new Date();
 				currentDate.setHours(currentDate.getHours() + 6);
 				const formattedDate = currentDate.toISOString();
-				const isValidDeadline = data.plan?.booking_deadline > formattedDate;
+				const isValidDeadline = data.plan?.deadline > formattedDate;
 				const handleBooking = bookingHandler(
 					data.status,
-					data?.plan?.booking_deadline,
+					isValidDeadline,
 					data.id
 				);
 				return <>{handleBooking}</>;
@@ -158,24 +163,27 @@ const ManageSchedules = () => {
 		},
 	];
 
+	//for mobile view
 	const items = upcomingSchedulesList?.map((schedule: any) => {
+		console.log(schedule);
 		const currentDate = new Date();
 		currentDate.setHours(currentDate.getHours() + 6);
 		const formattedDate = currentDate.toISOString();
-		const isValidDeadline = schedule.plan?.booking_deadline > formattedDate;
+		const isValidDeadline = schedule.plan?.deadline > formattedDate;
 		const { time, date } = formateDateAndTime(schedule?.plan?.starting_time);
 		const handleBooking = bookingHandler(
 			schedule.status,
-			schedule?.plan?.booking_deadline,
+			schedule?.plan?.deadline,
 			schedule.id
 		);
 		const booingStatus = statusHandler(schedule?.status);
+
 		return {
 			key: schedule?.id,
 			label: (
 				<div>
 					<p style={{ fontSize: '18px', fontWeight: 'bold' }}>
-						{schedule?.plan?.plan_name}
+						{schedule?.plan?.planName}
 					</p>
 					<div style={{ fontSize: '18px' }}>
 						{' '}
@@ -186,17 +194,18 @@ const ManageSchedules = () => {
 			children: (
 				<div>
 					<h3>Booked for: {schedule?.quantity} Person</h3>
-					<h3>Total Amount : $ {schedule?.total_amount}</h3>
+					<h3>Total Amount : $ {schedule?.totalAmount}</h3>
+					<h3>Total booking : {schedule.seats} seats</h3>
 					<h3>
 						Departure : {time} {date}
 					</h3>
-					{isValidDeadline ? (
+					{/* {isValidDeadline ? (
 						<Tag color="green">Booking available</Tag>
 					) : (
 						<Tag icon={<ExclamationCircleOutlined />} color="error">
 							Booking closed
 						</Tag>
-					)}
+					)} */}
 					<>{handleBooking}</>
 				</div>
 			),
@@ -211,7 +220,7 @@ const ManageSchedules = () => {
 						display: 'flex',
 						alignItems: 'center',
 						gap: '10px',
-						margin: '10px 0',
+						margin: '5px 0',
 					}}
 				>
 					Upcoming Schedules

@@ -1,25 +1,28 @@
+:root {
+	--primary-color: #327012;
+	--accent-color: #d5e2e2;
+	--button-color: #327012;
+	--secondary-color: #40434392;
+}
+
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-family: 'Josefin Sans', sans-serif;
 }
-
-:root {
-	--primary-color: #327012;
-	--accent-color: #e0e3de;
-	--button-color: #327012;
-}
-
 a {
 	color: black;
 	text-decoration: none;
+}
+a:hover {
+	color: var(--button-color);
 }
 Link {
 	color: black;
 }
 h1 {
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-family: 'Josefin Sans', sans-serif;
 	color: rgb(47, 46, 46);
 }
 hr {
@@ -30,20 +33,19 @@ hr {
 	width: 80%;
 	margin: 0 auto;
 }
+.landing_page_sections {
+	margin: 100px 0;
+}
 
-/* :root {
-  --primary-color: #6ab331;
-  --primary-color: #327012;
-  --background-color: #327012;
-  --button-color: #088345;
-} */
-/*
 /* Mobile devices (320px to 480px) */
 @media only screen and (min-width: 280px) and (max-width: 480px) {
 	/* Your CSS styles for mobile devices go here */
 	.landing_page_container {
 		width: 95%;
 		margin: 0 auto;
+	}
+	.landing_page_sections {
+		margin: 50px 0;
 	}
 }
 
@@ -67,21 +69,17 @@ hr {
 }
 
 /* Extra large screens and TVs (1201px and above) */
-@media only screen and (min-width: 1801px) {
+@media only screen and (min-width: 2001px) {
+	.extra_large_layout {
+		width: 1200px;
+		margin: 0 auto;
+	}
 	.landing_page_container {
 		width: 1200px;
 		margin: 0 auto;
 	}
 	.landing_page_banner_container {
 		width: 1200px;
-		margin: 0 auto;
-	}
-	/* Your CSS styles for extra large screens and TVs go here */
-}
-/* Extra large screens and TVs (1201px and above) */
-@media only screen and (min-width: 1025px) and (max-width: 1801px) {
-	.landing_page_banner_container {
-		width: 80%;
 		margin: 0 auto;
 	}
 	/* Your CSS styles for extra large screens and TVs go here */

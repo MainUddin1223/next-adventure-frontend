@@ -1,39 +1,49 @@
 .profile_container {
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
 	margin-top: 35px;
 }
 .profile_image_container {
-	width: 220px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
 }
 .profile_container_mobile {
 	display: none;
 }
-/* Mobile devices (320px to 480px) */
-@media only screen and (min-width: 320px) and (max-width: 480px) {
-	.profile_container {
-		display: none;
-	}
-	.profile_container_mobile {
-		display: block;
-	}
+.profile_info {
+	display: flex;
+	gap: 50px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.agency_name {
+	font-size: 1.7rem;
+}
+.rating_section {
+	display: flex;
+	gap: 5px;
+}
+.edit_button {
+	margin-top: 10px;
 }
 
 /* iPads and Tablets (481px to 768px) */
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-	.profile_container {
-		display: none;
+@media only screen and (max-width: 968px) {
+	.profile_image_container {
+		flex-direction: column;
+		align-items: start;
 	}
 	.profile_container_mobile {
 		display: block;
+	}
+	.edit_button {
+		position: absolute;
+		top: 25px;
+		right: 25px;
 	}
 }
 
 /* Small screens and laptops (769px to 1024px) */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-	.profile_container {
-		width: 90%;
-		margin: 0 auto;
-		margin-top: 35px;
-	}
 }

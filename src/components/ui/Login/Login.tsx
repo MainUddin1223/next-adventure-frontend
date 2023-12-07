@@ -10,12 +10,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import Form from '../form/Form';
-import FormInput from '../form/FormInput';
-import { FormValues } from '../types';
-import PublicLayout from './PublicLayout';
-import BackButton from './buttons/BackButton';
-import PerLoader from './loader/PreLoader';
+import Form from '../../form/Form';
+import FormInput from '../../form/FormInput';
+import { FormValues } from '../../types';
+import PublicLayout from '../PublicLayout';
+import BackButton from '../buttons/BackButton';
+import PerLoader from '../loader/PreLoader';
+import styles from './Login.module.css';
 
 const Login = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -27,14 +28,15 @@ const Login = () => {
 			setIsLoading(true);
 			const res = await userLogin({ ...data }).unwrap();
 			if (res?.accessToken) {
-				message.success('User logged in successfully');
 				const accessToken = res?.accessToken;
-				await storeUserInfo(accessToken);
-				const authInfo: any = getUserInfo();
+				storeUserInfo(accessToken);
+				typeof window !== 'undefined' &&
+					res?.profileData?.profileImg &&
+					localStorage.setItem('profile_img', res?.profileData?.profileImg);
+				const authInfo: any = await getUserInfo();
+				message.success('User logged in successfully');
 				setIsLoading(false);
 				typeof window !== 'undefined' && localStorage.removeItem('prevRoute');
-				typeof window !== 'undefined' &&
-					localStorage.setItem('profile_img', res?.result?.profile_img);
 				const redirectUrl =
 					typeof window !== 'undefined' && localStorage.getItem('redirectTo');
 				if (redirectUrl) {
@@ -56,7 +58,7 @@ const Login = () => {
 
 	return (
 		<PublicLayout>
-			<div style={{ width: '80%', margin: '0 auto', marginTop: '30px' }}>
+			<div className={styles.login_container}>
 				<BackButton />
 				<Card>
 					{isLoading && <PerLoader />}

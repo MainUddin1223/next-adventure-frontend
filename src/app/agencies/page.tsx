@@ -12,7 +12,7 @@ const Agencies = () => {
 	return (
 		<>
 			<PublicLayout>
-				<div>
+				<div className="extra_large_layout">
 					<CardListLayout
 						title="AGENCIES"
 						description="Discover your tour planner and transform your journey into an unforgettable adventure."

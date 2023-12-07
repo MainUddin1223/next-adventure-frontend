@@ -1,5 +1,5 @@
-'use client';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import { useRouter } from 'next/navigation';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
@@ -10,16 +10,17 @@ const responsive = {
 	0: { items: 1 },
 	568: { items: 2 },
 	1024: { items: 3 },
-	1200: { items: 4 },
+	1200: { items: 3 },
+	1400: { items: 4 },
 };
 
 const FeaturedTour = ({ tours }: any) => {
+	const plans = tours?.plans;
 	const router = useRouter();
-	const plans = tours?.tourPlans;
 
 	const items = plans.map((item: any) => {
 		return (
-			<div style={{ margin: '10px' }}>
+			<div className={styles.planCard_container}>
 				<PlanCard plan={item} />
 			</div>
 		);
@@ -29,10 +30,10 @@ const FeaturedTour = ({ tours }: any) => {
 			<h2 className={styles.featured_header}>Featured Plans</h2>
 			<p
 				style={{
-					fontSize: '18px',
+					fontSize: '17px',
 					marginBottom: '10px',
-					fontWeight: 'bold',
-					lineHeight: '35px',
+					fontWeight: '500',
+					lineHeight: '25px',
 				}}
 			>
 				Experience the extraordinary with our tailor-made tour plan amidst
@@ -49,12 +50,16 @@ const FeaturedTour = ({ tours }: any) => {
 								style={{
 									position: 'absolute',
 									right: '40px',
-									fontSize: '35px',
+									fontSize: '20px',
+									backgroundColor: 'var(--accent-color)',
+									padding: '5px 15px',
+									marginRight: '25px',
+									boxShadow:
+										'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px',
+									cursor: 'pointer',
 								}}
 							>
-								<ArrowLeftOutlined
-									style={{ width: '48px', color: 'var(--button-color)' }}
-								/>
+								<ArrowLeftOutlined style={{ color: 'var(--button-color)' }} />
 							</div>
 						)
 					);
@@ -66,7 +71,12 @@ const FeaturedTour = ({ tours }: any) => {
 								style={{
 									position: 'absolute',
 									right: '10px',
-									fontSize: '35px',
+									fontSize: '20px',
+									backgroundColor: 'var(--accent-color)',
+									padding: '5px 15px',
+									boxShadow:
+										'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px',
+									cursor: 'pointer',
 								}}
 							>
 								<ArrowRightOutlined style={{ color: 'var(--button-color)' }} />
@@ -78,6 +88,14 @@ const FeaturedTour = ({ tours }: any) => {
 				responsive={responsive}
 				controlsStrategy="alternate"
 			/>
+			<Button
+				onClick={() => router.push('/plans')}
+				size="large"
+				style={{ marginLeft: '10px' }}
+				type="primary"
+			>
+				See more <ArrowRightOutlined />
+			</Button>
 		</div>
 	);
 };
